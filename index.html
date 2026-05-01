@@ -133,8 +133,8 @@
     .email-pane-title { font-size: 13px; font-weight: 700; color: var(--gray-700); }
     .email-pane-sub { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
     .email-subject { padding: 8px 18px; border-bottom: 1px solid var(--gray-100); font-size: 12px; font-weight: 600; color: var(--gray-600); background: var(--gray-50); flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Roboto', sans-serif; }
-    #email-text { flex: 1; width: 100%; border: none; resize: none; padding: 18px 20px; font-size: 13.5px; line-height: 1.75; color: var(--gray-900); font-family: 'Roboto', sans-serif; background: white; outline: none; }
-    #email-text::placeholder { color: var(--gray-300); font-style: italic; font-size: 13px; }
+    #email-text { flex: 1; width: 100%; border: none; padding: 18px 20px; font-size: 13.5px; line-height: 1.75; color: var(--gray-900); font-family: 'Roboto', sans-serif; background: white; outline: none; overflow-y: auto; white-space: pre-wrap; word-wrap: break-word; box-sizing: border-box; }
+    #email-text:empty::before { content: "Fill in the form to generate your email. It will appear here and update as you type."; color: var(--gray-300); font-style: italic; font-size: 13px; }
     .email-pane-footer { padding: 9px 16px; border-top: 1px solid var(--gray-100); flex-shrink: 0; display: flex; align-items: center; gap: 8px; min-height: 42px; }
     #resync-notice { display: none; align-items: center; gap: 7px; font-size: 11.5px; color: var(--gray-400); }
 
@@ -355,7 +355,7 @@
         </button>
       </div>
       <div class="email-subject" id="subject-preview">Subject line will appear as you fill in the form</div>
-      <textarea id="email-text" readonly placeholder="Fill in the form to generate your email. It will appear here and update as you type."></textarea>
+      <div id="email-text"></div>
       <div class="email-pane-footer"></div>
     </div>
 
@@ -595,21 +595,36 @@
   };
 
   // ─── Build HTML email for rich-text clipboard copy ─────
+  const EMAIL_HEADERS = [
+    'HIGHLIGHTS','TUTORIAL HIGHLIGHTS',
+    'AREAS OF EXCELLENCE','AREA OF FOCUS',
+    'KEY INSTRUCTIONAL ROUTINES',
+    'NEXT STEPS','RESOURCES',
+    'RESOURCES AND NEXT STEPS',
+    'TECH TIPS &amp; LOGISTICS'
+  ];
+
   function buildHtmlEmail(plainText) {
     // 1. HTML-escape
     let html = plainText
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    // 2. Link known resource labels
+    // 2. Style known section headers in Prisms pink
+    EMAIL_HEADERS.forEach(h => {
+      const esc = h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      html = html.replace(new RegExp(`^${esc}$`, 'gm'),
+        `<strong style="color:#DB1873;font-size:12px;letter-spacing:0.8px;">${h.replace('&amp;', '&')}</strong>`);
+    });
+    // 3. Link known resource labels
     Object.entries(RESOURCE_LINKS).forEach(([label, url]) => {
       const esc = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      html = html.replace(new RegExp(esc, 'g'), `<a href="${url}">${label}</a>`);
+      html = html.replace(new RegExp(esc, 'g'), `<a href="${url}" style="color:#353C78;">${label}</a>`);
     });
-    // 3. Auto-link any bare https:// URLs not already inside an href
-    html = html.replace(/(?<!href=")(https?:\/\/[^\s<"]+)/g, '<a href="$1">$1</a>');
-    // 4. Auto-link email addresses
+    // 4. Auto-link any bare https:// URLs not already inside an href
+    html = html.replace(/(?<!href=")(https?:\/\/[^\s<"]+)/g, '<a href="$1" style="color:#353C78;">$1</a>');
+    // 5. Auto-link email addresses
     html = html.replace(/(?<!mailto:)([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
-      '<a href="mailto:$1">$1</a>');
-    // 5. Newlines → <br>
+      '<a href="mailto:$1" style="color:#353C78;">$1</a>');
+    // 6. Newlines → <br>
     html = html.replace(/\n/g, '<br>\n');
     return `<div style="font-family:Arial,sans-serif;font-size:14px;line-height:1.7;color:#111827;">${html}</div>`;
   }
@@ -1117,7 +1132,7 @@
   function updatePreview() {
     updatingProgrammatically = true;
     document.getElementById('subject-preview').textContent = buildSubject();
-    document.getElementById('email-text').value = buildEmail();
+    document.getElementById('email-text').innerHTML = buildHtmlEmail(buildEmail());
     updatingProgrammatically = false;
     saveDraft();
   }
@@ -1128,7 +1143,7 @@
     if (!val('teacher-name')) missing.push('Teacher Name');
     if (!val('coach-name')) missing.push('Your Name (Coach)');
     if (missing.length && !confirm('Heads up — ' + missing.join(' and ') + ' is blank. The email will include placeholder text. Copy anyway?')) return;
-    const text = document.getElementById('email-text').value;
+    const text = buildEmail();
     const succeed = () => {
       const btn = document.getElementById('copy-btn');
       btn.classList.add('copied');
