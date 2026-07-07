@@ -590,8 +590,7 @@
     'VR Content Library':  'https://docs.google.com/document/d/1Skm06q5j0MobBMHSv50jCqiwb5-EboI7vIRF1WAeqDs/edit?tab=t.0',
     'Math Landing Page':   'https://docs.google.com/document/d/1Mrh062KycF1OW_xvqxpvCn-H-oBFUlrjFnGNkZ06jtE/edit?tab=t.0',
     'Science Landing Page':'https://docs.google.com/document/d/1cwRKdRIdLWRj-eCCiA7kb80tpqe-2b-pV7zFhnD3c2k/edit?tab=t.0',
-    'Teacher Handbook':    'https://docs.google.com/document/d/19jdgKdDj_S9fFv0Rxkt-__A_RpCIqfJlPVO00XaneGg/edit?tab=t.0#heading=h.slp4qv4cnmho',
-    'Teacher Dashboard':   'https://dashboard.prismsvr.com'
+    'Teacher Handbook':    'https://docs.google.com/document/d/19jdgKdDj_S9fFv0Rxkt-__A_RpCIqfJlPVO00XaneGg/edit?tab=t.0#heading=h.slp4qv4cnmho'
   };
 
   // ─── Build HTML email for rich-text clipboard copy ─────
@@ -743,7 +742,7 @@
       document.getElementById('highlights-label').textContent = 'What stood out?';
       // Pre-fill resources and tech tips for tutorial (only if empty)
       const res = document.getElementById('resources');
-      if (res && !res.value) res.value = '* Complete the tutorial with your remaining class periods and plan for your first content module!\n* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Teacher Dashboard\n* Support: support@prismsvr.com';
+      if (res && !res.value) res.value = '* Complete the tutorial with your remaining class periods and plan for your first content module!\n* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Support: support@prismsvr.com';
       const tt = document.getElementById('tech-tips');
       if (tt && !tt.value) tt.value = TECH_TIPS_DEFAULT;
     } else {
@@ -752,7 +751,7 @@
       document.getElementById('highlights-label').textContent = 'Impactful moment(s)';
       // Pre-fill coaching resources with support info (only if empty)
       const res = document.getElementById('resources');
-      if (res && !res.value) res.value = '* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Teacher Dashboard\n* Support: support@prismsvr.com';
+      if (res && !res.value) res.value = '* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Support: support@prismsvr.com';
     }
     updatePreview();
   }
@@ -1056,12 +1055,12 @@
         lines.push('');
       }
       lines.push('RESOURCES');
-      lines.push(resources || '* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Teacher Dashboard\n* Support: support@prismsvr.com');
+      lines.push(resources || '* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Support: support@prismsvr.com');
       lines.push('');
     } else {
       // Tutorial resources — pre-filled in textarea, coaches can add/edit
       lines.push('RESOURCES AND NEXT STEPS');
-      lines.push(resources || '* Complete the tutorial with your remaining class periods and plan for your first content module!\n* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Teacher Dashboard\n* Support: support@prismsvr.com');
+      lines.push(resources || '* Complete the tutorial with your remaining class periods and plan for your first content module!\n* VR Content Library\n* Math Landing Page\n* Science Landing Page\n* Teacher Handbook\n* Support: support@prismsvr.com');
       lines.push('');
       const techTips = val('tech-tips') || TECH_TIPS_DEFAULT;
       lines.push('TECH TIPS & LOGISTICS');
