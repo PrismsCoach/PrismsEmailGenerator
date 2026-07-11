@@ -367,6 +367,12 @@
 
   const AREAS = ['Pacing & Lesson Flow','Clarity of Expectations','Hardware Routines','In-VR Support','Writing & Discourse Routines','CFUs & Revisions'];
 
+  // Declared early (not just above restoreDraft/saveDraft) because init() can trigger
+  // setVisitType -> updatePreview -> saveDraft before the script reaches this point otherwise,
+  // which throws (TDZ) and silently halts the rest of the script.
+  const SAVE_KEY = 'prisms-email-draft';
+  const SIMPLE_FIELDS = ['teacher-name','school','coach-name','visit-date','highlights','module-rec','sb-rec','resources','custom-opening-text','tech-tips'];
+
   const AREA_INFO = {
     'Pacing & Lesson Flow':         { desc: 'The lesson moves through each phase at the right pace: Prerequisite Check, Frame, VR, Synthesis, and Debrief. Transitions are smooth and each phase gets the time it needs.', look: 'How long each phase takes, whether transitions are smooth, and whether the debrief gets protected time before the bell.' },
     'Clarity of Expectations':      { desc: 'Students know exactly what to do before, during, and after each phase without needing to ask.', look: 'Pre-VR instructions, what students do when they finish VR, how transitions are signaled, and whether students can self-direct.' },
@@ -703,7 +709,7 @@
     buildTutorialSection();
     setupAutocomplete('module-rec', 'module-ac', [MODULES_MATH, MODULES_SCIENCE, MODULES_OTHER]);
     setupAutocomplete('sb-rec', 'sb-ac', [SKILL_BUILDERS_MATH, SKILL_BUILDERS_SCIENCE]);
-    if (!restoreDraft()) { buildGrids(); setVisitType('coaching'); }
+    if (!restoreFromParams() && !restoreDraft()) { buildGrids(); setVisitType('coaching'); }
     initCollapsibleCards();
   }
   init();
@@ -1076,8 +1082,6 @@
   }
 
   // ─── Autosave ───────────────────────────────────────────
-  const SAVE_KEY = 'prisms-email-draft';
-  const SIMPLE_FIELDS = ['teacher-name','school','coach-name','visit-date','highlights','module-rec','sb-rec','resources','custom-opening-text','tech-tips'];
 
   function saveDraft() {
     const draft = {
@@ -1094,6 +1098,36 @@
     focSelected.forEach(area => { const id = slug(area); ['obs','why','move'].forEach(f => { const el = document.getElementById('foc-'+f+'-'+id); if (el) draft['foc'+f.charAt(0).toUpperCase()+f.slice(1)][id] = el.value; }); });
     TUTORIAL_ROUTINES.forEach(r => { const cb = document.getElementById(r.id); const ta = document.getElementById('obs-text-'+r.id); draft.tutorialChecked[r.id] = cb?.checked ?? true; draft.tutorialObs[r.id] = ta?.value || ''; });
     try { localStorage.setItem(SAVE_KEY, JSON.stringify(draft)); } catch(e) {}
+  }
+
+  // ─── Restore from Live Coach Tool handoff ──────────────
+  function b64DecodeUnicode(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+  }
+
+  function restoreFromParams() {
+    const raw = new URLSearchParams(window.location.search).get('data');
+    if (!raw) return false;
+    let payload;
+    try { payload = JSON.parse(b64DecodeUnicode(decodeURIComponent(raw))); } catch (e) { return false; }
+    if (!payload) return false;
+
+    setVisitType('coaching');
+    if (payload.teacher) document.getElementById('teacher-name').value = payload.teacher;
+    if (payload.coach) document.getElementById('coach-name').value = payload.coach;
+    if (payload.date) document.getElementById('visit-date').value = payload.date;
+    if (payload.highlights) document.getElementById('highlights').value = payload.highlights;
+
+    excSelected.clear(); focSelected.clear();
+    const notes = {};
+    Object.entries(payload.ratings || {}).forEach(([area, r]) => {
+      if (!AREAS.includes(area)) return;
+      if (r.color === 'green') { excSelected.add(area); notes['exc-obs-' + slug(area)] = r.note; }
+      else { focSelected.add(area); notes['foc-obs-' + slug(area)] = r.note; }
+    });
+    buildGrids();
+    Object.entries(notes).forEach(([id, val]) => { const el = document.getElementById(id); if (el && val) el.value = val; });
+    return true;
   }
 
   function restoreDraft() {
