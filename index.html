@@ -365,7 +365,7 @@
 <script>
   // ─── Config ────────────────────────────────────────────
 
-  const AREAS = ['Pacing & Lesson Flow','Clarity of Expectations','Hardware Routines','In-VR Support','Writing & Discourse Routines','CFUs & Revisions'];
+  const AREAS = ['Hardware & Technology','Just-in-Time Feedback','Writing & Discourse','Assessment & Revision','Spaced Repetition (Skill Builders)'];
 
   // Declared early (not just above restoreDraft/saveDraft) because init() can trigger
   // setVisitType -> updatePreview -> saveDraft before the script reaches this point otherwise,
@@ -374,188 +374,162 @@
   const SIMPLE_FIELDS = ['teacher-name','school','coach-name','visit-date','highlights','module-rec','sb-rec','resources','custom-opening-text','tech-tips'];
 
   const AREA_INFO = {
-    'Pacing & Lesson Flow':         { desc: 'The lesson moves through each phase at the right pace: Prerequisite Check, Frame, VR, Synthesis, and Debrief. Transitions are smooth and each phase gets the time it needs.', look: 'How long each phase takes, whether transitions are smooth, and whether the debrief gets protected time before the bell.' },
-    'Clarity of Expectations':      { desc: 'Students know exactly what to do before, during, and after each phase without needing to ask.', look: 'Pre-VR instructions, what students do when they finish VR, how transitions are signaled, and whether students can self-direct.' },
-    'Writing & Discourse Routines': { desc: 'The teacher uses structured routines to support student thinking through writing and discussion. Students write before sharing out.', look: 'Whether students write independently using the synthesis prompt before whole-class discussion, pair talk before sharing, and use of the Lesson Slide debrief question.' },
-    'CFUs & Revisions':             { desc: 'The teacher uses CFU data from the Teacher Dashboard to drive instruction: reviewing results, surfacing misconceptions, and having students revise.', look: 'When the CFU is assigned, whether results are reviewed before class ends, how the teacher responds to misconceptions, and whether students revise.' },
-    'Hardware Routines':            { desc: 'Headsets are distributed, used, and collected efficiently, with students taking responsibility for tech logistics.', look: 'Whether tech helpers are designated, how quickly headsets are distributed and collected, and time lost to hardware logistics.' },
-    'In-VR Support':                { desc: 'The teacher actively monitors and supports students during VR by circulating, using the Teacher Dashboard, and conferencing in the moment.', look: 'Whether the teacher circulates, how the Teacher Dashboard is used during VR, and whether students who are stuck get timely support.' }
+    'Hardware & Technology':                { desc: 'Headsets are distributed, used, and collected efficiently, with students taking responsibility for tech logistics.', look: 'Whether tech helpers are designated, how quickly headsets are distributed and collected, and time lost to hardware logistics.' },
+    'Just-in-Time Feedback':                { desc: 'The teacher actively monitors and supports students during VR by circulating, using the Teacher Dashboard, and conferencing in the moment.', look: 'Whether the teacher circulates, how the Teacher Dashboard is used during VR, and whether students who are stuck get timely support.' },
+    'Writing & Discourse':                  { desc: 'The teacher uses structured routines to support student thinking through writing and discussion. Students write before sharing out.', look: 'Whether students write independently using the synthesis prompt before whole-class discussion, pair talk before sharing, and use of the Lesson Slide debrief question.' },
+    'Assessment & Revision':                { desc: 'The teacher uses CFU data from the Teacher Dashboard to drive instruction: reviewing results, surfacing misconceptions, and having students revise.', look: 'When the CFU is assigned, whether results are reviewed before class ends, how the teacher responds to misconceptions, and whether students revise.' },
+    'Spaced Repetition (Skill Builders)':    { desc: 'The teacher uses Skill Builders to revisit foundational skills at spaced intervals, rather than relying on a single practice session — building durable retention through retrieval practice over time.', look: 'Whether Skill Builders are assigned on a recurring cadence, whether they target specific prerequisite gaps from CFU or prerequisite-check data, and whether students revisit a skill days or weeks after first practicing it.' }
   };
 
   const EXC_PH = {
-    'Pacing & Lesson Flow':         'e.g. The teacher set a timer for VR at 12 minutes, which left a full 10-minute synthesis window. Students had time to write, share, and revise before the bell — no phase was cut short.',
-    'Clarity of Expectations':      'e.g. Before headsets went on, the teacher stated exactly three things: what students would do in VR, what to do when finished, and where to write after. Every transition ran without a single redirect.',
-    'Writing & Discourse Routines': 'e.g. After VR, the teacher gave 3 minutes of silent writing time before anyone spoke. When discussion opened, 12 of 18 students had something to say — and two referenced specific moments from their VR experience to support their reasoning.',
-    'CFUs & Revisions':             'e.g. With 8 minutes left, the teacher projected two contrasting CFU responses and asked students which reasoning was stronger. Students revised their answers before class ended — the discussion was anchored in the concept, not just the procedure.',
-    'Hardware Routines':            'e.g. Two tech helpers distributed all 30 headsets in under 90 seconds. Cleanup was equally smooth — no instructional time was lost at either end of the lesson.',
-    'In-VR Support':                'e.g. The teacher circulated with the Teacher Dashboard on a tablet, stopping at three students who had stalled. Each conversation lasted under 90 seconds, named the specific conceptual sticking point, and got the student back on track.'
+    'Hardware & Technology':                'e.g. Two tech helpers distributed all 30 headsets in under 90 seconds. Cleanup was equally smooth — no instructional time was lost at either end of the lesson.',
+    'Just-in-Time Feedback':                'e.g. The teacher circulated with the Teacher Dashboard on a tablet, stopping at three students who had stalled. Each conversation lasted under 90 seconds, named the specific conceptual sticking point, and got the student back on track.',
+    'Writing & Discourse':                  'e.g. After VR, the teacher gave 3 minutes of silent writing time before anyone spoke. When discussion opened, 12 of 18 students had something to say — and two referenced specific moments from their VR experience to support their reasoning.',
+    'Assessment & Revision':                'e.g. With 8 minutes left, the teacher projected two contrasting CFU responses and asked students which reasoning was stronger. Students revised their answers before class ended — the discussion was anchored in the concept, not just the procedure.',
+    'Spaced Repetition (Skill Builders)':    'e.g. The teacher assigned a Skill Builder on graphing slope the week after the CFU showed a gap, then reassigned a related Skill Builder ten days later as a warm-up — students\' retention had visibly improved by the second round.'
   };
 
   const FOC_OBS_PH = {
-    'Pacing & Lesson Flow':         'e.g. VR ran to the 28-minute mark, leaving 2 minutes before the bell. Students didn\'t have time to write or discuss — the synthesis was skipped entirely, so the conceptual payoff of the VR experience was left on the table.',
-    'Clarity of Expectations':      'e.g. After students removed headsets, about a third of the class looked unsure of what to do next. Three students asked "what are we doing now?" before the teacher redirected — the transition paused for nearly 3 minutes.',
-    'Writing & Discourse Routines': 'e.g. The class moved straight from VR to whole-class discussion without any writing time. Only 4 of 22 students spoke — the rest had nothing in front of them and stayed silent even when called on.',
-    'CFUs & Revisions':             'e.g. CFU 1 was assigned, but class ended before results were reviewed. Students left without knowing whether their thinking about [concept] was accurate — and the misconception in 40% of responses went unaddressed.',
-    'Hardware Routines':            'e.g. Headset cleanup took nearly 6 minutes — wipes weren\'t accessible and students weren\'t sure where to return controllers. The final instructional segment was cut short as a result.',
-    'In-VR Support':                'e.g. During VR, the teacher stayed at the front desk with the laptop. Two students raised their hands and waited 4-5 minutes before getting support — by then, one had skipped ahead without understanding the key concept.'
+    'Hardware & Technology':                'e.g. Headset cleanup took nearly 6 minutes — wipes weren\'t accessible and students weren\'t sure where to return controllers. The final instructional segment was cut short as a result.',
+    'Just-in-Time Feedback':                'e.g. During VR, the teacher stayed at the front desk with the laptop. Two students raised their hands and waited 4-5 minutes before getting support — by then, one had skipped ahead without understanding the key concept.',
+    'Writing & Discourse':                  'e.g. The class moved straight from VR to whole-class discussion without any writing time. Only 4 of 22 students spoke — the rest had nothing in front of them and stayed silent even when called on.',
+    'Assessment & Revision':                'e.g. CFU 1 was assigned, but class ended before results were reviewed. Students left without knowing whether their thinking about [concept] was accurate — and the misconception in 40% of responses went unaddressed.',
+    'Spaced Repetition (Skill Builders)':    'e.g. A Skill Builder on [skill] was assigned once after the CFU flagged a gap, but was never revisited — by the next module, the same foundational gap had resurfaced.'
   };
 
   const FOC_WHY_PH = {
-    'Pacing & Lesson Flow':         'e.g. Synthesis is where students convert the VR experience into transferable understanding — connecting what they saw and did to the underlying concept. Without it, the learning stays tied to the simulation rather than becoming usable mathematical or scientific thinking.',
-    'Clarity of Expectations':      'e.g. When students don\'t know what to do at transitions, momentum stalls and off-task behavior increases — and the teacher ends up spending energy on management instead of instruction. In VR lessons especially, the transition out of immersive experience is a high-risk moment.',
-    'Writing & Discourse Routines': 'e.g. Writing before discussion gives every student — especially those who need processing time — the language to participate. Without it, discussion defaults to the same 4-5 voices, and the rest of the class leaves without having articulated their thinking.',
-    'CFUs & Revisions':             'e.g. CFU data is most powerful when it drives instruction in the moment. Once students leave, the window for targeted revision closes — and the misconception calcifies. The revision moment is where understanding consolidates.',
-    'Hardware Routines':            'e.g. Every minute lost to logistics is a minute not spent on synthesis or debrief — the phases most responsible for conceptual understanding. Unreliable routines also create low-level anxiety that makes it harder for students to transition back into thinking mode.',
-    'In-VR Support':                'e.g. Students who get stuck in VR and wait too long disengage or skip ahead without understanding. The misconception that caused the confusion goes unaddressed and typically resurfaces in the CFU or debrief — harder to correct after the experience is over.'
+    'Hardware & Technology':                'e.g. Every minute lost to logistics is a minute not spent on synthesis or debrief — the phases most responsible for conceptual understanding. Unreliable routines also create low-level anxiety that makes it harder for students to transition back into thinking mode.',
+    'Just-in-Time Feedback':                'e.g. Students who get stuck in VR and wait too long disengage or skip ahead without understanding. The misconception that caused the confusion goes unaddressed and typically resurfaces in the CFU or debrief — harder to correct after the experience is over.',
+    'Writing & Discourse':                  'e.g. Writing before discussion gives every student — especially those who need processing time — the language to participate. Without it, discussion defaults to the same 4-5 voices, and the rest of the class leaves without having articulated their thinking.',
+    'Assessment & Revision':                'e.g. CFU data is most powerful when it drives instruction in the moment. Once students leave, the window for targeted revision closes — and the misconception calcifies. The revision moment is where understanding consolidates.',
+    'Spaced Repetition (Skill Builders)':    'e.g. A single practice session builds short-term familiarity, not durable retention. Without spaced revisiting, foundational skill gaps resurface in later modules — and compound over time.'
   };
 
   const FOC_MOVE_PH = {
-    'Pacing & Lesson Flow':         'e.g. Set a visible timer for VR (12 minutes) and post it on the board. When it goes off, begin transitioning regardless of where students are — synthesis time is non-negotiable. Decide in advance: "VR ends at [time], synthesis starts at [time]."',
-    'Clarity of Expectations':      'e.g. Before headsets go on, say exactly three things: what students will do in VR, what to do when they finish, and what to write after. Post these on the board as a permanent reference. Give all instructions before a single headset goes on.',
-    'Writing & Discourse Routines': 'e.g. After VR, say "Take 3 minutes — write silently, don\'t talk yet." Use the synthesis prompt from Lesson Slides as the anchor. No discussion until everyone has something on the page. Try partner share before whole-class discussion to double the number of voices.',
-    'CFUs & Revisions':             'e.g. Build a 5-minute CFU review window into your lesson plan before closure. Pull two contrasting responses — one with strong reasoning, one with a misconception — and ask students: "Which reasoning do you agree with and why?" Give 90 seconds for silent revision before sharing.',
-    'Hardware Routines':            'e.g. Assign two permanent tech helpers per class and walk them through the routine before the lesson: distribute from [location], collect to [location], wipes are at [location]. Practice cleanup once with a stopwatch — make the goal visible so students can beat their own time.',
-    'In-VR Support':                'e.g. Open the Teacher Dashboard on a tablet before VR starts. Do a slow loop every 3-4 minutes — use the data to identify who\'s behind, then walk directly to them. Identify 2-3 target students before VR starts (those who struggled with the prerequisite check) and reach them within the first 3 minutes.'
+    'Hardware & Technology':                'e.g. Assign two permanent tech helpers per class and walk them through the routine before the lesson: distribute from [location], collect to [location], wipes are at [location]. Practice cleanup once with a stopwatch — make the goal visible so students can beat their own time.',
+    'Just-in-Time Feedback':                'e.g. Open the Teacher Dashboard on a tablet before VR starts. Do a slow loop every 3-4 minutes — use the data to identify who\'s behind, then walk directly to them. Identify 2-3 target students before VR starts (those who struggled with the prerequisite check) and reach them within the first 3 minutes.',
+    'Writing & Discourse':                  'e.g. After VR, say "Take 3 minutes — write silently, don\'t talk yet." Use the synthesis prompt from Lesson Slides as the anchor. No discussion until everyone has something on the page. Try partner share before whole-class discussion to double the number of voices.',
+    'Assessment & Revision':                'e.g. Build a 5-minute CFU review window into your lesson plan before closure. Pull two contrasting responses — one with strong reasoning, one with a misconception — and ask students: "Which reasoning do you agree with and why?" Give 90 seconds for silent revision before sharing.',
+    'Spaced Repetition (Skill Builders)':    'e.g. Use CFU and prerequisite-check data to identify the specific skill gap, assign a targeted Skill Builder that week, then calendar a second, shorter reassignment 1-2 weeks later as a warm-up — spacing is what converts practice into retention.'
   };
 
   const EXC_TIPS = {
-    'Pacing & Lesson Flow': [
-      'The teacher protected [synthesis / debrief] time by [specific action] — students had [X] minutes to [write / discuss / revise] before the bell…',
-      'Because all five phases ran, students arrived at discussion with [specific conceptual understanding] already forming — for example, [student or group]…',
-      'The [Frame / VR / Synthesis / Debrief] phase was especially well-paced: [specific teacher move] meant students could [specific outcome]…'
-    ],
-    'Clarity of Expectations': [
-      'Before headsets went on, the teacher told students exactly [what to do / where to go / what to write] — when VR ended, students immediately [specific action] without any prompt…',
-      'Because expectations were clear from the start, the teacher spent VR time [circulating / conferencing / monitoring the dashboard] rather than managing transitions…',
-      'Transitions were seamless: when [phase] ended, every student [specific action] — the routine was so established that [specific observation]…'
-    ],
-    'Writing & Discourse Routines': [
-      'Students wrote for [X] minutes before any discussion. When share-out began, [specific student or group] connected their VR experience to [concept] by saying…',
-      'The synthesis prompt anchored the debrief — students\' writing showed they were reasoning about [specific concept], not just describing what they saw in VR…',
-      'During discussion, students built on each other\'s ideas: [student A] said [X], and [student B] pushed back by arguing [Y] — this kind of discourse came directly from the VR experience…'
-    ],
-    'CFUs & Revisions': [
-      'After pulling CFU results, the teacher surfaced a misconception about [concept] and used two contrasting responses to drive discussion — students had to decide [specific question]…',
-      'CFU data shaped instruction in real time: when the teacher saw that [students had misconception], they responded by [specific move] rather than moving on…',
-      'Students revised their answers after reviewing CFU results — [specific student or group] changed their thinking about [concept] because…'
-    ],
-    'Hardware Routines': [
+    'Hardware & Technology': [
       'Tech helpers distributed all [X] headsets in [time] — the lesson started immediately, which meant students spent that time [in VR / on synthesis] instead of waiting…',
       'Because routines ran without a hitch, the teacher\'s full attention stayed on [circulating / facilitating / monitoring] — not on logistics…',
       'Students owned the hardware routine entirely: [specific action by students] meant the teacher never had to redirect for tech management during the lesson…'
     ],
-    'In-VR Support': [
+    'Just-in-Time Feedback': [
       'The teacher used the Teacher Dashboard to identify [student names / a group] who were [stuck / progressing quickly] and responded by [specific move]…',
       'During VR, the teacher conferred with [student] about [specific moment in the module] — the conversation named the conceptual sticking point directly: [describe]…',
       'Active circulation meant the teacher caught [misconception / confusion] before the debrief — which meant the whole-class discussion could build on accurate thinking rather than correct it…'
+    ],
+    'Writing & Discourse': [
+      'Students wrote for [X] minutes before any discussion. When share-out began, [specific student or group] connected their VR experience to [concept] by saying…',
+      'The synthesis prompt anchored the debrief — students\' writing showed they were reasoning about [specific concept], not just describing what they saw in VR…',
+      'During discussion, students built on each other\'s ideas: [student A] said [X], and [student B] pushed back by arguing [Y] — this kind of discourse came directly from the VR experience…'
+    ],
+    'Assessment & Revision': [
+      'After pulling CFU results, the teacher surfaced a misconception about [concept] and used two contrasting responses to drive discussion — students had to decide [specific question]…',
+      'CFU data shaped instruction in real time: when the teacher saw that [students had misconception], they responded by [specific move] rather than moving on…',
+      'Students revised their answers after reviewing CFU results — [specific student or group] changed their thinking about [concept] because…'
+    ],
+    'Spaced Repetition (Skill Builders)': [
+      'The teacher used [CFU / prerequisite check] data to identify a specific gap in [skill] and assigned a targeted Skill Builder within the week — students\' scores on the follow-up reassignment showed [specific improvement]…',
+      'Skill Builders were revisited on a spaced cadence rather than assigned once: [specific skill] was practiced, then reassigned [X] days later as a warm-up — [specific student or group] retained the skill by the second round…',
+      'The teacher connected the Skill Builder directly to an upcoming module\'s prerequisite needs — students arrived at [module] already fluent in [foundational skill], which meant the new content wasn\'t competing with a skill gap…'
     ]
   };
 
   const EXC_POWER_MOVES = {
-    'Pacing & Lesson Flow':         'Every phase had protected, purposeful time — and because synthesis happened before debrief, students arrived at whole-class discussion with conceptual language already forming. The VR experience became the foundation for thinking, not the end of it.',
-    'Clarity of Expectations':      'Students self-directed through every transition — the teacher\'s upfront clarity freed up cognitive bandwidth for both teacher and students. That freed attention went directly into instruction, conferencing, and facilitating discussion.',
-    'Writing & Discourse Routines': 'Writing before discussion meant every student — including those who need processing time — arrived at share-out with language for their thinking. The VR experience became the raw material for conceptual sense-making, not just a novelty.',
-    'CFUs & Revisions':             'CFU data closed the feedback loop in real time. Student errors became teaching content — the teacher turned individual misconceptions into a whole-class conversation about what\'s actually true and why.',
-    'Hardware Routines':            'Students owned the logistics entirely. Because no instructional time was lost to hardware management, the teacher\'s attention stayed on learning from the first minute to the last.',
-    'In-VR Support':                'The teacher used both the dashboard and active circulation together — identifying who needed support from the data, then delivering it in person. No student waited more than a few minutes, and misconceptions were addressed at the moment of confusion, not after.'
+    'Hardware & Technology':                'Students owned the logistics entirely. Because no instructional time was lost to hardware management, the teacher\'s attention stayed on learning from the first minute to the last.',
+    'Just-in-Time Feedback':                'The teacher used both the dashboard and active circulation together — identifying who needed support from the data, then delivering it in person. No student waited more than a few minutes, and misconceptions were addressed at the moment of confusion, not after.',
+    'Writing & Discourse':                  'Writing before discussion meant every student — including those who need processing time — arrived at share-out with language for their thinking. The VR experience became the raw material for conceptual sense-making, not just a novelty.',
+    'Assessment & Revision':                'CFU data closed the feedback loop in real time. Student errors became teaching content — the teacher turned individual misconceptions into a whole-class conversation about what\'s actually true and why.',
+    'Spaced Repetition (Skill Builders)':    'Skill Builders were used as spaced retrieval practice, not a one-time assignment — the teacher targeted a specific gap, then deliberately revisited it days or weeks later. That repetition is what converted practice into durable retention, and it meant later modules could build on a stable foundation rather than re-teaching the same gap.'
   };
 
   const FOC_OBS_TIPS = {
-    'Pacing & Lesson Flow': [
-      'VR ran [X] minutes, leaving only [X] minutes for [synthesis / debrief] — students didn\'t have time to [write / discuss / revise] before the bell…',
-      'The [synthesis / debrief] was [cut short / skipped entirely] — as a result, students left without connecting the VR experience to [the concept]…',
-      'I noticed pacing slipped at [specific moment]: [describe what happened and how much time was lost]…'
-    ],
-    'Clarity of Expectations': [
-      'After [VR / removing headsets], about [X] students looked unsure of what to do next — I saw [specific behavior: hands raised / looking around / off-task]…',
-      'The transition from [phase] to [phase] paused for [X] minutes while students waited for direction — [describe what the teacher was doing during that time]…',
-      '[X] students asked "[specific question]" during [transition] — a signal that [specific expectation] hadn\'t been established before that point…'
-    ],
-    'Writing & Discourse Routines': [
-      'The class moved from VR directly to discussion without writing time — [X] of [Y] students spoke, and the rest stayed silent even when called on…',
-      'During share-out, the same [X] students contributed nearly all the ideas — students who hadn\'t written first didn\'t have language ready for [concept]…',
-      'The synthesis prompt was [not used / introduced mid-discussion] — without a common anchor, the debrief became a retelling of VR rather than reasoning about [concept]…'
-    ],
-    'CFUs & Revisions': [
-      'CFU [1/2] was assigned, but class ended before results were reviewed — [X%] of students had a misconception about [concept] that went unaddressed…',
-      'The teacher saw [describe CFU pattern] in the data, but there wasn\'t time to respond before the bell — students left with inaccurate thinking about [concept]…',
-      'CFU data was available but wasn\'t used instructionally — no revision happened, so students didn\'t know whether their reasoning about [concept] was on track…'
-    ],
-    'Hardware Routines': [
+    'Hardware & Technology': [
       'Headset [distribution / cleanup] took [X] minutes because [specific cause: wipes not accessible / no designated helpers / unclear return location]…',
       'The routine broke down at [specific step] — [describe what students did or didn\'t know to do] — which cost [X] minutes of [synthesis / debrief] time…',
       '[X] minutes of instructional time were lost to hardware logistics at [start / end] of class — that\'s time that could have gone toward [specific phase]…'
     ],
-    'In-VR Support': [
+    'Just-in-Time Feedback': [
       'During VR, the teacher was positioned [at the front / at the desk] — [X] students with hands raised waited [X] minutes before getting support…',
       'The Teacher Dashboard was [open on the laptop but the teacher wasn\'t circulating / not open] — which meant [students who were stuck weren\'t identified until late / specific consequence]…',
       'I noticed [student / group] was confused about [specific VR moment or concept] and waited [X] minutes — by the time they got support, they had [skipped ahead / disengaged]…'
+    ],
+    'Writing & Discourse': [
+      'The class moved from VR directly to discussion without writing time — [X] of [Y] students spoke, and the rest stayed silent even when called on…',
+      'During share-out, the same [X] students contributed nearly all the ideas — students who hadn\'t written first didn\'t have language ready for [concept]…',
+      'The synthesis prompt was [not used / introduced mid-discussion] — without a common anchor, the debrief became a retelling of VR rather than reasoning about [concept]…'
+    ],
+    'Assessment & Revision': [
+      'CFU [1/2] was assigned, but class ended before results were reviewed — [X%] of students had a misconception about [concept] that went unaddressed…',
+      'The teacher saw [describe CFU pattern] in the data, but there wasn\'t time to respond before the bell — students left with inaccurate thinking about [concept]…',
+      'CFU data was available but wasn\'t used instructionally — no revision happened, so students didn\'t know whether their reasoning about [concept] was on track…'
+    ],
+    'Spaced Repetition (Skill Builders)': [
+      'A Skill Builder on [skill] was assigned once after [CFU / prerequisite check] flagged a gap, but there was no plan to revisit it — [specific consequence, e.g. the gap resurfaced in the next module]…',
+      'Skill Builders were available but not assigned in response to any specific data — [X] students showed a gap in [skill] that went unaddressed…',
+      'I noticed [skill] was practiced once during [module], but there was no spaced reassignment — by [later point], [student or group] showed the same foundational gap again…'
     ]
   };
 
   const FOC_WHY_TIPS = {
-    'Pacing & Lesson Flow': [
-      'Without [synthesis / debrief] time, students leave without connecting the VR experience to [the concept] — the learning stays tied to the simulation rather than becoming transferable understanding…',
-      'The [synthesis / debrief] is where [conceptual understanding / mathematical language / scientific reasoning] develops. When it\'s cut, students miss the phase most responsible for…',
-      'This pattern — if it recurs — means students consistently complete VR but rarely consolidate what they experienced into [concept]. Over time, that gap shows up in…'
-    ],
-    'Clarity of Expectations': [
-      'When students don\'t know what to do at transitions, they [look to peers / go off-task / wait passively] — and the teacher spends energy on management instead of [circulating / facilitating / conferencing]…',
-      'The transition out of VR is especially high-risk: students are shifting from immersive experience back to paper-and-pencil thinking. Without a clear signal, that shift stalls and the synthesis window shrinks…',
-      'When some students self-direct and others don\'t, the teacher ends up redirecting individuals instead of teaching — and the students who most need in-the-moment support don\'t get it…'
-    ],
-    'Writing & Discourse Routines': [
-      'Writing before discussion gives every student — especially those who process more slowly — the language to participate in [concept]-focused conversation. Without it, discussion defaults to [the same few voices / surface impressions from VR]…',
-      'When students go straight from VR to talking, discourse stays at the level of "what I saw" rather than "what it means for [concept]." Writing is what converts experience into reasoning…',
-      'The synthesis prompt is designed to anchor student thinking in [the concept / the key skill]. Without it, the debrief loses its conceptual spine — and students leave having retold VR rather than reasoned about [concept]…'
-    ],
-    'CFUs & Revisions': [
-      'Once students leave, the window for targeted revision closes. The misconception about [concept] tends to persist and resurfaces in [next lesson / unit assessment] — harder to address after the fact…',
-      'CFU data is most powerful in the moment: when students revise their thinking while the VR experience is still fresh, the correction connects directly to [what they did / what they saw in VR]…',
-      'When students don\'t know whether their reasoning about [concept] was accurate, they leave with false confidence — or unresolved confusion — that affects how they engage with the next lesson…'
-    ],
-    'Hardware Routines': [
+    'Hardware & Technology': [
       'Every minute lost to logistics is a minute not spent on [synthesis / debrief] — the phases most directly responsible for conceptual understanding. In a 50-minute lesson, [X] minutes lost to cleanup is significant…',
       'Unpredictable routines create low-level anxiety at both ends of class — students have trouble transitioning [into VR / back to thinking mode] when they don\'t know what\'s expected of them…',
       'When the teacher manages hardware personally, their attention is split during [distribution / cleanup] — that\'s time they could spend [checking in with students / reviewing CFU data / preparing the synthesis anchor]…'
     ],
-    'In-VR Support': [
+    'Just-in-Time Feedback': [
       'Students who get stuck and wait too long in VR tend to [disengage / skip ahead] — the conceptual confusion that caused the stall goes unaddressed and shows up again in [CFU results / the debrief] when it\'s harder to correct…',
       'The most teachable moment in a Prisms lesson is often during VR, when students are inside the concept and confusion is immediate and concrete. Waiting too long to reach them means missing that window entirely…',
       'Without active circulation, the teacher doesn\'t know which students are progressing and which are stuck — the debrief then has to start from scratch rather than building on what students actually understood from VR…'
+    ],
+    'Writing & Discourse': [
+      'Writing before discussion gives every student — especially those who process more slowly — the language to participate in [concept]-focused conversation. Without it, discussion defaults to [the same few voices / surface impressions from VR]…',
+      'When students go straight from VR to talking, discourse stays at the level of "what I saw" rather than "what it means for [concept]." Writing is what converts experience into reasoning…',
+      'The synthesis prompt is designed to anchor student thinking in [the concept / the key skill]. Without it, the debrief loses its conceptual spine — and students leave having retold VR rather than reasoned about [concept]…'
+    ],
+    'Assessment & Revision': [
+      'Once students leave, the window for targeted revision closes. The misconception about [concept] tends to persist and resurfaces in [next lesson / unit assessment] — harder to address after the fact…',
+      'CFU data is most powerful in the moment: when students revise their thinking while the VR experience is still fresh, the correction connects directly to [what they did / what they saw in VR]…',
+      'When students don\'t know whether their reasoning about [concept] was accurate, they leave with false confidence — or unresolved confusion — that affects how they engage with the next lesson…'
+    ],
+    'Spaced Repetition (Skill Builders)': [
+      'A single Skill Builder session builds short-term familiarity, not durable retention — without a spaced follow-up, the underlying gap in [skill] tends to resurface once the initial practice fades from memory…',
+      'Foundational skill gaps compound: if [skill] isn\'t solidified before [upcoming module], the new content will be competing with a shaky prerequisite — making both harder to learn…',
+      'Retrieval practice research shows spacing, not repetition in a single sitting, is what converts short-term practice into durable memory — a Skill Builder used once is a missed opportunity for that effect…'
     ]
   };
 
   const FOC_MOVE_TIPS = {
-    'Pacing & Lesson Flow': [
-      'Set a visible timer for VR ([X] minutes) and post it on the board. When it goes off, begin transitioning regardless of where students are — treat synthesis time as non-negotiable…',
-      'Before class, write the phase sequence and time targets on the board (e.g., VR: 12 min → Write: 3 min → Discuss: 8 min). Having a public plan makes it easier to protect each phase…',
-      'Try shortening VR by [X] minutes to protect synthesis and debrief. Students get enough from [X] minutes in the module to anchor a rich conceptual discussion — the synthesis is where the learning lands…'
-    ],
-    'Clarity of Expectations': [
-      'Before headsets go on, say exactly three things: what students will do in VR, what to do when they finish, and what to write after. Post these on the board. Give all instructions before a single headset goes on…',
-      'Try a visual signal for the VR-to-synthesis transition — a projected timer, a sound cue, or lights. Environmental cues let students self-direct without waiting for a verbal redirect from you…',
-      'Practice the post-VR transition once before the lesson begins: "When I say go, remove your headset, place it on your desk, and open your notebook to [page]." Students who\'ve rehearsed the move don\'t need to be told…'
-    ],
-    'Writing & Discourse Routines': [
-      'After VR, say "Take 3 minutes — write silently, don\'t talk yet." Use the synthesis prompt from Lesson Slides as the anchor. No discussion until everyone has something on the page — even one sentence…',
-      'Try a think-pair-share before whole-class discussion: 2 minutes writing → 1 minute partner share → open it up. This doubles the number of students who arrive at whole-class discussion with articulated thinking…',
-      'During share-out, use cold-call or equity sticks to bring in students whose writing shows strong VR-to-concept connections — surface the reasoning that connects [what they experienced] to [the concept]…'
-    ],
-    'CFUs & Revisions': [
-      'Build a 5-minute CFU review window into your lesson plan before closure — make it non-negotiable. When the timer hits [X minutes before bell], stop and pull results regardless of where the lesson is…',
-      'Choose two contrasting CFU responses in advance (or pull them live): one with strong reasoning, one with a common misconception. Ask: "Which reasoning do you agree with and why?" Give students 1 minute to decide before sharing…',
-      'Try a "revise your answer" moment after reviewing results: 90 seconds of silent revision, then ask 2-3 students what changed in their thinking about [concept] and why — make the revision public…'
-    ],
-    'Hardware Routines': [
+    'Hardware & Technology': [
       'Assign two permanent tech helpers per class and walk them through the routine before the lesson: distribute from [location], collect to [location], wipes at [location]. The goal is that you never have to touch a headset during class…',
       'Create a permanent wipe station at each charging cart. Practice cleanup once with a visible stopwatch — post the target time and let students try to beat it. Public goals make routines feel purposeful rather than arbitrary…',
       'Try a silent cleanup countdown projected on the board (e.g., 90 seconds). Visual timers reduce the need for verbal redirects and give students a concrete, shared goal to work toward together…'
     ],
-    'In-VR Support': [
+    'Just-in-Time Feedback': [
       'Open the Teacher Dashboard on a tablet before VR starts. Do a slow loop every 3-4 minutes — use the data to identify who\'s behind, then walk directly to them. The goal: no student waits more than 2 minutes for support…',
       'Before VR begins, identify 2-3 target students — those who struggled with the prerequisite check or last lesson\'s CFU — and reach them within the first 3 minutes. Don\'t wait for them to raise their hands…',
       'During your circulation loop, try one probing question per student you check in with: "What did you notice when [specific VR moment]?" This surfaces conceptual confusion before it becomes a roadblock — and costs less than 60 seconds per student…'
+    ],
+    'Writing & Discourse': [
+      'After VR, say "Take 3 minutes — write silently, don\'t talk yet." Use the synthesis prompt from Lesson Slides as the anchor. No discussion until everyone has something on the page — even one sentence…',
+      'Try a think-pair-share before whole-class discussion: 2 minutes writing → 1 minute partner share → open it up. This doubles the number of students who arrive at whole-class discussion with articulated thinking…',
+      'During share-out, use cold-call or equity sticks to bring in students whose writing shows strong VR-to-concept connections — surface the reasoning that connects [what they experienced] to [the concept]…'
+    ],
+    'Assessment & Revision': [
+      'Build a 5-minute CFU review window into your lesson plan before closure — make it non-negotiable. When the timer hits [X minutes before bell], stop and pull results regardless of where the lesson is…',
+      'Choose two contrasting CFU responses in advance (or pull them live): one with strong reasoning, one with a common misconception. Ask: "Which reasoning do you agree with and why?" Give students 1 minute to decide before sharing…',
+      'Try a "revise your answer" moment after reviewing results: 90 seconds of silent revision, then ask 2-3 students what changed in their thinking about [concept] and why — make the revision public…'
+    ],
+    'Spaced Repetition (Skill Builders)': [
+      'Use [CFU / prerequisite check] data to identify the specific skill gap, assign a targeted Skill Builder that week, then calendar a second, shorter reassignment 1-2 weeks later as a warm-up before the next relevant module…',
+      'Build a recurring 5-minute Skill Builder warm-up into your weekly routine — rotate through the 2-3 foundational skills your data shows need reinforcement, rather than assigning once and moving on…',
+      'Before starting [upcoming module], check whether its prerequisite skills were solidified earlier in the year — if not, assign a quick Skill Builder reassignment that week so students aren\'t learning two things at once…'
     ]
   };
 

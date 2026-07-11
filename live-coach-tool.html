@@ -73,16 +73,25 @@
     .routine-body { padding: 0 20px 18px; }
     .routine-card.collapsed .routine-body { display: none; }
 
-    .routine-bullets { font-size: 12.5px; color: var(--gray-700); line-height: 1.7; padding-left: 18px; margin-bottom: 14px; list-style: disc; }
-    .routine-bullets ul { padding-left: 16px; margin-top: 2px; list-style: circle; }
-    .routine-bullets .group-label { font-weight: 700; color: var(--gray-600); display: block; margin-top: 6px; }
+    .item-group-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--gray-400); margin: 12px 0 4px; }
+    .item-group-label:first-child { margin-top: 0; }
+    .item-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--gray-100); }
+    .item-row:last-of-type { border-bottom: none; }
+    .item-label { font-size: 12.5px; color: var(--gray-700); line-height: 1.45; flex: 1; }
+    .item-rating { display: flex; gap: 5px; flex-shrink: 0; }
+    .item-dot { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--gray-200); background: white; cursor: pointer; padding: 0; transition: all 0.12s; }
+    .item-dot.green.active { background: var(--green); border-color: var(--green); }
+    .item-dot.yellow.active { background: var(--yellow); border-color: var(--yellow); }
+    .item-dot.red.active { background: var(--red); border-color: var(--red); }
+    .item-dot:hover:not(.active) { border-color: var(--gray-300); background: var(--gray-50); }
 
-    .rating-row { display: flex; gap: 8px; margin-bottom: 10px; }
-    .rating-btn { flex: 1; padding: 10px 6px; border-radius: 8px; border: 1.5px solid var(--gray-200); background: white; font-size: 12px; font-weight: 700; cursor: pointer; text-align: center; color: var(--gray-600); transition: all 0.12s; }
-    .rating-btn.green.active { background: var(--green); border-color: var(--green); color: white; }
-    .rating-btn.yellow.active { background: var(--yellow); border-color: var(--yellow); color: white; }
-    .rating-btn.red.active { background: var(--red); border-color: var(--red); color: white; }
-    .rating-btn:hover:not(.active) { border-color: var(--gray-300); background: var(--gray-50); }
+    .routine-rollup { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--gray-400); margin-bottom: 10px; }
+    .routine-rollup .rollup-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gray-300); }
+    .routine-rollup .rollup-dot.green { background: var(--green); }
+    .routine-rollup .rollup-dot.yellow { background: var(--yellow); }
+    .routine-rollup .rollup-dot.red { background: var(--red); }
+
+    .routine-note { margin-top: 12px; }
     .routine-note textarea { width: 100%; border: 1px solid var(--gray-200); border-radius: 8px; padding: 8px 12px; font-size: 13px; font-family: 'Roboto', sans-serif; resize: vertical; min-height: 44px; }
 
     /* ─── Wrap-up screen ──────────────────────────────────── */
@@ -112,6 +121,11 @@
     #print-summary-card .tag.yellow { background: var(--yellow-light); color: var(--yellow); }
     #print-summary-card .tag.red { background: var(--red-light); color: var(--red); }
     #print-summary-card .tag.gray { background: var(--gray-100); color: var(--gray-400); }
+    #print-summary-card .print-item { font-size: 12px; color: var(--gray-700); padding-left: 14px; position: relative; margin-top: 3px; }
+    #print-summary-card .print-item::before { content: '●'; position: absolute; left: 0; font-size: 8px; top: 4px; }
+    #print-summary-card .print-item.green::before { color: var(--green); }
+    #print-summary-card .print-item.yellow::before { color: var(--yellow); }
+    #print-summary-card .print-item.red::before { color: var(--red); }
 
     @media (max-width: 600px) {
       .row-2 { grid-template-columns: 1fr; }
@@ -199,60 +213,85 @@
 
   const PRIMARY_MAP = {
     'tutorial': ['hardware'],
-    'content-module': ['hardware', 'invr'],
+    'content-module': ['hardware', 'jitf'],
     'transfer-cfu': ['writing', 'assessment'],
-    'skill-builder': ['hardware', 'invr', 'writing', 'assessment']
+    'skill-builder': ['hardware', 'jitf', 'writing', 'assessment', 'spaced']
   };
 
   const RATING_LABELS = { green: 'Ready to move on', yellow: 'Nearly there', red: 'Need review' };
 
+  // Adjust bullet text/grouping here any time the checklist changes — everything
+  // else (rendering, ratings, PDF, email handoff) is driven off this config.
   const ROUTINES = [
     {
-      id: 'hardware', title: 'Hardware & Technology', sub: 'Efficient setup & distribution', area: 'Hardware Routines',
-      bullets: [
-        'Headsets pre-distributed, collected at entry, or passed out via designated tech helpers',
-        'Dashboard up with Auto-Launch &amp; Language settings preset (if applicable)',
-        'Teacher leverages Frame slides to activate student schema and frontloads any content or in-VR interactions',
-        'Students adjust fit and set play boundary before entering VR',
-        'After VR, power off headsets fully before returning to cart',
-        'Sanitize headsets and controllers; use microfiber cloth for lenses only'
+      id: 'hardware', title: 'Hardware & Technology', sub: 'Efficient setup & distribution', area: 'Hardware & Technology',
+      items: [
+        { id: 'hw1', label: 'Headsets pre-distributed, collected at entry, or passed out via designated tech helpers' },
+        { id: 'hw2', label: 'Dashboard up with Auto-Launch & Language settings preset (if applicable)' },
+        { id: 'hw3', label: 'Teacher leverages Frame slides to activate student schema and frontloads any content or in-VR interactions' },
+        { id: 'hw4', label: 'Students adjust fit and set play boundary before entering VR' },
+        { id: 'hw5', label: 'After VR, power off headsets fully before returning to cart' },
+        { id: 'hw6', label: 'Sanitize headsets and controllers; use microfiber cloth for lenses only' }
       ]
     },
     {
-      id: 'invr', title: 'In-VR Support', sub: 'Just-in-time feedback via Teacher Dashboard', area: 'In-VR Support',
-      bullets: [
-        'Teacher actively monitors student progress on Teacher Dashboard',
-        'Uses targeted intervention matched to student need:<ul><li>Hints in-VR: directs students to on-screen supports</li><li>Screencasting + Talk Track: uses questions from lesson guide to help students make connections to core concepts</li><li>Pause &amp; Conference: small or whole-group pause for direct re-teaching when needed</li></ul>'
+      id: 'jitf', title: 'Just-in-Time Feedback', sub: 'Feedback via Teacher Dashboard', area: 'Just-in-Time Feedback',
+      items: [
+        { id: 'jitf1', label: 'Teacher actively monitors student progress on Teacher Dashboard' },
+        { id: 'jitf2', group: 'Targeted Intervention', label: 'Hints in-VR: directs students to on-screen supports' },
+        { id: 'jitf3', group: 'Targeted Intervention', label: 'Screencasting + Talk Track: uses questions from lesson guide to help students make connections to core concepts' },
+        { id: 'jitf4', group: 'Targeted Intervention', label: 'Pause & Conference: small or whole-group pause for direct re-teaching when needed' }
       ]
     },
     {
-      id: 'writing', title: 'Writing & Discourse', sub: 'Post-VR Synthesis / Transfer Day — discourse + writing to articulate learning', area: 'Writing & Discourse Routines',
-      bullets: [
-        'Students are grouped strategically',
-        'Teacher circulates to help students refine their rough-draft thinking',
-        'Teacher identifies students to share out during the whole-group discussion',
-        'Teacher uses Slide Deck and/or Lesson Materials to facilitate debrief'
+      id: 'writing', title: 'Writing & Discourse', sub: 'Discourse + writing to articulate learning', area: 'Writing & Discourse',
+      items: [
+        { id: 'wd1', label: 'Students are grouped strategically' },
+        { id: 'wd2', label: 'Teacher circulates to help students refine their rough-draft thinking' },
+        { id: 'wd3', label: 'Teacher identifies students to share out during the whole-group discussion' },
+        { id: 'wd4', label: 'Teacher uses Slide Deck and/or Lesson Materials to facilitate debrief' }
       ]
     },
     {
-      id: 'assessment', title: 'Assessment & Revision', sub: 'CFUs & Revision Protocols — check for understanding + targeted revision', area: 'CFUs & Revisions',
-      bullets: [
-        '<span class="group-label">CFU 1</span>Assigns CFU 1; students complete via live.prismsvr.com',
-        'Guide students to interpret AI-generated feedback',
-        'Uses CFU Revision Protocol to move all students to Ready to move on',
-        'Uses CFU scores to assign Independent Practice',
-        '<span class="group-label">CFU 2</span>Assign CFU 2; students complete via live.prismsvr.com',
-        'Allow students to reflect on AI feedback (Performance Levels 3 &amp; 4 are the benchmark)',
-        'Use data to predict student readiness for end-of-unit or state test'
+      id: 'assessment', title: 'Assessment & Revision', sub: 'CFUs & Revision Protocols', area: 'Assessment & Revision',
+      items: [
+        { id: 'ar1', group: 'CFU 1', label: 'Assigns CFU 1; students complete via live.prismsvr.com' },
+        { id: 'ar2', group: 'CFU 1', label: 'Guide students to interpret AI-generated feedback' },
+        { id: 'ar3', group: 'CFU 1', label: 'Uses CFU Revision Protocol to move all students to Ready to move on' },
+        { id: 'ar4', group: 'CFU 1', label: 'Uses CFU scores to assign Independent Practice' },
+        { id: 'ar5', group: 'CFU 2', label: 'Assign CFU 2; students complete via live.prismsvr.com' },
+        { id: 'ar6', group: 'CFU 2', label: 'Allow students to reflect on AI feedback (Performance Levels 3 & 4 are the benchmark)' },
+        { id: 'ar7', group: 'CFU 2', label: 'Use data to predict student readiness for end-of-unit or state test' }
+      ]
+    },
+    {
+      id: 'spaced', title: 'Spaced Repetition (Skill Builders)', sub: 'Revisiting foundational skills over time', area: 'Spaced Repetition (Skill Builders)',
+      items: [
+        { id: 'sr1', label: 'Skill Builder assigned targets a specific gap from CFU or prerequisite-check data' },
+        { id: 'sr2', label: 'Skill Builder is scheduled to be revisited later (days/weeks), not just a one-time assignment' },
+        { id: 'sr3', label: 'Teacher connects the Skill Builder to an upcoming module\'s prerequisite needs' }
       ]
     }
   ];
 
   var state = {
     teacher: '', coach: '', date: '', lessonType: 'tutorial',
-    ratings: {}, highlights: ''
+    ratings: {}, uiExpanded: {}, highlights: ''
   };
-  ROUTINES.forEach(r => { state.ratings[r.id] = { color: null, note: '' }; });
+  ROUTINES.forEach(r => {
+    const items = {};
+    r.items.forEach(it => { items[it.id] = null; });
+    state.ratings[r.id] = { items: items, note: '' };
+  });
+
+  function routineAggregate(routine) {
+    const items = state.ratings[routine.id].items;
+    const colors = routine.items.map(it => items[it.id]).filter(Boolean);
+    if (!colors.length) return null;
+    if (colors.includes('red')) return 'red';
+    if (colors.includes('yellow')) return 'yellow';
+    return 'green';
+  }
 
   // ─── Setup screen ───────────────────────────────────────
   function renderLessonGrid() {
@@ -275,6 +314,8 @@
     state.date = document.getElementById('setup-date').value;
     document.getElementById('banner-teacher').textContent = state.teacher || 'Untitled Visit';
     document.getElementById('banner-lesson-type').textContent = LESSON_TYPES.find(l => l.id === state.lessonType).label;
+    const primary = PRIMARY_MAP[state.lessonType];
+    ROUTINES.forEach(r => { state.uiExpanded[r.id] = primary.includes(r.id); });
     renderRoutineCards();
     showScreen('routines');
   }
@@ -286,12 +327,27 @@
     const primary = PRIMARY_MAP[state.lessonType];
     ROUTINES.forEach(r => {
       const isPrimary = primary.includes(r.id);
+      const expanded = state.uiExpanded[r.id];
       const card = document.createElement('div');
-      card.className = 'routine-card' + (isPrimary ? ' primary' : ' collapsed');
+      card.className = 'routine-card' + (isPrimary ? ' primary' : '') + (expanded ? '' : ' collapsed');
       card.id = 'routine-card-' + r.id;
 
-      const bulletsHtml = r.bullets.map(b => '<li>' + b + '</li>').join('');
-      const rating = state.ratings[r.id];
+      const itemsState = state.ratings[r.id].items;
+      let lastGroup = null;
+      const itemsHtml = r.items.map(it => {
+        let groupHtml = '';
+        if (it.group && it.group !== lastGroup) { groupHtml = '<div class="item-group-label">' + it.group + '</div>'; }
+        lastGroup = it.group || lastGroup;
+        const cur = itemsState[it.id];
+        const dots = ['green', 'yellow', 'red'].map(c =>
+          '<button class="item-dot ' + c + (cur === c ? ' active' : '') + '" title="' + RATING_LABELS[c] + '" onclick="setItemRating(\'' + r.id + '\',\'' + it.id + '\',\'' + c + '\')"></button>'
+        ).join('');
+        return groupHtml + '<div class="item-row"><span class="item-label">' + escapeHtml(it.label) + '</span><div class="item-rating">' + dots + '</div></div>';
+      }).join('');
+
+      const agg = routineAggregate(r);
+      const rollupHtml = '<div class="routine-rollup"><span class="rollup-dot' + (agg ? ' ' + agg : '') + '"></span>' +
+        (agg ? RATING_LABELS[agg] + ' overall' : 'Not yet rated') + '</div>';
 
       card.innerHTML =
         '<div class="routine-header" onclick="toggleRoutine(\'' + r.id + '\')">' +
@@ -300,13 +356,9 @@
           '<span class="routine-chevron">▾</span>' +
         '</div>' +
         '<div class="routine-body">' +
-          '<ul class="routine-bullets">' + bulletsHtml + '</ul>' +
-          '<div class="rating-row">' +
-            '<button class="rating-btn green' + (rating.color === 'green' ? ' active' : '') + '" onclick="setRating(\'' + r.id + '\',\'green\')">🟢 Ready</button>' +
-            '<button class="rating-btn yellow' + (rating.color === 'yellow' ? ' active' : '') + '" onclick="setRating(\'' + r.id + '\',\'yellow\')">🟡 Nearly there</button>' +
-            '<button class="rating-btn red' + (rating.color === 'red' ? ' active' : '') + '" onclick="setRating(\'' + r.id + '\',\'red\')">🔴 Needs review</button>' +
-          '</div>' +
-          '<div class="routine-note field"><textarea placeholder="Quick note (optional)" oninput="setNote(\'' + r.id + '\', this.value)">' + (rating.note || '') + '</textarea></div>' +
+          rollupHtml +
+          itemsHtml +
+          '<div class="routine-note field"><textarea placeholder="Quick note (optional)" oninput="setNote(\'' + r.id + '\', this.value)">' + (state.ratings[r.id].note || '') + '</textarea></div>' +
         '</div>';
 
       container.appendChild(card);
@@ -314,11 +366,13 @@
   }
 
   function toggleRoutine(id) {
+    state.uiExpanded[id] = !state.uiExpanded[id];
     document.getElementById('routine-card-' + id).classList.toggle('collapsed');
   }
 
-  function setRating(id, color) {
-    state.ratings[id].color = state.ratings[id].color === color ? null : color;
+  function setItemRating(routineId, itemId, color) {
+    const items = state.ratings[routineId].items;
+    items[itemId] = items[itemId] === color ? null : color;
     renderRoutineCards();
   }
 
@@ -327,17 +381,25 @@
   }
 
   // ─── Wrap-up screen ─────────────────────────────────────
+  function itemsByColor(routine, colors) {
+    const itemsState = state.ratings[routine.id].items;
+    return routine.items.filter(it => colors.includes(itemsState[it.id]));
+  }
+
   function renderWrapup() {
     const summary = document.getElementById('wrapup-summary');
-    const rated = ROUTINES.filter(r => state.ratings[r.id].color);
+    const rated = ROUTINES.filter(r => routineAggregate(r));
     if (!rated.length) {
-      summary.innerHTML = '<div class="summary-empty">No routines rated yet — go back and tap a color on at least one routine.</div>';
+      summary.innerHTML = '<div class="summary-empty">No routines rated yet — go back and rate at least one checklist item.</div>';
     } else {
       summary.innerHTML = ROUTINES.map(r => {
-        const rating = state.ratings[r.id];
-        if (!rating.color) return '';
-        return '<div class="summary-row"><span class="summary-dot ' + rating.color + '"></span><div><div class="summary-title">' + r.title + ' — ' + RATING_LABELS[rating.color] + '</div>' +
-          (rating.note ? '<div class="summary-note">' + escapeHtml(rating.note) + '</div>' : '') + '</div></div>';
+        const agg = routineAggregate(r);
+        if (!agg) return '';
+        const watchOuts = itemsByColor(r, ['yellow', 'red']);
+        const note = state.ratings[r.id].note;
+        return '<div class="summary-row"><span class="summary-dot ' + agg + '"></span><div><div class="summary-title">' + r.title + ' — ' + RATING_LABELS[agg] + ' overall</div>' +
+          (watchOuts.length ? '<div class="summary-note">' + watchOuts.map(it => escapeHtml(it.label)).join(' · ') + '</div>' : '') +
+          (note ? '<div class="summary-note">' + escapeHtml(note) + '</div>' : '') + '</div></div>';
       }).join('');
     }
 
@@ -348,10 +410,15 @@
       '<strong>Date:</strong> ' + escapeHtml(state.date || '—') + ' &nbsp; ' +
       '<strong>Lesson Type:</strong> ' + LESSON_TYPES.find(l => l.id === state.lessonType).label;
     document.getElementById('print-routines').innerHTML = ROUTINES.map(r => {
-      const rating = state.ratings[r.id];
-      const tag = rating.color ? '<span class="tag ' + rating.color + '">' + RATING_LABELS[rating.color] + '</span>' : '<span class="tag gray">Not rated</span>';
-      return '<div class="print-routine"><div class="print-routine-title">' + r.title + tag + '</div>' +
-        (rating.note ? '<div>' + escapeHtml(rating.note) + '</div>' : '') + '</div>';
+      const agg = routineAggregate(r);
+      const tag = agg ? '<span class="tag ' + agg + '">' + RATING_LABELS[agg] + ' overall</span>' : '<span class="tag gray">Not rated</span>';
+      const itemsState = state.ratings[r.id].items;
+      const itemLines = r.items.filter(it => itemsState[it.id]).map(it =>
+        '<div class="print-item ' + itemsState[it.id] + '">' + escapeHtml(it.label) + '</div>'
+      ).join('');
+      const note = state.ratings[r.id].note;
+      return '<div class="print-routine"><div class="print-routine-title">' + r.title + tag + '</div>' + itemLines +
+        (note ? '<div style="margin-top:4px;">' + escapeHtml(note) + '</div>' : '') + '</div>';
     }).join('');
   }
 
@@ -368,6 +435,16 @@
     return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (m, p1) => String.fromCharCode('0x' + p1)));
   }
 
+  // Combines the routine's manual note with the specific checklist items that
+  // drove its color, so the email generator gets concrete language instead of
+  // just a color.
+  function buildAreaNote(routine, aggregate) {
+    const manual = state.ratings[routine.id].note || '';
+    const specifics = aggregate === 'green' ? itemsByColor(routine, ['green']) : itemsByColor(routine, ['yellow', 'red']);
+    const specificsText = specifics.map(it => it.label).join('; ');
+    return [manual, specificsText ? 'Specifically: ' + specificsText : ''].filter(Boolean).join(' ');
+  }
+
   function continueToEmail() {
     state.highlights = document.getElementById('wrapup-highlights').value;
     const payload = {
@@ -376,8 +453,8 @@
       ratings: {}
     };
     ROUTINES.forEach(r => {
-      const rating = state.ratings[r.id];
-      if (rating.color) payload.ratings[r.area] = { color: rating.color, note: rating.note };
+      const agg = routineAggregate(r);
+      if (agg) payload.ratings[r.area] = { color: agg, note: buildAreaNote(r, agg) };
     });
     const encoded = encodeURIComponent(b64EncodeUnicode(JSON.stringify(payload)));
     window.location.href = 'index.html?data=' + encoded;
