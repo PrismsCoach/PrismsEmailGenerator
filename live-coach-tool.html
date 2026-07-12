@@ -54,10 +54,31 @@
     .btn-secondary:hover { border-color: var(--navy); background: var(--navy-light); }
 
     /* ─── Routine screen ──────────────────────────────────── */
-    .visit-banner { display: flex; align-items: center; justify-content: space-between; background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px 18px; margin-bottom: 16px; font-size: 13px; color: var(--gray-600); }
+    .visit-banner { display: flex; align-items: center; justify-content: space-between; background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px 18px; margin-bottom: 16px; font-size: 13px; color: var(--gray-600); gap: 10px; }
     .visit-banner strong { color: var(--navy); }
-    .btn-end-visit { padding: 8px 14px; background: var(--navy); color: white; border: none; border-radius: 7px; font-size: 12.5px; font-weight: 600; cursor: pointer; }
+    .visit-banner-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+    .btn-end-visit { padding: 8px 14px; background: var(--navy); color: white; border: none; border-radius: 7px; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; }
     .btn-end-visit:hover { background: var(--navy-dark); }
+    .btn-start-new { padding: 8px 12px; background: none; color: var(--gray-400); border: 1px solid var(--gray-200); border-radius: 7px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .btn-start-new:hover { border-color: var(--red); color: var(--red); }
+
+    /* ─── Visit History ───────────────────────────────────── */
+    .history-row { border-top: 1px solid var(--gray-100); padding: 10px 0; }
+    .history-row:first-child { border-top: none; }
+    .history-row-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; }
+    .history-row-title { font-size: 13.5px; font-weight: 700; color: var(--navy); }
+    .history-row-sub { font-size: 11.5px; color: var(--gray-400); margin-top: 1px; }
+    .history-download-btn { flex-shrink: 0; padding: 6px 11px; background: white; border: 1.5px solid var(--gray-200); border-radius: 6px; font-size: 11.5px; font-weight: 600; color: var(--navy); cursor: pointer; }
+    .history-download-btn:hover { border-color: var(--navy); background: var(--navy-light); }
+    .history-detail { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--gray-200); }
+    .history-detail.open { display: block; }
+    .history-detail-routine { font-size: 12px; margin-bottom: 6px; }
+    .history-detail-routine .tag { font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; margin-left: 6px; }
+    .tag.green { background: var(--green-light); color: var(--green); }
+    .tag.yellow { background: var(--yellow-light); color: var(--yellow); }
+    .tag.red { background: var(--red-light); color: var(--red); }
+    .history-detail-items { color: var(--gray-600); margin-top: 2px; padding-left: 10px; }
+    .history-empty { font-size: 12px; color: var(--gray-400); font-style: italic; }
 
     .routine-card { background: white; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 14px; overflow: hidden; border-left: 4px solid var(--gray-200); }
     .routine-card.primary { border-left-color: var(--navy); }
@@ -105,27 +126,6 @@
     .summary-note { font-size: 12.5px; color: var(--gray-600); margin-top: 2px; line-height: 1.5; }
     .summary-empty { font-size: 12px; color: var(--gray-400); font-style: italic; }
 
-    #print-summary-card { display: none; }
-    @media print {
-      header, .visit-banner, .btn-primary, .btn-secondary, .btn-end-visit, #screen-setup, #screen-routines { display: none !important; }
-      #screen-wrapup .card:not(#print-summary-card) { display: none !important; }
-      #print-summary-card { display: block !important; }
-      body { background: white; }
-    }
-    #print-summary-card h1 { font-size: 20px; color: var(--navy); margin-bottom: 4px; }
-    #print-summary-card .print-meta { font-size: 13px; color: var(--gray-600); margin-bottom: 16px; }
-    #print-summary-card .print-routine { margin-bottom: 14px; }
-    #print-summary-card .print-routine-title { font-size: 14px; font-weight: 700; }
-    #print-summary-card .print-routine-title .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; margin-left: 8px; }
-    #print-summary-card .tag.green { background: var(--green-light); color: var(--green); }
-    #print-summary-card .tag.yellow { background: var(--yellow-light); color: var(--yellow); }
-    #print-summary-card .tag.red { background: var(--red-light); color: var(--red); }
-    #print-summary-card .tag.gray { background: var(--gray-100); color: var(--gray-400); }
-    #print-summary-card .print-item { font-size: 12px; color: var(--gray-700); padding-left: 14px; position: relative; margin-top: 3px; }
-    #print-summary-card .print-item::before { content: '●'; position: absolute; left: 0; font-size: 8px; top: 4px; }
-    #print-summary-card .print-item.green::before { color: var(--green); }
-    #print-summary-card .print-item.yellow::before { color: var(--yellow); }
-    #print-summary-card .print-item.red::before { color: var(--red); }
 
     @media (max-width: 600px) {
       .row-2 { grid-template-columns: 1fr; }
@@ -161,13 +161,22 @@
     </div>
 
     <button class="btn-primary" onclick="startVisit()">Start Visit</button>
+
+    <div class="card" id="history-card" style="display:none; margin-top:16px;">
+      <div class="card-title">Visit History</div>
+      <div class="card-desc">Past visits saved on this device (not synced across devices/browsers).</div>
+      <div id="history-list"></div>
+    </div>
   </div>
 
   <!-- ══ ROUTINES ════════════════════════════════════════ -->
   <div class="screen" id="screen-routines">
     <div class="visit-banner">
       <span><strong id="banner-teacher"></strong> · <span id="banner-lesson-type"></span></span>
-      <button class="btn-end-visit" onclick="showScreen('wrapup')">End Visit →</button>
+      <div class="visit-banner-actions">
+        <button class="btn-start-new" onclick="startNewVisit()">Start New Visit</button>
+        <button class="btn-end-visit" onclick="showScreen('wrapup')">End Visit →</button>
+      </div>
     </div>
     <div id="routine-cards"></div>
   </div>
@@ -183,25 +192,17 @@
     <div class="card">
       <div class="card-title">Highlights</div>
       <div class="card-desc">Anything else that stood out — a student moment, a teacher win.</div>
-      <div class="field"><textarea id="wrapup-highlights" rows="3" placeholder="What stood out during this visit?"></textarea></div>
+      <div class="field"><textarea id="wrapup-highlights" rows="3" placeholder="What stood out during this visit?" oninput="state.highlights = this.value; saveActiveDraft();"></textarea></div>
     </div>
 
-    <div class="card" id="print-summary-card">
-      <div id="print-only">
-        <h1>Coaching Visit Summary</h1>
-        <div class="print-meta" id="print-meta"></div>
-        <div id="print-routines"></div>
-        <div id="print-highlights"></div>
-      </div>
-    </div>
-
-    <button class="btn-primary" onclick="generatePdf()">Generate PDF Summary</button>
+    <button class="btn-primary" onclick="saveAndDownload()">Save Visit &amp; Download PDF</button>
     <button class="btn-secondary" onclick="continueToEmail()">Continue to Post-Coaching Email →</button>
     <button class="btn-secondary" onclick="showScreen('routines')">← Back to Routines</button>
   </div>
 
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
   // ─── Config ─────────────────────────────────────────────
   const LESSON_TYPES = [
@@ -274,15 +275,27 @@
     }
   ];
 
-  var state = {
-    teacher: '', coach: '', date: '', lessonType: 'tutorial',
-    ratings: {}, uiExpanded: {}, highlights: ''
-  };
-  ROUTINES.forEach(r => {
-    const items = {};
-    r.items.forEach(it => { items[it.id] = null; });
-    state.ratings[r.id] = { items: items, note: '' };
-  });
+  function freshState() {
+    const s = { teacher: '', coach: '', date: '', lessonType: 'tutorial', ratings: {}, uiExpanded: {}, highlights: '' };
+    ROUTINES.forEach(r => {
+      const items = {};
+      r.items.forEach(it => { items[it.id] = null; });
+      s.ratings[r.id] = { items: items, note: '' };
+    });
+    return s;
+  }
+  var state = freshState();
+  var currentScreenName = 'setup';
+
+  // Fills in any routines/items added to ROUTINES after a draft was saved,
+  // so editing the checklist later doesn't break restoring an old draft.
+  function reconcileStateSchema() {
+    ROUTINES.forEach(r => {
+      if (!state.ratings[r.id]) state.ratings[r.id] = { items: {}, note: '' };
+      r.items.forEach(it => { if (!(it.id in state.ratings[r.id].items)) state.ratings[r.id].items[it.id] = null; });
+      if (!(r.id in state.uiExpanded)) state.uiExpanded[r.id] = PRIMARY_MAP[state.lessonType].includes(r.id);
+    });
+  }
 
   function routineAggregate(routine) {
     const items = state.ratings[routine.id].items;
@@ -291,6 +304,29 @@
     if (colors.includes('red')) return 'red';
     if (colors.includes('yellow')) return 'yellow';
     return 'green';
+  }
+
+  // ─── Persistence (this device only — not synced across browsers) ──────
+  const ACTIVE_KEY = 'prisms-live-tool-active';
+  const HISTORY_KEY = 'prisms-live-tool-history';
+
+  function saveActiveDraft() {
+    try { localStorage.setItem(ACTIVE_KEY, JSON.stringify({ state: state, screen: currentScreenName })); } catch (e) {}
+  }
+  function loadActiveDraft() {
+    try { return JSON.parse(localStorage.getItem(ACTIVE_KEY)); } catch (e) { return null; }
+  }
+  function clearActiveDraft() {
+    try { localStorage.removeItem(ACTIVE_KEY); } catch (e) {}
+  }
+
+  function loadHistory() {
+    try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch (e) { return []; }
+  }
+  function saveToHistory(record) {
+    const history = loadHistory();
+    history.unshift(record);
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history.slice(0, 20))); } catch (e) {}
   }
 
   // ─── Setup screen ───────────────────────────────────────
@@ -305,8 +341,36 @@
       grid.appendChild(el);
     });
   }
-  renderLessonGrid();
-  document.getElementById('setup-date').valueAsDate = new Date();
+
+  function renderHistory() {
+    const history = loadHistory();
+    const card = document.getElementById('history-card');
+    if (!history.length) { card.style.display = 'none'; return; }
+    card.style.display = '';
+    document.getElementById('history-list').innerHTML = history.map(rec =>
+      '<div class="history-row">' +
+        '<div class="history-row-head" onclick="toggleHistoryDetail(\'' + rec.id + '\')">' +
+          '<div><div class="history-row-title">' + escapeHtml(rec.teacher || 'Untitled Visit') + '</div>' +
+          '<div class="history-row-sub">' + escapeHtml(rec.date || '') + ' · ' + escapeHtml(rec.lessonTypeLabel) + '</div></div>' +
+          '<button class="history-download-btn" onclick="event.stopPropagation(); downloadHistoryRecord(\'' + rec.id + '\')">Download PDF</button>' +
+        '</div>' +
+        '<div class="history-detail" id="history-detail-' + rec.id + '">' +
+          rec.routines.map(r => '<div class="history-detail-routine">' + escapeHtml(r.title) + '<span class="tag ' + r.agg + '">' + escapeHtml(r.ratingLabel) + '</span>' +
+            '<div class="history-detail-items">' + r.items.map(i => escapeHtml(i)).join('<br>') + (r.note ? '<br>' + escapeHtml(r.note) : '') + '</div></div>').join('') +
+          (rec.highlights ? '<div class="history-detail-routine"><strong>Highlights</strong><div class="history-detail-items">' + escapeHtml(rec.highlights) + '</div></div>' : '') +
+        '</div>' +
+      '</div>'
+    ).join('');
+  }
+
+  function toggleHistoryDetail(id) {
+    document.getElementById('history-detail-' + id).classList.toggle('open');
+  }
+
+  function downloadHistoryRecord(id) {
+    const rec = loadHistory().find(r => r.id === id);
+    if (rec) downloadPdf(rec);
+  }
 
   function startVisit() {
     state.teacher = document.getElementById('setup-teacher').value;
@@ -318,6 +382,12 @@
     ROUTINES.forEach(r => { state.uiExpanded[r.id] = primary.includes(r.id); });
     renderRoutineCards();
     showScreen('routines');
+  }
+
+  function startNewVisit() {
+    if (!confirm('Start a new visit? This clears the current one. (Anything already downloaded or saved to Visit History is safe.)')) return;
+    clearActiveDraft();
+    location.reload();
   }
 
   // ─── Routine screen ─────────────────────────────────────
@@ -374,10 +444,12 @@
     const items = state.ratings[routineId].items;
     items[itemId] = items[itemId] === color ? null : color;
     renderRoutineCards();
+    saveActiveDraft();
   }
 
   function setNote(id, value) {
     state.ratings[id].note = value;
+    saveActiveDraft();
   }
 
   // ─── Wrap-up screen ─────────────────────────────────────
@@ -403,31 +475,77 @@
       }).join('');
     }
 
-    // Print view
-    document.getElementById('print-meta').innerHTML =
-      '<strong>Teacher:</strong> ' + escapeHtml(state.teacher || '—') + ' &nbsp; ' +
-      '<strong>Coach:</strong> ' + escapeHtml(state.coach || '—') + ' &nbsp; ' +
-      '<strong>Date:</strong> ' + escapeHtml(state.date || '—') + ' &nbsp; ' +
-      '<strong>Lesson Type:</strong> ' + LESSON_TYPES.find(l => l.id === state.lessonType).label;
-    document.getElementById('print-routines').innerHTML = ROUTINES.map(r => {
-      const agg = routineAggregate(r);
-      const tag = agg ? '<span class="tag ' + agg + '">' + RATING_LABELS[agg] + ' overall</span>' : '<span class="tag gray">Not rated</span>';
-      const itemsState = state.ratings[r.id].items;
-      const itemLines = r.items.filter(it => itemsState[it.id]).map(it =>
-        '<div class="print-item ' + itemsState[it.id] + '">' + escapeHtml(it.label) + '</div>'
-      ).join('');
-      const note = state.ratings[r.id].note;
-      return '<div class="print-routine"><div class="print-routine-title">' + r.title + tag + '</div>' + itemLines +
-        (note ? '<div style="margin-top:4px;">' + escapeHtml(note) + '</div>' : '') + '</div>';
-    }).join('');
   }
 
   function escapeHtml(s) { return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
 
-  function generatePdf() {
+  // Builds a plain-data snapshot of the current visit — used for both the
+  // PDF and Visit History, so they're always in sync.
+  function buildRecordFromState() {
+    return {
+      id: Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+      teacher: state.teacher, coach: state.coach, date: state.date,
+      lessonTypeLabel: LESSON_TYPES.find(l => l.id === state.lessonType).label,
+      highlights: state.highlights,
+      routines: ROUTINES.map(r => {
+        const agg = routineAggregate(r);
+        if (!agg) return null;
+        const itemsState = state.ratings[r.id].items;
+        return {
+          title: r.title, agg: agg, ratingLabel: RATING_LABELS[agg] + ' overall',
+          items: r.items.filter(it => itemsState[it.id]).map(it => it.label + ' — ' + RATING_LABELS[itemsState[it.id]]),
+          note: state.ratings[r.id].note
+        };
+      }).filter(Boolean)
+    };
+  }
+
+  // ─── PDF (direct download, no print dialog) ─────────────
+  function downloadPdf(record) {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const left = 15, maxWidth = 180;
+    let y = 20;
+    function ensureRoom(lines) { if (y + lines * 5 > 280) { doc.addPage(); y = 20; } }
+    doc.setFontSize(18); doc.setTextColor(53, 60, 120); doc.text('Coaching Visit Summary', left, y); y += 10;
+    doc.setFontSize(11); doc.setTextColor(80, 80, 80);
+    doc.text('Teacher: ' + (record.teacher || '—') + '   Coach: ' + (record.coach || '—'), left, y); y += 6;
+    doc.text('Date: ' + (record.date || '—') + '   Lesson Type: ' + record.lessonTypeLabel, left, y); y += 10;
+
+    record.routines.forEach(r => {
+      ensureRoom(2);
+      doc.setFontSize(13); doc.setTextColor(53, 60, 120); doc.text(r.title + ' — ' + r.ratingLabel, left, y); y += 6;
+      doc.setFontSize(10); doc.setTextColor(60, 60, 60);
+      r.items.forEach(item => {
+        const lines = doc.splitTextToSize('• ' + item, maxWidth);
+        ensureRoom(lines.length);
+        lines.forEach(line => { doc.text(line, left + 2, y); y += 5; });
+      });
+      if (r.note) {
+        const lines = doc.splitTextToSize(r.note, maxWidth);
+        ensureRoom(lines.length);
+        lines.forEach(line => { doc.text(line, left + 2, y); y += 5; });
+      }
+      y += 4;
+    });
+
+    if (record.highlights) {
+      ensureRoom(3);
+      doc.setFontSize(13); doc.setTextColor(53, 60, 120); doc.text('Highlights', left, y); y += 6;
+      doc.setFontSize(10); doc.setTextColor(60, 60, 60);
+      doc.splitTextToSize(record.highlights, maxWidth).forEach(line => { ensureRoom(1); doc.text(line, left, y); y += 5; });
+    }
+
+    const safeName = (record.teacher || 'summary').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+    doc.save('coaching-visit-' + safeName + '-' + (record.date || 'undated') + '.pdf');
+  }
+
+  function saveAndDownload() {
     state.highlights = document.getElementById('wrapup-highlights').value;
-    document.getElementById('print-highlights').innerHTML = state.highlights ? '<p style="margin-top:14px;"><strong>Highlights:</strong> ' + escapeHtml(state.highlights) + '</p>' : '';
-    window.print();
+    const record = buildRecordFromState();
+    saveToHistory(record);
+    downloadPdf(record);
+    renderHistory();
   }
 
   // ─── Handoff to email generator ─────────────────────────
@@ -456,6 +574,7 @@
       const agg = routineAggregate(r);
       if (agg) payload.ratings[r.area] = { color: agg, note: buildAreaNote(r, agg) };
     });
+    saveActiveDraft();
     const encoded = encodeURIComponent(b64EncodeUnicode(JSON.stringify(payload)));
     window.location.href = 'index.html?data=' + encoded;
   }
@@ -464,8 +583,26 @@
   function showScreen(name) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-' + name).classList.add('active');
+    currentScreenName = name;
     if (name === 'wrapup') renderWrapup();
+    saveActiveDraft();
     window.scrollTo({ top: 0 });
+  }
+
+  // ─── Init: resume an in-progress visit if one exists ────
+  renderHistory();
+  const activeDraft = loadActiveDraft();
+  if (activeDraft && activeDraft.state && (activeDraft.screen === 'routines' || activeDraft.screen === 'wrapup')) {
+    state = activeDraft.state;
+    reconcileStateSchema();
+    document.getElementById('banner-teacher').textContent = state.teacher || 'Untitled Visit';
+    document.getElementById('banner-lesson-type').textContent = LESSON_TYPES.find(l => l.id === state.lessonType).label;
+    renderLessonGrid();
+    renderRoutineCards();
+    showScreen(activeDraft.screen);
+  } else {
+    renderLessonGrid();
+    document.getElementById('setup-date').valueAsDate = new Date();
   }
 </script>
 </body>
