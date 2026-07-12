@@ -55,7 +55,7 @@
     .wrapup-hint { font-size: 11.5px; color: var(--gray-400); text-align: center; padding: 8px 10px 0; line-height: 1.4; }
 
     /* ─── Routine screen ──────────────────────────────────── */
-    .visit-banner { display: flex; align-items: center; justify-content: space-between; background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px 18px; margin-bottom: 16px; font-size: 13px; color: var(--gray-600); gap: 10px; }
+    .visit-banner { display: flex; align-items: center; justify-content: space-between; background: white; border-radius: var(--radius); box-shadow: var(--shadow); padding: 12px 18px; margin-bottom: 16px; font-size: 13px; color: var(--gray-600); gap: 10px; position: sticky; top: 8px; z-index: 20; }
     .visit-banner strong { color: var(--navy); }
     .visit-banner-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
     .btn-end-visit { padding: 8px 14px; background: var(--navy); color: white; border: none; border-radius: 7px; font-size: 12.5px; font-weight: 600; cursor: pointer; white-space: nowrap; }
@@ -192,10 +192,11 @@
       <span><strong id="banner-teacher"></strong> · <span id="banner-lesson-type"></span></span>
       <div class="visit-banner-actions">
         <button class="btn-start-new" onclick="startNewVisit()">Start New Visit</button>
-        <button class="btn-end-visit" onclick="showScreen('wrapup')">End Visit →</button>
+        <button class="btn-end-visit" onclick="showScreen('wrapup')">Wrap Up Visit →</button>
       </div>
     </div>
     <div id="routine-cards"></div>
+    <button class="btn-primary" style="margin-top: 4px;" onclick="showScreen('wrapup')">Wrap Up Visit →</button>
   </div>
 
   <!-- ══ WRAP-UP ═════════════════════════════════════════ -->
