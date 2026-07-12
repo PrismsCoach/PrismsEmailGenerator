@@ -196,7 +196,7 @@
     </div>
 
     <button class="btn-primary" onclick="saveAndDownload()">Save Visit &amp; Download PDF</button>
-    <button class="btn-secondary" onclick="continueToEmail()">Continue to Post-Coaching Email →</button>
+    <button class="btn-secondary" onclick="continueToEmail()">Continue to Email Generator →</button>
     <button class="btn-secondary" onclick="showScreen('routines')">← Back to Routines</button>
   </div>
 
@@ -568,6 +568,7 @@
     const payload = {
       teacher: state.teacher, coach: state.coach, date: state.date,
       highlights: state.highlights,
+      visitType: state.lessonType === 'tutorial' ? 'tutorial' : 'coaching',
       ratings: {}
     };
     ROUTINES.forEach(r => {
@@ -576,7 +577,8 @@
     });
     saveActiveDraft();
     const encoded = encodeURIComponent(b64EncodeUnicode(JSON.stringify(payload)));
-    window.location.href = 'index.html?data=' + encoded;
+    // Opens in a new tab so the coach doesn't lose their place in the live tool.
+    window.open('index.html?data=' + encoded, '_blank');
   }
 
   // ─── Screen management ──────────────────────────────────

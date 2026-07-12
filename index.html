@@ -1101,7 +1101,7 @@
     try { payload = JSON.parse(b64DecodeUnicode(decodeURIComponent(raw))); } catch (e) { return false; }
     if (!payload) return false;
 
-    setVisitType('coaching');
+    setVisitType(payload.visitType === 'tutorial' ? 'tutorial' : 'coaching');
     if (payload.teacher) document.getElementById('teacher-name').value = payload.teacher;
     if (payload.coach) document.getElementById('coach-name').value = payload.coach;
     if (payload.date) document.getElementById('visit-date').value = payload.date;
