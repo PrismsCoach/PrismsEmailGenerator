@@ -222,6 +222,12 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
+  // Preloaded here (not at PDF-generation time) so it's ready by the time
+  // a coach finishes a visit and downloads — no async wait needed then.
+  const PRISMS_LOGO_IMG = new Image();
+  PRISMS_LOGO_IMG.src = 'assets/prisms-logo.png';
+  const PRISMS_LOGO_ASPECT = 3200 / 1573;
+
   // ─── Config ─────────────────────────────────────────────
   const LESSON_TYPES = [
     { id: 'tutorial', label: 'Tutorial', sub: 'First VR experience' },
@@ -558,12 +564,18 @@
 
   function drawPageHeader(doc, isFirstPage, record) {
     if (isFirstPage) {
-      drawGradientBar(doc, 0, 11, PDF_COLORS.pink, PDF_COLORS.coral);
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(13); doc.setTextColor(255, 255, 255);
-      doc.text('Prisms', 15, 7.5);
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(11); doc.setTextColor(PDF_COLORS.navy[0], PDF_COLORS.navy[1], PDF_COLORS.navy[2]);
-      doc.text('Coaching Visit Summary', 15, 19);
-      return 28;
+      const logoReady = PRISMS_LOGO_IMG.complete && PRISMS_LOGO_IMG.naturalWidth > 0;
+      if (logoReady) {
+        const logoH = 9, logoW = logoH * PRISMS_LOGO_ASPECT;
+        doc.addImage(PRISMS_LOGO_IMG, 'PNG', 15, 5, logoW, logoH);
+      } else {
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(13); doc.setTextColor(PDF_COLORS.pink[0], PDF_COLORS.pink[1], PDF_COLORS.pink[2]);
+        doc.text('Prisms', 15, 11);
+      }
+      drawGradientBar(doc, 17, 9, PDF_COLORS.pink, PDF_COLORS.coral);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(255, 255, 255);
+      doc.text('Coaching Visit Summary', 15, 23);
+      return 32;
     }
     drawGradientBar(doc, 0, 4, PDF_COLORS.pink, PDF_COLORS.coral);
     doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(150, 150, 150);
