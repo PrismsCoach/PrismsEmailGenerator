@@ -145,6 +145,13 @@
 
   <!-- ══ SETUP ═══════════════════════════════════════════ -->
   <div class="screen active" id="screen-setup">
+    <div class="card" id="resume-banner" style="display:none; border-left: 4px solid var(--coral); background: var(--coral-light);">
+      <div class="card-title">Unfinished Visit</div>
+      <div class="card-desc" id="resume-banner-desc"></div>
+      <button class="btn-primary" onclick="resumeActiveVisit()">Resume Visit</button>
+      <button class="btn-secondary" onclick="dismissActiveVisit()">Start New Visit Instead</button>
+    </div>
+
     <div class="card">
       <div class="card-title">Visit Details</div>
       <div class="row-2">
@@ -197,7 +204,7 @@
 
     <button class="btn-primary" onclick="saveAndDownload()">Save Visit &amp; Download PDF</button>
     <button class="btn-secondary" onclick="continueToEmail()">Continue to Email Generator →</button>
-    <button class="btn-secondary" onclick="showScreen('routines')">← Back to Routines</button>
+    <button class="btn-secondary" onclick="showScreen('routines')">← Edit Routines</button>
   </div>
 
 </div>
@@ -675,20 +682,35 @@
     window.scrollTo({ top: 0 });
   }
 
-  // ─── Init: resume an in-progress visit if one exists ────
+  // ─── Init: ask before resuming an in-progress visit ─────
   renderHistory();
-  const activeDraft = loadActiveDraft();
-  if (activeDraft && activeDraft.state && (activeDraft.screen === 'routines' || activeDraft.screen === 'wrapup')) {
-    state = activeDraft.state;
+  renderLessonGrid();
+  const pendingDraft = loadActiveDraft();
+  if (pendingDraft && pendingDraft.state && (pendingDraft.screen === 'routines' || pendingDraft.screen === 'wrapup')) {
+    const s = pendingDraft.state;
+    const lessonLabel = (LESSON_TYPES.find(l => l.id === s.lessonType) || {}).label || '';
+    document.getElementById('resume-banner-desc').textContent =
+      (s.teacher || 'An untitled visit') + (s.date ? ' from ' + s.date : '') + (lessonLabel ? ' (' + lessonLabel + ')' : '') + ' is still in progress.';
+    document.getElementById('resume-banner').style.display = '';
+    document.getElementById('setup-date').valueAsDate = new Date();
+  } else {
+    document.getElementById('setup-date').valueAsDate = new Date();
+  }
+
+  function resumeActiveVisit() {
+    const draft = loadActiveDraft();
+    if (!draft || !draft.state) return;
+    state = draft.state;
     reconcileStateSchema();
     document.getElementById('banner-teacher').textContent = state.teacher || 'Untitled Visit';
     document.getElementById('banner-lesson-type').textContent = LESSON_TYPES.find(l => l.id === state.lessonType).label;
-    renderLessonGrid();
     renderRoutineCards();
-    showScreen(activeDraft.screen);
-  } else {
-    renderLessonGrid();
-    document.getElementById('setup-date').valueAsDate = new Date();
+    showScreen(draft.screen);
+  }
+
+  function dismissActiveVisit() {
+    clearActiveDraft();
+    document.getElementById('resume-banner').style.display = 'none';
   }
 </script>
 </body>
