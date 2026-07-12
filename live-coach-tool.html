@@ -549,21 +549,28 @@
   }
 
   // ─── PDF (direct download, Prisms-branded, no print dialog) ─────
+  // Official Prisms brand palette — keep any new decorative color choices in the PDF to this set.
   const PDF_COLORS = {
-    pink: [219, 24, 115], coral: [227, 103, 59], navy: [53, 60, 120],
-    green: [22, 163, 74], yellow: [217, 119, 6], red: [220, 38, 38],
+    pink: [219, 24, 115], rose: [217, 74, 93], brandRed: [230, 91, 87], coral: [227, 103, 59],
+    navy: [53, 60, 120],
     gray: [107, 114, 128], lightGray: [156, 163, 175], white: [255, 255, 255]
   };
+  const BRAND_GRADIENT = [PDF_COLORS.pink, PDF_COLORS.rose, PDF_COLORS.brandRed, PDF_COLORS.coral];
 
-  function drawGradientBar(doc, y, height, c1, c2) {
+  function drawGradientBar(doc, y, height, colors) {
     const pageWidth = doc.internal.pageSize.getWidth();
-    const steps = 50, stepW = pageWidth / steps;
+    const steps = 60, stepW = pageWidth / steps;
+    const segments = colors.length - 1;
     for (let i = 0; i < steps; i++) {
       const t = i / (steps - 1);
+      const segF = Math.min(t, 0.999999) * segments;
+      const segIdx = Math.floor(segF);
+      const localT = segF - segIdx;
+      const c1 = colors[segIdx], c2 = colors[segIdx + 1];
       doc.setFillColor(
-        Math.round(c1[0] + (c2[0] - c1[0]) * t),
-        Math.round(c1[1] + (c2[1] - c1[1]) * t),
-        Math.round(c1[2] + (c2[2] - c1[2]) * t)
+        Math.round(c1[0] + (c2[0] - c1[0]) * localT),
+        Math.round(c1[1] + (c2[1] - c1[1]) * localT),
+        Math.round(c1[2] + (c2[2] - c1[2]) * localT)
       );
       doc.rect(i * stepW, y, stepW + 0.5, height, 'F');
     }
@@ -579,12 +586,12 @@
         doc.setFont('helvetica', 'bold'); doc.setFontSize(13); doc.setTextColor(PDF_COLORS.pink[0], PDF_COLORS.pink[1], PDF_COLORS.pink[2]);
         doc.text('Prisms', 15, 11);
       }
-      drawGradientBar(doc, 17, 9, PDF_COLORS.pink, PDF_COLORS.coral);
+      drawGradientBar(doc, 17, 9, BRAND_GRADIENT);
       doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(255, 255, 255);
       doc.text('Coaching Visit Summary', 15, 23);
       return 32;
     }
-    drawGradientBar(doc, 0, 4, PDF_COLORS.pink, PDF_COLORS.coral);
+    drawGradientBar(doc, 0, 4, BRAND_GRADIENT);
     doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(150, 150, 150);
     doc.text('Prisms Coaching Visit Summary (cont.)', 15, 10);
     return 15;
@@ -628,7 +635,7 @@
     const rated = record.routines.filter(r => r.items.length);
 
     function drawColumnHeader() {
-      doc.setFillColor(PDF_COLORS.green[0], PDF_COLORS.green[1], PDF_COLORS.green[2]);
+      doc.setFillColor(PDF_COLORS.navy[0], PDF_COLORS.navy[1], PDF_COLORS.navy[2]);
       doc.rect(leftX, y, colWidth, 8, 'F');
       doc.setFillColor(PDF_COLORS.coral[0], PDF_COLORS.coral[1], PDF_COLORS.coral[2]);
       doc.rect(rightX, y, colWidth, 8, 'F');
