@@ -71,6 +71,12 @@
     .history-row-sub { font-size: 11.5px; color: var(--gray-400); margin-top: 1px; }
     .history-download-btn { flex-shrink: 0; padding: 6px 11px; background: white; border: 1.5px solid var(--gray-200); border-radius: 6px; font-size: 11.5px; font-weight: 600; color: var(--navy); cursor: pointer; }
     .history-download-btn:hover { border-color: var(--navy); background: var(--navy-light); }
+    .history-row-actions { display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+    .history-delete-btn { flex-shrink: 0; width: 26px; height: 26px; background: white; border: 1.5px solid var(--gray-200); border-radius: 6px; font-size: 12px; color: var(--gray-400); cursor: pointer; }
+    .history-delete-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
+    .history-card-head { display: flex; align-items: center; justify-content: space-between; }
+    .history-clear-all-btn { background: none; border: none; font-size: 11.5px; font-weight: 600; color: var(--gray-400); cursor: pointer; padding: 2px 4px; }
+    .history-clear-all-btn:hover { color: var(--red); text-decoration: underline; }
     .history-detail { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--gray-200); }
     .history-detail.open { display: block; }
     .history-detail-routine { font-size: 12px; margin-bottom: 6px; }
@@ -171,7 +177,10 @@
     <button class="btn-primary" onclick="startVisit()">Start Visit</button>
 
     <div class="card" id="history-card" style="display:none; margin-top:16px;">
-      <div class="card-title">Visit History</div>
+      <div class="history-card-head">
+        <div class="card-title">Visit History</div>
+        <button class="history-clear-all-btn" id="history-clear-all" onclick="clearAllHistory()">Clear all</button>
+      </div>
       <div class="card-desc">Past visits saved on this device only. Rate and download a visit's PDF on the same device you started it on — from there, the PDF itself works anywhere, including if you sit down to write the email later on a different computer.</div>
       <div id="history-list"></div>
     </div>
@@ -356,12 +365,16 @@
     const card = document.getElementById('history-card');
     if (!history.length) { card.style.display = 'none'; return; }
     card.style.display = '';
+    document.getElementById('history-clear-all').style.display = history.length ? '' : 'none';
     document.getElementById('history-list').innerHTML = history.map(rec =>
       '<div class="history-row">' +
         '<div class="history-row-head" onclick="toggleHistoryDetail(\'' + rec.id + '\')">' +
           '<div><div class="history-row-title">' + escapeHtml(rec.teacher || 'Untitled Visit') + '</div>' +
           '<div class="history-row-sub">' + escapeHtml(rec.date || '') + ' · ' + escapeHtml(rec.lessonTypeLabel) + '</div></div>' +
-          '<button class="history-download-btn" onclick="event.stopPropagation(); downloadHistoryRecord(\'' + rec.id + '\')">Download PDF</button>' +
+          '<div class="history-row-actions">' +
+            '<button class="history-download-btn" onclick="event.stopPropagation(); downloadHistoryRecord(\'' + rec.id + '\')">Download PDF</button>' +
+            '<button class="history-delete-btn" title="Delete" onclick="event.stopPropagation(); deleteHistoryRecord(\'' + rec.id + '\')">✕</button>' +
+          '</div>' +
         '</div>' +
         '<div class="history-detail" id="history-detail-' + rec.id + '">' +
           rec.routines.map(r => '<div class="history-detail-routine">' + escapeHtml(r.title) + '<span class="tag ' + r.agg + '">' + escapeHtml(r.ratingLabel) + '</span>' +
@@ -379,6 +392,19 @@
   function downloadHistoryRecord(id) {
     const rec = loadHistory().find(r => r.id === id);
     if (rec) downloadPdf(rec);
+  }
+
+  function deleteHistoryRecord(id) {
+    if (!confirm('Delete this saved visit? This can\'t be undone.')) return;
+    const history = loadHistory().filter(r => r.id !== id);
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history)); } catch (e) {}
+    renderHistory();
+  }
+
+  function clearAllHistory() {
+    if (!confirm('Delete all saved visits from Visit History? This can\'t be undone.')) return;
+    try { localStorage.removeItem(HISTORY_KEY); } catch (e) {}
+    renderHistory();
   }
 
   function startVisit() {
@@ -532,17 +558,17 @@
 
   function drawPageHeader(doc, isFirstPage, record) {
     if (isFirstPage) {
-      drawGradientBar(doc, 0, 32, PDF_COLORS.pink, PDF_COLORS.coral);
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(19); doc.setTextColor(255, 255, 255);
-      doc.text('Prisms', 15, 16);
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(11);
-      doc.text('Coaching Visit Summary', 15, 23);
-      return 42;
+      drawGradientBar(doc, 0, 11, PDF_COLORS.pink, PDF_COLORS.coral);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(13); doc.setTextColor(255, 255, 255);
+      doc.text('Prisms', 15, 7.5);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(11); doc.setTextColor(PDF_COLORS.navy[0], PDF_COLORS.navy[1], PDF_COLORS.navy[2]);
+      doc.text('Coaching Visit Summary', 15, 19);
+      return 28;
     }
-    drawGradientBar(doc, 0, 6, PDF_COLORS.pink, PDF_COLORS.coral);
-    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(150, 150, 150);
-    doc.text('Prisms Coaching Visit Summary (cont.)', 15, 14);
-    return 22;
+    drawGradientBar(doc, 0, 4, PDF_COLORS.pink, PDF_COLORS.coral);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(8); doc.setTextColor(150, 150, 150);
+    doc.text('Prisms Coaching Visit Summary (cont.)', 15, 10);
+    return 15;
   }
 
   function drawPageFooter(doc, record) {
