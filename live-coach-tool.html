@@ -50,6 +50,7 @@
 
     .btn-primary { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--pink) 0%, var(--coral) 100%); color: white; border: 2px solid rgba(255,255,255,0.3); border-radius: 8px; font-size: 15px; font-weight: 700; font-family: 'Roboto', sans-serif; cursor: pointer; box-shadow: 0 3px 12px rgba(219,24,115,0.30); }
     .btn-primary:hover { opacity: 0.9; }
+    .btn-primary.done { background: var(--navy); border-color: transparent; box-shadow: none; }
     .btn-secondary { width: 100%; padding: 12px; background: white; color: var(--navy); border: 1.5px solid var(--gray-200); border-radius: 8px; font-size: 14px; font-weight: 600; font-family: 'Roboto', sans-serif; cursor: pointer; margin-top: 8px; }
     .btn-secondary:hover { border-color: var(--navy); background: var(--navy-light); }
     .wrapup-hint { font-size: 11.5px; color: var(--gray-400); text-align: center; padding: 8px 10px 0; line-height: 1.4; }
@@ -213,10 +214,11 @@
       <div class="field"><textarea id="wrapup-highlights" rows="3" placeholder="What stood out during this visit?" oninput="state.highlights = this.value; saveActiveDraft();"></textarea></div>
     </div>
 
-    <button class="btn-primary" onclick="saveAndDownload()">Save Visit &amp; Download PDF</button>
+    <button class="btn-primary" id="save-download-btn" onclick="saveAndDownload()">Save Visit &amp; Download PDF</button>
     <div class="wrapup-hint">💡 Download the PDF now, on this device — it's what carries over if you write the coaching email later on a different computer.</div>
-    <button class="btn-secondary" onclick="continueToEmail()">Continue to Email Generator →</button>
-    <button class="btn-secondary" onclick="showScreen('routines')">← Edit Routines</button>
+    <button class="btn-secondary" onclick="continueToEmail()">Continue This Visit to the Email Generator →</button>
+    <button class="btn-secondary" onclick="startNewVisit()">Start a New Visit (new classroom)</button>
+    <button class="btn-secondary" onclick="showScreen('routines')">← Edit This Visit's Routines</button>
   </div>
 
 </div>
@@ -505,6 +507,11 @@
   }
 
   function renderWrapup() {
+    const saveBtn = document.getElementById('save-download-btn');
+    if (saveBtn) {
+      saveBtn.textContent = 'Save Visit & Download PDF';
+      saveBtn.classList.remove('done');
+    }
     const summary = document.getElementById('wrapup-summary');
     const rated = ROUTINES.filter(r => routineAggregate(r));
     if (!rated.length) {
@@ -707,6 +714,11 @@
     saveToHistory(record);
     downloadPdf(record);
     renderHistory();
+    const btn = document.getElementById('save-download-btn');
+    if (btn) {
+      btn.textContent = '✓ Saved — now continue below';
+      btn.classList.add('done');
+    }
   }
 
   // ─── Handoff to email generator ─────────────────────────
