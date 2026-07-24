@@ -1,0 +1,25 @@
+{
+  "name": "Prisms Live Coach",
+  "short_name": "Live Coach",
+  "description": "Rate coaching routines live during a visit, entirely offline-capable.",
+  "start_url": "./live-coach-tool.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#353C78",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

@@ -4,9 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prisms · Live Coach Tool</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#353C78" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Live Coach" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+      src: url('assets/fonts/roboto.woff2') format('woff2');
+    }
     :root {
       --pink: #DB1873; --pink-dark: #b8145f; --pink-light: #fdf0f6;
       --navy: #353C78; --navy-dark: #272d5e; --navy-light: #eef0f8;
@@ -24,7 +37,29 @@
     header { background: var(--navy); padding: 0 24px; height: var(--header-h); display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 10px rgba(53,60,120,0.25); }
     .header-brand { font-size: 17px; font-weight: 700; color: white; letter-spacing: -0.3px; }
     .header-sep { color: rgba(255,255,255,0.35); }
-    .header-title { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 500; }
+    .header-title { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 500; flex: 1; }
+
+    /* ─── Offline-ready status + install ──────────────────── */
+    .offline-status { display: flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.65); white-space: nowrap; }
+    .offline-status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-400); flex-shrink: 0; }
+    .offline-status.ready .offline-status-dot { background: var(--green); }
+    .offline-status.offline .offline-status-dot { background: var(--coral); }
+    .install-btn { display: none; background: rgba(255,255,255,0.14); color: white; border: 1px solid rgba(255,255,255,0.3); border-radius: 7px; padding: 6px 12px; font-size: 12px; font-weight: 700; font-family: 'Roboto', sans-serif; cursor: pointer; white-space: nowrap; }
+    .install-btn:hover { background: rgba(255,255,255,0.24); }
+    .install-btn.show { display: inline-block; }
+
+    .offline-banner { display: none; background: var(--navy); color: white; font-size: 12.5px; font-weight: 500; text-align: center; padding: 9px 16px; line-height: 1.4; }
+    .offline-banner.show { display: block; }
+
+    .saved-indicator { font-size: 11.5px; color: var(--gray-400); white-space: nowrap; }
+
+    .install-instructions summary { cursor: pointer; font-size: 12.5px; font-weight: 700; color: var(--navy); list-style: none; }
+    .install-instructions summary::-webkit-details-marker { display: none; }
+    .install-instructions summary::before { content: '▸ '; color: var(--gray-400); }
+    .install-instructions[open] summary::before { content: '▾ '; }
+    .install-instructions-body { margin-top: 10px; display: grid; gap: 10px; }
+    .install-instructions-platform { font-size: 12.5px; color: var(--gray-700); line-height: 1.6; }
+    .install-instructions-platform strong { color: var(--navy); display: block; margin-bottom: 2px; }
 
     .wrap { max-width: 760px; margin: 0 auto; padding: 26px 18px 80px; }
     .screen { display: none; }
@@ -147,7 +182,10 @@
   <span class="header-brand">Prisms</span>
   <span class="header-sep">·</span>
   <span class="header-title">Live Coach Tool</span>
+  <span class="offline-status" id="offline-status"><span class="offline-status-dot"></span><span id="offline-status-text">Loading…</span></span>
+  <button class="install-btn" id="install-btn" onclick="installApp()">Install App</button>
 </header>
+<div class="offline-banner" id="offline-banner">You're offline — everything here still works. Visits save automatically on this device.</div>
 
 <div class="wrap">
 
@@ -185,12 +223,24 @@
       <div class="card-desc">Past visits saved on this device only. Rate and download a visit's PDF on the same device you started it on — from there, the PDF itself works anywhere, including if you sit down to write the email later on a different computer.</div>
       <div id="history-list"></div>
     </div>
+
+    <div class="card">
+      <details class="install-instructions">
+        <summary>Install this app on your device</summary>
+        <div class="install-instructions-body">
+          <div class="install-instructions-platform"><strong>iPhone / iPad (Safari)</strong>Tap the Share icon, then "Add to Home Screen."</div>
+          <div class="install-instructions-platform"><strong>Android (Chrome)</strong>Tap the "Install App" button above, or open the ⋮ menu and choose "Install app."</div>
+          <div class="install-instructions-platform"><strong>Chromebook</strong>Open the ⋮ menu in Chrome and choose "Install page as app," or use the "Install App" button above.</div>
+          <div class="install-instructions-platform"><strong>Desktop (Chrome or Edge)</strong>Click the install icon in the address bar, or use the "Install App" button above.</div>
+        </div>
+      </details>
+    </div>
   </div>
 
   <!-- ══ ROUTINES ════════════════════════════════════════ -->
   <div class="screen" id="screen-routines">
     <div class="visit-banner">
-      <span><strong id="banner-teacher"></strong> · <span id="banner-lesson-type"></span></span>
+      <span><strong id="banner-teacher"></strong> · <span id="banner-lesson-type"></span><br /><span class="saved-indicator" id="saved-indicator-routines"></span></span>
       <div class="visit-banner-actions">
         <button class="btn-start-new" onclick="startNewVisit()">Start New Visit</button>
         <button class="btn-end-visit" onclick="showScreen('wrapup')">Wrap Up Visit →</button>
@@ -206,6 +256,7 @@
       <div class="card-title">Visit Summary</div>
       <div class="card-desc">A quick recap of what was rated during the visit.</div>
       <div id="wrapup-summary"></div>
+      <div class="saved-indicator" id="saved-indicator-wrapup" style="margin-top: 10px;"></div>
     </div>
 
     <div class="card">
@@ -223,7 +274,7 @@
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="assets/vendor/jspdf.umd.min.js"></script>
 <script>
   // Preloaded here (not at PDF-generation time) so it's ready by the time
   // a coach finishes a visit and downloads — no async wait needed then.
@@ -337,14 +388,32 @@
   const ACTIVE_KEY = 'prisms-live-tool-active';
   const HISTORY_KEY = 'prisms-live-tool-history';
 
+  var lastSavedAt = null;
+
   function saveActiveDraft() {
-    try { localStorage.setItem(ACTIVE_KEY, JSON.stringify({ state: state, screen: currentScreenName })); } catch (e) {}
+    try {
+      localStorage.setItem(ACTIVE_KEY, JSON.stringify({ state: state, screen: currentScreenName }));
+      lastSavedAt = Date.now();
+      updateSavedIndicators();
+    } catch (e) {}
   }
   function loadActiveDraft() {
     try { return JSON.parse(localStorage.getItem(ACTIVE_KEY)); } catch (e) { return null; }
   }
   function clearActiveDraft() {
     try { localStorage.removeItem(ACTIVE_KEY); } catch (e) {}
+    lastSavedAt = null;
+    updateSavedIndicators();
+  }
+
+  function updateSavedIndicators() {
+    const text = lastSavedAt
+      ? 'Saved ' + new Date(lastSavedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })
+      : '';
+    ['saved-indicator-routines', 'saved-indicator-wrapup'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
+    });
   }
 
   function loadHistory() {
@@ -799,6 +868,73 @@
     clearActiveDraft();
     document.getElementById('resume-banner').style.display = 'none';
   }
+
+  // ─── PWA: offline status, install, service worker ───────
+  const offlineStatusEl = document.getElementById('offline-status');
+  const offlineStatusTextEl = document.getElementById('offline-status-text');
+  const offlineBannerEl = document.getElementById('offline-banner');
+  const installBtnEl = document.getElementById('install-btn');
+  var swReady = false;
+
+  function isStandalone() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+
+  function updateOfflineStatus() {
+    const online = navigator.onLine;
+    offlineBannerEl.classList.toggle('show', !online);
+    if (!online) {
+      offlineStatusEl.className = 'offline-status offline';
+      offlineStatusTextEl.textContent = 'Offline mode';
+    } else if (swReady) {
+      offlineStatusEl.className = 'offline-status ready';
+      offlineStatusTextEl.textContent = 'Ready offline';
+    } else {
+      offlineStatusEl.className = 'offline-status';
+      offlineStatusTextEl.textContent = 'Preparing offline use…';
+    }
+  }
+
+  window.addEventListener('online', updateOfflineStatus);
+  window.addEventListener('offline', updateOfflineStatus);
+  updateOfflineStatus();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(reg => {
+      function checkReady() {
+        if (reg.active) { swReady = true; updateOfflineStatus(); }
+      }
+      checkReady();
+      reg.addEventListener('updatefound', () => {
+        const installing = reg.installing;
+        if (!installing) return;
+        installing.addEventListener('statechange', () => {
+          if (installing.state === 'activated') checkReady();
+        });
+      });
+      navigator.serviceWorker.ready.then(checkReady);
+    }).catch(() => { /* Offline support just won't be available this session — the tool still works fully online. */ });
+  }
+
+  var deferredInstallPrompt = null;
+  window.addEventListener('beforeinstallprompt', event => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    if (!isStandalone()) installBtnEl.classList.add('show');
+  });
+
+  function installApp() {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.finally(() => {
+      deferredInstallPrompt = null;
+      installBtnEl.classList.remove('show');
+    });
+  }
+
+  window.addEventListener('appinstalled', () => {
+    installBtnEl.classList.remove('show');
+  });
 </script>
 </body>
 </html>
