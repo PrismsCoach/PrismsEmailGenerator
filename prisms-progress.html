@@ -137,6 +137,12 @@
     .saved-meta { display: block; font-size: 11.5px; color: var(--gray-400); margin-top: 1px; }
     .saved-delete { flex-shrink: 0; width: 28px; height: 28px; background: white; border: 1.5px solid var(--gray-200); border-radius: 6px; font-size: 13px; color: var(--gray-400); cursor: pointer; }
     .saved-delete:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
+    .view-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+    .view-label { font-size: 13px; font-weight: 500; color: var(--gray-700); }
+    .view-hint { font-size: 12px; color: var(--gray-400); line-height: 1.45; margin: 2px 0 12px; }
+    .mitem.pending .mitem-label { color: var(--gray-400); font-weight: 500; }
+    .mitem.pending .mitem-detail { color: var(--gray-400); }
+    .mcard-empty { font-size: 12.5px; color: var(--gray-400); font-style: italic; padding: 4px 0; text-align: center; }
     .report-foot { font-size: 10.5px; color: var(--gray-400); padding: 0 22px 14px; }
 
     @media (max-width: 900px) {
@@ -183,6 +189,22 @@
     <div class="card">
       <div class="card-title">Priority modules</div>
       <div class="card-desc">Up to five, in the order they should appear on the report (left to right). Every slot is optional. Start typing for suggestions, or enter any module name.</div>
+      <div class="view-row">
+        <span class="view-label">Teacher page shows</span>
+        <div class="style-toggle" role="group" aria-label="Which modules the teacher page shows">
+          <button type="button" data-view="completed">Completed so far</button>
+          <button type="button" data-view="goals">Goals</button>
+        </div>
+      </div>
+      <div class="view-row" id="goal-count-row">
+        <span class="view-label">Goal columns</span>
+        <div class="style-toggle" role="group" aria-label="Number of goal columns">
+          <button type="button" data-goals="3">3</button>
+          <button type="button" data-goals="4">4</button>
+          <button type="button" data-goals="5">5</button>
+        </div>
+      </div>
+      <div class="view-hint" id="view-hint"></div>
       <div id="slots"></div>
     </div>
 
@@ -265,6 +287,11 @@
   // own card/column so the teacher's work never disappears.
   const SB_CARD = { name: 'Skill Builders', color: '#4B5563' };
 
+  // "Goals" view: every named module shows (done steps marked, the rest
+  // listed as still to come), padded with empty columns up to 3–5.
+  const GOALS_TEXT = { placeholderHead: 'Next module', placeholderBody: 'Coming soon' };
+  const GHOST = [214, 217, 224]; // cube color for steps not done yet
+
   // Suggestions mirror the Email Generator's lists (index.html).
   const MODULE_SUGGESTIONS = ['Area & Circumference','Percents','Ratios','Equations - Developing','Probability','Representing Data','Equations - Solidifying','Properties of Exponents & Scientific Notation','Rigid Transformations','Fractions','Pythagorean Theorem','Surface Area','Functions','Rates of Change - Developing','Transforming Triangles','Inequalities','Rates of Change - Solidifying','Inequalities - Developing','Rational Operations','Absolute Value Functions','Linear Functions','Systems of Linear Equations','Exponential Functions','Linear Regression','Systems of Linear Inequalities','Factoring Quadratics','Quadratics','Two-Way Frequency Tables','Linear Equations','Roots & Rational Exponents','Circle Equations','Solids of Rotation','Trigonometry','Congruence & Similarity','Transformations','Distance Formula','Transversals','Complex Numbers','Logarithms','Polar Coordinates','Conic Sections','Matrices','Vectors','Function Transformations','Periodic Functions','Instantaneous & Average Rates of Change','The Normal Distribution','Biomolecules','Cell Structure & Function','Cellular Energy','DNA Structure & Function','Ecology','Evolution','Genetics','Mitosis','Acids & Bases','Atomic Structure & Electron Configuration','Bonds & Intermolecular Forces','Chemical Reactions','Thermochemistry','Water Polarity & Hydrogen Bonding','1-D Kinematics',"Newton's Second Law",'Force & Motion','Phase Changes','Wave Energy','Energy Transformations','Biological Levels of Organization','The Nitrogen Cycle','Growth of an Organism','Homeostasis','The Scientific Method','Tectonic Plates','Earth & The Sun','The Rock Cycle'];
   const SB_SUGGESTIONS = ['Algebraic Manipulation','Fraction Operations','Quadratic Functions','Angles','Fractions, Decimals & Percents','Rate of Change','Calculating Percents','Identifying Functions','Ratios & Unit Rates','Completing the Square','Identifying & Creating Functions','Solving Linear Equations & Inequalities','Creating Linear Equations','Integer Operations','Solving Systems of Linear Equations','Coordinate Plane','Nets & Surface Area','Unit Conversions','Decimal Operations','Order of Operations','Volume','Distributive Property','Properties of Exponents','Factoring & Polynomial Division','Proportions','Atomic Bonds','Food Webs','Meiosis','Atomic Models','Balancing Chemical Equations','Organelles','DNA Replication','Transcription & Translation'];
@@ -320,7 +347,7 @@
     return { name: '', prereqName: '', spacedName: '', done: { prereq: false, content: false, proximal: false, spaced: false, eou: false } };
   }
   function emptyState() {
-    return { teacher: '', tutorial: false, note: '', champion: false, modules: Array.from({ length: MAX_MODULES }, emptyModule) };
+    return { teacher: '', tutorial: false, note: '', champion: false, view: 'completed', goalCount: 3, modules: Array.from({ length: MAX_MODULES }, emptyModule) };
   }
   function loadState() {
     try {
@@ -339,13 +366,14 @@
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
   }
   let state = loadState();
-  let reportStyle = (() => { try { return localStorage.getItem(STYLE_KEY) || DEFAULT_REPORT_STYLE; } catch (e) { return DEFAULT_REPORT_STYLE; } })();
+  let reportStyle = (() => { try { const v = localStorage.getItem(STYLE_KEY); return v === 'grid' || v === 'celebrate' ? v : DEFAULT_REPORT_STYLE; } catch (e) { return DEFAULT_REPORT_STYLE; } })();
 
   // ═══════════════════════════════════════════════════════════
   //  REPORT MODEL — the single source for preview and PDF
   // ═══════════════════════════════════════════════════════════
   function buildReport(s) {
-    const columns = s.modules.filter(isModuleIncluded).map((m, i) => ({
+    const goals = s.view === 'goals';
+    const columns = s.modules.filter(m => goals ? m.name.trim() !== '' : isModuleIncluded(m)).map((m, i) => ({
       name: m.name.trim(),
       rgb: hexToRgb(MODULE_COLORS[i % MODULE_COLORS.length]),
       cells: MILESTONES.map(ms => ({
@@ -355,8 +383,8 @@
         detail: (ms.nameKey && m.done[ms.key]) ? (m[ms.nameKey] || '').trim() : ''
       }))
     }));
-    // Standalone Skill Builders (module not on the report yet)
-    const sbOnly = s.modules.filter(m => m.name.trim() && !isModuleIncluded(m));
+    // Standalone Skill Builders (module not on the report yet) — Completed view only
+    const sbOnly = goals ? [] : s.modules.filter(m => m.name.trim() && !isModuleIncluded(m));
     const sbCells = MILESTONES.map(ms => {
       if (!ms.nameKey) return { done: false, label: ms.label, detail: '' };
       const hits = sbOnly.filter(m => m.done[ms.key]).map(m => (m[ms.nameKey] || '').trim() ? `${m[ms.nameKey].trim()} (${m.name.trim()})` : m.name.trim());
@@ -369,6 +397,18 @@
     }));
     if (sbEarned.length) columns.push({ name: SB_CARD.name, rgb: hexToRgb(SB_CARD.color), cells: sbCells, standalone: true, earnedOverride: sbEarned });
     columns.forEach(c => { c.earned = c.earnedOverride || c.cells.filter(cell => cell.done); });
+    if (goals) {
+      // Show every step: done ones celebrated, the rest as what's still to come.
+      columns.forEach((c, i) => {
+        const m = s.modules.filter(mm => mm.name.trim())[i];
+        c.items = MILESTONES.map(ms => ({ label: ms.label, pending: !m.done[ms.key], detail: ms.nameKey ? (m[ms.nameKey] || '').trim() : '' }));
+      });
+      for (let i = columns.length; i < Math.min(s.goalCount || 3, MAX_MODULES); i++) {
+        columns.push({ name: GOALS_TEXT.placeholderHead, placeholder: true, rgb: mix(hexToRgb(MODULE_COLORS[i % MODULE_COLORS.length]), WHITE, 0.35),
+          cells: MILESTONES.map(ms => ({ done: false, label: ms.label, detail: '' })), earned: [], items: [] });
+      }
+    }
+    columns.forEach(c => { if (!c.items) c.items = c.earned; });
     const milestoneCount = (s.tutorial ? 1 : 0) + columns.reduce((n, c) => n + c.earned.length, 0);
     return {
       teacher: s.teacher.trim(),
@@ -377,6 +417,7 @@
       champion: !!s.champion,
       rows: MILESTONES.map(ms => ({ label: ms.label, type: ms.type })),
       columns,
+      view: goals ? 'goals' : 'completed',
       milestoneCount,
       style: reportStyle,
       dateLabel: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
@@ -422,7 +463,7 @@
       const statusEl = el.querySelector('[data-role=summary-status]');
       nameEl.textContent = m.name.trim() || 'Empty';
       nameEl.classList.toggle('empty', !m.name.trim());
-      const on = isModuleIncluded(m);
+      const on = state.view === 'goals' ? !!m.name.trim() : isModuleIncluded(m);
       const sbOnly = !on && m.name.trim() && MILESTONES.some(ms => ms.nameKey && m.done[ms.key]);
       statusEl.textContent = on ? 'On report' : sbOnly ? 'In Skill Builders' : (m.name.trim() ? 'Not shown' : '');
       statusEl.classList.toggle('on', on);
@@ -435,6 +476,7 @@
     $('tutorial').checked = state.tutorial;
     $('note').value = state.note;
     $('champion').checked = state.champion;
+    if (typeof syncViewControls === 'function') syncViewControls();
   }
 
   document.addEventListener('input', e => {
@@ -465,11 +507,22 @@
   // ═══════════════════════════════════════════════════════════
   //  PREVIEW
   // ═══════════════════════════════════════════════════════════
-  document.querySelectorAll('.style-toggle button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('[data-style]').forEach(b => b.addEventListener('click', () => {
     reportStyle = b.dataset.style;
     try { localStorage.setItem(STYLE_KEY, reportStyle); } catch (e) {}
     renderPreview();
   }));
+
+  function syncViewControls() {
+    document.querySelectorAll('[data-view]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === state.view)));
+    document.querySelectorAll('[data-goals]').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.goals === state.goalCount)));
+    $('goal-count-row').style.display = state.view === 'goals' ? '' : 'none';
+    $('view-hint').textContent = state.view === 'goals'
+      ? 'Every module you name shows, with steps still to come in gray. Unused columns appear as “Next module” spaces.'
+      : 'Only modules with a Content Module or CFU checked show. Skill Builders on their own get a Skill Builders card.';
+  }
+  document.querySelectorAll('[data-view]').forEach(b => b.addEventListener('click', () => { state.view = b.dataset.view; syncViewControls(); onChange(); }));
+  document.querySelectorAll('[data-goals]').forEach(b => b.addEventListener('click', () => { state.goalCount = +b.dataset.goals; syncViewControls(); onChange(); }));
 
   function renderPreview() {
     const r = buildReport(state);
@@ -491,10 +544,10 @@
       <div class="cards-wrap"><div class="cards" style="grid-template-columns:repeat(${r.columns.length}, minmax(150px, 1fr))">
         ${r.columns.map(c => `<div class="mcard" style="background:${css(mix(c.rgb, WHITE, 0.92))}">
           <div class="mcard-head" style="background:${css(c.rgb)}">${esc(c.name)}</div>
-          <div class="mcard-body">${c.earned.map(e => `<div class="mitem">${markSvg(MARK_STYLE, c.rgb, '')}<div><div class="mitem-label">${esc(e.label)}</div>${e.detail ? `<div class="mitem-detail">${esc(e.detail)}</div>` : ''}</div></div>`).join('')}</div>
+          <div class="mcard-body">${c.items.length ? c.items.map(e => `<div class="mitem ${e.pending ? 'pending' : ''}">${markSvg(MARK_STYLE, e.pending ? GHOST : c.rgb, '')}<div><div class="mitem-label">${esc(e.label)}</div>${e.detail ? `<div class="mitem-detail">${esc(e.detail)}</div>` : ''}</div></div>`).join('') : (c.placeholder ? `<div class="mcard-empty">${esc(GOALS_TEXT.placeholderBody)}</div>` : '')}</div>
         </div>`).join('')}
       </div></div>` : '';
-    document.querySelectorAll('.style-toggle button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.style === r.style)));
+    document.querySelectorAll('[data-style]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.style === r.style)));
     $('report').innerHTML = `
       <div class="report-top"><img src="assets/prisms-logo.png" alt="Prisms" /></div>
       <div class="report-bar">Prisms Progress</div>
@@ -597,14 +650,14 @@
       doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5);
       const heads = report.columns.map(c => doc.splitTextToSize(c.name, cardW - pad * 2));
       const headH = Math.max(...heads.map(h => h.length)) * lh(10.5) + pad * 2;
-      const layouts = report.columns.map(c => c.earned.map(e => {
+      const layouts = report.columns.map(c => c.items.map(e => {
         doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5);
         const label = doc.splitTextToSize(e.label, textW);
         doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5);
         const detail = e.detail ? doc.splitTextToSize(e.detail, textW) : [];
-        return { label, detail, h: Math.max(5, label.length * lh(9.5) + (detail.length ? detail.length * lh(8.5) + 0.6 : 0)) + 2.6 };
+        return { label, detail, pending: !!e.pending, h: Math.max(5, label.length * lh(9.5) + (detail.length ? detail.length * lh(8.5) + 0.6 : 0)) + 2.6 };
       }));
-      const bodyH = Math.max(...layouts.map(items => items.reduce((t, it) => t + it.h, 0))) + pad * 2;
+      const bodyH = Math.max(12, ...layouts.map(items => items.reduce((t, it) => t + it.h, 0))) + pad * 2;
       report.columns.forEach((c, i) => {
         const x = L + i * (cardW + gap);
         fill(doc, mix(c.rgb, WHITE, 0.92)); doc.roundedRect(x, y, cardW, headH + bodyH, 2.5, 2.5, 'F');
@@ -612,12 +665,16 @@
         doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); ink(doc, WHITE);
         doc.text(heads[i], x + cardW / 2, y + (headH - heads[i].length * lh(10.5)) / 2 + lh(10.5) * 0.78, { align: 'center', lineHeightFactor: 1.2 });
         let iy = y + headH + pad;
+        if (c.placeholder) {
+          doc.setFont('helvetica', 'italic'); doc.setFontSize(9.5); ink(doc, C.light);
+          doc.text(GOALS_TEXT.placeholderBody, x + cardW / 2, iy + 5, { align: 'center' });
+        }
         layouts[i].forEach(it => {
-          drawMark(doc, MARK_STYLE, x + pad + 2.4, iy + 2.3, 2.4, c.rgb);
-          doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); ink(doc, C.navy);
+          drawMark(doc, MARK_STYLE, x + pad + 2.4, iy + 2.3, 2.4, it.pending ? GHOST : c.rgb);
+          doc.setFont('helvetica', it.pending ? 'normal' : 'bold'); doc.setFontSize(9.5); ink(doc, it.pending ? C.light : C.navy);
           doc.text(it.label, x + pad + 6.5, iy + lh(9.5) * 0.85, { lineHeightFactor: 1.2 });
           if (it.detail.length) {
-            doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); ink(doc, C.gray);
+            doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); ink(doc, it.pending ? C.light : C.gray);
             doc.text(it.detail, x + pad + 6.5, iy + it.label.length * lh(9.5) + 0.6 + lh(8.5) * 0.85, { lineHeightFactor: 1.2 });
           }
           iy += it.h;
@@ -728,7 +785,7 @@
   function loadSaved() { try { return JSON.parse(localStorage.getItem(SAVED_KEY)) || {}; } catch (e) { return {}; } }
   function writeSaved(all) { try { localStorage.setItem(SAVED_KEY, JSON.stringify(all)); return true; } catch (e) { return false; } }
   // What gets remembered: everything except the coach note, which is for one visit.
-  const snapshot = st => ({ teacher: st.teacher.trim(), tutorial: st.tutorial, champion: st.champion, modules: st.modules });
+  const snapshot = st => ({ teacher: st.teacher.trim(), tutorial: st.tutorial, champion: st.champion, view: st.view, goalCount: st.goalCount, modules: st.modules });
   let savedFilter = '';
 
   function saveCurrentTeacher() {
