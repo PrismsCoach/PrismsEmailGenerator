@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prisms Progress</title>
+  <meta name="theme-color" content="#353C78" />
+  <link rel="icon" href="assets/icons/icon-192.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    @font-face { font-family: 'Roboto'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('assets/fonts/roboto.woff2') format('woff2'); }
+    :root {
+      --pink: #DB1873; --pink-light: #fdf0f6;
+      --navy: #353C78; --navy-dark: #272d5e; --navy-light: #eef0f8;
+      --coral: #E3673B;
+      --gray-50: #F9FAFB; --gray-100: #F3F4F6; --gray-200: #E5E7EB; --gray-300: #D1D5DB;
+      --gray-400: #9CA3AF; --gray-600: #4B5563; --gray-700: #374151; --gray-900: #111827;
+      --red: #DC2626; --red-light: #fef2f2;
+      --radius: 10px; --shadow: 0 2px 12px rgba(0,0,0,0.10); --header-h: 52px;
+    }
+    body { font-family: 'Roboto', -apple-system, sans-serif; background: var(--gray-50); color: var(--gray-900); font-size: 15px; }
+    header { background: var(--navy); padding: 0 24px; height: var(--header-h); display: flex; align-items: center; gap: 10px; box-shadow: 0 2px 10px rgba(53,60,120,0.25); }
+    .header-brand { font-size: 17px; font-weight: 700; color: white; letter-spacing: -0.3px; }
+    .header-sep { color: rgba(255,255,255,0.35); }
+    .header-title { font-size: 14px; color: rgba(255,255,255,0.7); font-weight: 500; flex: 1; }
+    .header-note { font-size: 11.5px; color: rgba(255,255,255,0.6); white-space: nowrap; }
+
+    .layout { max-width: 1240px; margin: 0 auto; padding: 24px 18px 60px; display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr); gap: 22px; align-items: start; }
+    .preview-col { position: sticky; top: 16px; }
+
+    .card { background: white; border-radius: var(--radius); padding: 18px 20px; margin-bottom: 14px; box-shadow: var(--shadow); }
+    .card-title { font-size: 15.5px; font-weight: 700; margin-bottom: 4px; color: var(--navy); }
+    .card-desc { font-size: 12.5px; color: var(--gray-600); line-height: 1.5; margin-bottom: 12px; }
+
+    .field { margin-bottom: 12px; }
+    .field:last-child { margin-bottom: 0; }
+    .field label { display: block; font-size: 13px; font-weight: 500; color: var(--gray-700); margin-bottom: 5px; }
+    .field input[type=text], .field textarea { width: 100%; border: 1px solid var(--gray-200); border-radius: 8px; padding: 9px 12px; font-size: 16px; font-family: 'Roboto', sans-serif; color: var(--gray-900); background: white; }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(53,60,120,0.12); }
+    .field textarea { resize: vertical; min-height: 64px; line-height: 1.5; }
+    .optional { font-weight: 400; color: var(--gray-400); }
+
+    .check { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: var(--gray-700); cursor: pointer; padding: 6px 0; line-height: 1.35; }
+    .check input { width: 18px; height: 18px; accent-color: var(--navy); flex-shrink: 0; margin-top: 1px; cursor: pointer; }
+    .check strong { color: var(--navy); font-weight: 600; }
+
+    .slot { border: 1.5px solid var(--gray-200); border-radius: 9px; margin-bottom: 10px; background: white; }
+    .slot[open] { border-color: var(--navy-light); }
+    .slot summary { list-style: none; cursor: pointer; padding: 11px 14px; display: flex; align-items: center; gap: 10px; }
+    .slot summary::-webkit-details-marker { display: none; }
+    .slot summary::before { content: '▸'; color: var(--gray-400); font-size: 12px; }
+    .slot[open] summary::before { content: '▾'; }
+    .slot summary:focus-visible { outline: 3px solid rgba(53,60,120,0.3); border-radius: 8px; }
+    .slot-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--gray-400); }
+    .slot-name { font-size: 14px; font-weight: 600; color: var(--navy); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .slot-name.empty { color: var(--gray-400); font-weight: 400; font-style: italic; }
+    .slot-status { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; padding: 2px 7px; border-radius: 4px; background: var(--gray-100); color: var(--gray-400); white-space: nowrap; }
+    .slot-status.on { background: var(--navy-light); color: var(--navy); }
+    .slot-body { padding: 0 14px 12px; }
+    .milestone { border-top: 1px solid var(--gray-100); padding: 4px 0; }
+    .milestone .sb-name { margin: 2px 0 6px 27px; }
+    .milestone .sb-name input { font-size: 16px; padding: 7px 10px; }
+
+    .btn-primary { width: 100%; padding: 13px; background: linear-gradient(135deg, var(--pink) 0%, var(--coral) 100%); color: white; border: 2px solid rgba(255,255,255,0.3); border-radius: 8px; font-size: 15px; font-weight: 700; font-family: 'Roboto', sans-serif; cursor: pointer; box-shadow: 0 3px 12px rgba(219,24,115,0.30); }
+    .btn-primary:hover { opacity: 0.92; }
+    .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-secondary { width: 100%; padding: 12px; background: white; color: var(--navy); border: 1.5px solid var(--gray-200); border-radius: 8px; font-size: 14px; font-weight: 600; font-family: 'Roboto', sans-serif; cursor: pointer; margin-top: 8px; }
+    .btn-secondary:hover { border-color: var(--navy); background: var(--navy-light); }
+    button:focus-visible { outline: 3px solid rgba(53,60,120,0.35); outline-offset: 2px; }
+    .action-hint { font-size: 11.5px; color: var(--gray-400); text-align: center; padding-top: 8px; line-height: 1.4; }
+    .status-msg { font-size: 12.5px; color: var(--navy); text-align: center; padding-top: 8px; min-height: 18px; }
+
+    /* ─── Report preview (mirrors the PDF) ─────────────────── */
+    .preview-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-400); margin: 2px 2px 8px; }
+    .report { background: white; border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+    .report-top { padding: 12px 22px 0; }
+    .report-top img { height: 26px; display: block; }
+    .report-bar { margin-top: 10px; background: linear-gradient(90deg, #DB1873, #D94A5D, #E65B57, #E3673B); color: white; font-weight: 700; font-size: 14px; padding: 7px 22px; }
+    .report-body { padding: 18px 22px 22px; }
+    .report-teacher { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .report-teacher h2 { font-size: 21px; color: var(--navy); }
+    .report-teacher h2.placeholder { color: var(--gray-300); }
+    .report-date { font-size: 12px; color: var(--gray-400); }
+    .tutorial-banner { margin-top: 12px; display: flex; align-items: center; gap: 14px; border-radius: 10px; padding: 12px 16px; background: var(--navy); color: white; }
+    .tutorial-banner svg { width: 40px; height: 40px; flex-shrink: 0; }
+    .tutorial-title { font-size: 16px; font-weight: 700; }
+    .tutorial-sub { font-size: 12.5px; color: rgba(255,255,255,0.78); margin-top: 2px; line-height: 1.35; }
+    .tutorial-banner.pending { background: #F2F2F2; color: var(--navy); }
+    .tutorial-banner.pending .tutorial-sub { color: var(--gray-600); }
+    .champion { margin-top: 14px; background: var(--pink-light); border-left: 4px solid var(--pink); border-radius: 6px; padding: 10px 14px; }
+    .champion-title { font-weight: 700; color: var(--pink); font-size: 14px; }
+    .champion-text { font-size: 12.5px; color: var(--gray-700); margin-top: 2px; }
+    .grid-wrap { margin-top: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--gray-200); border-radius: 8px; }
+    table.grid { border-collapse: collapse; width: 100%; table-layout: fixed; }
+    table.grid th, table.grid td { border: 1px solid var(--gray-200); padding: 8px 8px; vertical-align: middle; }
+    table.grid tr:first-child > * { border-top: none; }
+    table.grid tr > *:first-child { border-left: none; }
+    table.grid tr > *:last-child { border-right: none; }
+    table.grid tr:last-child > * { border-bottom: none; }
+    table.grid thead th { color: white; font-size: 12.5px; font-weight: 700; line-height: 1.3; text-align: center; overflow-wrap: break-word; hyphens: manual; }
+    table.grid thead th.corner { background: var(--navy-dark); text-align: left; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.4px; color: rgba(255,255,255,0.75); }
+    table.grid tbody th { color: var(--navy); font-size: 12.5px; font-weight: 600; text-align: left; line-height: 1.3; }
+    table.grid td { text-align: center; height: 44px; }
+    .cell-mark { width: 22px; height: 22px; display: block; margin: 0 auto; }
+    .cell-name { display: block; font-size: 11px; color: var(--gray-600); margin-top: 3px; line-height: 1.25; overflow-wrap: anywhere; }
+    .no-modules { margin-top: 16px; font-size: 12.5px; color: var(--gray-400); font-style: italic; }
+    .report-note { margin-top: 16px; }
+    .report-note-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--navy); }
+    .report-note-text { font-size: 13.5px; color: var(--gray-700); margin-top: 4px; line-height: 1.5; white-space: pre-wrap; }
+    .style-toggle { display: inline-flex; background: var(--gray-200); border-radius: 8px; padding: 3px; gap: 2px; }
+    .style-toggle button { border: none; background: none; font: 600 12px 'Roboto', sans-serif; color: var(--gray-600); padding: 5px 12px; border-radius: 6px; cursor: pointer; }
+    .style-toggle button[aria-pressed=true] { background: white; color: var(--navy); box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+    .preview-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 2px 8px; }
+    .preview-head .preview-label { margin: 0; }
+    .celebrate-title { margin-top: 10px; font-size: 19px; font-weight: 700; color: var(--pink); line-height: 1.25; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .celebrate-count { margin-top: 6px; display: flex; align-items: center; gap: 7px; font-size: 14px; font-weight: 700; color: var(--navy); }
+    .celebrate-count svg { width: 18px; height: 18px; }
+    .cards-wrap { margin-top: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .cards { display: grid; gap: 10px; align-items: stretch; }
+    .mcard { border-radius: 9px; overflow: hidden; display: flex; flex-direction: column; }
+    .mcard-head { color: white; font-weight: 700; font-size: 13.5px; line-height: 1.3; padding: 9px 11px; text-align: center; }
+    .mcard-body { padding: 9px 11px 11px; flex: 1; }
+    .mitem { display: flex; gap: 7px; align-items: flex-start; padding: 4px 0; }
+    .mitem svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
+    .mitem-label { font-size: 12.5px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+    .mitem-detail { font-size: 11.5px; color: var(--gray-600); line-height: 1.3; }
+    .report-foot { font-size: 10.5px; color: var(--gray-400); padding: 0 22px 14px; }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: minmax(0, 1fr); }
+      .form-col, .preview-col { min-width: 0; }
+      .preview-col { position: static; }
+      .header-note { display: none; }
+    }
+    @media (max-width: 600px) {
+      header { padding: 0 16px; }
+      .layout { padding: 16px 12px 48px; }
+      .report-body { padding: 16px 14px 18px; }
+      /* Keep columns readable on a phone — the grid scrolls sideways instead of squeezing. */
+      table.grid { width: auto; min-width: 100%; }
+      table.grid th.corner, table.grid tbody th { width: 128px; min-width: 128px; position: sticky; left: 0; z-index: 1; box-shadow: 1px 0 0 var(--gray-200); }
+      table.grid thead th:not(.corner), table.grid td { width: 116px; min-width: 116px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <span class="header-brand">Prisms</span><span class="header-sep">/</span>
+  <span class="header-title">Progress</span>
+  <span class="header-note">Stays in this browser · PDF made on this device</span>
+</header>
+
+<div class="layout">
+  <!-- ─── Coach entry ─────────────────────────────────────── -->
+  <div class="form-col">
+    <div class="card">
+      <div class="card-title">Teacher</div>
+      <div class="field">
+        <label for="teacher">Teacher name</label>
+        <input type="text" id="teacher" autocomplete="off" placeholder="e.g. Ms. Rivera" />
+      </div>
+      <label class="check"><input type="checkbox" id="tutorial" /> <span><strong>Tutorial complete</strong></span></label>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Priority modules</div>
+      <div class="card-desc">Up to five, in the order they should appear on the report (left to right). Every slot is optional. Start typing for suggestions, or enter any module name.</div>
+      <div id="slots"></div>
+    </div>
+
+    <div class="card">
+      <div class="field">
+        <label for="note">Coach note or next step <span class="optional">(optional)</span></label>
+        <textarea id="note" rows="3" placeholder="e.g. Next step: assign the Spaced Repetition Skill Builder before starting Cellular Energy."></textarea>
+      </div>
+      <label class="check"><input type="checkbox" id="champion" /> <span><strong>Recognize as a Prisms Teacher Champion</strong><br /><span style="font-size:12px;color:var(--gray-400)">Only appears on the report when checked.</span></span></label>
+    </div>
+
+    <button class="btn-primary" id="download-btn" type="button">Download PDF</button>
+    <div class="status-msg" id="status" role="status" aria-live="polite"></div>
+    <button class="btn-secondary" id="next-btn" type="button">Next teacher →</button>
+    <div class="action-hint">Next teacher clears this report so you can start fresh. Download the PDF first — nothing is sent anywhere.</div>
+  </div>
+
+  <!-- ─── Live preview (same data + rules as the PDF) ─────── -->
+  <div class="preview-col">
+    <div class="preview-head">
+      <div class="preview-label">Teacher-facing preview</div>
+      <div class="style-toggle" role="group" aria-label="Teacher page style">
+        <button type="button" data-style="celebrate">Celebration</button>
+        <button type="button" data-style="grid">Grid</button>
+      </div>
+    </div>
+    <div class="report" id="report"></div>
+  </div>
+</div>
+
+<datalist id="module-suggestions"></datalist>
+<datalist id="sb-suggestions"></datalist>
+
+<script src="assets/vendor/jspdf.umd.min.js"></script>
+<script>
+  // ═══════════════════════════════════════════════════════════
+  //  CONFIG
+  // ═══════════════════════════════════════════════════════════
+  const MAX_MODULES = 5;
+  const STORAGE_KEY = 'prisms-progress-report-draft-v2';
+
+  // Shared milestone rows, top to bottom. `nameKey` marks the two Skill Builders
+  // whose optional name is shown inside that module's cell.
+  const MILESTONES = [
+    { key: 'prereq',   type: 'sb',      label: 'Prerequisite Skill Builder',     nameKey: 'prereqName' },
+    { key: 'content',  type: 'content', label: 'Content Module' },
+    { key: 'proximal', type: 'cfu',     label: 'Proximal CFU' },
+    { key: 'spaced',   type: 'sb',      label: 'Spaced Repetition Skill Builder', nameKey: 'spacedName' },
+    { key: 'eou',      type: 'cfu',     label: 'End of Unit CFU' }
+  ];
+
+  // ─── Report look (shared by preview + PDF) ────────────────
+  // One brand color per module column, left to right. Ordered so the
+  // most common 2–3 module reports get the most distinct colors.
+  const MODULE_COLORS = ['#DB1873', '#353C78', '#E3673B', '#D94A5D', '#E65B57'];
+  // Row shading by milestone type: 'gray' = brand light gray, 'tint' = a
+  // pale wash of that module's color, 'white' = plain.
+  const ROW_SHADES = { sb: 'gray', content: 'tint', cfu: 'white' };
+  // Completion mark: 'prism' (three-tone cube from the Prisms logo geometry) or 'star'.
+  const MARK_STYLE = 'prism';
+  // Teacher page layout: 'celebrate' (earned milestones only, as module cards) or 'grid'.
+  // Coaches can flip it with the toggle above the preview; their choice is remembered here.
+  const DEFAULT_REPORT_STYLE = 'celebrate';
+  const STYLE_KEY = 'prisms-progress-style';
+  const CELEBRATE_TEXT = { headline: 'Look what you and your students have done!', startHeadline: 'Your Prisms journey is just getting started!' };
+
+  // ───────────────────────────────────────────────────────────
+  //  PROVISIONAL MODULE INCLUSION RULE — change it here, only here.
+  //  Decides which filled-in modules get a column on the report
+  //  (live preview AND PDF both go through buildReport → this).
+  //  Current draft rule: the module has a name and its Content
+  //  Module milestone is checked.
+  // ───────────────────────────────────────────────────────────
+  function isModuleIncluded(mod) {
+    return mod.name.trim() !== '' && mod.done.content === true;
+  }
+
+  // Suggestions mirror the Email Generator's lists (index.html).
+  const MODULE_SUGGESTIONS = ['Area & Circumference','Percents','Ratios','Equations - Developing','Probability','Representing Data','Equations - Solidifying','Properties of Exponents & Scientific Notation','Rigid Transformations','Fractions','Pythagorean Theorem','Surface Area','Functions','Rates of Change - Developing','Transforming Triangles','Inequalities','Rates of Change - Solidifying','Inequalities - Developing','Rational Operations','Absolute Value Functions','Linear Functions','Systems of Linear Equations','Exponential Functions','Linear Regression','Systems of Linear Inequalities','Factoring Quadratics','Quadratics','Two-Way Frequency Tables','Linear Equations','Roots & Rational Exponents','Circle Equations','Solids of Rotation','Trigonometry','Congruence & Similarity','Transformations','Distance Formula','Transversals','Complex Numbers','Logarithms','Polar Coordinates','Conic Sections','Matrices','Vectors','Function Transformations','Periodic Functions','Instantaneous & Average Rates of Change','The Normal Distribution','Biomolecules','Cell Structure & Function','Cellular Energy','DNA Structure & Function','Ecology','Evolution','Genetics','Mitosis','Acids & Bases','Atomic Structure & Electron Configuration','Bonds & Intermolecular Forces','Chemical Reactions','Thermochemistry','Water Polarity & Hydrogen Bonding','1-D Kinematics',"Newton's Second Law",'Force & Motion','Phase Changes','Wave Energy','Energy Transformations','Biological Levels of Organization','The Nitrogen Cycle','Growth of an Organism','Homeostasis','The Scientific Method','Tectonic Plates','Earth & The Sun','The Rock Cycle'];
+  const SB_SUGGESTIONS = ['Algebraic Manipulation','Fraction Operations','Quadratic Functions','Angles','Fractions, Decimals & Percents','Rate of Change','Calculating Percents','Identifying Functions','Ratios & Unit Rates','Completing the Square','Identifying & Creating Functions','Solving Linear Equations & Inequalities','Creating Linear Equations','Integer Operations','Solving Systems of Linear Equations','Coordinate Plane','Nets & Surface Area','Unit Conversions','Decimal Operations','Order of Operations','Volume','Distributive Property','Properties of Exponents','Factoring & Polynomial Division','Proportions','Atomic Bonds','Food Webs','Meiosis','Atomic Models','Balancing Chemical Equations','Organelles','DNA Replication','Transcription & Translation'];
+
+  const CHAMPION_TEXT = 'Thank you for leading the way with Prisms at your school.';
+  const TUTORIAL_TEXT = {
+    done:    { title: 'Tutorial Complete', sub: 'Your students have had their first Prisms VR experience.' },
+    pending: { title: 'Tutorial not yet complete', sub: 'The Tutorial is students’ first Prisms VR experience, before the first Content Module.' }
+  };
+
+  // ─── Color + shape helpers (one geometry for SVG preview and PDF) ──
+  const hexToRgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const mix = (rgb, to, t) => rgb.map((v, i) => Math.round(v + (to[i] - v) * t));
+  const WHITE = [255, 255, 255], BLACK = [0, 0, 0], BRAND_GRAY = [242, 242, 242];
+  const css = rgb => `rgb(${rgb.join(',')})`;
+
+  function rowFill(type, rgb) {
+    const shade = ROW_SHADES[type];
+    if (shade === 'gray') return BRAND_GRAY;
+    if (shade === 'tint') return mix(rgb, WHITE, 0.88);
+    return WHITE;
+  }
+
+  // Returns filled polygons for a mark centered on (cx, cy) with radius r.
+  function markShapes(style, cx, cy, r, rgb) {
+    const P = deg => [cx + r * Math.cos(deg * Math.PI / 180), cy + r * Math.sin(deg * Math.PI / 180)];
+    if (style === 'star') {
+      const pts = Array.from({ length: 10 }, (_, i) => {
+        const a = (-90 + i * 36) * Math.PI / 180, rr = i % 2 ? r * 0.46 : r;
+        return [cx + rr * Math.cos(a), cy + rr * Math.sin(a)];
+      });
+      return [{ pts, fill: rgb }];
+    }
+    // Isometric cube — the hexagon-of-facets shape the Prisms logo is built from.
+    const C = [cx, cy];
+    return [
+      { pts: [C, P(210), P(-90), P(-30)], fill: mix(rgb, WHITE, 0.42) }, // top facet
+      { pts: [C, P(90), P(150), P(210)],  fill: rgb },                    // left facet
+      { pts: [C, P(-30), P(30), P(90)],   fill: mix(rgb, BLACK, 0.22) }   // right facet
+    ];
+  }
+
+  function markSvg(style, rgb, cls) {
+    const polys = markShapes(style, 0, 0, 1, rgb)
+      .map(s => `<polygon points="${s.pts.map(p => p.map(n => n.toFixed(3)).join(',')).join(' ')}" fill="${css(s.fill)}" stroke="#fff" stroke-width="0.07" stroke-linejoin="round" />`).join('');
+    return `<svg class="${cls}" viewBox="-1.05 -1.05 2.1 2.1" aria-hidden="true">${polys}</svg>`;
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  //  STATE (kept only in this browser's localStorage)
+  // ═══════════════════════════════════════════════════════════
+  function emptyModule() {
+    return { name: '', prereqName: '', spacedName: '', done: { prereq: false, content: false, proximal: false, spaced: false, eou: false } };
+  }
+  function emptyState() {
+    return { teacher: '', tutorial: false, note: '', champion: false, modules: Array.from({ length: MAX_MODULES }, emptyModule) };
+  }
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return emptyState();
+      const s = Object.assign(emptyState(), JSON.parse(raw));
+      s.modules = Array.from({ length: MAX_MODULES }, (_, i) => {
+        const m = Object.assign(emptyModule(), (s.modules || [])[i] || {});
+        m.done = Object.assign(emptyModule().done, m.done || {});
+        return m;
+      });
+      return s;
+    } catch (e) { return emptyState(); }
+  }
+  function saveState() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  let state = loadState();
+  let reportStyle = (() => { try { return localStorage.getItem(STYLE_KEY) || DEFAULT_REPORT_STYLE; } catch (e) { return DEFAULT_REPORT_STYLE; } })();
+
+  // ═══════════════════════════════════════════════════════════
+  //  REPORT MODEL — the single source for preview and PDF
+  // ═══════════════════════════════════════════════════════════
+  function buildReport(s) {
+    const columns = s.modules.filter(isModuleIncluded).map((m, i) => ({
+      name: m.name.trim(),
+      rgb: hexToRgb(MODULE_COLORS[i % MODULE_COLORS.length]),
+      cells: MILESTONES.map(ms => ({
+        done: !!m.done[ms.key],
+        label: ms.label,
+        // A Skill Builder name only shows when that milestone is checked; unfinished cells stay blank.
+        detail: (ms.nameKey && m.done[ms.key]) ? (m[ms.nameKey] || '').trim() : ''
+      }))
+    }));
+    columns.forEach(c => { c.earned = c.cells.filter(cell => cell.done); });
+    const milestoneCount = (s.tutorial ? 1 : 0) + columns.reduce((n, c) => n + c.earned.length, 0);
+    return {
+      teacher: s.teacher.trim(),
+      tutorialComplete: !!s.tutorial,
+      note: s.note.trim(),
+      champion: !!s.champion,
+      rows: MILESTONES.map(ms => ({ label: ms.label, type: ms.type })),
+      columns,
+      milestoneCount,
+      style: reportStyle,
+      dateLabel: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
+    };
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  //  FORM
+  // ═══════════════════════════════════════════════════════════
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  $('module-suggestions').innerHTML = MODULE_SUGGESTIONS.map(n => `<option value="${esc(n)}">`).join('');
+  $('sb-suggestions').innerHTML = SB_SUGGESTIONS.map(n => `<option value="${esc(n)}">`).join('');
+
+  function renderSlots() {
+    $('slots').innerHTML = state.modules.map((m, i) => `
+      <details class="slot" data-slot="${i}" ${i < 2 || m.name ? 'open' : ''}>
+        <summary>
+          <span class="slot-num">Module ${i + 1}</span>
+          <span class="slot-name" data-role="summary-name"></span>
+          <span class="slot-status" data-role="summary-status"></span>
+        </summary>
+        <div class="slot-body">
+          <div class="field">
+            <label for="mod-${i}-name">Module name</label>
+            <input type="text" id="mod-${i}-name" list="module-suggestions" autocomplete="off" data-slot="${i}" data-field="name" value="${esc(m.name)}" placeholder="e.g. DNA Structure & Function" />
+          </div>
+          ${MILESTONES.map(ms => `
+            <div class="milestone">
+              <label class="check"><input type="checkbox" data-slot="${i}" data-done="${ms.key}" ${m.done[ms.key] ? 'checked' : ''} /> <span>${esc(ms.label)}</span></label>
+              ${ms.nameKey ? `<div class="field sb-name"><input type="text" list="sb-suggestions" autocomplete="off" aria-label="Module ${i + 1} ${esc(ms.label)} name (optional)" data-slot="${i}" data-field="${ms.nameKey}" value="${esc(m[ms.nameKey])}" placeholder="Skill Builder name (optional)" /></div>` : ''}
+            </div>`).join('')}
+        </div>
+      </details>`).join('');
+    updateSlotSummaries();
+  }
+
+  function updateSlotSummaries() {
+    document.querySelectorAll('.slot').forEach(el => {
+      const m = state.modules[+el.dataset.slot];
+      const nameEl = el.querySelector('[data-role=summary-name]');
+      const statusEl = el.querySelector('[data-role=summary-status]');
+      nameEl.textContent = m.name.trim() || 'Empty';
+      nameEl.classList.toggle('empty', !m.name.trim());
+      const on = isModuleIncluded(m);
+      statusEl.textContent = on ? 'On report' : (m.name.trim() ? 'Not shown' : '');
+      statusEl.classList.toggle('on', on);
+      statusEl.style.display = statusEl.textContent ? '' : 'none';
+    });
+  }
+
+  function syncTopFields() {
+    $('teacher').value = state.teacher;
+    $('tutorial').checked = state.tutorial;
+    $('note').value = state.note;
+    $('champion').checked = state.champion;
+  }
+
+  document.addEventListener('input', e => {
+    const t = e.target;
+    if (t.id === 'teacher') state.teacher = t.value;
+    else if (t.id === 'note') state.note = t.value;
+    else if (t.dataset.field) state.modules[+t.dataset.slot][t.dataset.field] = t.value;
+    else return;
+    onChange();
+  });
+  document.addEventListener('change', e => {
+    const t = e.target;
+    if (t.id === 'tutorial') state.tutorial = t.checked;
+    else if (t.id === 'champion') state.champion = t.checked;
+    else if (t.dataset.done) state.modules[+t.dataset.slot].done[t.dataset.done] = t.checked;
+    else return;
+    onChange();
+  });
+
+  function onChange() {
+    saveState();
+    updateSlotSummaries();
+    renderPreview();
+    $('status').textContent = '';
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  //  PREVIEW
+  // ═══════════════════════════════════════════════════════════
+  document.querySelectorAll('.style-toggle button').forEach(b => b.addEventListener('click', () => {
+    reportStyle = b.dataset.style;
+    try { localStorage.setItem(STYLE_KEY, reportStyle); } catch (e) {}
+    renderPreview();
+  }));
+
+  function renderPreview() {
+    const r = buildReport(state);
+    const grid = r.columns.length ? `
+      <div class="grid-wrap">
+        <table class="grid" style="min-width:${130 + r.columns.length * 112}px">
+          <colgroup><col style="width:${r.columns.length >= 4 ? 24 : 30}%" />${r.columns.map(() => '<col />').join('')}</colgroup>
+          <thead><tr><th class="corner" scope="col"><span class="sr-only">Step</span></th>${r.columns.map(c => `<th scope="col" style="background:${css(c.rgb)}">${esc(c.name)}</th>`).join('')}</tr></thead>
+          <tbody>
+            ${r.rows.map((row, ri) => `<tr><th scope="row" style="background:${css(rowFill(row.type, WHITE))}">${esc(row.label)}</th>${r.columns.map(c => {
+              const cell = c.cells[ri], bg = `background:${css(rowFill(row.type, c.rgb))}`;
+              if (!cell.done) return `<td style="${bg}" aria-label="Not yet"></td>`;
+              return `<td style="${bg}" aria-label="Complete">${markSvg(MARK_STYLE, c.rgb, 'cell-mark')}${cell.detail ? `<span class="cell-name">${esc(cell.detail)}</span>` : ''}</td>`;
+            }).join('')}</tr>`).join('')}
+          </tbody>
+        </table>
+      </div>` : '';
+    const cards = r.columns.length ? `
+      <div class="cards-wrap"><div class="cards" style="grid-template-columns:repeat(${r.columns.length}, minmax(150px, 1fr))">
+        ${r.columns.map(c => `<div class="mcard" style="background:${css(mix(c.rgb, WHITE, 0.92))}">
+          <div class="mcard-head" style="background:${css(c.rgb)}">${esc(c.name)}</div>
+          <div class="mcard-body">${c.earned.map(e => `<div class="mitem">${markSvg(MARK_STYLE, c.rgb, '')}<div><div class="mitem-label">${esc(e.label)}</div>${e.detail ? `<div class="mitem-detail">${esc(e.detail)}</div>` : ''}</div></div>`).join('')}</div>
+        </div>`).join('')}
+      </div></div>` : '';
+    document.querySelectorAll('.style-toggle button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.style === r.style)));
+    $('report').innerHTML = `
+      <div class="report-top"><img src="assets/prisms-logo.png" alt="Prisms" /></div>
+      <div class="report-bar">Prisms Progress</div>
+      <div class="report-body">
+        <div class="report-teacher">
+          <h2 class="${r.teacher ? '' : 'placeholder'}">${esc(r.teacher || 'Teacher name')}</h2>
+          <span class="report-date">${esc(r.dateLabel)}</span>
+        </div>
+        ${r.style === 'celebrate' ? `<div class="celebrate-title">${esc(r.milestoneCount ? CELEBRATE_TEXT.headline : CELEBRATE_TEXT.startHeadline)}</div>` : ''}
+        ${(() => { const t = TUTORIAL_TEXT[r.tutorialComplete ? 'done' : 'pending'];
+          return `<div class="tutorial-banner ${r.tutorialComplete ? '' : 'pending'}">${markSvg('prism', r.tutorialComplete ? hexToRgb('#DB1873') : [190, 194, 204], '')}<div><div class="tutorial-title">${esc(t.title)}</div><div class="tutorial-sub">${esc(t.sub)}</div></div></div>`; })()}
+        ${r.style === 'celebrate' ? cards : grid}
+        ${!r.columns.length ? '<div class="no-modules" data-coach-only>Coach view only: no module qualifies yet, so the PDF will skip the modules section.</div>' : ''}
+        ${r.champion ? `<div class="champion"><div class="champion-title">Prisms Teacher Champion</div><div class="champion-text">${esc(CHAMPION_TEXT)}</div></div>` : ''}
+        ${r.note ? `<div class="report-note"><div class="report-note-title">From your coach</div><div class="report-note-text">${esc(r.note)}</div></div>` : ''}
+      </div>
+      <div class="report-foot">Prisms Progress</div>`;
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  //  PDF (generated locally with jsPDF — nothing leaves the device)
+  // ═══════════════════════════════════════════════════════════
+  const PRISMS_LOGO_IMG = new Image();
+  PRISMS_LOGO_IMG.src = 'assets/prisms-logo.png';
+  const PRISMS_LOGO_ASPECT = 3200 / 1573;
+  const C = {
+    pink: [219, 24, 115], rose: [217, 74, 93], brandRed: [230, 91, 87], coral: [227, 103, 59],
+    navy: [53, 60, 120], navyDark: [39, 45, 94], pinkLight: [253, 240, 246],
+    text: [55, 65, 81], gray: [107, 114, 128], light: [156, 163, 175], border: [220, 223, 230], rowBg: [249, 250, 251]
+  };
+  const fill = (doc, c) => doc.setFillColor(c[0], c[1], c[2]);
+  const ink = (doc, c) => doc.setTextColor(c[0], c[1], c[2]);
+  const pen = (doc, c) => doc.setDrawColor(c[0], c[1], c[2]);
+
+  function drawGradientBar(doc, y, h) {
+    const colors = [C.pink, C.rose, C.brandRed, C.coral];
+    const w = doc.internal.pageSize.getWidth(), steps = 80, sw = w / steps, segs = colors.length - 1;
+    for (let i = 0; i < steps; i++) {
+      const f = Math.min(i / (steps - 1), 0.999999) * segs, k = Math.floor(f), t = f - k, a = colors[k], b = colors[k + 1];
+      doc.setFillColor(Math.round(a[0] + (b[0] - a[0]) * t), Math.round(a[1] + (b[1] - a[1]) * t), Math.round(a[2] + (b[2] - a[2]) * t));
+      doc.rect(i * sw, y, sw + 0.5, h, 'F');
+    }
+  }
+
+  function drawMark(doc, style, cx, cy, r, rgb) {
+    pen(doc, WHITE); doc.setLineWidth(r * 0.07); doc.setLineJoin('round');
+    markShapes(style, cx, cy, r, rgb).forEach(s => {
+      fill(doc, s.fill);
+      const deltas = s.pts.slice(1).map((p, i) => [p[0] - s.pts[i][0], p[1] - s.pts[i][1]]);
+      doc.lines(deltas, s.pts[0][0], s.pts[0][1], [1, 1], 'FD', true);
+    });
+  }
+
+  function makePdf(report) {
+    const { jsPDF } = window.jspdf;
+    // Landscape once there are 4+ module columns so long names keep readable widths.
+    const landscape = report.columns.length >= 4;
+    const doc = new jsPDF({ orientation: landscape ? 'landscape' : 'portrait', unit: 'mm', format: 'letter' });
+    const W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight(), L = 15, R = W - 15, CW = R - L;
+
+    // Header
+    if (PRISMS_LOGO_IMG.complete && PRISMS_LOGO_IMG.naturalWidth > 0) doc.addImage(PRISMS_LOGO_IMG, 'PNG', L, 5, 9 * PRISMS_LOGO_ASPECT, 9);
+    else { doc.setFont('helvetica', 'bold'); doc.setFontSize(13); ink(doc, C.pink); doc.text('Prisms', L, 11); }
+    drawGradientBar(doc, 17, 9);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(11); ink(doc, [255, 255, 255]);
+    doc.text('Prisms Progress', L, 23);
+    let y = 37;
+
+    // Teacher + tutorial (always above the grid)
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(17); ink(doc, C.navy);
+    doc.text(report.teacher || 'Teacher', L, y);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); ink(doc, C.light);
+    doc.text(report.dateLabel, R, y, { align: 'right' });
+    y += 5;
+    const lh = (pt) => pt * 0.3528 * 1.2; // line height in mm for a font size
+
+    if (report.style === 'celebrate') {
+      y += 4;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(15); ink(doc, C.pink);
+      doc.text(report.milestoneCount ? CELEBRATE_TEXT.headline : CELEBRATE_TEXT.startHeadline, L, y);
+      y += 5;
+    }
+
+    // Tutorial banner — a milestone of its own, not a footnote
+    const tut = TUTORIAL_TEXT[report.tutorialComplete ? 'done' : 'pending'];
+    const bannerH = 17;
+    fill(doc, report.tutorialComplete ? C.navy : BRAND_GRAY); doc.roundedRect(L, y, CW, bannerH, 2.5, 2.5, 'F');
+    drawMark(doc, 'prism', L + 10, y + bannerH / 2, 5.6, report.tutorialComplete ? C.pink : [190, 194, 204]);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(14); ink(doc, report.tutorialComplete ? WHITE : C.navy);
+    doc.text(tut.title, L + 20, y + 7.4);
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); ink(doc, report.tutorialComplete ? [205, 208, 228] : C.gray);
+    doc.text(tut.sub, L + 20, y + 12.8);
+    y += bannerH + 6;
+
+
+    // Celebration: one card per module, earned milestones only
+    if (report.style === 'celebrate' && report.columns.length) {
+      const n = report.columns.length, gap = 4, pad = 3;
+      const cardW = (CW - gap * (n - 1)) / n, textW = cardW - pad * 2 - 6.5;
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5);
+      const heads = report.columns.map(c => doc.splitTextToSize(c.name, cardW - pad * 2));
+      const headH = Math.max(...heads.map(h => h.length)) * lh(10.5) + pad * 2;
+      const layouts = report.columns.map(c => c.earned.map(e => {
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5);
+        const label = doc.splitTextToSize(e.label, textW);
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5);
+        const detail = e.detail ? doc.splitTextToSize(e.detail, textW) : [];
+        return { label, detail, h: Math.max(5, label.length * lh(9.5) + (detail.length ? detail.length * lh(8.5) + 0.6 : 0)) + 2.6 };
+      }));
+      const bodyH = Math.max(...layouts.map(items => items.reduce((t, it) => t + it.h, 0))) + pad * 2;
+      report.columns.forEach((c, i) => {
+        const x = L + i * (cardW + gap);
+        fill(doc, mix(c.rgb, WHITE, 0.92)); doc.roundedRect(x, y, cardW, headH + bodyH, 2.5, 2.5, 'F');
+        fill(doc, c.rgb); doc.roundedRect(x, y, cardW, headH, 2.5, 2.5, 'F'); doc.rect(x, y + headH - 3, cardW, 3, 'F');
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5); ink(doc, WHITE);
+        doc.text(heads[i], x + cardW / 2, y + (headH - heads[i].length * lh(10.5)) / 2 + lh(10.5) * 0.78, { align: 'center', lineHeightFactor: 1.2 });
+        let iy = y + headH + pad;
+        layouts[i].forEach(it => {
+          drawMark(doc, MARK_STYLE, x + pad + 2.4, iy + 2.3, 2.4, c.rgb);
+          doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); ink(doc, C.navy);
+          doc.text(it.label, x + pad + 6.5, iy + lh(9.5) * 0.85, { lineHeightFactor: 1.2 });
+          if (it.detail.length) {
+            doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5); ink(doc, C.gray);
+            doc.text(it.detail, x + pad + 6.5, iy + it.label.length * lh(9.5) + 0.6 + lh(8.5) * 0.85, { lineHeightFactor: 1.2 });
+          }
+          iy += it.h;
+        });
+      });
+      y += headH + bodyH;
+    }
+
+    // Grid: milestone rows × module columns
+    if (report.style !== 'celebrate' && report.columns.length) {
+      const n = report.columns.length;
+      const labelW = landscape ? 50 : 52;
+      const colW = (CW - labelW) / n, pad = 2.6;
+
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(10);
+      const heads = report.columns.map(c => doc.splitTextToSize(c.name, colW - pad * 2));
+      const headH = Math.max(...heads.map(h => h.length)) * lh(10) + pad * 2 + 1;
+
+      const gridTop = y;
+      pen(doc, C.border); doc.setLineWidth(0.25);
+      fill(doc, C.navyDark); doc.rect(L, y, labelW, headH, 'F');
+      report.columns.forEach((c, i) => { fill(doc, c.rgb); doc.rect(L + labelW + colW * i, y, colW, headH, 'F'); });
+      doc.setFontSize(10); ink(doc, [255, 255, 255]);
+      heads.forEach((lines, i) => {
+        const cx = L + labelW + colW * i + colW / 2;
+        const top = y + (headH - lines.length * lh(10)) / 2 + lh(10) * 0.78;
+        doc.text(lines, cx, top, { align: 'center', lineHeightFactor: 1.2 });
+      });
+      y += headH;
+
+      report.rows.forEach((row, ri) => {
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5);
+        const labelLines = doc.splitTextToSize(row.label, labelW - pad * 2);
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(8);
+        const details = report.columns.map(c => c.cells[ri].detail ? doc.splitTextToSize(c.cells[ri].detail, colW - pad * 2) : []);
+        const cellH = Math.max(...report.columns.map((c, i) => c.cells[ri].done ? 6.6 + (details[i].length ? 1.2 + details[i].length * lh(8) : 0) : 0));
+        const rowH = Math.max(12, labelLines.length * lh(9.5) + pad * 2, cellH + pad * 2);
+
+        fill(doc, rowFill(row.type, WHITE)); doc.rect(L, y, labelW, rowH, 'F');
+        report.columns.forEach((c, i) => { fill(doc, rowFill(row.type, c.rgb)); doc.rect(L + labelW + colW * i, y, colW, rowH, 'F'); });
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); ink(doc, C.navy);
+        doc.text(labelLines, L + pad, y + (rowH - labelLines.length * lh(9.5)) / 2 + lh(9.5) * 0.78, { lineHeightFactor: 1.2 });
+
+        report.columns.forEach((c, i) => {
+          const cell = c.cells[ri];
+          if (!cell.done) return; // unfinished milestones stay blank
+          const cx = L + labelW + colW * i + colW / 2;
+          const blockH = 6.6 + (details[i].length ? 1.2 + details[i].length * lh(8) : 0);
+          const top = y + (rowH - blockH) / 2;
+          drawMark(doc, MARK_STYLE, cx, top + 3.3, 3.3, c.rgb);
+          if (details[i].length) {
+            doc.setFont('helvetica', 'normal'); doc.setFontSize(8); ink(doc, C.gray);
+            doc.text(details[i], cx, top + 6.6 + 1.2 + lh(8) * 0.78, { align: 'center', lineHeightFactor: 1.2 });
+          }
+        });
+
+        pen(doc, C.border); doc.setLineWidth(0.25);
+        doc.line(L, y + rowH, R, y + rowH);
+        y += rowH;
+      });
+      // Column dividers + outer frame
+      pen(doc, C.border); doc.setLineWidth(0.25);
+      for (let i = 0; i <= n; i++) doc.line(L + labelW + colW * i, gridTop + headH, L + labelW + colW * i, y);
+      doc.rect(L, gridTop, CW, y - gridTop, 'S');
+    }
+
+    // Champion (only when the coach selected it) — below the grid, before the coach note
+    if (report.champion) {
+      if (report.columns.length) y += 6;
+      if (y + 14 > H - 18) { doc.addPage(); y = 20; }
+      fill(doc, C.pinkLight); doc.rect(L, y, CW, 14, 'F'); fill(doc, C.pink); doc.rect(L, y, 1.4, 14, 'F');
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(11); ink(doc, C.pink); doc.text('Prisms Teacher Champion', L + 5, y + 6);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(9); ink(doc, C.text); doc.text(CHAMPION_TEXT, L + 5, y + 11);
+      y += 14;
+    }
+
+    // Coach note
+    if (report.note) {
+      y += 8;
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5);
+      const lines = doc.splitTextToSize(report.note, CW);
+      if (y + 6 + lines.length * 5 > H - 14) { doc.addPage(); y = 20; }
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(9.5); ink(doc, C.navy);
+      doc.text('FROM YOUR COACH', L, y);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5); ink(doc, C.text);
+      doc.text(lines, L, y + 6, { lineHeightFactor: 1.35 });
+    }
+
+    const pages = doc.getNumberOfPages();
+    for (let p = 1; p <= pages; p++) {
+      doc.setPage(p);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(8); ink(doc, C.light);
+      doc.text('Prisms Progress' + (report.teacher ? ' · ' + report.teacher : ''), L, H - 10);
+    }
+    return doc;
+  }
+
+  function pdfFileName(report) {
+    const slug = (report.teacher || 'teacher').replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '');
+    return `Prisms-Progress-${slug || 'teacher'}.pdf`;
+  }
+
+  $('download-btn').addEventListener('click', () => {
+    const report = buildReport(state);
+    if (!report.teacher) { $('status').textContent = 'Add the teacher’s name first.'; $('teacher').focus(); return; }
+    makePdf(report).save(pdfFileName(report));
+    $('status').textContent = 'PDF downloaded — attach it to your email to ' + report.teacher + '.';
+  });
+
+  $('next-btn').addEventListener('click', () => {
+    const name = state.teacher.trim();
+    if (name && !confirm(`Clear ${name}’s report and start the next teacher?`)) return;
+    state = emptyState();
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    syncTopFields(); renderSlots(); renderPreview();
+    $('status').textContent = 'Cleared. Ready for the next teacher.';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    $('teacher').focus({ preventScroll: true });
+  });
+
+  syncTopFields(); renderSlots(); renderPreview();
+</script>
+</body>
+</html>
