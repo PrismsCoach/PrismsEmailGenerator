@@ -102,7 +102,7 @@
     table.grid tbody th { color: var(--navy); font-size: 12.5px; font-weight: 600; text-align: left; line-height: 1.3; }
     table.grid td { text-align: center; height: 44px; }
     .cell-mark { width: 22px; height: 22px; display: block; margin: 0 auto; }
-    .cell-name { display: block; font-size: 11px; color: var(--gray-600); margin-top: 3px; line-height: 1.25; overflow-wrap: anywhere; }
+    .cell-name { display: block; font-size: 11px; color: var(--gray-600); margin-top: 3px; line-height: 1.25; overflow-wrap: anywhere; white-space: pre-line; }
     .no-modules { margin-top: 16px; font-size: 12.5px; color: var(--gray-400); font-style: italic; }
     .report-note { margin-top: 16px; }
     .report-note-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--navy); }
@@ -233,15 +233,20 @@
   const CELEBRATE_TEXT = { headline: 'Look what you and your students have done!', startHeadline: 'Your Prisms journey is just getting started!' };
 
   // ───────────────────────────────────────────────────────────
-  //  PROVISIONAL MODULE INCLUSION RULE — change it here, only here.
-  //  Decides which filled-in modules get a column on the report
+  //  MODULE INCLUSION RULE — change it here, only here.
+  //  Decides which filled-in modules get their own card/column
   //  (live preview AND PDF both go through buildReport → this).
-  //  Current draft rule: the module has a name and its Content
-  //  Module milestone is checked.
+  //  Rule: the module has a name and its Content Module, Proximal
+  //  CFU, or End of Unit CFU is checked. Skill Builders alone don't
+  //  qualify — those go in the separate Skill Builders card instead.
   // ───────────────────────────────────────────────────────────
   function isModuleIncluded(mod) {
-    return mod.name.trim() !== '' && mod.done.content === true;
+    return mod.name.trim() !== '' && (mod.done.content || mod.done.proximal || mod.done.eou);
   }
+
+  // Skill Builders from a named module that isn't showing yet get their
+  // own card/column so the teacher's work never disappears.
+  const SB_CARD = { name: 'Skill Builders', color: '#4B5563' };
 
   // Suggestions mirror the Email Generator's lists (index.html).
   const MODULE_SUGGESTIONS = ['Area & Circumference','Percents','Ratios','Equations - Developing','Probability','Representing Data','Equations - Solidifying','Properties of Exponents & Scientific Notation','Rigid Transformations','Fractions','Pythagorean Theorem','Surface Area','Functions','Rates of Change - Developing','Transforming Triangles','Inequalities','Rates of Change - Solidifying','Inequalities - Developing','Rational Operations','Absolute Value Functions','Linear Functions','Systems of Linear Equations','Exponential Functions','Linear Regression','Systems of Linear Inequalities','Factoring Quadratics','Quadratics','Two-Way Frequency Tables','Linear Equations','Roots & Rational Exponents','Circle Equations','Solids of Rotation','Trigonometry','Congruence & Similarity','Transformations','Distance Formula','Transversals','Complex Numbers','Logarithms','Polar Coordinates','Conic Sections','Matrices','Vectors','Function Transformations','Periodic Functions','Instantaneous & Average Rates of Change','The Normal Distribution','Biomolecules','Cell Structure & Function','Cellular Energy','DNA Structure & Function','Ecology','Evolution','Genetics','Mitosis','Acids & Bases','Atomic Structure & Electron Configuration','Bonds & Intermolecular Forces','Chemical Reactions','Thermochemistry','Water Polarity & Hydrogen Bonding','1-D Kinematics',"Newton's Second Law",'Force & Motion','Phase Changes','Wave Energy','Energy Transformations','Biological Levels of Organization','The Nitrogen Cycle','Growth of an Organism','Homeostasis','The Scientific Method','Tectonic Plates','Earth & The Sun','The Rock Cycle'];
@@ -333,7 +338,20 @@
         detail: (ms.nameKey && m.done[ms.key]) ? (m[ms.nameKey] || '').trim() : ''
       }))
     }));
-    columns.forEach(c => { c.earned = c.cells.filter(cell => cell.done); });
+    // Standalone Skill Builders (module not on the report yet)
+    const sbOnly = s.modules.filter(m => m.name.trim() && !isModuleIncluded(m));
+    const sbCells = MILESTONES.map(ms => {
+      if (!ms.nameKey) return { done: false, label: ms.label, detail: '' };
+      const hits = sbOnly.filter(m => m.done[ms.key]).map(m => (m[ms.nameKey] || '').trim() ? `${m[ms.nameKey].trim()} (${m.name.trim()})` : m.name.trim());
+      return { done: hits.length > 0, label: ms.label, detail: hits.join('\n') };
+    });
+    const sbEarned = [];
+    MILESTONES.filter(ms => ms.nameKey).forEach(ms => sbOnly.filter(m => m.done[ms.key]).forEach(m => {
+      const named = (m[ms.nameKey] || '').trim();
+      sbEarned.push({ label: named || ms.label, detail: named ? `${ms.label} · ${m.name.trim()}` : m.name.trim() });
+    }));
+    if (sbEarned.length) columns.push({ name: SB_CARD.name, rgb: hexToRgb(SB_CARD.color), cells: sbCells, standalone: true, earnedOverride: sbEarned });
+    columns.forEach(c => { c.earned = c.earnedOverride || c.cells.filter(cell => cell.done); });
     const milestoneCount = (s.tutorial ? 1 : 0) + columns.reduce((n, c) => n + c.earned.length, 0);
     return {
       teacher: s.teacher.trim(),
@@ -388,7 +406,8 @@
       nameEl.textContent = m.name.trim() || 'Empty';
       nameEl.classList.toggle('empty', !m.name.trim());
       const on = isModuleIncluded(m);
-      statusEl.textContent = on ? 'On report' : (m.name.trim() ? 'Not shown' : '');
+      const sbOnly = !on && m.name.trim() && MILESTONES.some(ms => ms.nameKey && m.done[ms.key]);
+      statusEl.textContent = on ? 'On report' : sbOnly ? 'In Skill Builders' : (m.name.trim() ? 'Not shown' : '');
       statusEl.classList.toggle('on', on);
       statusEl.style.display = statusEl.textContent ? '' : 'none';
     });
