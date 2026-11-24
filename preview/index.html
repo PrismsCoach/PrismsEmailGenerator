@@ -324,7 +324,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- Module → Toolkit material links, extracted from the Prisms VR Content Libraries doc. -->
-<script src="../assets/toolkit-links.js?v=2"></script>
+<script src="../assets/toolkit-links.js?v=3"></script>
 <script>
   // ─── Verified links (from the approved templates + Coach Hub) ─────────
   const LINKS = {
@@ -379,7 +379,7 @@
     hardware: { obs: 'headset [distribution / cleanup] took [X] minutes because [specific cause]…', why: 'every minute lost to logistics is a minute not spent on [synthesis / debrief]…', try: 'assigning two permanent tech helpers per class: distribute from [location], collect to [location], wipes at [location]…' },
     jitf: { obs: 'during VR, [X] students with hands raised waited [X] minutes before getting support…', why: 'students who wait too long in VR tend to [disengage / skip ahead], and the confusion resurfaces in the CFU or debrief…', try: 'opening the Teacher Dashboard before VR and doing a slow loop every 3–4 minutes, starting with 2–3 target students…' },
     writing: { obs: 'the class moved from VR to discussion without writing time, and [X] of [Y] students spoke…', why: 'writing before discussion gives every student the language to participate in [concept]-focused conversation…', try: '“Take 3 minutes and write silently” using the synthesis prompt, then partner share before whole-class discussion…' },
-    assessment: { obs: 'CFU [1/2] was assigned, but class ended before results were reviewed…', why: 'once students leave, the window for targeted revision closes and the misconception about [concept] tends to persist…', try: 'a 5-minute CFU review window before closure: two contrasting responses, then 90 seconds of silent revision…' },
+    assessment: { obs: 'the [Proximal / End-of-Unit] CFU was assigned, but class ended before results were reviewed…', why: 'once students leave, the window for targeted revision closes and the misconception about [concept] tends to persist…', try: 'a 5-minute CFU review window before closure: two contrasting responses, then 90 seconds of silent revision…' },
     spaced: { obs: 'a Skill Builder on [skill] was assigned once, but there was no plan to revisit it…', why: 'a single session builds short-term familiarity, not durable retention…', try: 'reassigning a shorter, targeted Skill Builder 1–2 weeks later as a warm-up…' }
   };
 
@@ -462,16 +462,24 @@
   function moduleMaterials(name, pastedLink) {
     const t = toolkitFor(name) || {};
     const pasted = normalizeUrl(pastedLink) || '';
-    return { known: !!toolkitFor(name), toolkit: t.toolkit || pasted, takeaways: t.takeaways || '', lessonGuide: t.lessonGuide || '', lessonGuide2: t.lessonGuide2 || '', synth1: t.synth1 || '', synth2: t.synth2 || '', synthParts: t.synthParts || 0, slides: t.slides || '', handout: t.handout || '', transfer: t.transfer || '' };
+    return { known: !!toolkitFor(name), toolkit: t.toolkit || pasted, takeaways: t.takeaways || '', lessonGuide: t.lessonGuide || '', lessonGuide2: t.lessonGuide2 || '', synth1: t.synth1 || '', synth2: t.synth2 || '', synthParts: t.synthParts || 0, slides: t.slides || '', handout: t.handout || '', transfer: t.transfer || '', proximalCfu: t.proximalCfu || '', endCfu: t.endCfu || '' };
   }
   // Keeps the approved phrase ("Synthesis Activities", "Lesson Guide") and links it to the right file(s).
   // Two-part modules get both parts linked after the phrase; a single activity links the phrase itself.
-  function synthPhrase(m, phrase) {
-    if (m.synthParts === 2) return b(phrase) + ' (' + a('Part I', m.synth1) + ', ' + a('Part II', m.synth2) + ')';
+  function synthPhrase(m, phrase, part) {
+    if (m.synthParts === 2) {
+      if (part === 'Part 1') return b(phrase) + ' (' + a('Part I', m.synth1) + ')';
+      if (part === 'Part 2') return b(phrase) + ' (' + a('Part II', m.synth2) + ')';
+      return b(phrase) + ' (' + a('Part I', m.synth1) + ', ' + a('Part II', m.synth2) + ')';
+    }
     return b(a(phrase, m.synthParts === 1 ? m.synth1 : ''));
   }
-  function lessonGuidePhrase(m) {
-    if (m.lessonGuide2) return b('Lesson Guide') + ' (' + a('Part 1', m.lessonGuide) + ', ' + a('Part 2', m.lessonGuide2) + ')';
+  function lessonGuidePhrase(m, part) {
+    if (m.lessonGuide2) {
+      if (part === 'Part 1') return b('Lesson Guide') + ' (' + a('Part 1', m.lessonGuide) + ')';
+      if (part === 'Part 2') return b('Lesson Guide') + ' (' + a('Part 2', m.lessonGuide2) + ')';
+      return b('Lesson Guide') + ' (' + a('Part 1', m.lessonGuide) + ', ' + a('Part 2', m.lessonGuide2) + ')';
+    }
     return b(a('Lesson Guide', m.lessonGuide));
   }
 
@@ -563,7 +571,8 @@
     date:         { label: 'Date', type: 'date', req: true },
     tiDate:       { label: 'Teacher Institute date', type: 'date', req: true },
     module:       { label: 'Module name', type: 'module', req: true },
-    cfu:          { label: 'Which CFU', type: 'choice', options: ['CFU 1', 'CFU 2'], req: true },
+    cfu:          { label: 'Which CFU?', type: 'choice', options: ['Proximal CFU', 'End-of-Unit CFU', 'Both'], req: true },
+    part:         { label: 'Which part?', type: 'choice', options: ['Part 1', 'Part 2', 'Both'], hint: 'Names the part in the email and links only its Synthesis Activity and Lesson Guide.', show: () => (toolkitFor(qv('module')) || {}).synthParts !== 1 },
     week:         { label: 'Week of', req: true, ph: 'e.g. May 4' },
     vr:           { label: 'Students will…', req: true, ph: 'what they’ll do in VR', blank: 'what they’ll do in VR' },
     concept:      { label: 'while applying…', req: true, ph: 'key math/science concept', blank: 'key math/science concept' },
@@ -600,19 +609,21 @@
         B.push({ t: 'p', html: 'Looking forward to a great first experience with your students!' });
         signoff(B, 'Warmly,');
       } },
-    { id: 'pre-module', group: 'Before a visit', name: 'Content Module Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'module'],
+    { id: 'pre-module', group: 'Before a visit', name: 'Content Module Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'module', 'part'],
       subject: () => 'Preparing for Our Prisms Coaching Day',
       build: (B, f) => {
         const m = f.mod();
         B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
-        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' for ' + b(f.moduleLink(m.toolkit)) + '!' });
+        const part = f.part();
+        const partLabel = part === 'Both' ? ' (Parts 1 and 2)' : part ? ' (' + part + ')' : '';
+        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' for ' + b(f.moduleLink(m.toolkit) + esc(partLabel)) + '!' });
         B.push({ t: 'p', html: 'As you prepare, please make sure you have:' });
         B.push({ t: 'h', text: 'Before the Visit' });
         B.push({ t: 'ul', items: [
           b('Experience the module in the headset') + ' - use hints and anticipate misconceptions to frontload.',
           b('Watch the ' + a('Module Takeaways video', m.takeaways) + '.'),
-          b('Complete the') + ' ' + synthPhrase(m, 'Synthesis Activities') + ' as a student.',
-          'Internalize and annotate the ' + lessonGuidePhrase(m) + ', focusing especially on exemplar student responses and probing questions.',
+          b('Complete the') + ' ' + synthPhrase(m, 'Synthesis Activities', part) + ' as a student.',
+          'Internalize and annotate the ' + lessonGuidePhrase(m, part) + ', focusing especially on exemplar student responses and probing questions.',
           'Prepare your ' + b('classroom routines and materials.'),
           'Plan for a Prerequisite Check or Skill Builder.' ] });
         B.push({ t: 'h', text: 'For the Coaching Day' });
@@ -632,9 +643,9 @@
         B.push({ t: 'ul', items: [
           'Complete all VR parts and corresponding ' + b('Synthesis Activities') + '.',
           'Review the ' + b(a('Transfer Day Document', m.transfer)) + ' and accompanying lesson materials.',
-          'Review ' + b('CFU 1') + ' and the ' + b(a('CFU Revision Protocols', LINKS.cfuProtocols.url)) + '.' ] });
+          'Review the ' + b(a('Proximal CFU', m.proximalCfu)) + ' and the ' + b(a('CFU Revision Protocols', LINKS.cfuProtocols.url)) + '.' ] });
         B.push({ t: 'h', text: 'For Transfer Day' });
-        B.push({ t: 'ul', items: ['Transfer Day materials printed or accessible for students', 'Teacher Dashboard open and ready', 'CFU 1 ready to assign'] });
+        B.push({ t: 'ul', items: ['Transfer Day materials printed or accessible for students', 'Teacher Dashboard open and ready', 'Proximal CFU ready to assign'] });
         B.push({ t: 'p', html: 'During our visit, I’ll work alongside you to support student thinking, discourse, formative assessment, and revision.' });
         B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
         B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
@@ -645,7 +656,7 @@
       build: (B, f) => {
         const m = f.mod();
         B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
-        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' as students complete ' + b(f.cfu) + ' for ' + b(f.moduleLink(m.toolkit)) + '.' });
+        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' as students complete ' + f.cfu(m) + ' for ' + b(f.moduleLink(m.toolkit)) + '.' });
         B.push({ t: 'h', text: 'Before the Visit' });
         B.push({ t: 'ul', items: [
           'Review the ' + b('CFU and scoring guide/rubric') + '.',
@@ -774,7 +785,16 @@
       teacher: txt('teacher', 'Teacher Name'), teacherTeam: txt('teacherTeam', 'Teacher/Team Name'), poc: txt('poc', 'POC Name'), site: txt('site', 'Site/District Name'),
       date: qv('date') ? esc(longDate(qv('date'))) : ph('Date'),
       tiDate: qv('tiDate') ? esc(longDate(qv('tiDate'))) : ph('Day/Date'),
-      cfu: qv('cfu') ? esc(qv('cfu')) : ph('CFU 1 / CFU 2'),
+      cfu: m => {
+        const prox = b(a('Proximal CFU', m.proximalCfu)), end = b(a('End-of-Unit CFU', m.endCfu));
+        const c = qv('cfu');
+        if (c === 'Both') return 'the ' + prox + ' and ' + end;
+        if (c === 'Proximal CFU') return 'the ' + prox;
+        if (c === 'End-of-Unit CFU') return 'the ' + end;
+        return b(ph('Proximal CFU / End-of-Unit CFU'));
+      },
+      // Part only applies to two-part (or unknown) modules; single-part modules ignore it.
+      part: () => qShown('part') ? qv('part') : '',
       // Module names are always bold in the email so they stand out.
       moduleName: b(qv('module') ? esc(qv('module')) : ph('Module Name')),
       mod: () => moduleMaterials(qv('module'), qv('moduleLink')),
@@ -812,7 +832,8 @@
       return `<div class="field"><label for="${id}">${lab}</label><input type="${type}" id="${id}" data-q="${key}" value="${esc(v)}" placeholder="${esc(f.ph || (f.type === 'link' ? 'Paste link' : ''))}" />${f.hint ? `<div class="hint">${esc(f.hint)}</div>` : ''}${f.type === 'link' ? `<div class="hint" data-link-hint="${id}"></div>` : ''}</div>`;
     };
     const first = def.fields[0];
-    $('q-fields').innerHTML = `<div class="row-2">${fieldHtml(first)}${coach}</div>` + def.fields.slice(1).filter(qShown).map(fieldHtml).join('');
+    // Every field is rendered; ones that don't apply right now (e.g. Part for a single-part module) are hidden in place.
+    $('q-fields').innerHTML = `<div class="row-2">${fieldHtml(first)}${coach}</div>` + def.fields.slice(1).map(k => `<div data-qwrap="${k}"${qShown(k) ? '' : ' hidden'}>${fieldHtml(k)}</div>`).join('');
     $('q-fields').querySelectorAll('[data-ac]').forEach(setupAutocomplete);
   }
 
@@ -857,6 +878,7 @@
     $('focus-fields').style.display = val('p-focus') ? '' : 'none';
     moduleStatus(val('p-next-module'), $('p-next-status'), $('p-next-link-field'));
     if (!post) moduleStatus(qv('module'), $('q-module-status'), $('q-module-link-field'));
+    document.querySelectorAll('[data-qwrap]').forEach(w => { w.hidden = !qShown(w.dataset.qwrap); });
     ROUTINES.forEach(r => {
       const n = state.liveNotes[r.key]; const el = $('live-' + r.key);
       if (!n) { el.style.display = 'none'; return; }
@@ -1121,6 +1143,11 @@
       const k = e.target.dataset.q; if (!k) return;
       state.q[k] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
       if (k === 'moduleLink') state.q.moduleLinkFor = normName(qv('module'));
+      // A part picked for one module shouldn't carry over to another.
+      if (k === 'module' && state.q.part) {
+        state.q.part = '';
+        $('q-fields').querySelectorAll('[data-q-choice="part"]').forEach(c => c.setAttribute('aria-pressed', 'false'));
+      }
       render();
     });
     $('q-fields').addEventListener('change', e => {
