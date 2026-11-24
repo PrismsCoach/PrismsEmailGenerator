@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Preview · Prisms Coaching Emails</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --pink: #DB1873; --pink-dark: #b8145f; --pink-light: #fdf0f6;
+      --navy: #353C78; --navy-dark: #272d5e; --navy-light: #eef0f8;
+      --coral: #E3673B; --coral-light: #fdf2ee;
+      --gray-50: #F9FAFB; --gray-100: #F3F4F6; --gray-200: #E5E7EB;
+      --gray-300: #D1D5DB; --gray-400: #9CA3AF; --gray-500: #6B7280; --gray-600: #4B5563;
+      --gray-700: #374151; --gray-900: #111827;
+      --green: #16A34A; --radius: 10px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.10);
+      --header-h: 52px;
+    }
+    body { font-family: 'Roboto', -apple-system, sans-serif; background: var(--pink); color: var(--gray-900); font-size: 15px; }
+    a { color: var(--navy); }
+    button { font-family: inherit; }
+    :focus-visible { outline: 3px solid rgba(53,60,120,0.45); outline-offset: 2px; }
+
+    /* ─── App shell ───────────────────────────────────────── */
+    #app { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+    header { background: var(--navy); padding: 0 24px; height: var(--header-h); display: flex; align-items: center; gap: 10px; flex-shrink: 0; box-shadow: 0 2px 10px rgba(53,60,120,0.25); z-index: 100; }
+    .header-brand { font-size: 17px; font-weight: 700; color: white; letter-spacing: -0.3px; }
+    .header-sep { color: rgba(255,255,255,0.35); }
+    .header-title { font-size: 14px; color: rgba(255,255,255,0.75); font-weight: 500; }
+    .header-back-link { margin-left: auto; font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.88); text-decoration: none; padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.25); white-space: nowrap; }
+    .header-back-link:hover { background: rgba(255,255,255,0.12); }
+    .app-body { flex: 1; display: grid; grid-template-columns: minmax(0,1fr) minmax(380px, 46%); overflow: hidden; }
+
+    /* ─── Form pane ───────────────────────────────────────── */
+    .form-pane { background: var(--pink); overflow-y: auto; padding: 20px 18px 60px; }
+    .mode-picker { display: grid; grid-template-columns: 1fr 1fr; background: rgba(0,0,0,0.15); border-radius: 10px; padding: 4px; margin-bottom: 16px; gap: 3px; }
+    .mode-btn { padding: 8px 12px; border: none; border-radius: 7px; cursor: pointer; background: transparent; color: rgba(255,255,255,0.85); text-align: left; }
+    .mode-btn .mode-name { display: block; font-size: 13.5px; font-weight: 700; }
+    .mode-btn .mode-sub { display: block; font-size: 11px; opacity: 0.85; margin-top: 1px; }
+    .mode-btn.active { background: white; color: var(--navy); box-shadow: 0 1px 6px rgba(0,0,0,0.12); }
+    .mode-btn.active .mode-sub { color: var(--gray-500); opacity: 1; }
+
+    .card { background: white; border-radius: var(--radius); padding: 18px 20px; margin-bottom: 12px; box-shadow: var(--shadow); }
+    .card-header { margin-bottom: 14px; display: flex; gap: 10px; align-items: flex-start; }
+    .card-number { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--navy); color: white; font-size: 11px; font-weight: 700; border-radius: 50%; flex-shrink: 0; margin-top: 1px; }
+    .card-title { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+    .card-desc { font-size: 12.5px; color: var(--gray-600); line-height: 1.5; }
+    .opt-tag { font-size: 10.5px; font-weight: 600; color: var(--gray-500); background: var(--gray-100); border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .req { color: var(--pink); }
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+    .field { margin-bottom: 12px; }
+    .field:last-child { margin-bottom: 0; }
+    .row-2 > .field { margin-bottom: 12px; }
+    .field > label, .label { display: block; font-size: 13px; font-weight: 500; color: var(--gray-700); margin-bottom: 5px; }
+    .field input[type=text], .field input[type=url], .field input[type=date], .field textarea, .field select { width: 100%; border: 1px solid var(--gray-300); border-radius: 8px; padding: 9px 12px; font-size: 16px; font-family: 'Roboto', sans-serif; color: var(--gray-900); background: white; }
+    @media (min-width: 821px) { .field input[type=text], .field input[type=url], .field input[type=date], .field textarea, .field select { font-size: 14px; } }
+    .field input:focus, .field textarea:focus, .field select:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(53,60,120,0.14); }
+    .field textarea { resize: vertical; min-height: 64px; line-height: 1.55; }
+    .hint { font-size: 11.5px; color: var(--gray-500); margin-top: 4px; line-height: 1.45; }
+    .hint:empty { display: none; }
+    .hint.warn { color: #B45309; }
+    .hint.ok { color: var(--navy); }
+    .stem { font-size: 12px; font-weight: 600; color: var(--coral); font-style: italic; margin-bottom: 4px; }
+    .divider { border: none; border-top: 1px dashed var(--gray-200); margin: 14px 0; }
+
+    /* "More detail" disclosure */
+    details.more { background: white; border-radius: var(--radius); margin-bottom: 12px; box-shadow: var(--shadow); }
+    details.more > summary { cursor: pointer; list-style: none; padding: 14px 20px; font-size: 14px; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+    details.more > summary::-webkit-details-marker { display: none; }
+    details.more > summary::before { content: '+'; display: inline-flex; width: 20px; height: 20px; align-items: center; justify-content: center; border-radius: 50%; background: var(--navy-light); font-size: 14px; }
+    details.more[open] > summary::before { content: '–'; }
+    details.more > summary .card-desc { font-weight: 400; margin-left: 4px; }
+    .more-body { padding: 0 20px 18px; }
+    .sub-title { font-size: 13px; font-weight: 700; color: var(--gray-700); margin: 4px 0 2px; }
+
+    /* chips */
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { border: 1.5px solid var(--gray-200); background: white; border-radius: 999px; padding: 6px 12px; font-size: 12.5px; font-weight: 600; color: var(--gray-700); cursor: pointer; }
+    .chip:hover { border-color: var(--pink); }
+    .chip[aria-pressed=true] { border-color: var(--pink); background: var(--pink-light); color: var(--pink-dark); }
+
+    /* checkbox rows */
+    .check-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 6px; }
+    .check { display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border: 1.5px solid var(--gray-200); border-radius: 8px; cursor: pointer; font-size: 12.5px; color: var(--gray-700); line-height: 1.35; }
+    .check:hover { border-color: var(--pink); }
+    .check.on { border-color: var(--pink); background: var(--pink-light); }
+    .check input { accent-color: var(--pink); width: 15px; height: 15px; margin-top: 1px; flex-shrink: 0; }
+    .check .check-sub { display: block; font-size: 11px; color: var(--gray-500); }
+
+    /* quick-email list */
+    .q-group { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-500); margin: 12px 0 6px; }
+    .q-group:first-child { margin-top: 0; }
+    .q-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 6px; }
+    .q-item { text-align: left; border: 1.5px solid var(--gray-200); background: white; border-radius: 8px; padding: 8px 10px; cursor: pointer; }
+    .q-item:hover { border-color: var(--pink); }
+    .q-item[aria-pressed=true] { border-color: var(--pink); background: var(--pink-light); }
+    .q-item .q-name { display: block; font-size: 13px; font-weight: 600; color: var(--gray-900); }
+    .q-item .q-when { display: block; font-size: 11px; color: var(--gray-500); margin-top: 1px; }
+    .q-foot { font-size: 12px; color: var(--gray-600); margin-top: 12px; }
+
+    /* tip panel */
+    .tip-toggle { background: none; border: none; color: var(--coral); font-size: 12px; font-weight: 600; cursor: pointer; padding: 0; margin-top: 6px; }
+    .tip-panel { display: none; background: #fffdf9; border: 1px solid #f5dfc8; border-left: 3px solid var(--coral); border-radius: 8px; padding: 10px 12px; margin-top: 6px; font-size: 12px; color: var(--gray-700); line-height: 1.6; }
+    .tip-panel.open { display: block; }
+    .tip-panel ul { padding-left: 16px; }
+    .tip-head { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--coral); margin: 4px 0 3px; }
+    .tip-head:first-child { margin-top: 0; }
+
+    /* autocomplete */
+    .ac-wrap { position: relative; }
+    .ac-dropdown { display: none; position: absolute; top: calc(100% + 2px); left: 0; right: 0; background: white; border: 1px solid var(--gray-200); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 50; max-height: 220px; overflow-y: auto; }
+    .ac-dropdown.open { display: block; }
+    .ac-group-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-400); padding: 8px 12px 4px; }
+    .ac-item { padding: 8px 12px; font-size: 13px; cursor: pointer; color: var(--gray-700); }
+    .ac-item:hover, .ac-item.highlighted { background: var(--navy-light); color: var(--navy); }
+
+    .link-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 8px; margin-top: 8px; }
+    .link-row input { width: 100%; border: 1px solid var(--gray-300); border-radius: 8px; padding: 8px 11px; font-size: 14px; font-family: inherit; }
+
+    /* ─── Email pane ──────────────────────────────────────── */
+    .email-pane { background: white; border-left: 1px solid var(--gray-200); display: flex; flex-direction: column; overflow: hidden; }
+    .email-toolbar { padding: 12px 18px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .email-toolbar-title { font-size: 13px; font-weight: 700; color: var(--gray-700); }
+    .email-toolbar-sub { font-size: 11px; color: var(--gray-500); margin-top: 1px; }
+    .toolbar-spacer { flex: 1; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid transparent; white-space: nowrap; }
+    .btn-primary { background: var(--navy); color: white; }
+    .btn-primary:hover { background: var(--navy-dark); }
+    .btn-primary.copied { background: var(--green); }
+    .btn-ghost { background: white; color: var(--gray-700); border-color: var(--gray-200); }
+    .btn-ghost:hover { border-color: var(--navy); color: var(--navy); }
+    .btn-small { padding: 4px 9px; font-size: 11.5px; }
+    .subject-row { display: flex; align-items: center; gap: 8px; padding: 8px 18px; border-bottom: 1px solid var(--gray-100); background: var(--gray-50); flex-shrink: 0; }
+    .subject-row label { font-size: 12px; font-weight: 700; color: var(--gray-500); }
+    #subject { flex: 1; min-width: 0; border: 1px solid transparent; background: transparent; border-radius: 6px; padding: 6px 8px; font-size: 14px; font-weight: 600; color: var(--gray-900); font-family: inherit; }
+    #subject:hover { border-color: var(--gray-200); background: white; }
+    #subject:focus { outline: none; border-color: var(--navy); background: white; }
+    .edit-notice { display: none; align-items: center; gap: 8px; padding: 8px 18px; background: var(--navy-light); color: var(--navy); font-size: 12px; border-bottom: 1px solid var(--gray-200); flex-shrink: 0; }
+    .edit-notice.show { display: flex; }
+    .edit-notice span { flex: 1; }
+    #email-body { flex: 1; overflow-y: auto; padding: 18px 22px 28px; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.65; color: var(--gray-900); outline: none; }
+    #email-body:focus { box-shadow: inset 0 0 0 2px rgba(53,60,120,0.18); }
+    #email-body p { margin: 0 0 12px; }
+    #email-body ul { margin: 0 0 12px; padding-left: 22px; }
+    #email-body li { margin-bottom: 3px; }
+    #email-body .ph { background: #FEF3C7; color: #92400E; border-radius: 3px; padding: 0 3px; }
+    .attach-reminder { display: none; align-items: center; gap: 8px; padding: 9px 18px; border-top: 1px solid #f5dfc8; background: var(--coral-light); color: #9A3412; font-size: 12.5px; font-weight: 500; flex-shrink: 0; }
+    .attach-reminder.show { display: flex; }
+
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); background: var(--gray-900); color: white; font-size: 13px; padding: 10px 16px; border-radius: 8px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 300; }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+    @media (max-width: 820px) {
+      #app { height: auto; overflow: visible; }
+      .app-body { grid-template-columns: 1fr; overflow: visible; }
+      .form-pane { overflow-y: visible; padding: 16px 16px 24px; }
+      .email-pane { border-left: none; border-top: 3px solid var(--navy); }
+      #email-body { min-height: 360px; }
+      .email-toolbar { position: sticky; top: 0; background: white; z-index: 10; flex-wrap: wrap; }
+      .btn { min-height: 44px; }
+      .chip { min-height: 40px; }
+      .header-title, .header-sep { display: none; }
+    }
+    @media (max-width: 520px) {
+      .row-2, .link-row { grid-template-columns: 1fr; }
+      .card { padding: 16px; }
+      header { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <span class="header-brand">Prisms</span>
+    <span class="header-sep">·</span>
+    <span class="header-title">Coaching Emails</span>
+    <a href="../live-coach-tool.html" class="header-back-link">← Live Coach Tool</a>
+  </header>
+
+  <div style="background:#FEF3C7;color:#92400E;font-size:12.5px;font-weight:500;padding:7px 16px;text-align:center;flex-shrink:0;">Preview for review: coaches should keep using the <a href="../" style="color:#92400E;font-weight:700;">current email generator</a> for now.</div>
+  <div class="app-body">
+    <!-- ══ FORM ══════════════════════════════════════════ -->
+    <main class="form-pane" id="form-pane">
+      <div class="mode-picker" role="radiogroup" aria-label="Email type">
+        <button type="button" class="mode-btn" data-mode="post" role="radio"><span class="mode-name">Post-Coaching</span><span class="mode-sub">After a classroom visit</span></button>
+        <button type="button" class="mode-btn" data-mode="quick" role="radio"><span class="mode-name">Quick emails</span><span class="mode-sub">Pre-visit, planning &amp; Teacher Institute</span></button>
+      </div>
+
+      <!-- ─── POST-COACHING ─────────────────────────────── -->
+      <section data-show="post">
+        <div class="card">
+          <div class="card-header"><span class="card-number">1</span><div><div class="card-title">Visit</div></div></div>
+          <div class="row-2">
+            <div class="field"><label for="p-teacher">Teacher name <span class="req">*</span></label><input type="text" id="p-teacher" data-save placeholder="e.g. Ms. Johnson" /></div>
+            <div class="field"><label for="coach-name">Your name <span class="req">*</span></label><input type="text" id="coach-name" placeholder="Your name" /></div>
+          </div>
+          <div class="field">
+            <span class="label">Type of coaching day</span>
+            <div class="chips" id="visit-chips" role="group" aria-label="Type of coaching day"></div>
+          </div>
+          <div class="row-2">
+            <div class="field"><label for="p-today-module">Today's module <span class="opt-tag">Optional</span></label>
+              <div class="ac-wrap"><input type="text" id="p-today-module" data-save data-ac placeholder="Choose or type" autocomplete="off" /><div class="ac-dropdown"></div></div>
+              <div class="hint">Used in the subject line.</div>
+            </div>
+            <div class="field"><label for="p-date">Date of visit</label><input type="date" id="p-date" data-save /></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-number">2</span><div><div class="card-title">Highlights <span class="req">*</span></div>
+            <div class="card-desc">At least one specific instructional moment: what you observed, the action that mattered, and why it mattered for learning.</div></div></div>
+          <div class="field">
+            <div class="chips" role="group" aria-label="How many moments">
+              <button type="button" class="chip" data-count="one" aria-pressed="true">One moment</button>
+              <button type="button" class="chip" data-count="few" aria-pressed="false">A few moments</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="p-celebration" class="sr-only">Impactful moment(s)</label>
+            <div class="stem" id="p-celebration-stem">I wanted to share one moment that stood out…</div>
+            <textarea id="p-celebration" data-save rows="5" placeholder="Name a specific student or teacher, the moment (task, question or decision), and why it mattered for learning. Start a line with “-” to make a bullet."></textarea>
+            <button type="button" class="tip-toggle" data-tip="tip-celebrate">💡 Sentence stems &amp; what makes it strong</button>
+            <div class="tip-panel" id="tip-celebrate"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-number">3</span><div><div class="card-title">Area to Prioritize <span class="opt-tag">Optional</span></div>
+            <div class="card-desc">Your recommendation for the next lesson. Only the sentences you fill in are included.</div></div></div>
+          <div class="field">
+            <label for="p-focus">Routine to prioritize</label>
+            <select id="p-focus" data-save></select>
+          </div>
+          <div id="focus-fields">
+            <div class="field"><label for="p-observe" class="sr-only">Observation</label><div class="stem">During the lesson, I noticed…</div><textarea id="p-observe" data-save rows="2"></textarea></div>
+            <div class="field"><label for="p-why" class="sr-only">Why it matters</label><div class="stem">This matters because…</div><textarea id="p-why" data-save rows="2"></textarea></div>
+            <div class="field"><label for="p-try" class="sr-only">Recommendation</label><div class="stem">In the next lesson, let’s try…</div><textarea id="p-try" data-save rows="2"></textarea>
+              <div class="hint">A concrete move the teacher can lead independently.</div>
+              <button type="button" class="tip-toggle" data-tip="tip-focus">💡 Starters for this routine</button>
+              <div class="tip-panel" id="tip-focus"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-number">4</span><div><div class="card-title">Up Next <span class="opt-tag">Optional</span></div>
+            <div class="card-desc">Pick the next priority module. Its Toolkit materials are linked in the email automatically.</div></div></div>
+          <div class="field"><label for="p-next-module">Next priority module</label>
+            <div class="ac-wrap"><input type="text" id="p-next-module" data-save data-ac placeholder="Choose or type" autocomplete="off" /><div class="ac-dropdown"></div></div>
+            <div class="hint" id="p-next-status"></div>
+          </div>
+          <div class="field" id="p-next-link-field" style="display:none"><label for="p-next-link">Module Toolkit link</label><input type="url" id="p-next-link" data-save data-link placeholder="Paste the Toolkit link" /><div class="hint" data-link-hint="p-next-link"></div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-number">5</span><div><div class="card-title">Resources</div>
+            <div class="card-desc">The one-pager for your area to prioritize is ticked for you. The support contact is always included.</div></div></div>
+          <div class="check-list" id="resource-list"></div>
+          <label class="check" id="attach-wrap" style="margin-top:10px"><input type="checkbox" id="attach-report" data-save /><span><strong>I’m attaching a progress report</strong><span class="check-sub">Adds one line mentioning it. You attach the PDF yourself.</span></span></label>
+        </div>
+
+        <details class="more" id="more-detail">
+          <summary>More detail <span class="card-desc">Routine snapshot, adjustments, extra links</span></summary>
+          <div class="more-body">
+            <div class="sub-title">Instructional routine snapshot</div>
+            <div class="hint" style="margin:0 0 10px">One sentence per routine you want to mention. Blank routines stay out of the email.</div>
+            <div id="routine-fields"></div>
+            <hr class="divider" />
+            <div class="sub-title">Routine you adjusted</div>
+            <div class="field"><label for="p-adjust" class="sr-only">Routine adjustment</label><div class="stem">One routine we adjusted to better fit your students was…</div><textarea id="p-adjust" data-save rows="2"></textarea></div>
+            <div class="field"><label for="p-adjust-why" class="sr-only">Why the adjustment helped</label><div class="stem">This helped because…</div><textarea id="p-adjust-why" data-save rows="2"></textarea></div>
+            <hr class="divider" />
+            <div class="sub-title">Extra resource links</div>
+            <div class="link-row"><input type="text" id="p-link1-label" data-save placeholder="Link name" aria-label="Extra link 1 name" /><input type="url" id="p-link1-url" data-save data-link placeholder="https://…" aria-label="Extra link 1 URL" /></div>
+            <div class="hint" data-link-hint="p-link1-url"></div>
+            <div class="link-row"><input type="text" id="p-link2-label" data-save placeholder="Link name" aria-label="Extra link 2 name" /><input type="url" id="p-link2-url" data-save data-link placeholder="https://…" aria-label="Extra link 2 URL" /></div>
+            <div class="hint" data-link-hint="p-link2-url"></div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ─── QUICK EMAILS ──────────────────────────────── -->
+      <section data-show="quick">
+        <div class="card">
+          <div class="card-header"><span class="card-number">1</span><div><div class="card-title">Pick an email</div></div></div>
+          <div id="q-picker"></div>
+          <div class="q-foot">Returning teachers? Use <a href="https://docs.google.com/document/d/1C1RbZVPq2EtH7QVXDe5WyPEk7TmpZJrwF99oc9Wjkj4/view" target="_blank" rel="noopener">Anurupa’s Getting Started email ↗</a></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-number">2</span><div><div class="card-title">Fill in the blanks</div><div class="card-desc" id="q-when"></div></div></div>
+          <div id="q-fields"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ══ EMAIL ═════════════════════════════════════════ -->
+    <section class="email-pane" aria-label="Email">
+      <div class="email-toolbar">
+        <div><div class="email-toolbar-title">Your email</div><div class="email-toolbar-sub">Edit anything directly before copying</div></div>
+        <div class="toolbar-spacer"></div>
+        <button type="button" class="btn btn-ghost" id="next-teacher-btn" title="Clear this teacher’s details and keep your name and template">↺ Next teacher</button>
+        <button type="button" class="btn btn-primary" id="copy-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Copy email</span>
+        </button>
+      </div>
+      <div class="subject-row">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" />
+        <button type="button" class="btn btn-ghost btn-small" id="copy-subject-btn">Copy</button>
+      </div>
+      <div class="edit-notice" id="edit-notice"><span>You edited the email directly, so form changes won’t overwrite it.</span><button type="button" class="btn btn-ghost btn-small" id="rebuild-btn">Rebuild from form</button></div>
+      <div id="email-body" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Email body" spellcheck="true"></div>
+      <div class="attach-reminder" id="attach-reminder">📎 Remember to attach the progress report PDF before sending.</div>
+    </section>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Module → Toolkit material links, extracted from the Prisms VR Content Libraries doc. -->
+<script src="../assets/toolkit-links.js?v=1"></script>
+<script>
+  // ─── Verified links (from the approved templates + Coach Hub) ─────────
+  const LINKS = {
+    dashboard:  { label: 'Teacher Dashboard', url: 'https://live.prismsvr.com' },
+    handbook:   { label: 'Teacher Handbook', url: 'https://docs.google.com/document/d/19jdgKdDj_S9fFv0Rxkt-__A_RpCIqfJlPVO00XaneGg/view' },
+    core:       { label: 'Core Routines', url: 'https://docs.google.com/document/d/1TtxhCRBNaNocMTXPG6MrU-wgE-knsLJNV24h0D1i8NU/view' },
+    library:    { label: 'VR Content Library', url: 'https://docs.google.com/document/d/1Skm06q5j0MobBMHSv50jCqiwb5-EboI7vIRF1WAeqDs/edit?tab=t.0' },
+    math:       { label: 'Math Landing Page', url: 'https://docs.google.com/document/d/1Mrh062KycF1OW_xvqxpvCn-H-oBFUlrjFnGNkZ06jtE/edit?tab=t.0' },
+    science:    { label: 'Science Landing Page', url: 'https://docs.google.com/document/d/1cwRKdRIdLWRj-eCCiA7kb80tpqe-2b-pV7zFhnD3c2k/edit?tab=t.0' },
+    unitmaps:   { label: 'Unit Integration Maps', url: 'https://docs.google.com/document/d/1P5KMK_pdKpTpYful4IcUAfwMFDizPWIRsAuM0gYCuos/view?tab=t.xg6t84ydygg0#heading=h.jd2sb1dj5eii' },
+    cfuProtocols: { label: 'CFU Revision Protocols', url: 'https://docs.google.com/document/d/1z6AzlSlc2FFHdFNUWYLp7OaHxU5Nt2P7iaI_xrXs59g/view' },
+    hardware1p: { label: 'Hardware & Technology Routine One-Pager', url: 'https://docs.google.com/document/d/131Kq3SoUH0xbrTfO9hX8bMVBVD7ZP8uYA0bbJdxx92w/view' },
+    jitf1p:     { label: 'Just-in-Time Feedback Routine One-Pager', url: 'https://docs.google.com/document/d/1tD7wYrmV7Pap2vlmk4nphd-go509Y1AQCuWJXcAVtE8/view' },
+    writing1p:  { label: 'Writing & Discourse Routine One-Pager', url: 'https://docs.google.com/document/d/1uUQKxixOcYQxydBR3wTAA7KQbcP831ja19Ctvu6minc/view' },
+    cfu1p:      { label: 'CFU Revision Protocols', url: 'https://docs.google.com/document/d/1z6AzlSlc2FFHdFNUWYLp7OaHxU5Nt2P7iaI_xrXs59g/view' },
+    spaced1p:   { label: 'Spaced Repetition Routine One-Pager', url: 'https://docs.google.com/document/d/1gbXToWoaYHoCdDqa3sWR5lWM8L60YJC8g8A6-ME6I4g/view' }
+  };
+  const SUPPORT_EMAIL = 'support@prismsvr.com';
+  const EXEMPLARS_URL = 'https://docs.google.com/document/d/1lkrHUvpEItZjPwXju0vRUmBx_fVE1YcW2EII-UweAI0/edit?tab=t.s4gttd68fn47';
+  const RESOURCE_KEYS = ['hardware1p','jitf1p','writing1p','cfu1p','spaced1p','dashboard','handbook','core','library','math','science'];
+
+  const ROUTINES = [
+    { key: 'hardware',   label: 'Hardware & Technology',        area: 'Hardware & Technology',              resource: 'hardware1p' },
+    { key: 'jitf',       label: 'Just-in-Time Feedback',        area: 'Just-in-Time Feedback',              resource: 'jitf1p' },
+    { key: 'writing',    label: 'Writing & Discourse Routines', area: 'Writing & Discourse',                resource: 'writing1p' },
+    { key: 'assessment', label: 'Assessment & Revisions',       area: 'Assessment & Revision',              resource: 'cfu1p', whenApplicable: true },
+    { key: 'spaced',     label: 'Skill Builders',               area: 'Spaced Repetition (Skill Builders)', resource: 'spaced1p', whenApplicable: true }
+  ];
+
+  // Visit types mirror the Live Coach Tool. Stems come from the approved "Impactful Moments" guidance.
+  const VISIT_TYPES = [
+    { id: 'tutorial', label: 'Tutorial', subject: 'Tutorial Day', stems: ['Today, students became more comfortable with…', 'By the end of the Tutorial, students were able to independently…', 'I noticed increased confidence as students…'] },
+    { id: 'content-module', label: 'Content Module', subject: 'Coaching Day', stems: ['During VR, students began to…', 'Several students referenced what they experienced in VR when…', 'A noticeable shift in understanding occurred when…'] },
+    { id: 'transfer-cfu', label: 'Transfer / CFU', subject: 'Transfer Day', stems: ['Several students made connections between…', 'After reviewing feedback, students were able to…', 'During revision, students demonstrated growth by…', 'Students showed increased ownership when they…'] },
+    { id: 'skill-builder', label: 'Skill Builder', subject: 'Skill Builder Day', stems: ['During VR, students began to…', 'A noticeable shift in understanding occurred when…', 'I noticed increased confidence as students…'] }
+  ];
+
+  const FOCUS_STARTERS = {
+    hardware: { obs: 'headset [distribution / cleanup] took [X] minutes because [specific cause]…', why: 'every minute lost to logistics is a minute not spent on [synthesis / debrief]…', try: 'assigning two permanent tech helpers per class: distribute from [location], collect to [location], wipes at [location]…' },
+    jitf: { obs: 'during VR, [X] students with hands raised waited [X] minutes before getting support…', why: 'students who wait too long in VR tend to [disengage / skip ahead], and the confusion resurfaces in the CFU or debrief…', try: 'opening the Teacher Dashboard before VR and doing a slow loop every 3–4 minutes, starting with 2–3 target students…' },
+    writing: { obs: 'the class moved from VR to discussion without writing time, and [X] of [Y] students spoke…', why: 'writing before discussion gives every student the language to participate in [concept]-focused conversation…', try: '“Take 3 minutes and write silently” using the synthesis prompt, then partner share before whole-class discussion…' },
+    assessment: { obs: 'CFU [1/2] was assigned, but class ended before results were reviewed…', why: 'once students leave, the window for targeted revision closes and the misconception about [concept] tends to persist…', try: 'a 5-minute CFU review window before closure: two contrasting responses, then 90 seconds of silent revision…' },
+    spaced: { obs: 'a Skill Builder on [skill] was assigned once, but there was no plan to revisit it…', why: 'a single session builds short-term familiarity, not durable retention…', try: 'reassigning a shorter, targeted Skill Builder 1–2 weeks later as a warm-up…' }
+  };
+
+  // ─── Module Toolkits ───────────────────────────────────
+  const TOOLKITS = window.PRISMS_TOOLKITS || {};
+  const normName = s => (s || '').toLowerCase().replace(/[’']/g, "'").replace(/\s+/g, ' ').trim();
+  const TOOLKIT_INDEX = {}; Object.keys(TOOLKITS).forEach(k => TOOLKIT_INDEX[normName(k)] = TOOLKITS[k]);
+  function toolkitFor(name) { return TOOLKIT_INDEX[normName(name)] || null; }
+  const AC_GROUPS = (() => {
+    const groups = {};
+    Object.entries(TOOLKITS).forEach(([name, t]) => { (groups[t.kind] = groups[t.kind] || []).push(name); });
+    return ['Math modules', 'Science modules', 'Math Skill Builders', 'Science Skill Builders'].filter(g => groups[g]).map(g => ({ label: g, items: groups[g] }));
+  })();
+
+  const SAVE_KEY = 'prisms-email-draft-v3';
+  const COACH_KEY = 'prisms-email-coach-name';
+
+  // ─── State ─────────────────────────────────────────────
+  const state = {
+    mode: 'post',
+    visitType: 'content-module',
+    momentCount: 'one',
+    resources: new Set(),
+    resourcesTouched: false,
+    bodyEdited: false,
+    subjectEdited: false,
+    copiedSinceChange: true,
+    liveNotes: {},
+    quickId: 'pre-module',
+    q: {}                      // quick-email field values, shared across quick templates
+  };
+
+  const $ = id => document.getElementById(id);
+  const val = id => { const el = $(id); return el ? el.value.trim() : ''; };
+  const qv = key => (state.q[key] || '').trim();
+
+  // ─── Small helpers ─────────────────────────────────────
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function normalizeUrl(raw) {
+    const s = (raw || '').trim();
+    if (!s) return '';
+    if (/^https?:\/\/\S+\.\S+/i.test(s) && !/\s/.test(s)) return s;
+    if (/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(s)) return 'https://' + s;
+    return null;
+  }
+  const A_STYLE = 'color:#353C78;';
+  function a(label, url) { return url ? `<a href="${esc(url)}" style="${A_STYLE}">${esc(label)}</a>` : esc(label); }
+  function b(html) { return `<strong>${html}</strong>`; }
+  function ph(label) { return `<span class="ph">[${esc(label)}]</span>`; }
+  function sentence(s) { s = s.trim().replace(/[\s.…]+$/, ''); return s ? s + '.' : ''; }
+  function stripStem(s, stem) { const re = new RegExp('^\\s*' + stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[\\s,:…]*', 'i'); return s.replace(re, ''); }
+  function richText(s) {
+    return esc(s)
+      .replace(/(https?:\/\/[^\s<]+)/g, m => `<a href="${m}" style="${A_STYLE}">${m}</a>`)
+      .replace(/(^|[\s(])([\w.%+-]+@[\w.-]+\.[a-z]{2,})/gi, (m, pre, mail) => `${pre}<a href="mailto:${mail}" style="${A_STYLE}">${mail}</a>`);
+  }
+  function blocksFromText(text) {
+    const out = []; let bullets = null; let para = [];
+    const flushPara = () => { if (para.length) { out.push({ t: 'p', html: para.map(richText).join('<br>') }); para = []; } };
+    const flushList = () => { if (bullets) { out.push({ t: 'ul', items: bullets }); bullets = null; } };
+    text.split(/\n/).forEach(line => {
+      const m = line.match(/^\s*[-*•]\s+(.*)$/);
+      if (m) { flushPara(); (bullets = bullets || []).push(richText(m[1])); }
+      else if (!line.trim()) { flushPara(); flushList(); }
+      else { flushList(); para.push(line.trim()); }
+    });
+    flushPara(); flushList();
+    return out;
+  }
+  function longDate(d) { if (!d) return ''; const x = new Date(d + 'T12:00:00'); return isNaN(x) ? '' : x.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }); }
+  function shortDate(d) { if (!d) return ''; const x = new Date(d + 'T12:00:00'); return isNaN(x) ? '' : x.toLocaleDateString('en-US', { month: 'long', day: 'numeric' }); }
+  function coachName() { return val('coach-name'); }
+  function signoff(B, closing) { B.push({ t: 'p', html: (closing ? esc(closing) + '<br>' : '') + (coachName() ? esc(coachName()) : ph('Your Name')) }); }
+
+  // Resolve a module name to its Toolkit and materials; a pasted link overrides/fills the Toolkit URL.
+  function moduleMaterials(name, pastedLink) {
+    const t = toolkitFor(name) || {};
+    const pasted = normalizeUrl(pastedLink) || '';
+    return { known: !!toolkitFor(name), toolkit: t.toolkit || pasted, takeaways: t.takeaways || '', lessonGuide: t.lessonGuide || '', synth1: t.synth1 || '', synth2: t.synth2 || '', slides: t.slides || '', handout: t.handout || '', overview: t.overview || '', transfer: t.transfer || '', languageSupport: t.languageSupport || '' };
+  }
+
+  // ═══ POST-COACHING ═════════════════════════════════════
+  function buildPost() {
+    const B = [];
+    const teacher = val('p-teacher');
+    B.push({ t: 'p', html: 'Hello ' + (teacher ? esc(teacher) : ph('Teacher Name')) + ',' });
+    B.push({ t: 'p', html: 'Thank you for welcoming me into your classroom and for your willingness to try new instructional routines with Prisms. It was a joy working alongside you and your students.' });
+
+    B.push({ t: 'h', text: 'Highlights' });
+    const intro = state.momentCount === 'few' ? 'I wanted to share a few moments that stood out:' : 'I wanted to share one moment that stood out:';
+    const celebration = stripStem(val('p-celebration'), 'I wanted to share (one moment|a few moments) that stood out');
+    if (celebration) { B.push({ t: 'p', html: intro }); B.push(...blocksFromText(celebration)); }
+    else B.push({ t: 'p', html: intro + ' ' + ph('Add a specific impactful moment') });
+
+    const snapshot = ROUTINES.filter(r => val('p-rt-' + r.key)).map(r => `${esc(r.label)}: ${richText(sentence(val('p-rt-' + r.key)))}`);
+    const focus = ROUTINES.find(r => r.key === val('p-focus'));
+    const obs = stripStem(val('p-observe'), 'During the lesson, I noticed');
+    const why = stripStem(val('p-why'), 'This matters because');
+    const tryIt = stripStem(val('p-try'), "In the next lesson, let(’|')s try");
+    const adjust = stripStem(val('p-adjust'), 'One routine we adjusted to better fit your students was');
+    const adjustWhy = stripStem(val('p-adjust-why'), 'This helped because');
+    if (snapshot.length || focus || adjust) {
+      B.push({ t: 'h', text: 'Instructional Routines' });
+      if (snapshot.length) {
+        B.push({ t: 'p', html: 'Here is a brief snapshot of instructional routines from today’s lesson:' });
+        B.push({ t: 'ul', items: snapshot });
+      }
+      if (focus) {
+        const parts = [];
+        if (obs) parts.push('During the lesson, I noticed ' + richText(sentence(obs)));
+        if (why) parts.push('This matters because ' + richText(sentence(why)));
+        if (tryIt) parts.push('In the next lesson, let’s try ' + richText(sentence(tryIt)));
+        B.push({ t: 'p', html: 'As you plan the next lesson, one area to prioritize is: ' + b(esc(focus.label.replace(/ Routines$/, ''))) + (parts.length ? '<br>' + parts.join(' ') : '') });
+      }
+      if (adjust) {
+        let s = 'One routine we adjusted to better fit your students was ' + richText(sentence(adjust));
+        if (adjustWhy) s += ' This helped because ' + richText(adjustWhy.trim().replace(/[\s.…]+$/, '')) + ' and felt aligned to the needs of this class.';
+        B.push({ t: 'p', html: s });
+      }
+    }
+
+    const nextModule = val('p-next-module');
+    if (nextModule) {
+      const m = moduleMaterials(nextModule, $('p-next-link').value);
+      B.push({ t: 'h', text: 'Up Next' });
+      B.push({ t: 'p', html: 'Your next priority module is: ' + b(a(nextModule, m.toolkit)) + '<br>Before your next Prisms lesson:' });
+      // Single-part modules have one Synthesis Activity, so don't promise a Part II that doesn't exist.
+      const synth = (m.known && m.synth1 && !m.synth2)
+        ? 'Complete the ' + b(a('Synthesis Activity', m.synth1)) + ' as a student.'
+        : 'Complete ' + b(a('Synthesis Part I', m.synth1)) + ' and ' + b(a('Part II', m.synth2)) + ' as a student.';
+      B.push({ t: 'ul', items: [
+        'Experience the module in headset and review the ' + b(a('Module Takeaways video', m.takeaways)) + '.',
+        synth,
+        'Internalize and annotate the ' + b(a('Lesson Guide', m.lessonGuide)) + ', focusing on exemplar responses and probing questions.',
+        'Prepare the ' + b('classroom routines/materials') + ' you’ll need to lead the lesson.'
+      ] });
+    }
+
+    const items = RESOURCE_KEYS.filter(k => state.resources.has(k)).map(k => a(LINKS[k].label, LINKS[k].url));
+    [1, 2].forEach(n => {
+      const url = normalizeUrl($('p-link' + n + '-url').value); const label = val('p-link' + n + '-label');
+      if (url) items.push(a(label || url, url));
+    });
+    items.push(`For tech questions, contact <a href="mailto:${SUPPORT_EMAIL}" style="${A_STYLE}">${SUPPORT_EMAIL}</a>`);
+    B.push({ t: 'h', text: 'Resources' });
+    B.push({ t: 'ul', items });
+
+    if ($('attach-report').checked) B.push({ t: 'p', html: 'I’ve attached a progress report for your reference.' });
+    B.push({ t: 'p', html: 'Thank you for your partnership as we continue refining Prisms together.' });
+    signoff(B, 'Yours in partnership,');
+    return B;
+  }
+  function postSubject() {
+    const vt = VISIT_TYPES.find(v => v.id === state.visitType) || VISIT_TYPES[1];
+    const mod = val('p-today-module');
+    return 'Recap: Our Prisms ' + vt.subject + (mod ? ' – ' + mod : '');
+  }
+
+  // ═══ QUICK EMAILS ══════════════════════════════════════
+  // Field registry shared by all quick templates, so values carry over when switching.
+  const QF = {
+    teacher:      { label: 'Teacher name', req: true, ph: 'e.g. Ms. Johnson' },
+    teacherTeam:  { label: 'Teacher or team name', req: true, ph: 'e.g. Ms. Johnson, or 7th Grade Math Team' },
+    poc:          { label: 'Point of contact name', req: true },
+    site:         { label: 'Site or district name', req: true, hint: 'Greeting reads “Hello Team …”' },
+    date:         { label: 'Date', type: 'date', req: true },
+    tiDate:       { label: 'Teacher Institute date', type: 'date', req: true },
+    module:       { label: 'Module name', type: 'module', req: true },
+    cfu:          { label: 'Which CFU', type: 'choice', options: ['CFU 1', 'CFU 2'], req: true },
+    week:         { label: 'Week of', ph: 'e.g. May 4' },
+    vr:           { label: 'Students will…', ph: 'what they’ll do in VR' },
+    concept:      { label: 'while applying…', ph: 'key math/science concept' },
+    challenge:    { label: 'to…', ph: 'solve / explain / design / analyze the challenge' },
+    replyBy:      { label: 'Reply with availability by', type: 'date' },
+    schedLink:    { label: 'Scheduling link', type: 'link', hint: 'If you add one, the email asks them to use it instead of replying.' },
+    printedLink:  { label: 'Printed resources link', type: 'link', req: true },
+    slidesLink:   { label: 'Tutorial Day Slides link', type: 'link' },
+    tutToolkit:   { label: 'Tutorial Toolkit link', type: 'link' },
+    presurvey:    { label: 'Student Pre-Survey link', type: 'link' },
+    photos:       { label: 'Include the photos line', type: 'check', sub: '“Attached are a few photos…” Attach them yourself, or add a link below.' },
+    photosLink:   { label: 'Photos link', type: 'link' },
+    unitPlan:     { label: 'Unit Plan link', type: 'link' },
+    pacingLink:   { label: 'Pacing Meeting scheduling link', type: 'link' }
+  };
+
+  const QUICK = [
+    // ── Before a visit
+    { id: 'pre-tutorial', group: 'Before a visit', name: 'Tutorial Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'slidesLink', 'tutToolkit', 'presurvey'],
+      subject: () => 'Preparing for Our Prisms Tutorial Day',
+      build: (B, f) => {
+        B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
+        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' for Tutorial Day!' });
+        B.push({ t: 'h', text: 'Before the Visit' });
+        B.push({ t: 'ul', items: [
+          b('Complete the Tutorial in the headset') + ' so you know what students will experience.',
+          'Review the ' + b(a('Tutorial Day Slides', f.link('slidesLink'))) + ' and ' + b(a('Tutorial Toolkit', f.link('tutToolkit'))) + '.',
+          'Have students complete the ' + b(a('Student Pre-Survey', f.link('presurvey'))) + ' before their first Prisms experience, ideally the day before.' ] });
+        B.push({ t: 'h', text: 'For Tutorial Day' });
+        B.push({ t: 'ul', items: ['Headsets fully charged', 'Student login cards printed', 'Synthesis Activity printed', 'Tutorial Day Slides ready', 'Teacher Dashboard open', 'Extra batteries and wipes available', 'Classroom space identified for students to safely use the headsets'] });
+        B.push({ t: 'p', html: 'During our visit, we’ll focus on establishing strong hardware and classroom routines while helping students become comfortable and independent using Prisms.' });
+        B.push({ t: 'p', html: 'If there’s anything I should know ahead of time about your class, schedule, or setup, please let me know.' });
+        B.push({ t: 'p', html: 'Looking forward to a great first experience with your students!' });
+        signoff(B, 'Warmly,');
+      } },
+    { id: 'pre-module', group: 'Before a visit', name: 'Content Module Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'module'],
+      subject: () => 'Preparing for Our Prisms Coaching Day',
+      build: (B, f) => {
+        const m = f.mod();
+        B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
+        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' for ' + b(f.moduleLink(m.toolkit)) + '!' });
+        B.push({ t: 'p', html: 'As you prepare, please make sure you have:' });
+        B.push({ t: 'h', text: 'Before the Visit' });
+        B.push({ t: 'ul', items: [
+          b('Experience the module in the headset') + ' - use hints and anticipate misconceptions to frontload.',
+          b('Watch the ' + a('Module Takeaways video', m.takeaways) + '.'),
+          b('Complete the ' + a('Synthesis Activities', m.synth1)) + ' as a student.',
+          'Internalize and annotate the ' + b(a('Lesson Guide', m.lessonGuide)) + ', focusing especially on exemplar student responses and probing questions.',
+          'Prepare your ' + b('classroom routines and materials.'),
+          'Plan for a Prerequisite Check or Skill Builder.' ] });
+        B.push({ t: 'h', text: 'For the Coaching Day' });
+        B.push({ t: 'ul', items: ['Headsets fully charged', 'Student login cards printed', 'Synthesis Activities and Language Supports ' + b('printed'), a('Lesson Slides', m.slides) + ' ready', 'Extra batteries and wipes available', 'Teacher Dashboard open and ready'] });
+        B.push({ t: 'p', html: 'During the visit, I’ll work alongside you to support implementation through modeling, co-teaching, in-the-moment support, and reflection based on your needs.' });
+        B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
+        B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
+        signoff(B, 'Warmly,');
+      } },
+    { id: 'pre-transfer', group: 'Before a visit', name: 'Transfer / Assessment Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'module'],
+      subject: () => 'Preparing for Our Prisms Transfer Day',
+      build: (B, f) => {
+        const m = f.mod();
+        B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
+        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' for Transfer/Assessment Day in your ' + b(f.moduleLink(m.transfer || m.toolkit)) + ' unit!' });
+        B.push({ t: 'h', text: 'Before the Visit' });
+        B.push({ t: 'ul', items: [
+          'Complete all VR parts and corresponding ' + b('Synthesis Activities') + '.',
+          'Review the ' + b(a('Transfer Day Document', m.transfer)) + ' and accompanying lesson materials.',
+          'Review ' + b('CFU 1') + ' and the ' + b(a('CFU Revision Protocols', LINKS.cfuProtocols.url)) + '.' ] });
+        B.push({ t: 'h', text: 'For Transfer Day' });
+        B.push({ t: 'ul', items: ['Transfer Day materials printed or accessible for students', 'Teacher Dashboard open and ready', 'CFU 1 ready to assign'] });
+        B.push({ t: 'p', html: 'During our visit, I’ll work alongside you to support student thinking, discourse, formative assessment, and revision.' });
+        B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
+        B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
+        signoff(B, 'Warmly,');
+      } },
+    { id: 'pre-cfu', group: 'Before a visit', name: 'CFU Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'cfu', 'module'],
+      subject: () => 'Preparing for Our Prisms CFU Coaching Day',
+      build: (B, f) => {
+        const m = f.mod();
+        B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
+        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' as students complete ' + b(f.cfu) + ' for ' + b(f.moduleLink(m.toolkit)) + '.' });
+        B.push({ t: 'h', text: 'Before the Visit' });
+        B.push({ t: 'ul', items: [
+          'Review the ' + b('CFU and scoring guide/rubric') + '.',
+          'Review the ' + b(a('CFU Revision Protocols', LINKS.cfuProtocols.url)) + ' and plan for student revision.',
+          'Confirm students have completed the Prisms learning experiences that lead into this CFU.' ] });
+        B.push({ t: 'h', text: 'For CFU Day' });
+        B.push({ t: 'ul', items: ['Teacher Dashboard open and ready', 'CFU ready to assign', 'Student devices ready for access'] });
+        B.push({ t: 'p', html: 'During our visit, I’ll work alongside you to support ' + b('assessment, feedback, student revision, and using CFU results to determine next instructional steps.') });
+        B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
+        B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
+        signoff(B, 'Warmly,');
+      } },
+    { id: 'pre-skill', group: 'Before a visit', name: 'Skill Builder Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date'],
+      subject: () => 'Preparing for Our Prisms Skill Builder Day',
+      build: (B, f) => {
+        B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
+        B.push({ t: 'p', html: 'I’m looking forward to joining your class on ' + b(f.date) + ' for a Skill Builder Day!' });
+        B.push({ t: 'h', text: 'Before the Visit' });
+        B.push({ t: 'ul', items: [
+          'Identify the ' + b('specific skill') + ' students need to practice/strengthen.',
+          'Determine ' + b('which students') + ' need the practice - the whole class, a group of students, or individual students.',
+          'Select the ' + b('specific Skill Builder tasks') + ' that target that need. Whenever possible, assign targeted tasks rather than the entire Skill Builder.',
+          'If time allows, complete the selected tasks in the headset.' ] });
+        B.push({ t: 'h', text: 'For Skill Builder Day' });
+        B.push({ t: 'ul', items: ['Teacher Dashboard open with the Skill Builder ready to assign', 'Student login cards printed', 'Headsets fully charged', 'Skill Builder Lesson Slides and any accompanying activities printed, if using'] });
+        B.push({ t: 'p', html: 'During our visit, we’ll work together to monitor student progress, provide just-in-time feedback, and use what we see to determine next instructional steps.' });
+        B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
+        B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
+        signoff(B, 'Warmly,');
+      } },
+    { id: 'lesson-study', group: 'Before a visit', name: 'Lesson Study scheduling', when: 'Before a Coaching Day', fields: ['teacher', 'date', 'module', 'replyBy', 'schedLink'],
+      subject: f => 'Planning for Your ' + (qv('module') || 'Prisms') + ' Lesson',
+      build: (B, f) => {
+        const m = f.mod();
+        const sched = f.link('schedLink');
+        B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
+        B.push({ t: 'p', html: 'I’m looking forward to working with you during your upcoming Coaching Day on ' + f.date + '!' });
+        B.push({ t: 'p', html: 'Before then, we’ll meet virtually for a short, 20-30-minute Lesson Study to prepare for your ' + f.moduleName + ' lesson.' });
+        B.push({ t: 'p', html: sched ? 'Please use ' + a('this link', sched) + ' to schedule.' : qv('replyBy') ? 'Please reply with your availability by ' + esc(shortDate(qv('replyBy'))) + '.' : 'Please reply with your availability.' });
+        B.push({ t: 'p', html: 'Before our meeting, please:' });
+        B.push({ t: 'ul', items: ['Complete ' + f.moduleName + ' in the headset.', 'Review the ' + a('Module Toolkit', m.toolkit) + ' and note any questions about logistics or content.'] });
+        B.push({ t: 'p', html: 'During our time together, we’ll use the ' + a('Lesson Study Planning Handout', m.handout) + ' together to plan for student learning, synthesis and discussion, and successful classroom implementation.' });
+        B.push({ t: 'p', html: 'Looking forward to planning with you!' });
+        signoff(B, 'Warmly,');
+      } },
+    // ── Planning
+    { id: 'next-module', group: 'Planning', name: 'Next Module', when: 'Preview an upcoming module', fields: ['teacherTeam', 'module', 'week', 'vr', 'concept', 'challenge'],
+      note: 'Fill in all three “Students will… / while applying… / to…” blanks to include the preview sentence; otherwise it’s left out.',
+      subject: () => 'Your next Prisms module is a great one!',
+      build: (B, f) => {
+        const m = f.mod();
+        const week = qv('week').replace(/^the week of\s+/i, '');
+        let p1 = 'It looks like your next Prisms module is ' + f.moduleName + (week ? ' during the week of ' + esc(week) : '') + ', and it’s a great one!';
+        if (qv('vr') && qv('concept') && qv('challenge')) p1 += ` Students will ${b(esc(qv('vr')))} while applying ${b(esc(qv('concept')))} to ${b(esc(qv('challenge').replace(/[\s.]+$/, '')))}.`;
+        B.push({ t: 'p', html: 'Hi ' + f.teacherTeam + ',' });
+        B.push({ t: 'p', html: p1 });
+        B.push({ t: 'p', html: 'I’d love to work alongside you as your students engage and help bring our Prisms routines to life to maximize student success. Sharing a few tips below!' });
+        B.push({ t: 'p', html: 'Open your ' + b(a((qv('module') || 'Module') + ' Toolkit', m.toolkit)) + ' for the module' });
+        B.push({ t: 'ul', items: [
+          // Left unlinked on purpose: Toolkits' "Module Overview" is a doc, and the only video is the
+          // Module Takeaways Video, so we don't guess which one the template means.
+          'Watch the 2-minute ' + b('Module Overview video'),
+          'Print the ' + b(a('Synthesis Activities', m.synth1)) + ' for students and plan for students to complete and submit for a grade. Print out the sentence frames to support rigorous writing routines',
+          'Print your ' + b(a('Lesson Guide', m.lessonGuide)) + ' to use during the lesson so you can drive student exemplar explanations and responses',
+          'Review your ' + a('Core Routines', LINKS.core.url) + ' so you’re ready' ] });
+        B.push({ t: 'p', html: 'If you’d like to plan together, just reply and we can hop on a quick call. Otherwise, send me the date for when you’d like to do this content module or any content module or skill builder. There are three formats you can view all of our modules as you plan (' + a('Unit Integration Maps', LINKS.unitmaps.url) + ', ' + a('Prisms VR Content Libraries', LINKS.library.url) + ', List format). And I’ll work to come do the module with you.' });
+        B.push({ t: 'p', html: 'Excited to experience this one with you and your students!' });
+        signoff(B, '');
+      } },
+    { id: 'plc', group: 'Planning', name: 'PLC meeting', when: 'Before joining a PLC', fields: ['teacherTeam', 'date'],
+      subject: () => 'Looking Forward to Our Prisms PLC' + (qv('date') ? ' on ' + shortDate(qv('date')) : ''),
+      build: (B, f) => {
+        B.push({ t: 'p', html: 'Hi ' + f.teacherTeam + ',' });
+        B.push({ t: 'p', html: 'I’m looking forward to joining your PLC on ' + f.date + ' and having some time to connect around Prisms!' });
+        B.push({ t: 'p', html: 'We can use our time together to check in on where you are in your current unit, look ahead at what’s coming next, or work through any questions or planning needs your team has.' });
+        B.push({ t: 'p', html: b('During the PLC, we might:') });
+        B.push({ t: 'ul', items: ['Look ahead at upcoming Prisms learning experiences.', 'Plan for a Content Module, Skill Builder, Transfer Day, or CFU.', 'Talk through student progress and instructional next steps.', 'Explore Prisms resources or ' + a('Core Routines', LINKS.core.url) + ' that could support your team.', 'Identify where additional coaching or support would be helpful.'] });
+        B.push({ t: 'p', html: 'If there’s something specific your team would like to focus on, feel free to let me know ahead of time.' });
+        B.push({ t: 'p', html: 'Looking forward to working together!' });
+        signoff(B, 'Warmly,');
+      } },
+    // ── Teacher Institute
+    { id: 'ti-poc', group: 'Teacher Institute', name: 'TI confirmation to POC', when: 'Send at least one week before TI', fields: ['poc', 'tiDate', 'printedLink'],
+      subject: () => 'Prisms Teacher Institute: Confirming the Details',
+      build: (B, f) => {
+        B.push({ t: 'p', html: 'Hello ' + f.poc + ',' });
+        B.push({ t: 'p', html: 'We’re excited to launch Prisms with your teachers on ' + f.tiDate + '! I’m ' + (coachName() ? esc(coachName()) : ph('Your Name')) + ', and I’ll be facilitating your Teacher Institute.' });
+        B.push({ t: 'p', html: 'Please confirm the details below and fill in anything missing:' });
+        B.push({ t: 'h', text: 'Teacher Institute Details' });
+        B.push({ t: 'ul', items: ['Address:', 'Room:', 'Parking/building entry information:', 'Start time:', 'End time:', 'Lunch timing:', 'Number of attendees and roles (teachers/admin):', 'Day-of point of contact:<ul style="margin:2px 0 0;padding-left:22px;"><li>Name:</li><li>Phone:</li></ul>'] });
+        B.push({ t: 'h', text: 'Materials & Setup' });
+        B.push({ t: 'p', html: 'Please ensure we have:' });
+        const printed = f.link('printedLink');
+        B.push({ t: 'ul', items: ['Charged and updated headsets for all participants, plus a few extras', 'Enough space for participants to stand and move comfortably', 'Wi-Fi access and the ability to connect my laptop to the presentation screen', (printed ? b(a('Printed resources', printed)) : ph('Printed resources link')) + ' printed and ready for participants'] });
+        B.push({ t: 'p', html: 'Teachers should also ' + b('bring their laptops.') });
+        B.push({ t: 'p', html: 'Looking forward to working with you and your team!' });
+        signoff(B, 'Warmly,');
+      } },
+    { id: 'ti-follow', group: 'Teacher Institute', name: 'TI follow-up', when: 'Send 1–3 days after TI', fields: ['site', 'photos', 'photosLink', 'tutToolkit', 'unitPlan', 'pacingLink'],
+      subject: () => 'Thank You for a Great Prisms Teacher Institute!',
+      build: (B, f) => {
+        B.push({ t: 'p', html: 'Hello Team ' + f.site + ',' });
+        B.push({ t: 'p', html: 'Thank you for an incredible day at Prisms Teacher Institute! It was a privilege learning alongside you as you prepared to bring Prisms to your students.' });
+        if (state.q.photos) { const u = f.link('photosLink'); B.push({ t: 'p', html: 'Attached are a few photos from Teacher Institute to celebrate a great day of learning together!' + (u ? ' ' + a('View the photos', u) : '') }); }
+        B.push({ t: 'h', text: 'Next Steps' });
+        const pacing = f.link('pacingLink');
+        B.push({ t: 'ul', items: [
+          'Complete Tutorial Day with your students using the ' + a('Prisms Tutorial Toolkit', f.link('tutToolkit')) + '.',
+          'Review your ' + a('Unit Plan', f.link('unitPlan')) + ' and the implementation schedule you created during Teacher Institute.',
+          'Meet with your coach for your Teacher Pacing Meeting to finalize your plan and prepare for launch.' + (pacing ? ' ' + a('Schedule your meeting', pacing) : '') ] });
+        B.push({ t: 'p', html: 'As you begin implementing, continue to use the ' + a('Core Routines', LINKS.core.url) + ' and ' + a('Teacher Handbook', LINKS.handbook.url) + ' for ongoing support.' });
+        B.push({ t: 'p', html: 'We’re excited to continue partnering with you as you bring Prisms to life in your classroom!' });
+        signoff(B, 'Warmly,');
+      } }
+  ];
+  const quickDef = () => QUICK.find(q => q.id === state.quickId) || QUICK[0];
+
+  // Values handed to a quick template's builder: required blanks come back as highlighted placeholders.
+  function quickContext() {
+    const txt = (key, label) => qv(key) ? esc(qv(key)) : ph(label || QF[key].label);
+    return {
+      teacher: txt('teacher', 'Teacher Name'), teacherTeam: txt('teacherTeam', 'Teacher/Team Name'), poc: txt('poc', 'POC Name'), site: txt('site', 'Site/District Name'),
+      date: qv('date') ? esc(longDate(qv('date'))) : ph('Date'),
+      tiDate: qv('tiDate') ? esc(longDate(qv('tiDate'))) : ph('Day/Date'),
+      cfu: qv('cfu') ? esc(qv('cfu')) : ph('CFU 1 / CFU 2'),
+      moduleName: qv('module') ? esc(qv('module')) : ph('Module Name'),
+      mod: () => moduleMaterials(qv('module'), qv('moduleLink')),
+      moduleLink: url => qv('module') ? a(qv('module'), url) : ph('Module Name'),
+      link: key => normalizeUrl(qv(key)) || ''
+    };
+  }
+  function buildQuick() { const B = []; quickDef().build(B, quickContext()); return B; }
+
+  function renderQuickPicker() {
+    let html = ''; let group = '';
+    QUICK.forEach(q => {
+      if (q.group !== group) { if (group) html += '</div>'; html += `<div class="q-group">${esc(q.group)}</div><div class="q-list">`; group = q.group; }
+      html += `<button type="button" class="q-item" data-q-id="${q.id}" aria-pressed="${q.id === state.quickId}"><span class="q-name">${esc(q.name)}</span><span class="q-when">${esc(q.when)}</span></button>`;
+    });
+    $('q-picker').innerHTML = html + '</div>';
+  }
+  function renderQuickFields() {
+    const def = quickDef();
+    $('q-when').textContent = def.when + (def.note ? ' · ' + def.note : '');
+    const coach = `<div class="field"><label for="coach-name-q">Your name <span class="req">*</span></label><input type="text" id="coach-name-q" value="${esc(coachName())}" placeholder="Your name" /></div>`;
+    const fieldHtml = key => {
+      const f = QF[key]; const v = state.q[key] || ''; const id = 'q-' + key;
+      const lab = `${esc(f.label)}${f.req ? ' <span class="req">*</span>' : (f.type === 'check' ? '' : ' <span class="opt-tag">Optional</span>')}`;
+      if (f.type === 'check') return `<label class="check${v ? ' on' : ''}" style="margin-bottom:12px"><input type="checkbox" data-q="${key}" ${v ? 'checked' : ''} /><span>${esc(f.label)}<span class="check-sub">${esc(f.sub || '')}</span></span></label>`;
+      if (f.type === 'choice') return `<div class="field"><span class="label">${lab}</span><div class="chips">${f.options.map(o => `<button type="button" class="chip" data-q-choice="${key}" data-value="${esc(o)}" aria-pressed="${v === o}">${esc(o)}</button>`).join('')}</div></div>`;
+      if (f.type === 'module') return `<div class="field"><label for="${id}">${lab}</label><div class="ac-wrap"><input type="text" id="${id}" data-q="${key}" data-ac value="${esc(v)}" placeholder="Choose or type" autocomplete="off" /><div class="ac-dropdown"></div></div><div class="hint" id="q-module-status"></div></div>
+        <div class="field" id="q-module-link-field" style="display:none"><label for="q-moduleLink">Module Toolkit link</label><input type="url" id="q-moduleLink" data-q="moduleLink" value="${esc(state.q.moduleLink || '')}" placeholder="Paste the Toolkit link" /><div class="hint" data-link-hint="q-moduleLink"></div></div>`;
+      const type = f.type === 'date' ? 'date' : f.type === 'link' ? 'url' : 'text';
+      return `<div class="field"><label for="${id}">${lab}</label><input type="${type}" id="${id}" data-q="${key}" value="${esc(v)}" placeholder="${esc(f.ph || (f.type === 'link' ? 'Paste link' : ''))}" />${f.hint ? `<div class="hint">${esc(f.hint)}</div>` : ''}${f.type === 'link' ? `<div class="hint" data-link-hint="${id}"></div>` : ''}</div>`;
+    };
+    const first = def.fields[0];
+    $('q-fields').innerHTML = `<div class="row-2">${fieldHtml(first)}${coach}</div>` + def.fields.slice(1).map(fieldHtml).join('');
+    $('q-fields').querySelectorAll('[data-ac]').forEach(setupAutocomplete);
+  }
+
+  // ─── Shared rendering ──────────────────────────────────
+  function renderBlocks(blocks) {
+    return blocks.map(bl => {
+      if (bl.t === 'h') return `<p style="margin:18px 0 4px;"><strong style="color:#DB1873;">${esc(bl.text)}</strong></p>`;
+      if (bl.t === 'ul') return `<ul style="margin:0 0 12px;padding-left:22px;">${bl.items.map(i => `<li style="margin-bottom:3px;">${i}</li>`).join('')}</ul>`;
+      return `<p style="margin:0 0 12px;">${bl.html}</p>`;
+    }).join('');
+  }
+  function moduleStatus(name, statusEl, linkFieldEl) {
+    if (!statusEl) return;
+    if (!name) { statusEl.textContent = ''; statusEl.className = 'hint'; linkFieldEl.style.display = 'none'; return; }
+    if (toolkitFor(name)) { statusEl.textContent = '✓ Toolkit materials found and linked'; statusEl.className = 'hint ok'; linkFieldEl.style.display = 'none'; }
+    else { statusEl.textContent = 'No Toolkit on file for this name. Paste its link below, or pick a name from the list.'; statusEl.className = 'hint warn'; linkFieldEl.style.display = ''; }
+  }
+
+  function render() {
+    const post = state.mode === 'post';
+    if (!state.bodyEdited) $('email-body').innerHTML = renderBlocks(post ? buildPost() : buildQuick());
+    if (!state.subjectEdited) $('subject').value = post ? postSubject() : quickDef().subject();
+    $('edit-notice').classList.toggle('show', state.bodyEdited);
+    $('attach-reminder').classList.toggle('show', post && $('attach-report').checked);
+    document.querySelectorAll('[data-link-hint]').forEach(h => {
+      const input = $(h.dataset.linkHint); if (!input) return;
+      const raw = input.value.trim(); const bad = raw && normalizeUrl(raw) === null;
+      h.textContent = bad ? 'That doesn’t look like a link, so it won’t be added. Paste the full address.' : '';
+      h.classList.toggle('warn', !!bad);
+    });
+    $('focus-fields').style.display = val('p-focus') ? '' : 'none';
+    moduleStatus(val('p-next-module'), $('p-next-status'), $('p-next-link-field'));
+    if (!post) moduleStatus(qv('module'), $('q-module-status'), $('q-module-link-field'));
+    ROUTINES.forEach(r => {
+      const n = state.liveNotes[r.key]; const el = $('live-' + r.key);
+      if (!n) { el.style.display = 'none'; return; }
+      const label = { green: 'Strong', yellow: 'Nearly there', red: 'Needs focus' }[n.color] || 'Rated';
+      el.style.display = '';
+      el.textContent = 'From your Live Coach visit · ' + label + (n.manual ? ' · Your note: ' + n.manual : '') + (n.items ? ' · Checklist: ' + n.items : '');
+    });
+    state.copiedSinceChange = false;
+    saveDraft();
+  }
+
+  function setMode(m) {
+    state.mode = m;
+    document.querySelectorAll('.mode-btn').forEach(btn => { const on = btn.dataset.mode === m; btn.classList.toggle('active', on); btn.setAttribute('aria-checked', on); });
+    document.querySelectorAll('[data-show]').forEach(s => s.style.display = s.dataset.show === m ? '' : 'none');
+    if (m === 'quick') renderQuickFields();
+    state.bodyEdited = false; state.subjectEdited = false;
+    render();
+  }
+  function setQuick(id) {
+    state.quickId = id;
+    document.querySelectorAll('.q-item').forEach(x => x.setAttribute('aria-pressed', x.dataset.qId === id));
+    renderQuickFields();
+    state.bodyEdited = false; state.subjectEdited = false;
+    render();
+  }
+
+  function setVisitType(id) {
+    state.visitType = id;
+    document.querySelectorAll('#visit-chips .chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.visit === id));
+    const vt = VISIT_TYPES.find(v => v.id === id);
+    $('tip-celebrate').innerHTML =
+      `<div class="tip-head">Sentence stems · ${esc(vt.label)}</div><ul>${vt.stems.map(s => `<li>${esc(s)}</li>`).join('')}</ul>` +
+      `<div class="tip-head">A strong moment</div><ul><li>Names a specific student or teacher</li><li>Anchors to a specific moment (task, question or decision)</li><li>Connects the VR experience to instructional thinking</li><li>Explains why it mattered for learning, not just engagement</li></ul>` +
+      `<div class="tip-head">Avoid</div><ul><li>“Students were engaged and excited” · “The lesson went well”</li></ul>` +
+      `<div style="margin-top:6px"><a href="${EXEMPLARS_URL}" target="_blank" rel="noopener">See approved exemplars ↗</a></div>`;
+  }
+  function setMomentCount(c) {
+    state.momentCount = c;
+    document.querySelectorAll('[data-count]').forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.count === c));
+    $('p-celebration-stem').textContent = c === 'few' ? 'I wanted to share a few moments that stood out…' : 'I wanted to share one moment that stood out…';
+  }
+  function renderResourceList() {
+    $('resource-list').innerHTML = RESOURCE_KEYS.map(k =>
+      `<label class="check${state.resources.has(k) ? ' on' : ''}"><input type="checkbox" data-res="${k}"${state.resources.has(k) ? ' checked' : ''} /><span>${esc(LINKS[k].label)}</span></label>`).join('');
+  }
+  function updateFocusTips() {
+    const s = FOCUS_STARTERS[val('p-focus')];
+    $('tip-focus').innerHTML = s ? `<div class="tip-head">During the lesson, I noticed…</div><ul><li>${esc(s.obs)}</li></ul><div class="tip-head">This matters because…</div><ul><li>${esc(s.why)}</li></ul><div class="tip-head">In the next lesson, let’s try…</div><ul><li>${esc(s.try)}</li></ul>` : '';
+  }
+  function syncFocusResource() {
+    if (state.resourcesTouched) return;
+    state.resources.clear();
+    const r = ROUTINES.find(x => x.key === val('p-focus'));
+    if (r) state.resources.add(r.resource);
+    renderResourceList();
+  }
+
+  // ─── Autocomplete ──────────────────────────────────────
+  function setupAutocomplete(input) {
+    const dropdown = input.parentElement.querySelector('.ac-dropdown');
+    const all = []; AC_GROUPS.forEach(g => g.items.forEach(item => all.push({ g: g.label, item })));
+    let hi = -1;
+    const close = () => { dropdown.classList.remove('open'); hi = -1; };
+    const pick = v => { input.value = v; close(); input.dispatchEvent(new Event('input', { bubbles: true })); close(); };
+    input.addEventListener('input', e => {
+      if (!e.isTrusted && !dropdown.classList.contains('open')) return;
+      const q = input.value.trim().toLowerCase(); dropdown.innerHTML = ''; hi = -1;
+      if (!q) return close();
+      const matches = all.filter(x => x.item.toLowerCase().includes(q)).slice(0, 12);
+      if (!matches.length || (matches.length === 1 && matches[0].item.toLowerCase() === q)) return close();
+      let last = '';
+      matches.forEach(m => {
+        if (m.g !== last) { const gl = document.createElement('div'); gl.className = 'ac-group-label'; gl.textContent = m.g; dropdown.appendChild(gl); last = m.g; }
+        const it = document.createElement('div'); it.className = 'ac-item'; it.textContent = m.item;
+        it.addEventListener('mousedown', ev => { ev.preventDefault(); pick(m.item); });
+        dropdown.appendChild(it);
+      });
+      dropdown.classList.add('open');
+    });
+    input.addEventListener('keydown', e => {
+      const items = dropdown.querySelectorAll('.ac-item'); if (!dropdown.classList.contains('open')) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); hi = Math.max(0, Math.min(items.length - 1, hi + (e.key === 'ArrowDown' ? 1 : -1))); items.forEach((it, i) => it.classList.toggle('highlighted', i === hi)); }
+      else if (e.key === 'Enter' && hi >= 0) { e.preventDefault(); pick(items[hi].textContent); }
+      else if (e.key === 'Escape') close();
+    });
+    input.addEventListener('blur', () => setTimeout(close, 150));
+  }
+
+  // ─── Copy ──────────────────────────────────────────────
+  function bodyToPlainText(root) {
+    const lines = [];
+    root.childNodes.forEach(node => {
+      if (node.nodeType === 3) { if (node.textContent.trim()) lines.push(node.textContent.trim(), ''); return; }
+      if (node.nodeType !== 1) return;
+      if (node.tagName === 'UL' || node.tagName === 'OL') {
+        node.querySelectorAll(':scope > li').forEach(li => {
+          const nested = li.querySelector('ul');
+          const own = [...li.childNodes].filter(c => c !== nested).map(c => c.textContent).join('').trim();
+          lines.push('• ' + own);
+          if (nested) nested.querySelectorAll('li').forEach(n => lines.push('   ◦ ' + n.innerText.trim()));
+        });
+        lines.push('');
+      } else { const t = node.innerText.replace(/\n{3,}/g, '\n\n').trim(); if (t) lines.push(t, ''); }
+    });
+    return lines.join('\n').trim();
+  }
+  function cleanHtmlForCopy() {
+    const clone = $('email-body').cloneNode(true);
+    clone.querySelectorAll('.ph').forEach(s => s.replaceWith(document.createTextNode(s.textContent)));
+    return `<div style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#111827;">${clone.innerHTML}</div>`;
+  }
+  function missingItems() {
+    const m = [];
+    if (!coachName()) m.push('your name');
+    if (state.mode === 'post') { if (!val('p-teacher')) m.push('teacher name'); if (!val('p-celebration')) m.push('a highlight'); }
+    else quickDef().fields.forEach(k => { if (QF[k].req && !qv(k)) m.push(QF[k].label.toLowerCase()); });
+    return m;
+  }
+  async function copyEmail() {
+    const missing = missingItems();
+    const hasPh = $('email-body').querySelector('.ph');
+    if ((missing.length || hasPh) && !confirm('Still missing: ' + (missing.join(', ') || 'a [bracketed] placeholder') + '.\n\nCopy anyway?')) return;
+    const html = cleanHtmlForCopy(); const text = bodyToPlainText($('email-body'));
+    try {
+      await navigator.clipboard.write([new ClipboardItem({ 'text/html': new Blob([html], { type: 'text/html' }), 'text/plain': new Blob([text], { type: 'text/plain' }) })]);
+    } catch (e) {
+      try { await navigator.clipboard.writeText(text); } catch (e2) { toast('Couldn’t copy. Select the email text and copy it manually.'); return; }
+    }
+    state.copiedSinceChange = true;
+    const btn = $('copy-btn'); btn.classList.add('copied'); btn.querySelector('span').textContent = 'Copied!';
+    setTimeout(() => { btn.classList.remove('copied'); btn.querySelector('span').textContent = 'Copy email'; }, 2200);
+    toast(state.mode === 'post' && $('attach-report').checked ? 'Copied. Paste it into your email and attach the progress report.' : 'Copied. Paste it into your email.');
+  }
+  async function copySubject() {
+    try { await navigator.clipboard.writeText($('subject').value); toast('Subject copied.'); } catch (e) { toast('Couldn’t copy the subject.'); }
+  }
+
+  // ─── Next teacher ──────────────────────────────────────
+  function nextTeacher() {
+    if (!state.copiedSinceChange && !confirm('You haven’t copied this email yet. Clear it and start the next teacher?')) return;
+    if (state.mode === 'post') {
+      document.querySelectorAll('[data-save]').forEach(el => {
+        if (el.id === 'p-date') return;
+        if (el.type === 'checkbox') el.checked = false; else el.value = '';
+      });
+      state.resources.clear(); state.resourcesTouched = false; renderResourceList();
+      state.liveNotes = {};
+      setMomentCount('one');
+      updateFocusTips();
+      $('more-detail').open = false;
+    } else {
+      state.q = {};
+      renderQuickFields();
+    }
+    state.bodyEdited = false; state.subjectEdited = false;
+    if (location.search) history.replaceState(null, '', location.pathname);
+    render();
+    state.copiedSinceChange = true;
+    $('form-pane').scrollTo({ top: 0 }); window.scrollTo({ top: 0 });
+    const first = state.mode === 'post' ? $('p-teacher') : $('q-fields').querySelector('input');
+    if (first) first.focus();
+    toast('Cleared. Your name and email choice are kept.');
+  }
+
+  let toastTimer;
+  function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2600); }
+
+  // ─── Draft persistence (this device only) ──────────────
+  function saveDraft() {
+    const d = { mode: state.mode, quickId: state.quickId, q: state.q, visitType: state.visitType, momentCount: state.momentCount, resources: [...state.resources], resourcesTouched: state.resourcesTouched, liveNotes: state.liveNotes, fields: {} };
+    document.querySelectorAll('[data-save]').forEach(el => d.fields[el.id] = el.type === 'checkbox' ? el.checked : el.value);
+    try { localStorage.setItem(SAVE_KEY, JSON.stringify(d)); localStorage.setItem(COACH_KEY, coachName()); } catch (e) {}
+  }
+  function restoreDraft() {
+    let d; try { d = JSON.parse(localStorage.getItem(SAVE_KEY)); } catch (e) {}
+    if (!d) return false;
+    Object.entries(d.fields || {}).forEach(([id, v]) => { const el = $(id); if (!el) return; if (el.type === 'checkbox') el.checked = !!v; else el.value = v; });
+    if (d.visitType && VISIT_TYPES.some(v => v.id === d.visitType)) state.visitType = d.visitType;
+    if (d.momentCount) state.momentCount = d.momentCount;
+    state.resources = new Set(d.resources || []); state.resourcesTouched = !!d.resourcesTouched;
+    state.liveNotes = d.liveNotes || {};
+    state.q = d.q || {};
+    if (QUICK.some(q => q.id === d.quickId)) state.quickId = d.quickId;
+    if (['post', 'quick'].includes(d.mode)) state.mode = d.mode;
+    return true;
+  }
+
+  // ─── Handoff from the Live Coach Tool (?data=) ─────────
+  function restoreFromLiveTool() {
+    const raw = new URLSearchParams(location.search).get('data');
+    if (!raw) return false;
+    let p;
+    try { p = JSON.parse(decodeURIComponent(Array.prototype.map.call(atob(decodeURIComponent(raw)), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''))); } catch (e) { return false; }
+    if (!p) return false;
+    restoreDraft(); // keep quick-email values; the post-coaching form is replaced below
+    document.querySelectorAll('[data-save]').forEach(el => { if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+    state.mode = 'post';
+    state.visitType = VISIT_TYPES.some(v => v.id === p.lessonType) ? p.lessonType : (p.visitType === 'tutorial' ? 'tutorial' : 'content-module');
+    state.momentCount = 'one';
+    if (p.teacher) $('p-teacher').value = p.teacher;
+    if (p.coach) $('coach-name').value = p.coach;
+    if (p.date) $('p-date').value = p.date;
+    if (p.highlights) $('p-celebration').value = p.highlights;
+    // Ratings are shown beside each routine as a reference, never written into the email for the coach.
+    // Only the coach's own free-text note on a routine rated green pre-fills its snapshot line
+    // (the "Specifically: …" part is the checklist items, which may describe what did NOT happen).
+    // The first routine not rated green is pre-selected as the area to prioritize.
+    let focusSet = false;
+    state.liveNotes = {};
+    ROUTINES.forEach(r => {
+      const rating = (p.ratings || {})[r.area]; if (!rating) return;
+      const note = rating.note || '';
+      const i = note.indexOf('Specifically:');
+      const manual = (i >= 0 ? note.slice(0, i) : note).trim();
+      const items = i >= 0 ? note.slice(i + 'Specifically:'.length).trim() : '';
+      state.liveNotes[r.key] = { color: rating.color, manual, items };
+      if (rating.color === 'green' && manual) $('p-rt-' + r.key).value = manual;
+      if (!focusSet && rating.color && rating.color !== 'green') { $('p-focus').value = r.key; focusSet = true; }
+    });
+    state.resources.clear(); state.resourcesTouched = false;
+    history.replaceState(null, '', location.pathname);
+    return true;
+  }
+
+  // ─── Init ──────────────────────────────────────────────
+  function init() {
+    $('visit-chips').innerHTML = VISIT_TYPES.map(v => `<button type="button" class="chip" data-visit="${v.id}" aria-pressed="false">${esc(v.label)}</button>`).join('');
+    $('routine-fields').innerHTML = ROUTINES.map(r =>
+      `<div class="field"><label for="p-rt-${r.key}">${esc(r.label)}${r.whenApplicable ? ' <span class="opt-tag">When applicable</span>' : ''}</label><input type="text" id="p-rt-${r.key}" data-save placeholder="One sentence on what you observed" /><div class="hint" id="live-${r.key}" style="display:none"></div></div>`).join('');
+    $('p-focus').innerHTML = '<option value="">None this time</option>' + ROUTINES.map(r => `<option value="${r.key}">${esc(r.label.replace(/ Routines$/, ''))}</option>`).join('');
+    document.querySelectorAll('#form-pane [data-show=post] [data-ac]').forEach(setupAutocomplete);
+
+    try { $('coach-name').value = localStorage.getItem(COACH_KEY) || ''; } catch (e) {}
+    if (!restoreFromLiveTool()) restoreDraft();
+    if (!val('p-date')) { const n = new Date(); $('p-date').value = `${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, '0')}-${String(n.getDate()).padStart(2, '0')}`; }
+    if (ROUTINES.some(r => val('p-rt-' + r.key)) || val('p-adjust') || val('p-link1-url') || val('p-link2-url')) $('more-detail').open = true;
+
+    // Events
+    document.querySelectorAll('.mode-btn').forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
+    $('q-picker').addEventListener('click', e => { const it = e.target.closest('[data-q-id]'); if (it) setQuick(it.dataset.qId); });
+    $('q-fields').addEventListener('input', e => {
+      if (e.target.id === 'coach-name-q') { $('coach-name').value = e.target.value; render(); return; }
+      const k = e.target.dataset.q; if (!k) return;
+      state.q[k] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      render();
+    });
+    $('q-fields').addEventListener('change', e => {
+      const k = e.target.dataset.q; if (!k || e.target.type !== 'checkbox') return;
+      state.q[k] = e.target.checked; e.target.closest('.check').classList.toggle('on', e.target.checked); render();
+    });
+    $('q-fields').addEventListener('click', e => {
+      const c = e.target.closest('[data-q-choice]'); if (!c) return;
+      state.q[c.dataset.qChoice] = c.dataset.value;
+      c.parentElement.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+      render();
+    });
+    $('visit-chips').addEventListener('click', e => { const c = e.target.closest('[data-visit]'); if (c) { setVisitType(c.dataset.visit); render(); } });
+    document.querySelectorAll('[data-count]').forEach(btn => btn.addEventListener('click', () => { setMomentCount(btn.dataset.count); render(); }));
+    $('resource-list').addEventListener('change', e => {
+      const k = e.target.dataset.res; if (!k) return;
+      state.resourcesTouched = true;
+      e.target.checked ? state.resources.add(k) : state.resources.delete(k);
+      e.target.closest('.check').classList.toggle('on', e.target.checked);
+      render();
+    });
+    $('p-focus').addEventListener('change', () => { updateFocusTips(); syncFocusResource(); render(); });
+    document.querySelector('[data-show=post]').addEventListener('input', e => { if (!e.target.dataset.res) render(); });
+    document.querySelector('[data-show=post]').addEventListener('change', e => { if (e.target.type === 'checkbox' && !e.target.dataset.res) { e.target.closest('.check')?.classList.toggle('on', e.target.checked); render(); } });
+    document.querySelectorAll('[data-tip]').forEach(btn => btn.addEventListener('click', () => $(btn.dataset.tip).classList.toggle('open')));
+    $('email-body').addEventListener('input', () => { state.bodyEdited = true; state.copiedSinceChange = false; $('edit-notice').classList.add('show'); });
+    $('subject').addEventListener('input', () => { state.subjectEdited = true; state.copiedSinceChange = false; });
+    $('rebuild-btn').addEventListener('click', () => { if (confirm('Rebuild the email from the form? Your direct edits to the email will be replaced.')) { state.bodyEdited = false; state.subjectEdited = false; render(); } });
+    $('copy-btn').addEventListener('click', copyEmail);
+    $('copy-subject-btn').addEventListener('click', copySubject);
+    $('next-teacher-btn').addEventListener('click', nextTeacher);
+
+    document.querySelectorAll('[data-show=post] .check input[type=checkbox]').forEach(cb => cb.closest('.check').classList.toggle('on', cb.checked));
+    renderQuickPicker();
+    setVisitType(state.visitType);
+    setMomentCount(state.momentCount);
+    updateFocusTips();
+    if (!state.resourcesTouched) syncFocusResource(); else renderResourceList();
+    setMode(state.mode);
+    state.copiedSinceChange = true;
+  }
+  init();
+</script>
+</body>
+</html>
