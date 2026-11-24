@@ -775,7 +775,8 @@
       date: qv('date') ? esc(longDate(qv('date'))) : ph('Date'),
       tiDate: qv('tiDate') ? esc(longDate(qv('tiDate'))) : ph('Day/Date'),
       cfu: qv('cfu') ? esc(qv('cfu')) : ph('CFU 1 / CFU 2'),
-      moduleName: qv('module') ? esc(qv('module')) : ph('Module Name'),
+      // Module names are always bold in the email so they stand out.
+      moduleName: b(qv('module') ? esc(qv('module')) : ph('Module Name')),
       mod: () => moduleMaterials(qv('module'), qv('moduleLink')),
       moduleLink: url => qv('module') ? a(qv('module'), url) : ph('Module Name'),
       link: key => normalizeUrl(qv(key)) || '',
