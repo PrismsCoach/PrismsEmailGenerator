@@ -125,6 +125,18 @@
     .mitem svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; }
     .mitem-label { font-size: 12.5px; font-weight: 600; color: var(--navy); line-height: 1.3; }
     .mitem-detail { font-size: 11.5px; color: var(--gray-600); line-height: 1.3; }
+    .saved-empty { font-size: 12.5px; color: var(--gray-400); line-height: 1.5; }
+    .saved-search { margin-bottom: 8px; }
+    .saved-list { max-height: 232px; overflow-y: auto; margin: 0 -4px; }
+    .saved-row { display: flex; align-items: center; gap: 8px; padding: 7px 4px; border-top: 1px solid var(--gray-100); }
+    .saved-row:first-child { border-top: none; }
+    .saved-row.current { background: var(--navy-light); border-radius: 7px; }
+    .saved-open { flex: 1; min-width: 0; text-align: left; background: none; border: none; cursor: pointer; font-family: 'Roboto', sans-serif; padding: 2px 4px; border-radius: 6px; }
+    .saved-open:hover .saved-name { text-decoration: underline; }
+    .saved-name { display: block; font-size: 14px; font-weight: 600; color: var(--navy); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .saved-meta { display: block; font-size: 11.5px; color: var(--gray-400); margin-top: 1px; }
+    .saved-delete { flex-shrink: 0; width: 28px; height: 28px; background: white; border: 1.5px solid var(--gray-200); border-radius: 6px; font-size: 13px; color: var(--gray-400); cursor: pointer; }
+    .saved-delete:hover { border-color: var(--red); color: var(--red); background: var(--red-light); }
     .report-foot { font-size: 10.5px; color: var(--gray-400); padding: 0 22px 14px; }
 
     @media (max-width: 900px) {
@@ -154,6 +166,11 @@
 <div class="layout">
   <!-- ─── Coach entry ─────────────────────────────────────── -->
   <div class="form-col">
+    <div class="card" id="saved-card">
+      <div class="card-title">Your teachers</div>
+      <div class="card-desc" style="margin-bottom:10px">Saved on this device when you download a PDF. Open a teacher to pick up where you left off, then check what’s new.</div>
+      <div id="saved"></div>
+    </div>
     <div class="card">
       <div class="card-title">Teacher</div>
       <div class="field">
@@ -439,6 +456,7 @@
 
   function onChange() {
     saveState();
+    if (typeof renderSaved === 'function' && document.activeElement?.id === 'teacher') renderSaved();
     updateSlotSummaries();
     renderPreview();
     $('status').textContent = '';
@@ -702,25 +720,94 @@
     return `Prisms-Progress-${slug || 'teacher'}.pdf`;
   }
 
+  // ═══════════════════════════════════════════════════════════
+  //  YOUR TEACHERS — saved per teacher in this browser only
+  // ═══════════════════════════════════════════════════════════
+  const SAVED_KEY = 'prisms-progress-teachers-v1';
+  const teacherKey = name => name.trim().toLowerCase().replace(/\s+/g, ' ');
+  function loadSaved() { try { return JSON.parse(localStorage.getItem(SAVED_KEY)) || {}; } catch (e) { return {}; } }
+  function writeSaved(all) { try { localStorage.setItem(SAVED_KEY, JSON.stringify(all)); return true; } catch (e) { return false; } }
+  // What gets remembered: everything except the coach note, which is for one visit.
+  const snapshot = st => ({ teacher: st.teacher.trim(), tutorial: st.tutorial, champion: st.champion, modules: st.modules });
+  let savedFilter = '';
+
+  function saveCurrentTeacher() {
+    const all = loadSaved();
+    all[teacherKey(state.teacher)] = { data: JSON.parse(JSON.stringify(snapshot(state))), savedAt: Date.now() };
+    return writeSaved(all);
+  }
+  function currentMatchesSaved() {
+    const rec = loadSaved()[teacherKey(state.teacher)];
+    return !!rec && JSON.stringify(rec.data) === JSON.stringify(snapshot(state));
+  }
+  function formIsEmpty() {
+    return !state.teacher.trim() && !state.tutorial && !state.champion && !state.note.trim() &&
+      state.modules.every(m => !m.name.trim() && !m.prereqName.trim() && !m.spacedName.trim() && !Object.values(m.done).some(Boolean));
+  }
+
+  function renderSaved() {
+    const entries = Object.entries(loadSaved()).sort((a, b) => a[1].data.teacher.localeCompare(b[1].data.teacher));
+    if (!entries.length) { $('saved').innerHTML = '<div class="saved-empty">No saved teachers yet. Download a teacher’s PDF and they’ll appear here.</div>'; return; }
+    const shown = entries.filter(([, r]) => r.data.teacher.toLowerCase().includes(savedFilter.toLowerCase()));
+    const cur = teacherKey(state.teacher);
+    $('saved').innerHTML = `
+      ${entries.length > 6 ? `<div class="field saved-search"><input type="text" id="saved-filter" autocomplete="off" placeholder="Find a teacher…" aria-label="Find a saved teacher" value="${esc(savedFilter)}" /></div>` : ''}
+      <div class="saved-list">${shown.length ? shown.map(([k, r]) => {
+        const mods = r.data.modules.filter(isModuleIncluded).length;
+        const when = new Date(r.savedAt).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+        return `<div class="saved-row ${k === cur ? 'current' : ''}">
+          <button type="button" class="saved-open" data-open="${esc(k)}"><span class="saved-name">${esc(r.data.teacher)}</span><span class="saved-meta">Saved ${esc(when)} · ${mods} module${mods === 1 ? '' : 's'}${r.data.tutorial ? ' · Tutorial ✓' : ''}</span></button>
+          <button type="button" class="saved-delete" data-delete="${esc(k)}" aria-label="Remove ${esc(r.data.teacher)}">✕</button>
+        </div>`; }).join('') : '<div class="saved-empty">No match.</div>'}</div>`;
+  }
+
+  $('saved').addEventListener('input', e => {
+    if (e.target.id !== 'saved-filter') return;
+    e.stopPropagation(); savedFilter = e.target.value; renderSaved();
+    const f = $('saved-filter'); f.focus(); f.setSelectionRange(f.value.length, f.value.length);
+  });
+  $('saved').addEventListener('click', e => {
+    const open = e.target.closest('[data-open]'), del = e.target.closest('[data-delete]');
+    const all = loadSaved();
+    if (open) {
+      const rec = all[open.dataset.open]; if (!rec) return;
+      if (teacherKey(state.teacher) !== open.dataset.open && !formIsEmpty() && !currentMatchesSaved() &&
+          !confirm(`Replace the current form with ${rec.data.teacher}’s saved report? Unsaved changes for ${state.teacher.trim() || 'this teacher'} will be lost.`)) return;
+      state = Object.assign(emptyState(), JSON.parse(JSON.stringify(rec.data)), { note: '' });
+      saveState(); syncTopFields(); renderSlots(); renderPreview(); renderSaved();
+      $('status').textContent = `Opened ${rec.data.teacher}. Check what’s new, then download.`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (del) {
+      const rec = all[del.dataset.delete]; if (!rec) return;
+      if (!confirm(`Remove ${rec.data.teacher} from your saved teachers? This can’t be undone.`)) return;
+      delete all[del.dataset.delete]; writeSaved(all); renderSaved();
+      $('status').textContent = `Removed ${rec.data.teacher} from your teachers.`;
+    }
+  });
+
   $('download-btn').addEventListener('click', () => {
     const report = buildReport(state);
     if (!report.teacher) { $('status').textContent = 'Add the teacher’s name first.'; $('teacher').focus(); return; }
     makePdf(report).save(pdfFileName(report));
-    $('status').textContent = 'PDF downloaded — attach it to your email to ' + report.teacher + '.';
+    const saved = saveCurrentTeacher(); renderSaved();
+    $('status').textContent = saved
+      ? `PDF downloaded and ${report.teacher} saved to Your teachers. Attach the PDF to your email.`
+      : 'PDF downloaded — attach it to your email to ' + report.teacher + '. (This browser couldn’t save the teacher.)';
   });
 
   $('next-btn').addEventListener('click', () => {
     const name = state.teacher.trim();
-    if (name && !confirm(`Clear ${name}’s report and start the next teacher?`)) return;
+    if (name && !currentMatchesSaved() && !confirm(`${name}’s latest changes aren’t saved yet (they save when you download the PDF). Clear the form anyway?`)) return;
     state = emptyState();
     try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
     syncTopFields(); renderSlots(); renderPreview();
+    renderSaved();
     $('status').textContent = 'Cleared. Ready for the next teacher.';
     window.scrollTo({ top: 0, behavior: 'smooth' });
     $('teacher').focus({ preventScroll: true });
   });
 
-  syncTopFields(); renderSlots(); renderPreview();
+  syncTopFields(); renderSlots(); renderPreview(); renderSaved();
 </script>
 </body>
 </html>
