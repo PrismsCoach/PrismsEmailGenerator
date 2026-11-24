@@ -324,7 +324,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- Module → Toolkit material links, extracted from the Prisms VR Content Libraries doc. -->
-<script src="../assets/toolkit-links.js?v=1"></script>
+<script src="../assets/toolkit-links.js?v=2"></script>
 <script>
   // ─── Verified links (from the approved templates + Coach Hub) ─────────
   const LINKS = {
@@ -340,7 +340,20 @@
     jitf1p:     { label: 'Just-in-Time Feedback Routine One-Pager', url: 'https://docs.google.com/document/d/1tD7wYrmV7Pap2vlmk4nphd-go509Y1AQCuWJXcAVtE8/view' },
     writing1p:  { label: 'Writing & Discourse Routine One-Pager', url: 'https://docs.google.com/document/d/1uUQKxixOcYQxydBR3wTAA7KQbcP831ja19Ctvu6minc/view' },
     cfu1p:      { label: 'CFU Revision Protocols', url: 'https://docs.google.com/document/d/1z6AzlSlc2FFHdFNUWYLp7OaHxU5Nt2P7iaI_xrXs59g/view' },
-    spaced1p:   { label: 'Spaced Repetition Routine One-Pager', url: 'https://docs.google.com/document/d/1gbXToWoaYHoCdDqa3sWR5lWM8L60YJC8g8A6-ME6I4g/view' }
+    spaced1p:   { label: 'Spaced Repetition Routine One-Pager', url: 'https://docs.google.com/document/d/1gbXToWoaYHoCdDqa3sWR5lWM8L60YJC8g8A6-ME6I4g/view' },
+    // From the Teacher Handbook (and the Math Toolkit Landing Page for the Tutorial Toolkit).
+    tutorialToolkit: { label: 'Tutorial Toolkit', url: 'https://docs.google.com/document/d/1e7Rx98qsqIPRSZCTnBFKJdNGqwvqXCuhcZ6eQ-1_Nvg/view' },
+    preSurveyEn: { label: 'Tutorial Day Pre-Survey (English)', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdno-b9NYyXqsUuH0ZKdMna-REOueHegSmLfVPQhOa1Ty67TA/viewform' },
+    preSurveyEs: { label: 'Tutorial Day Pre-Survey (Spanish)', url: 'https://docs.google.com/forms/d/e/1FAIpQLSc__XjAqCAeCUDFX6sycsBUHJiB3CY5fgSL6wLXuvo_7bbY3g/viewform' },
+    // Exact Core Routines URL used in the approved Next Module Email tab.
+    coreNextModule: { label: 'Core Routines', url: 'https://docs.google.com/document/d/1TtxhCRBNaNocMTXPG6MrU-wgE-knsLJNV24h0D1i8NU/view?tab=t.0' }
+  };
+  // Tutorial Day Slides, one deck per headset, from the Tutorial Module Toolkit.
+  const TUTORIAL_SLIDES = {
+    'Pico Neo 3':   'https://docs.google.com/presentation/d/1rweRfi7G2hY0EBCZtGzhnyOADh6JZ609jKV0zZt__hw/edit?slide=id.gcfca83f91a_1_1627#slide=id.gcfca83f91a_1_1627',
+    'Pico 4 Ultra': 'https://docs.google.com/presentation/d/1FfkOuCSflhSr3vDK0oclOGXt7nktEMrLdsHxQHI-4dE/edit?slide=id.gcfca83f91a_1_1627#slide=id.gcfca83f91a_1_1627',
+    'Meta Quest 2': 'https://docs.google.com/presentation/d/1aF-e7Zcdz4l6tvuSaurt8SeM5aFlwv4iWtGy9AFGfT4/edit?slide=id.gcfca83f91a_1_1627#slide=id.gcfca83f91a_1_1627',
+    'Meta Quest 3': 'https://docs.google.com/presentation/d/1qOal6NDfT0LcYLNxp7vA4uZocIia8nUMen1ZCT-oCsM/edit?slide=id.gcfca83f91a_1_1627#slide=id.gcfca83f91a_1_1627'
   };
   const SUPPORT_EMAIL = 'support@prismsvr.com';
   const EXEMPLARS_URL = 'https://docs.google.com/document/d/1lkrHUvpEItZjPwXju0vRUmBx_fVE1YcW2EII-UweAI0/edit?tab=t.s4gttd68fn47';
@@ -395,6 +408,7 @@
     subjectEdited: false,
     copiedSinceChange: true,
     liveNotes: {},
+    nextLinkFor: '',           // module name a pasted Up Next Toolkit link was pasted for
     quickId: 'pre-module',
     q: {}                      // quick-email field values, shared across quick templates
   };
@@ -402,6 +416,9 @@
   const $ = id => document.getElementById(id);
   const val = id => { const el = $(id); return el ? el.value.trim() : ''; };
   const qv = key => (state.q[key] || '').trim();
+  const qOpt = key => qv(key) || (QF[key] && QF[key].def) || '';
+  const qMode = () => qOpt('schedMode');
+  const qShown = key => !QF[key].show || QF[key].show();
 
   // ─── Small helpers ─────────────────────────────────────
   function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -445,7 +462,17 @@
   function moduleMaterials(name, pastedLink) {
     const t = toolkitFor(name) || {};
     const pasted = normalizeUrl(pastedLink) || '';
-    return { known: !!toolkitFor(name), toolkit: t.toolkit || pasted, takeaways: t.takeaways || '', lessonGuide: t.lessonGuide || '', synth1: t.synth1 || '', synth2: t.synth2 || '', slides: t.slides || '', handout: t.handout || '', overview: t.overview || '', transfer: t.transfer || '', languageSupport: t.languageSupport || '' };
+    return { known: !!toolkitFor(name), toolkit: t.toolkit || pasted, takeaways: t.takeaways || '', lessonGuide: t.lessonGuide || '', lessonGuide2: t.lessonGuide2 || '', synth1: t.synth1 || '', synth2: t.synth2 || '', synthParts: t.synthParts || 0, slides: t.slides || '', handout: t.handout || '', transfer: t.transfer || '' };
+  }
+  // Keeps the approved phrase ("Synthesis Activities", "Lesson Guide") and links it to the right file(s).
+  // Two-part modules get both parts linked after the phrase; a single activity links the phrase itself.
+  function synthPhrase(m, phrase) {
+    if (m.synthParts === 2) return b(phrase) + ' (' + a('Part I', m.synth1) + ', ' + a('Part II', m.synth2) + ')';
+    return b(a(phrase, m.synthParts === 1 ? m.synth1 : ''));
+  }
+  function lessonGuidePhrase(m) {
+    if (m.lessonGuide2) return b('Lesson Guide') + ' (' + a('Part 1', m.lessonGuide) + ', ' + a('Part 2', m.lessonGuide2) + ')';
+    return b(a('Lesson Guide', m.lessonGuide));
   }
 
   // ═══ POST-COACHING ═════════════════════════════════════
@@ -493,14 +520,15 @@
       const m = moduleMaterials(nextModule, $('p-next-link').value);
       B.push({ t: 'h', text: 'Up Next' });
       B.push({ t: 'p', html: 'Your next priority module is: ' + b(a(nextModule, m.toolkit)) + '<br>Before your next Prisms lesson:' });
-      // Single-part modules have one Synthesis Activity, so don't promise a Part II that doesn't exist.
-      const synth = (m.known && m.synth1 && !m.synth2)
+      // Approved wording names Part I and Part II. The singular is used only when the Toolkit data
+      // confirms a single Synthesis Activity; unknown modules keep the approved wording, unlinked.
+      const synth = m.synthParts === 1
         ? 'Complete the ' + b(a('Synthesis Activity', m.synth1)) + ' as a student.'
         : 'Complete ' + b(a('Synthesis Part I', m.synth1)) + ' and ' + b(a('Part II', m.synth2)) + ' as a student.';
       B.push({ t: 'ul', items: [
         'Experience the module in headset and review the ' + b(a('Module Takeaways video', m.takeaways)) + '.',
         synth,
-        'Internalize and annotate the ' + b(a('Lesson Guide', m.lessonGuide)) + ', focusing on exemplar responses and probing questions.',
+        'Internalize and annotate the ' + lessonGuidePhrase(m) + ', focusing on exemplar responses and probing questions.',
         'Prepare the ' + b('classroom routines/materials') + ' you’ll need to lead the lesson.'
       ] });
     }
@@ -536,17 +564,18 @@
     tiDate:       { label: 'Teacher Institute date', type: 'date', req: true },
     module:       { label: 'Module name', type: 'module', req: true },
     cfu:          { label: 'Which CFU', type: 'choice', options: ['CFU 1', 'CFU 2'], req: true },
-    week:         { label: 'Week of', ph: 'e.g. May 4' },
-    vr:           { label: 'Students will…', ph: 'what they’ll do in VR' },
-    concept:      { label: 'while applying…', ph: 'key math/science concept' },
-    challenge:    { label: 'to…', ph: 'solve / explain / design / analyze the challenge' },
-    replyBy:      { label: 'Reply with availability by', type: 'date' },
-    schedLink:    { label: 'Scheduling link', type: 'link', hint: 'If you add one, the email asks them to use it instead of replying.' },
+    week:         { label: 'Week of', req: true, ph: 'e.g. May 4' },
+    vr:           { label: 'Students will…', req: true, ph: 'what they’ll do in VR', blank: 'what they’ll do in VR' },
+    concept:      { label: 'while applying…', req: true, ph: 'key math/science concept', blank: 'key math/science concept' },
+    challenge:    { label: 'to…', req: true, ph: 'solve / explain / design / analyze the challenge', blank: 'solve/explain/design/analyze the challenge' },
+    schedMode:    { label: 'How should they schedule?', type: 'choice', options: ['Reply by a date', 'Scheduling link'], def: 'Reply by a date', req: true, rerender: true },
+    replyBy:      { label: 'Reply with availability by', type: 'date', req: true, show: () => qMode() === 'Reply by a date' },
+    schedLink:    { label: 'Scheduling link', type: 'link', req: true, show: () => qMode() === 'Scheduling link' },
     printedLink:  { label: 'Printed resources link', type: 'link', req: true },
-    slidesLink:   { label: 'Tutorial Day Slides link', type: 'link' },
-    tutToolkit:   { label: 'Tutorial Toolkit link', type: 'link' },
-    presurvey:    { label: 'Student Pre-Survey link', type: 'link' },
-    photos:       { label: 'Include the photos line', type: 'check', sub: '“Attached are a few photos…” Attach them yourself, or add a link below.' },
+    headset:      { label: 'Headset', type: 'choice', options: Object.keys(TUTORIAL_SLIDES), hint: 'Links the Tutorial Day Slides for this headset.' },
+    surveyLang:   { label: 'Student Pre-Survey', type: 'choice', options: ['English', 'Spanish', 'Both'], def: 'English' },
+    tutToolkit:   { label: 'Tutorial Toolkit link', type: 'link', hint: 'Leave blank to use the standard Tutorial Toolkit.' },
+    photos:       { label: 'I’m attaching photos', type: 'check', sub: 'Adds the photo line. Adding a photos link below also adds it.' },
     photosLink:   { label: 'Photos link', type: 'link' },
     unitPlan:     { label: 'Unit Plan link', type: 'link' },
     pacingLink:   { label: 'Pacing Meeting scheduling link', type: 'link' }
@@ -554,7 +583,7 @@
 
   const QUICK = [
     // ── Before a visit
-    { id: 'pre-tutorial', group: 'Before a visit', name: 'Tutorial Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'slidesLink', 'tutToolkit', 'presurvey'],
+    { id: 'pre-tutorial', group: 'Before a visit', name: 'Tutorial Day', when: 'Send 48 hours before the visit', fields: ['teacher', 'date', 'headset', 'surveyLang'],
       subject: () => 'Preparing for Our Prisms Tutorial Day',
       build: (B, f) => {
         B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
@@ -562,8 +591,8 @@
         B.push({ t: 'h', text: 'Before the Visit' });
         B.push({ t: 'ul', items: [
           b('Complete the Tutorial in the headset') + ' so you know what students will experience.',
-          'Review the ' + b(a('Tutorial Day Slides', f.link('slidesLink'))) + ' and ' + b(a('Tutorial Toolkit', f.link('tutToolkit'))) + '.',
-          'Have students complete the ' + b(a('Student Pre-Survey', f.link('presurvey'))) + ' before their first Prisms experience, ideally the day before.' ] });
+          'Review the ' + b(a('Tutorial Day Slides', TUTORIAL_SLIDES[qv('headset')] || '')) + ' and ' + b(a('Tutorial Toolkit', LINKS.tutorialToolkit.url)) + '.',
+          'Have students complete the ' + f.survey() + ' before their first Prisms experience, ideally the day before.' ] });
         B.push({ t: 'h', text: 'For Tutorial Day' });
         B.push({ t: 'ul', items: ['Headsets fully charged', 'Student login cards printed', 'Synthesis Activity printed', 'Tutorial Day Slides ready', 'Teacher Dashboard open', 'Extra batteries and wipes available', 'Classroom space identified for students to safely use the headsets'] });
         B.push({ t: 'p', html: 'During our visit, we’ll focus on establishing strong hardware and classroom routines while helping students become comfortable and independent using Prisms.' });
@@ -582,8 +611,8 @@
         B.push({ t: 'ul', items: [
           b('Experience the module in the headset') + ' - use hints and anticipate misconceptions to frontload.',
           b('Watch the ' + a('Module Takeaways video', m.takeaways) + '.'),
-          b('Complete the ' + a('Synthesis Activities', m.synth1)) + ' as a student.',
-          'Internalize and annotate the ' + b(a('Lesson Guide', m.lessonGuide)) + ', focusing especially on exemplar student responses and probing questions.',
+          b('Complete the') + ' ' + synthPhrase(m, 'Synthesis Activities') + ' as a student.',
+          'Internalize and annotate the ' + lessonGuidePhrase(m) + ', focusing especially on exemplar student responses and probing questions.',
           'Prepare your ' + b('classroom routines and materials.'),
           'Plan for a Prerequisite Check or Skill Builder.' ] });
         B.push({ t: 'h', text: 'For the Coaching Day' });
@@ -647,7 +676,7 @@
         B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
         signoff(B, 'Warmly,');
       } },
-    { id: 'lesson-study', group: 'Before a visit', name: 'Lesson Study scheduling', when: 'Before a Coaching Day', fields: ['teacher', 'date', 'module', 'replyBy', 'schedLink'],
+    { id: 'lesson-study', group: 'Before a visit', name: 'Lesson Study scheduling', when: 'Before a Coaching Day', fields: ['teacher', 'date', 'module', 'schedMode', 'replyBy', 'schedLink'],
       subject: f => 'Planning for Your ' + (qv('module') || 'Prisms') + ' Lesson',
       build: (B, f) => {
         const m = f.mod();
@@ -655,7 +684,10 @@
         B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
         B.push({ t: 'p', html: 'I’m looking forward to working with you during your upcoming Coaching Day on ' + f.date + '!' });
         B.push({ t: 'p', html: 'Before then, we’ll meet virtually for a short, 20-30-minute Lesson Study to prepare for your ' + f.moduleName + ' lesson.' });
-        B.push({ t: 'p', html: sched ? 'Please use ' + a('this link', sched) + ' to schedule.' : qv('replyBy') ? 'Please reply with your availability by ' + esc(shortDate(qv('replyBy'))) + '.' : 'Please reply with your availability.' });
+        // Approved: "Please [reply with your availability by DATE OR use this LINK to schedule]." Only the chosen option is generated.
+        B.push({ t: 'p', html: qMode() === 'Scheduling link'
+          ? 'Please use ' + (sched ? a('this link', sched) : 'this link ' + ph('Scheduling link')) + ' to schedule.'
+          : 'Please reply with your availability by ' + (qv('replyBy') ? esc(shortDate(qv('replyBy'))) : ph('Date')) + '.' });
         B.push({ t: 'p', html: 'Before our meeting, please:' });
         B.push({ t: 'ul', items: ['Complete ' + f.moduleName + ' in the headset.', 'Review the ' + a('Module Toolkit', m.toolkit) + ' and note any questions about logistics or content.'] });
         B.push({ t: 'p', html: 'During our time together, we’ll use the ' + a('Lesson Study Planning Handout', m.handout) + ' together to plan for student learning, synthesis and discussion, and successful classroom implementation.' });
@@ -664,13 +696,13 @@
       } },
     // ── Planning
     { id: 'next-module', group: 'Planning', name: 'Next Module', when: 'Preview an upcoming module', fields: ['teacherTeam', 'module', 'week', 'vr', 'concept', 'challenge'],
-      note: 'Fill in all three “Students will… / while applying… / to…” blanks to include the preview sentence; otherwise it’s left out.',
       subject: () => 'Your next Prisms module is a great one!',
       build: (B, f) => {
         const m = f.mod();
         const week = qv('week').replace(/^the week of\s+/i, '');
-        let p1 = 'It looks like your next Prisms module is ' + f.moduleName + (week ? ' during the week of ' + esc(week) : '') + ', and it’s a great one!';
-        if (qv('vr') && qv('concept') && qv('challenge')) p1 += ` Students will ${b(esc(qv('vr')))} while applying ${b(esc(qv('concept')))} to ${b(esc(qv('challenge').replace(/[\s.]+$/, '')))}.`;
+        const fill = key => qv(key) ? esc(qv(key).replace(/[\s.]+$/, '')) : ph(QF[key].blank);
+        const p1 = 'It looks like your next Prisms module is ' + f.moduleName + ' during the week of ' + (week ? esc(week) : ph('date')) + ', and it’s a great one!'
+          + ' Students will ' + b(fill('vr')) + ' while applying ' + b(fill('concept')) + ' to ' + b(fill('challenge')) + '.';
         B.push({ t: 'p', html: 'Hi ' + f.teacherTeam + ',' });
         B.push({ t: 'p', html: p1 });
         B.push({ t: 'p', html: 'I’d love to work alongside you as your students engage and help bring our Prisms routines to life to maximize student success. Sharing a few tips below!' });
@@ -679,10 +711,10 @@
           // Left unlinked on purpose: Toolkits' "Module Overview" is a doc, and the only video is the
           // Module Takeaways Video, so we don't guess which one the template means.
           'Watch the 2-minute ' + b('Module Overview video'),
-          'Print the ' + b(a('Synthesis Activities', m.synth1)) + ' for students and plan for students to complete and submit for a grade. Print out the sentence frames to support rigorous writing routines',
-          'Print your ' + b(a('Lesson Guide', m.lessonGuide)) + ' to use during the lesson so you can drive student exemplar explanations and responses',
-          'Review your ' + a('Core Routines', LINKS.core.url) + ' so you’re ready' ] });
-        B.push({ t: 'p', html: 'If you’d like to plan together, just reply and we can hop on a quick call. Otherwise, send me the date for when you’d like to do this content module or any content module or skill builder. There are three formats you can view all of our modules as you plan (' + a('Unit Integration Maps', LINKS.unitmaps.url) + ', ' + a('Prisms VR Content Libraries', LINKS.library.url) + ', List format). And I’ll work to come do the module with you.' });
+          'Print the ' + synthPhrase(m, 'Synthesis Activities') + ' for students and plan for students to complete and submit for a grade. Print out the sentence frames to support rigorous writing routines',
+          'Print your ' + lessonGuidePhrase(m) + ' to use during the lesson so you can drive student exemplar explanations and responses',
+          'Review your ' + a('Core Routines', LINKS.coreNextModule.url) + ' so you’re ready' ] });
+        B.push({ t: 'p', html: 'If you’d like to plan together, just reply and we can hop on a quick call. Otherwise, send me the date for when you’d like to do this content module or any content module or skill builder. There are three formats you can view all of our modules as you plan: ' + a('Unit Integration Maps', LINKS.unitmaps.url) + ', ' + a('Prisms VR Content Libraries', LINKS.library.url) + ', List format. And I’ll work to come do the module with you.' });
         B.push({ t: 'p', html: 'Excited to experience this one with you and your students!' });
         signoff(B, '');
       } },
@@ -720,11 +752,12 @@
       build: (B, f) => {
         B.push({ t: 'p', html: 'Hello Team ' + f.site + ',' });
         B.push({ t: 'p', html: 'Thank you for an incredible day at Prisms Teacher Institute! It was a privilege learning alongside you as you prepared to bring Prisms to your students.' });
-        if (state.q.photos) { const u = f.link('photosLink'); B.push({ t: 'p', html: 'Attached are a few photos from Teacher Institute to celebrate a great day of learning together!' + (u ? ' ' + a('View the photos', u) : '') }); }
+        const photosUrl = f.link('photosLink');
+        if (state.q.photos || photosUrl) { const u = photosUrl; B.push({ t: 'p', html: 'Attached are a few photos from Teacher Institute to celebrate a great day of learning together!' + (u ? ' ' + a('View the photos', u) : '') }); }
         B.push({ t: 'h', text: 'Next Steps' });
         const pacing = f.link('pacingLink');
         B.push({ t: 'ul', items: [
-          'Complete Tutorial Day with your students using the ' + a('Prisms Tutorial Toolkit', f.link('tutToolkit')) + '.',
+          'Complete Tutorial Day with your students using the ' + a('Prisms Tutorial Toolkit', f.link('tutToolkit') || LINKS.tutorialToolkit.url) + '.',
           'Review your ' + a('Unit Plan', f.link('unitPlan')) + ' and the implementation schedule you created during Teacher Institute.',
           'Meet with your coach for your Teacher Pacing Meeting to finalize your plan and prepare for launch.' + (pacing ? ' ' + a('Schedule your meeting', pacing) : '') ] });
         B.push({ t: 'p', html: 'As you begin implementing, continue to use the ' + a('Core Routines', LINKS.core.url) + ' and ' + a('Teacher Handbook', LINKS.handbook.url) + ' for ongoing support.' });
@@ -745,7 +778,12 @@
       moduleName: qv('module') ? esc(qv('module')) : ph('Module Name'),
       mod: () => moduleMaterials(qv('module'), qv('moduleLink')),
       moduleLink: url => qv('module') ? a(qv('module'), url) : ph('Module Name'),
-      link: key => normalizeUrl(qv(key)) || ''
+      link: key => normalizeUrl(qv(key)) || '',
+      survey: () => {
+        const lang = qOpt('surveyLang');
+        if (lang === 'Both') return b('Student Pre-Survey') + ' (' + a('English', LINKS.preSurveyEn.url) + ', ' + a('Spanish', LINKS.preSurveyEs.url) + ')';
+        return b(a('Student Pre-Survey', lang === 'Spanish' ? LINKS.preSurveyEs.url : LINKS.preSurveyEn.url));
+      }
     };
   }
   function buildQuick() { const B = []; quickDef().build(B, quickContext()); return B; }
@@ -766,14 +804,14 @@
       const f = QF[key]; const v = state.q[key] || ''; const id = 'q-' + key;
       const lab = `${esc(f.label)}${f.req ? ' <span class="req">*</span>' : (f.type === 'check' ? '' : ' <span class="opt-tag">Optional</span>')}`;
       if (f.type === 'check') return `<label class="check${v ? ' on' : ''}" style="margin-bottom:12px"><input type="checkbox" data-q="${key}" ${v ? 'checked' : ''} /><span>${esc(f.label)}<span class="check-sub">${esc(f.sub || '')}</span></span></label>`;
-      if (f.type === 'choice') return `<div class="field"><span class="label">${lab}</span><div class="chips">${f.options.map(o => `<button type="button" class="chip" data-q-choice="${key}" data-value="${esc(o)}" aria-pressed="${v === o}">${esc(o)}</button>`).join('')}</div></div>`;
+      if (f.type === 'choice') { const cur = v || f.def || ''; return `<div class="field"><span class="label">${f.req || f.def ? esc(f.label) : lab}</span><div class="chips">${f.options.map(o => `<button type="button" class="chip" data-q-choice="${key}" data-value="${esc(o)}" aria-pressed="${cur === o}">${esc(o)}</button>`).join('')}</div>${f.hint ? `<div class="hint">${esc(f.hint)}</div>` : ''}</div>`; }
       if (f.type === 'module') return `<div class="field"><label for="${id}">${lab}</label><div class="ac-wrap"><input type="text" id="${id}" data-q="${key}" data-ac="modules" value="${esc(v)}" placeholder="Click to choose, or type to search" autocomplete="off" /><div class="ac-dropdown"></div></div><div class="hint" id="q-module-status"></div></div>
         <div class="field" id="q-module-link-field" style="display:none"><label for="q-moduleLink">Module Toolkit link</label><input type="url" id="q-moduleLink" data-q="moduleLink" value="${esc(state.q.moduleLink || '')}" placeholder="Paste the Toolkit link" /><div class="hint" data-link-hint="q-moduleLink"></div></div>`;
       const type = f.type === 'date' ? 'date' : f.type === 'link' ? 'url' : 'text';
       return `<div class="field"><label for="${id}">${lab}</label><input type="${type}" id="${id}" data-q="${key}" value="${esc(v)}" placeholder="${esc(f.ph || (f.type === 'link' ? 'Paste link' : ''))}" />${f.hint ? `<div class="hint">${esc(f.hint)}</div>` : ''}${f.type === 'link' ? `<div class="hint" data-link-hint="${id}"></div>` : ''}</div>`;
     };
     const first = def.fields[0];
-    $('q-fields').innerHTML = `<div class="row-2">${fieldHtml(first)}${coach}</div>` + def.fields.slice(1).map(fieldHtml).join('');
+    $('q-fields').innerHTML = `<div class="row-2">${fieldHtml(first)}${coach}</div>` + def.fields.slice(1).filter(qShown).map(fieldHtml).join('');
     $('q-fields').querySelectorAll('[data-ac]').forEach(setupAutocomplete);
   }
 
@@ -792,8 +830,19 @@
     else { statusEl.textContent = 'No Toolkit on file for this name. Paste its link below, or pick a name from the list.'; statusEl.className = 'hint warn'; linkFieldEl.style.display = ''; }
   }
 
+  // A pasted Toolkit link belongs to the module it was pasted for. If the coach switches modules,
+  // drop it so it can't attach to the new module.
+  function dropStaleModuleLinks() {
+    if (val('p-next-link') && normName(val('p-next-module')) !== state.nextLinkFor) $('p-next-link').value = '';
+    if (qv('moduleLink') && normName(qv('module')) !== state.q.moduleLinkFor) {
+      state.q.moduleLink = '';
+      if ($('q-moduleLink')) $('q-moduleLink').value = '';
+    }
+  }
+
   function render() {
     const post = state.mode === 'post';
+    dropStaleModuleLinks();
     if (!state.bodyEdited) $('email-body').innerHTML = renderBlocks(post ? buildPost() : buildQuick());
     if (!state.subjectEdited) $('subject').value = post ? postSubject() : quickDef().subject();
     $('edit-notice').classList.toggle('show', state.bodyEdited);
@@ -940,7 +989,7 @@
     const m = [];
     if (!coachName()) m.push('your name');
     if (state.mode === 'post') { if (!val('p-teacher')) m.push('teacher name'); if (!val('p-celebration')) m.push('a highlight'); }
-    else quickDef().fields.forEach(k => { if (QF[k].req && !qv(k)) m.push(QF[k].label.toLowerCase()); });
+    else quickDef().fields.forEach(k => { if (QF[k].req && qShown(k) && !qOpt(k)) m.push(QF[k].label.toLowerCase().replace(/…$/, '')); });
     return m;
   }
   async function copyEmail() {
@@ -994,7 +1043,7 @@
 
   // ─── Draft persistence (this device only) ──────────────
   function saveDraft() {
-    const d = { mode: state.mode, quickId: state.quickId, q: state.q, visitType: state.visitType, momentCount: state.momentCount, resources: [...state.resources], resourcesTouched: state.resourcesTouched, liveNotes: state.liveNotes, fields: {} };
+    const d = { mode: state.mode, quickId: state.quickId, q: state.q, visitType: state.visitType, momentCount: state.momentCount, resources: [...state.resources], resourcesTouched: state.resourcesTouched, liveNotes: state.liveNotes, nextLinkFor: state.nextLinkFor, fields: {} };
     document.querySelectorAll('[data-save]').forEach(el => d.fields[el.id] = el.type === 'checkbox' ? el.checked : el.value);
     try { localStorage.setItem(SAVE_KEY, JSON.stringify(d)); localStorage.setItem(COACH_KEY, coachName()); } catch (e) {}
   }
@@ -1006,6 +1055,7 @@
     if (d.momentCount) state.momentCount = d.momentCount;
     state.resources = new Set(d.resources || []); state.resourcesTouched = !!d.resourcesTouched;
     state.liveNotes = d.liveNotes || {};
+    state.nextLinkFor = d.nextLinkFor || '';
     state.q = d.q || {};
     if (QUICK.some(q => q.id === d.quickId)) state.quickId = d.quickId;
     if (['post', 'quick'].includes(d.mode)) state.mode = d.mode;
@@ -1069,6 +1119,7 @@
       if (e.target.id === 'coach-name-q') { $('coach-name').value = e.target.value; render(); return; }
       const k = e.target.dataset.q; if (!k) return;
       state.q[k] = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      if (k === 'moduleLink') state.q.moduleLinkFor = normName(qv('module'));
       render();
     });
     $('q-fields').addEventListener('change', e => {
@@ -1079,6 +1130,7 @@
       const c = e.target.closest('[data-q-choice]'); if (!c) return;
       state.q[c.dataset.qChoice] = c.dataset.value;
       c.parentElement.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x === c));
+      if (QF[c.dataset.qChoice].rerender) renderQuickFields();
       render();
     });
     $('visit-chips').addEventListener('click', e => { const c = e.target.closest('[data-visit]'); if (c) { setVisitType(c.dataset.visit); render(); } });
@@ -1091,6 +1143,7 @@
       render();
     });
     $('p-focus').addEventListener('change', () => { updateFocusTips(); syncFocusResource(); render(); });
+    $('p-next-link').addEventListener('input', () => { state.nextLinkFor = normName(val('p-next-module')); });
     document.querySelector('[data-show=post]').addEventListener('input', e => { if (!e.target.dataset.res) render(); });
     document.querySelector('[data-show=post]').addEventListener('change', e => { if (e.target.type === 'checkbox' && !e.target.dataset.res) { e.target.closest('.check')?.classList.toggle('on', e.target.checked); render(); } });
     document.querySelectorAll('[data-tip]').forEach(btn => btn.addEventListener('click', () => $(btn.dataset.tip).classList.toggle('open')));
