@@ -110,7 +110,9 @@
 
     /* autocomplete */
     .ac-wrap { position: relative; }
-    .ac-dropdown { display: none; position: absolute; top: calc(100% + 2px); left: 0; right: 0; background: white; border: 1px solid var(--gray-200); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 50; max-height: 220px; overflow-y: auto; }
+    .ac-dropdown { display: none; position: absolute; top: calc(100% + 2px); left: 0; right: 0; background: white; border: 1px solid var(--gray-200); border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 50; max-height: 300px; overflow-y: auto; }
+    .ac-wrap input { padding-right: 34px !important; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") !important; background-repeat: no-repeat !important; background-position: right 12px center !important; }
+    .ac-group-label { position: sticky; top: 0; background: white; }
     .ac-dropdown.open { display: block; }
     .ac-group-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--gray-400); padding: 8px 12px 4px; }
     .ac-item { padding: 8px 12px; font-size: 13px; cursor: pointer; color: var(--gray-700); }
@@ -202,7 +204,7 @@
           </div>
           <div class="row-2">
             <div class="field"><label for="p-today-module">Today's module <span class="opt-tag">Optional</span></label>
-              <div class="ac-wrap"><input type="text" id="p-today-module" data-save data-ac placeholder="Choose or type" autocomplete="off" /><div class="ac-dropdown"></div></div>
+              <div class="ac-wrap"><input type="text" id="p-today-module" data-save data-ac placeholder="Click to choose, or type to search" autocomplete="off" /><div class="ac-dropdown"></div></div>
               <div class="hint">Used in the subject line.</div>
             </div>
             <div class="field"><label for="p-date">Date of visit</label><input type="date" id="p-date" data-save /></div>
@@ -249,7 +251,7 @@
           <div class="card-header"><span class="card-number">4</span><div><div class="card-title">Up Next <span class="opt-tag">Optional</span></div>
             <div class="card-desc">Pick the next priority module. Its Toolkit materials are linked in the email automatically.</div></div></div>
           <div class="field"><label for="p-next-module">Next priority module</label>
-            <div class="ac-wrap"><input type="text" id="p-next-module" data-save data-ac placeholder="Choose or type" autocomplete="off" /><div class="ac-dropdown"></div></div>
+            <div class="ac-wrap"><input type="text" id="p-next-module" data-save data-ac placeholder="Click to choose, or type to search" autocomplete="off" /><div class="ac-dropdown"></div></div>
             <div class="hint" id="p-next-status"></div>
           </div>
           <div class="field" id="p-next-link-field" style="display:none"><label for="p-next-link">Module Toolkit link</label><input type="url" id="p-next-link" data-save data-link placeholder="Paste the Toolkit link" /><div class="hint" data-link-hint="p-next-link"></div></div>
@@ -764,7 +766,7 @@
       const lab = `${esc(f.label)}${f.req ? ' <span class="req">*</span>' : (f.type === 'check' ? '' : ' <span class="opt-tag">Optional</span>')}`;
       if (f.type === 'check') return `<label class="check${v ? ' on' : ''}" style="margin-bottom:12px"><input type="checkbox" data-q="${key}" ${v ? 'checked' : ''} /><span>${esc(f.label)}<span class="check-sub">${esc(f.sub || '')}</span></span></label>`;
       if (f.type === 'choice') return `<div class="field"><span class="label">${lab}</span><div class="chips">${f.options.map(o => `<button type="button" class="chip" data-q-choice="${key}" data-value="${esc(o)}" aria-pressed="${v === o}">${esc(o)}</button>`).join('')}</div></div>`;
-      if (f.type === 'module') return `<div class="field"><label for="${id}">${lab}</label><div class="ac-wrap"><input type="text" id="${id}" data-q="${key}" data-ac value="${esc(v)}" placeholder="Choose or type" autocomplete="off" /><div class="ac-dropdown"></div></div><div class="hint" id="q-module-status"></div></div>
+      if (f.type === 'module') return `<div class="field"><label for="${id}">${lab}</label><div class="ac-wrap"><input type="text" id="${id}" data-q="${key}" data-ac="modules" value="${esc(v)}" placeholder="Click to choose, or type to search" autocomplete="off" /><div class="ac-dropdown"></div></div><div class="hint" id="q-module-status"></div></div>
         <div class="field" id="q-module-link-field" style="display:none"><label for="q-moduleLink">Module Toolkit link</label><input type="url" id="q-moduleLink" data-q="moduleLink" value="${esc(state.q.moduleLink || '')}" placeholder="Paste the Toolkit link" /><div class="hint" data-link-hint="q-moduleLink"></div></div>`;
       const type = f.type === 'date' ? 'date' : f.type === 'link' ? 'url' : 'text';
       return `<div class="field"><label for="${id}">${lab}</label><input type="${type}" id="${id}" data-q="${key}" value="${esc(v)}" placeholder="${esc(f.ph || (f.type === 'link' ? 'Paste link' : ''))}" />${f.hint ? `<div class="hint">${esc(f.hint)}</div>` : ''}${f.type === 'link' ? `<div class="hint" data-link-hint="${id}"></div>` : ''}</div>`;
@@ -863,34 +865,51 @@
   }
 
   // ─── Autocomplete ──────────────────────────────────────
+  // Module picker: clicking the field opens the full list (math, then science[, then Skill Builders]);
+  // typing narrows it. data-ac="modules" limits the list to content modules.
   function setupAutocomplete(input) {
     const dropdown = input.parentElement.querySelector('.ac-dropdown');
-    const all = []; AC_GROUPS.forEach(g => g.items.forEach(item => all.push({ g: g.label, item })));
+    const groups = input.dataset.ac === 'modules' ? AC_GROUPS.filter(g => /modules$/.test(g.label)) : AC_GROUPS;
+    const all = []; groups.forEach(g => g.items.forEach(item => all.push({ g: g.label, item })));
     let hi = -1;
     const close = () => { dropdown.classList.remove('open'); hi = -1; };
     const pick = v => { input.value = v; close(); input.dispatchEvent(new Event('input', { bubbles: true })); close(); };
-    input.addEventListener('input', e => {
-      if (!e.isTrusted && !dropdown.classList.contains('open')) return;
-      const q = input.value.trim().toLowerCase(); dropdown.innerHTML = ''; hi = -1;
-      if (!q) return close();
-      const matches = all.filter(x => x.item.toLowerCase().includes(q)).slice(0, 12);
-      if (!matches.length || (matches.length === 1 && matches[0].item.toLowerCase() === q)) return close();
+    const show = showAll => {
+      const q = showAll ? '' : input.value.trim().toLowerCase();
+      dropdown.innerHTML = ''; hi = -1;
+      const matches = q ? all.filter(x => x.item.toLowerCase().includes(q)) : all;
+      if (!matches.length) {
+        dropdown.innerHTML = '<div class="ac-group-label" style="text-transform:none;letter-spacing:0;font-weight:500;padding:10px 12px">No module by that name. You can keep it as typed.</div>';
+        dropdown.classList.add('open'); return;
+      }
       let last = '';
       matches.forEach(m => {
         if (m.g !== last) { const gl = document.createElement('div'); gl.className = 'ac-group-label'; gl.textContent = m.g; dropdown.appendChild(gl); last = m.g; }
         const it = document.createElement('div'); it.className = 'ac-item'; it.textContent = m.item;
+        if (m.item === input.value.trim()) it.classList.add('highlighted');
         it.addEventListener('mousedown', ev => { ev.preventDefault(); pick(m.item); });
         dropdown.appendChild(it);
       });
       dropdown.classList.add('open');
-    });
+      dropdown.querySelector('.ac-item.highlighted')?.scrollIntoView({ block: 'nearest' });
+    };
+    // Opening on focus/click shows everything, even when a module is already chosen, so it's easy to switch.
+    input.addEventListener('focus', () => show(true));
+    input.addEventListener('click', () => { if (!dropdown.classList.contains('open')) show(true); });
+    input.addEventListener('input', e => { if (e.isTrusted) show(false); });
     input.addEventListener('keydown', e => {
-      const items = dropdown.querySelectorAll('.ac-item'); if (!dropdown.classList.contains('open')) return;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); hi = Math.max(0, Math.min(items.length - 1, hi + (e.key === 'ArrowDown' ? 1 : -1))); items.forEach((it, i) => it.classList.toggle('highlighted', i === hi)); }
+      if (!dropdown.classList.contains('open')) { if (e.key === 'ArrowDown') { e.preventDefault(); show(true); } return; }
+      const items = dropdown.querySelectorAll('.ac-item');
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); hi = Math.max(0, Math.min(items.length - 1, hi + (e.key === 'ArrowDown' ? 1 : -1))); items.forEach((it, i) => it.classList.toggle('highlighted', i === hi)); items[hi]?.scrollIntoView({ block: 'nearest' }); }
       else if (e.key === 'Enter' && hi >= 0) { e.preventDefault(); pick(items[hi].textContent); }
-      else if (e.key === 'Escape') close();
+      else if (e.key === 'Escape' || e.key === 'Tab') close();
     });
-    input.addEventListener('blur', () => setTimeout(close, 150));
+    input.addEventListener('blur', () => {
+      setTimeout(close, 150);
+      // Snap a fully typed name to its official spelling ("linear functions" → "Linear Functions").
+      const exact = all.find(x => normName(x.item) === normName(input.value));
+      if (exact && exact.item !== input.value) { input.value = exact.item; input.dispatchEvent(new Event('input', { bubbles: true })); }
+    });
   }
 
   // ─── Copy ──────────────────────────────────────────────
