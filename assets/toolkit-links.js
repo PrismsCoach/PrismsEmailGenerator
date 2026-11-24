@@ -1,0 +1,1115 @@
+// Generated from the "Prisms VR Content Libraries" doc and each linked Module Toolkit (Nov 2026).
+// Every URL is copied exactly from those docs. Regenerate rather than hand-editing when Toolkits change.
+window.PRISMS_TOOLKITS = {
+ "Area & Circumference": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/16RueXLEJCRCF0LIzYwsbpKTvjCEDi91WkTcYbUUiXDk/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1bsFgc-w6j_RaBlvLn_K5Wtne5Vn647qS/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1D59VTd93XR_jhsBSESGI705OkWkBzAGiuLREq8kTMTE/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1u8w2DMOyuRj_MAeAdVjtxaEZHozMfAUijYQ80CVSl50/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/18wEmmL6KQYtu1CBS9w5vm_IQisKcwLAaGpBMmsg1tfA/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1L2fs4B0SVJf3aU9S7Fe3HjYEZAxh-ivt6NvTj4EWLV0/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1GJg36q3ry4aytTs-vKmzrPoqhL4uOkIMfTzUc0Sdwf4/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1Mo2hFxSTH9whGmI28JN-5iT8kjZcxgF1WVpDbRXOYkc/edit?tab=t.0"
+ },
+ "Percent Markup": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1lzBeP3IknkSJ8mbFTK2A11667a0yxoaGCewLfOggg1I/edit",
+  "takeaways": "https://drive.google.com/file/d/1ZTI_kS0EbKHcnZqVusQ2WO5wTEunXTwo/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1AFybi30bjJ0FXHXzRrdL1b9JaEDEeVKrjvS65iB2B44/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1W4iYDTkzQR8k6UjTDCk_YDOTYwjPpYFa2bDABJiEflA/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1pCyZlCkS04N6OA7qTSB3ac44KnsFDy_w28abyQ3O8zE/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1iTLPEULSK3WgPerP2hHsTRwuksPCEjs35Y1L6JUho4I/edit?slide=id.g312a56a77bc_0_0#slide=id.g312a56a77bc_0_0",
+  "handout": "https://docs.google.com/document/d/1On87p6KTMmFlnZv7g59J7llsDuynpYTqxnn2jWObR30/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1KgNaL6DAtqpJsSbiDrAmDQr1SMioYO9hhxvmkYZqsj4/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/11Yiq860u0aT8x-RLYTjrJqK73ByjHO9lyDZWr6tS1LU/edit?usp=sharing"
+ },
+ "Representing Data": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1-wloC--_KeQH_oijAJT2Lpvl7BHawILDT0EzG2fNwEM/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/19YnAExRvlvXfrVB1ZgPnO7k7xSLwJKMJ/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1bfcly2aSuChRHOo81JAeADzhuW09i1IZXfgvqDKj0ew/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1jVdVROr6AtzwzkczTD_K3T_Jb9ssNIK9VltcX-lYE8I/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1lFlhN07MBZA_XgiIwbFVDpPIVRD4RPENIALj9KN5d0g/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1MnUEt_Dy7Tax-x97_5Yi1Sp7eFTNUumKhqB8vhZuUtg/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
+  "handout": "https://docs.google.com/document/d/10QFfg6I1tbtdcdX4hcrXFRSq8wrG6ZQwM7i26nm9gXs/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1NxHI75Dp2m-n5djs2f7Jf_LScKDrqzxupxLFp_2UxJM/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1RuqbRNdbYjN6N6JD2AfnAAcLbTR3j2hrWa1NYQVxIzQ/edit?tab=t.0"
+ },
+ "Constant of Proportionality": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/15-OOQXf59l-haWm6bCTn_mpd7f6NzffX1WAh0Ri5IuU/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/15pCPpTDwmxdhXKq_9i2MSBqJwoe5eucw/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1mekuaV1MM2b4KLfr6GYoq7kTtm-VGeZ2voX_RaXHDNg/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1LAvjqLQP6NdQSNV86rXiABlSsRwIlv2kyVjZffgd7DE/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/17JyuOiJY8T7VcrQaFXL9dvZ3rirsEJHvVCNLrcB-z7c/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1NAT4QtS6xvF4FFkKbBOSmtfOhnoNAZuNG-psAzpKq7E/edit?slide=id.g2baabc2a0d4_0_420#slide=id.g2baabc2a0d4_0_420",
+  "handout": "https://docs.google.com/document/d/1O_vHd8jPLBKeOXVtJvspbbhC2lmihYJgjRhINx3ZvE0/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1mcDqrK9bsUYGzaxpRS-Gm8u8woHdsBVyXinnG0tCuKk/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1yflxm6toK2dCCBL33ufNPTXHFUGlsZcoGf27pKUYaCw/edit?usp=sharing"
+ },
+ "Probability": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1aBMhbWk8FumzxCZBp9kY_QSgXcnd7nTCr1Th6DWRCk4/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1Ptq1PkH1__9goH8IzKl3tQFe-nA36-vE/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1sYWQ4kZPdv_y5TjtZ0DhsElIo_ilCbSJkV_jrtali7U/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1KyWxcbO2pSGb6vfGdde55Mrkj18cHkoB_qIVD1RzeKg/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1xZEQ636EK6b3AgB8YV3tWKC1lyiLruDoWZAiKmV_jXU/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1zIFfBNat8zlyqRM5JBNVXqDzRQvrIc7DDF1sSaArVzI/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1uZEWyhHjnYYByyJZbQKzaLTidovBKtNEb33Rz_cQVVE/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1rK0vCQJwTIC9Ki3gi9yweqB256UoM4ULg96xsT7drZU/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/12Ed6U4g_JIc2qIrp07Vits7PpVJNUfk6S2fdUBnOhQw/edit?tab=t.0"
+ },
+ "Rigid Transformations": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1nCpVQWQKROMYW7dxtgy12n-MTnDXaIEX99sYNNewYTw/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1WtY-e1B_4jppH-WO9zaWVXAy5z10x1z-/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/12ZBuuYzPkOIVVHGQ18B4XX_31BSzO1quALxYrirR47Q/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1M3KUTOd-Rkk4gr3VluIWNztWmo2M1a0DCXxMrqyh4bo/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1Y7dSR3jZZuJpC5-sb97LtrF4EijTf0rayZEFmTeLHJ8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1-trsSKqKZ_JKYhNa08JbhXrJ3YWG1hb0GFab-SXi-bQ/edit?slide=id.g312a35c9f90_0_0#slide=id.g312a35c9f90_0_0",
+  "handout": "https://docs.google.com/document/d/1K89avphH7CejLDTv4zOEwNWoBSoUvf_M2oS--BPxzfs/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1Tw5IZUcm4UNksEQEyTXA3sBjE7Jbb8TSn1nBawubbu4/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1jnACEtsS9ZRv9S4claQPKkOEJslfBYdClWwl7xPpL0k/edit?tab=t.0"
+ },
+ "Dividing Fractions": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1K5kiRvxNP3fmcUhOBJWSDPVkk4Xrt3IXsMmvgSUjmoU/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1l5X-i8YJ7JL3rm0xq3su0K9jXHMgxbbK/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1IlwjvrClYcwdD66pUXCDQVH4-hd7wcg7nwCjO4sNU-g/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1ujvq3sAHa5dJqKJKNuzmPu_WM9OjRn_sF5pCjzKm4JE/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/124KDxlo9LlCczDgguKj8aOz0cxYETWXSSEy5i9YqHl8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1aalnW-XWPOnD47mwwdXNVxO3fvRKlldN8b146wTKxn4/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1wn2xwcPp1l6JTDHvHptHpfaRZR1i3VI5VbfblfJ4rz0/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/17FH59ydLsKVLAyAxj7Tg5L87PKsrHPu5PZ3aHPovkrY/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1Mbjx0VrfNHbyb_FawNbnNGiSD9HqLk-jYOZRJ2YCn4s/edit?tab=t.0"
+ },
+ "Properties of Exponents & Scientific Notation": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1Lat2uS1Rmq0bCHm0bk8Ncz1tbrE-FtQ0DJpgaCmBt6g/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1IjYQQr2ERniLKqac1sZOHDTWGVuKO1r8/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1oNBLH3fy8B1IOWA6FxPJxmuYTYXxUkKSY9zWYpP8Who/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1PFKQq9fDGudJ3_c0PpPzAiaeOtoll6gwB89PFrL7gQo/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1QFvE3m2WiI7oMBxADDY6XO1RDtBoSOx9STTGkOm1hhk/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1lf2vbtRpWLYbIKRsuoLnCWopp1Uqr4LtGB1egGaHMn8/edit?slide=id.g312a3486f13_0_0#slide=id.g312a3486f13_0_0",
+  "handout": "https://docs.google.com/document/d/1dk4dyXclC8DRH2tdu0t8-voGEv0rKJRedym54TuvxJc/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1UlASm4YM3Ya47pT_BLk2ANpLkmpl5FnNG-siuzeZkKE/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1smCkZbtcATEmQeo_FM_lsEjD-UEoMDLdi-sFFbPD91s/edit?tab=t.0"
+ },
+ "Surface Area": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1kNGRPIKhkZFKr1mfBCMXvWIHm0zv_NuTi6G39NIqWlg/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1Z2s3uy3yDJyw4o7e5YDwZb1uMMObIvXl/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1FBuAD32da4VSh1mywz936fCb4FalafPX4Ft46L_LVxE/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/18VxzqnRFr6UlknnAQd4Ppdc_lCZx4__0V6erpNHsXs8/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1vym7pUSO8czuTeIb9cnAp3YKn5G_KmHuuavVElbYOxk/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1O1qQV47hkvjZRbq_Iw-8oeVId623JB1NUKTbAOK6UFc/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1DpksyIjD0wF0fKJX4AkjTvNihokE8X9tm_e0tU0Ys3I/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/10qzyXk-3lkCUnnmxdaMI-kBtzRa7bZCUOvA-4ECSCs8/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1ULiN5n-VR0jNjPo4aa1E2dlhIiQds1WS6Jvnc89Um_k/edit?tab=t.0"
+ },
+ "Equations - Developing": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1lPSEEX4x68Hn4l1HsdS73gIdBPLzcBsyAiikoY8SiI4/edit",
+  "takeaways": "https://drive.google.com/file/d/1Xqkh_FSiRq285AUlQpsCTGI62cundXXJ/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1-Jha0OVh7_tjQzHDc2SWA4OpxbbKzvLW8Q4-CYKyJ4Q/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1VoB4umBx8B11VqdwWiSjggrUmVeFjvEb2emYUBk-gkQ/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/18ZUQOeQMwttD-ugnCWEYfBrOUt_y6fYYRnorR6aWnlQ/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1Y6le9VOJs3DH4Crp5UO0XsugqBq5KPwhYpR96TMUw_8/edit?slide=id.g312a2bd009b_0_0#slide=id.g312a2bd009b_0_0",
+  "handout": "https://docs.google.com/document/d/174bVwNmgF2nMv9h4H6APCO-MI890-M3rUPg9D3vDIGA/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1yMkuqEsQzycwrBvk_dIEgaJOhRIgCj64gEOFFlQ4Rek/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/107Eg-Npe4qD06ZTekOFeFzcA7B2V3i3hH7A5TcCofLQ/edit?tab=t.0"
+ },
+ "Pythagorean Theorem": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1oGJ-naw5q_fYCA9SlNKEk8XFvZ4XLgDnJFUC2U7J-uw/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1qp0BPDca1OZO4qHMZ7kqVNCa_8pb-l2i/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1Cn9LG5yMzeK6XHS0ShTEVd_pgfmPVdRljDRgsP66kJg/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1xm1KPtQ2lhLfAP2tMK0oDtATKfXn13T8GkUCQO1IwfU/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1ow1QZO0fC_6WwhQbmyXOSwKxYCrqOuJRPtIkaTUU3eI/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1YvutV8QSicDJmzR_tO1X7YolYZDi4c2HYxOwZA1OINE/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1VjkNyfJBYTITmN3LF7AnoLuU6_eUpsos5GsaJ2fgqQk/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1f5mHTuQ-q8MF_X8rN2P1LDmtt32YtgZFCHqXaeyisnY/edit?tab=t.0"
+ },
+ "Transforming Triangles": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1Jvn4KgH6_kJa9rNwTXeEeijr6Q1Spw5tEoSS7lE8HZg/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/11C-LnPThIOSANbwrZoIVC8-rnHOpOTZY/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1auybb7rmXONHjFDb0FgiGkuq5cRgZZ9Xv8XSgsL75QM/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1_3oUS6o31frc50-zdYyg6A76BPyY-eE2F3PD2aTq4a4/edit?usp=sharing",
+  "slides": "https://docs.google.com/presentation/d/13vgKDjO0tgH3UGX6ZaswkDNdD06Ft7UZDjMbQYYzUkY/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1IW1cGPti_Nwl9RF0vqMlOlxi1nzf_hDKHNx1SSAcuYI/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1vw6WTbBzglo3gzhfDvw20rTYCcHZLSJiaUeBaAlkuWM/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1ve1j2Z2aoTlPBnck1MyEMpvNYxwyjWyDjPml1uPFQE0/edit?usp=sharing"
+ },
+ "Equations - Solidifying": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1gmQ56Zg_CXQJMg92i72zZfuSkcx_J931EGNHRKLx2ww/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/197AgVZGbWYbaI0TpnGH6eSeKoyk_QDqg/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1NV2iRzzz5nA3IXMjPghCp41dM1px0rxGRHPxJ6jeumc/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1AtLGYjWume29osHYmHnZU_vCi5BWI9ARPRdvxse1iJo/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1BeI59eImN_RpS8a9dBmcKAZvBVypHiWTvss_RigkUK0/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1fHlTjq62yFbguUtZkiiAe-6Mlk39RUWJEK7c_J2jjmM/edit?slide=id.g312a45073ee_0_120#slide=id.g312a45073ee_0_120",
+  "handout": "https://docs.google.com/document/d/1Xwj9D2PlEnbwh4crM15u81qd9zDY15OSE3UvwTyvfSA/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1bCQihbTjOo7f6-rCcEI1ac8eXtlo4EWDOpFPGEDo8T8/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1iLge6SwgaNhppgisLWs69mBBvbcRaBDrvBPPQ1DnmF4/edit?tab=t.0"
+ },
+ "Rates of Change - Developing": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1Lmw0Y6darj0W8wTmM_MtuBWBVZ_h5I1PSpcZeSa90A4/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1Qw5pV6acjJlS74PhYktvohEPfkgILmo3/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1Gbjxs1PPyJ_0UUmPsV1LbZAlEt1kZVLOxWD_dHyQpiU/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1ZN7mYPkXHhHCATHf5tg10bpdCvZAudBz5piDW8OALDg/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1YceulFEA_56KysQ29RJxClamqhmFBf9mos5JhhcO6yY/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1pyrnFFnermNQaMSd4u6zWD7zAGWyQX1nnH3_kGigLEw/edit?slide=id.g312a476b3fe_0_0#slide=id.g312a476b3fe_0_0",
+  "handout": "https://docs.google.com/document/d/11W6Bi3I_L_dPPEvUd9wWC_t1Cih0XmyTbc5k7M6OX1c/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1fY_r-RpVSyGm0KJDTbxokXkyOT8t1zkeOd2P2Ef-aoA/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1aSCR6skdgY7WleLaJcBF2qae0ldXE_yNtdj7oxqjoTg/edit?tab=t.0"
+ },
+ "Inequalities - Developing": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1lWT8fVTku-L81pNo3Dp16ChgCroU8tRc5FrEvjRiyVw/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1l3UOQ6xeSWDEohfM28t5HufFSe6OWx8C/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/198Y7hiHjdJABQoFPsOaE5ACg758CJ8VNv9aXNgC-6LI/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1KI5vUd98-UM8wNb00Hpnfo2gdj1oVkKGF6Fh-bzCB1g/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1dxca5tvKK0hlep9vSIPEjHSeqcZOnDg0OtUrjL5ut1E/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
+  "handout": "https://docs.google.com/document/d/1pT8kCsd8s-HM0T19SeAmthWtmcu3OcG4EnaE1iQr9b8/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1_LZbztLfe6ikrRId_en7BXT-5aJqbe8g96dZX7Wy4UA/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1a3nAOWvcL20f3LBn11iSNEicj2dnvpAhh_H58C-pRwo/edit?tab=t.0"
+ },
+ "Rates of Change - Solidifying": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1ITguxIdOxuzAr1AOj6OLhSt_VJrSMbZplmd9BFXzsWU/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1osSbZVcgGLOb433UiscrOPLDarY-Aokj/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1AJyy5fr9dllfd-91IZWUzEK6k6I0SJ_rpTXWd9BNJTI/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1Cne-PTumpX6lW66QXYjxAJhT4cM-RS4tP61-S4Wvbzs/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1hjVO-GYGaKrWqPOLrL1EvjeugOdnaMOQiF5QodAVjBM/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1W9Z_CyGvVWCd4E3xg5RoYUgA2aStWYcMbxFN4gR9LVk/edit?slide=id.g3f530903e42_0_731#slide=id.g3f530903e42_0_731",
+  "handout": "https://docs.google.com/document/d/11F2gG8_xY8-Yg407YWCaMzOBhmAYnfMkjdnu_Pf_Als/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1RzoCHcBX1rPFlQ2G-DMLrSYsd06p4IjtCf851Ca6qmQ/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/16YWULSGY4XeaxNWg_WJMv3oP6xYwSApNK4hEfxzaI9I/edit?tab=t.0"
+ },
+ "Inequalities - Solidifying": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1DW-XU9st-XSY1dDfgS8P8uWyQGWy8F66Ku3lqP0qVGU/edit",
+  "takeaways": "https://drive.google.com/file/d/18ZLlPAx7TpX6RNTTkqGPegz9WBoOp9To/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1UXotKEatmySX2IRMKtlaftIrR-6DlWZLnsPlu8cu5pk/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1H01M2Fciug9IwVMuQN_6Uz3PV9uk_y_fNxXXTo3F79w/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/14p5zPlHtWobjulrA7aZS6tQgEBxj7K2Ly-qFOEULzzs/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1dyZ1wIcIGXQSyp44hHaxvIa_kQZoZlrx8_jbDQf-rcI/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1lbz5ZrxQMNxoARWMyLTsLwJSKefZrI_wMvCXVt-Pl6M/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1sjrnN-Lh134HEnSdaO195mVP8ANLBs2aqpg5sf-uZBE/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1T0l2CQwt6iV-SsagscVpwA3J0nxsYBN8X8mHB_XiHh4/edit?usp=sharing"
+ },
+ "Rational Operations": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1ogbQvzZZL2mFimHTKMM39rHa0E65xo9yTNDMeu4kr48/edit",
+  "takeaways": "https://drive.google.com/file/d/19r3AAhiLyrmSB1zY4Hnxp5IqmWfKLLEO/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1G077e32m4Gp8yqHjPJVI07hka9c4X8mqYmjADW-l1VY/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1mrB-OuHnl_QYCUk6_Y8J8CqiqSO-fCdIK4KKNB4FlI0/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1N35oB-Xh4C89J3kMMrkiwsjB-L18N82uyRYLZ5Aq5HA/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1nkkedARDTxRiLwD1Vlc523-xqZycxaCDsh5Ray8Gm-8/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/12U3cajXdESXx0WH_o1adWXydt9FC4Qg87hYFzJtVwi8/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1P-JrmXOsqAQxMcP1NYvlTAkfTQ4R9rJMElkrU5xFRlg/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/13c4KqxumdTJzCxxyNDg_NEErm68G68S9F_A9IG8mPzI/edit?tab=t.0"
+ },
+ "Absolute Value Functions": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1zP8H2iUrxpBOJrJFpzaTGsOvRUXYbXQrOPFqOqU4lUM/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1jDDfOamx8pHvmzNO3dQmKKB-VfU7hYsU/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/12Paxab0OBYVW2MpBVCtyNcFNOzbr5p-IDu_FNW0-kEI/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1zamJLeLTzL-XIKjqjAzLH7S6GmAT6spTzXK6G8YsZBI/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1zTyF8jQwKgKhB1pHMyvpk7QAWAwEdR-uMbRGfOHX9Hk/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1gxhTopDQBI-Mc_ryh4-6PkUYqAMsA9tMwphatNA7CiE/edit?slide=id.g312a4566ffc_0_0#slide=id.g312a4566ffc_0_0",
+  "handout": "https://docs.google.com/document/d/1bag-hRKsxq8u6-fjUVjtRt1bJl1C6C_Di4d49xJ_dyA/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1N2okvqogXUT6TaR5FgMS2fit6etGPAX6ONGkEYLandU/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/16-QKLB4EoP3Y6zsRSdBFYb7eqbNkcHieldBwhI3_hgs/edit?tab=t.0"
+ },
+ "Linear Equations": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1wTMDxXxDTis2ozmCZkT7Elvbr6Y9oSclPh8F50kz7gs/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1FelODez7g51dsDj5qh_CUgJTWy4LEO7x/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1bShv3RX0N3Iv9apATL4yXJatMczG22Zill9MYO14fc4/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/15QGZOinsKZGNNAqozKJm3guGtRw5L3ClD3Rb_DI1_Tw/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1VGVhT2xu298I1CxfaeayfEj_MSSi-gcnS7kFY2XGmvM/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
+  "handout": "https://docs.google.com/document/d/1mMLsBJKgZgtPwyfCDChIHGIkhhTDqw5RbhlkbP8X34Y/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1EO_kucyvL26tCxb7hp-zSVbR5-cd-qwncFwUMT7KloI/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1LlW3aQISEb7FIB4jBFT0tEHwj1fh7P2A8E6gaRu1EsA/edit?tab=t.0"
+ },
+ "Systems of Linear Inequalities": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1AHO23zuqXvIJcsvj3l0EJJptGv1wBZg8bMGbgtwUsRM/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1WH7KcXauFQ7-DtuAB_qGlgX34t85LW6S/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1fijbW_t8rPdFS-aV-eXwemJK08OK8hhReYhaxqpKwfM/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1TWDAo-LPvnInYodPCmBD6ifAnb0Em8cLMrsBTROGLS4/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/13sNUQsGG-VNtldYeiEkfK9Tv-GlNt5jRnCvfw_PzyxA/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1lXnXMak-nTARhHkRn6-nXPkOez41vx4X1z7OPcew9FQ/edit?slide=id.g312a53cb01c_0_0#slide=id.g312a53cb01c_0_0",
+  "handout": "https://docs.google.com/document/d/18vEYAmf8hl5OFwRz17sbclxeFI_uP1GefV0caPTZUfs/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1jG3XZlvxrS80frXwOli6sRKDmxBjrQ-qVAYmUYq1R9o/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1No-DLOzSew9XbiNrKG2oRymk_PlVzneHaHgbB8qzTfw/edit?tab=t.0"
+ },
+ "Exponential Functions": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1R18Ca6RzLuDqIZ7McLVmHxkaWzd0TnDGI3OrufpPqRo/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1bHActFvQRsIswsBFSOfj1c4Oh2Ij9Dee/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/16U4DmOuHvwr1D8C2pfHILi1YyaS4RnIeoH4tsjSzY5g/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1etsNXZIRF5BbheZ-9gRe9ZUQbK4JOQuYQPUZges_IPY/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1dP1F5PlqDNrb7WGYcjCm75IcFPoiM2tqyUWFdC8_EPo/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1Ydu5-8DI1W0gpBxAI4OnksXe16UL_UHAaDEBruKYffg/edit?slide=id.g312a4cf56ed_0_0#slide=id.g312a4cf56ed_0_0",
+  "handout": "https://docs.google.com/document/d/1wFnuuazD-g6mQvlws3uSsjiNuQcmDbHtx3qkK9-NtzA/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1AYFgNbw6t7qAohQqZs1OYJq_LtPnNNoZJM7VaYp8bfk/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/15lICJtosdSYTbWtcf23jIQjltofhocNad2dPoja1Y_M/edit?tab=t.0"
+ },
+ "Linear Functions": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1yqIGEWyARSPfnuXc4dXevYAB1BIgkLm4CsZVKKl3BTg/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1ekXvotwqZPURnjNYq54epsW0m_Zr_v6F/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1YyoIAllB3wS7vzHRnljuUWW0Ibg-AbaxS4LDAqTag2k/edit?usp=drive_link",
+  "synth1": "https://docs.google.com/document/d/1Aq4X-vq1Jyx2_9TOf_PPKLFhuGHE5k5pChk3igSgoDA/edit?usp=drive_link",
+  "synth2": "https://docs.google.com/document/d/1ynCN8_o7VuKSfOdSLGCoCndj52vEXnKfbzrBC6V5hDI/edit?usp=drive_link",
+  "slides": "https://docs.google.com/presentation/d/1YnTzXSmfFeN2Vu4sypI-596SWNgW3fjLCx352_tl500/edit?slide=id.g312a4aab4c7_0_0&pli=1#slide=id.g312a4aab4c7_0_0",
+  "handout": "https://docs.google.com/document/d/1RkppqfpG2fMMhpLZ-lqn2G6bZGpdFjl-ybAhD5RYQzo/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1LbK24gmAGKE_aIjj2BgNVQc0p9i9KfV8U3f7R5aNCzo/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1EVKkmZvVr1pmwe935pdlmeoUJT9TtbOLAPRdGeA6oKg/edit?tab=t.0"
+ },
+ "Two-Way Frequency Tables": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/17dfTKDcwfOxzyCyBoJNo4KO3D1XQ1YM3dvZURyym72k/edit",
+  "takeaways": "https://drive.google.com/file/d/14EN5MKul3znq5hzvEivjN6UeXfTJ_zwd/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1JJNH-shnYIragOPZm8gK0l0UUmRHE7XP1aKSk68DA-0/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1cxjyxUtikIRXUwig1-MZOIEadIeflD_zPDE1_a5t_jM/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1ZaL2vHa8XTVGzxEP_JCmzdp6yNxdsQ0UkodwHj7iDEE/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/17ayWqhw-aitjSgsLBkJqmOF7roXr3cjpsY_DsKXygfo/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1T_OWDVREQZbUMmsrNC7ge6SD9NlGELm56l2CJtaUJs4/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1_wnJjSPOMbnwn8zWW3kDc3cjNG2jB6toPGLJz2m45Ek/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1fqh65dZ595cQdw6rPCXzeurw309spMq4iP1yrh75HSg/edit?tab=t.0"
+ },
+ "Factoring Quadratics": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/11QqrAF0J8h_rk-QwdOpcARNeJi9df1PfxLG4dTZQosk/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/14CEQZ_JsqXSDwlihWi7rciXiATD44YUV/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1cQ0vASYJ7SBe7hUoBLjRPbMaQu4RifW0qvuVQegftLs/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1AnDYmd1LzSyPmCwNBu1yEh8TaPFxl7-GY6Kdx8hrACY/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1x3QvqHxBLrXYgwyk6VDuG8VKSPG4_te7c19AVW9OBdA/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1lIUqfBdFVTXi9rM1VfRTuwiHeYgu7meBbKXRH3a79aQ/edit?slide=id.g312a4b5aad0_0_0#slide=id.g312a4b5aad0_0_0",
+  "handout": "https://docs.google.com/document/d/11pZvz0JVJXxqjhF27yotOrFeLpMA8JzYd0vm3TTIQXg/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1yODd8XdKttxUvL5B3IpPy_uZncyxl0dy_FRNsYW-MwE/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1lWjbkDT8kSt5XxfRHL3wkbCj3XpVcLf3OSpUwpF_ZN8/edit?tab=t.0"
+ },
+ "Linear Regression": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/11gKRjp3czztPbeNf2TFwHY85y_IMiikYKp64GNnr2vs/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1IO8RRW0zKJAskImAohc7TiuvKtd-lpt4/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1jLBIXSew2NbLgY38Mn1mDo2xjN2TyJoHvBB6c4GIcGk/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1AgfXYwXDonaukMyEBGmRcmR-0VgRRweqOHNlcCUQjTc/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1cahTzNGnSw-DhGf7a1fNdi-Nroh6j6KbsBAUc4KCEYE/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1mqT9G16uDX_76sWg5gwjEnCjdnM41LqD2rtJQHkzMGc/edit?slide=id.g312a3c46eef_0_0#slide=id.g312a3c46eef_0_0",
+  "handout": "https://docs.google.com/document/d/141NKzQdb3cwoWi-QPkl0tDVtrqP0I_cqcEZMNoXzozU/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1hKtrloNV_7AJ35DqGTivmfSKmtM-Utjw1dIIKgDk8yI/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1CAWHOhTugzveLvIH1DZTm8gIVbmHb8VyALJ8JaO_2EU/edit?tab=t.0"
+ },
+ "Functions": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1i8v2XWZkfqOPQhQdIBX98Xakc8k6q3_HGP7eHMmvGKA/edit",
+  "takeaways": "https://drive.google.com/file/d/11CrbXqtXH4GGTTCPr13U9_AQc6Id2dUR/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1yHEuM--aY4xSBnwSBeobokdCYpZs7FzjYIlTH5pYTk4/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1ZUanpjqMj4V3G0lMeBNwFlybvqmTzr6fw_N9MBUiQ-8/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/15cC_gexnhEVt5a0QjhaF-7ycQxjpNucRLrUEpVQSlOg/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1TSzPpoeEvECSQqOfPva1uXQTof0PT547izeXJnccrfc/edit?slide=id.g312a691a00c_0_0#slide=id.g312a691a00c_0_0",
+  "handout": "https://docs.google.com/document/d/1nTXN7eJFXGuLxShDpLI5yRRQyowpT3hpL-GOyQ13J8w/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1AgAnXWl8e_rVy6Cg0b2R3G4uDDRAcfLCVI_w6CSjwFM/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/11Uue-dEys0M5gQ7BTxdAWQp1leuAtkQd6b_Tmwxw-RU/edit?tab=t.0"
+ },
+ "Roots & Rational Exponents": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1FDE0bAE3WCuzsaS05H0kK5SyVsJR4QewgLN8NfsFpqs/edit",
+  "takeaways": "https://drive.google.com/file/d/1Y08S1k60Lp0UjfSzsWGv_heUnxpIlC6t/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1FLz0Gclg8s4gv75RfmxfdNSPwTf0RjTQOn_5fk8Gnao/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1ZqPlwJR_6CXOtmR7cEmGDQpsto_r80e6A8tJqY55Rbs/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1F-qApyroSI85T9YU0aOD6Lme7ajUcT6zxiwXE8nIvWQ/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1yoDqyhsdFjzTP85sSTS-FAqeYojjnY3I-VN2WPfu9_k/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1qBqmgAsCz_YciKmxgQWQ6ckzQxzFpQNReGFB3OZ4fKg/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/14cNKoJWXT09vn-v3UaL7MnLUl1__DXcJBW1DI_GFNGQ/edit?usp=sharing"
+ },
+ "Key Features of Quadratics": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1RHfn926INSAoDg0u1gdXKYaC1Gx6zrgRuVi9kI0unSg/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1Z5_IvJlaqh_6gbxSdAisIFWy4qyW98nu/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1jpkay0e4UVai9H50cO8azJK8h8aqiLsFVQfRjORQRbg/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/158_qqcGZS23hdmZhTPf1YvQj3sj2vSptLFBaRGLihEM/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1HsOtyxVSelHkMonOjkfr1BiyRA3uZeZlw73lUOV-txY/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1pFH0-LzRbxElW411hXiF06NSkLgx2hlKhvSySm7JArA/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1I8VJ72O6-VyUbwp0xcDjCb7hrBicHEJQC9EeEvd-P2c/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1JuuIWZoiogST2N2aE9Yq_i7cVm__Uh7iXmvIQO0yaNo/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1pz2vygQbSVkoRFOZjQe8aJjsllPxPXD-BdMT_nhhrww/edit?tab=t.0"
+ },
+ "Systems of Linear Equations": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1BMprS6fITyaEdD1L633Hx88NpJ3meGau5-fUAfPOfAE/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1PIZzFCPOGBqcMn8Z1mbFQFt0RLlQYL-i/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1-J4Vh_wz70E6zZpNbDAMToULbYJDFJnT6Wz0_ZUMjKs/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1VPubbeG2OAw6mPONpql7u2-gL2Dlu2vvTtM0ITjfuJg/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1m97KKQbImjnnrfgJ9DteDUE8ynBtzOl0nKcc5EXARW4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1v-IZmwc96Lrw4kdLEsYp7Hu9hCKqt8b3EfztrRdU1hU/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1vwMYbQoyWCsSvYCyh5U3nqqIRaLbJN41rQuE8WRUaMQ/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/17Ob6nohSI3qXQvseDetRR22v7nFvj8NYzL3ekAcndmo/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1zZWc6ojAFS6AQS5QePSYnUwXS7u4BvMWj6Mvj5-FV10/edit?tab=t.0"
+ },
+ "Circle Equations": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1DaUw7zjBeAftD6379AhoR66UtDP_2KdWvB9i1c-7ZsQ/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1NZZPd3vql8NOaHvhB8gtwzTikT4gMsuA/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/17q1ihusonlKiTUzLJkLmDSZ1Holgqs6CRdoiDVIhRB4/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1ZIf6m6wUzbHC-cL_Pe2Ssyrry6bBypOti5PT4kj1Ya0/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1KVnopqmXtO5SiF6mdrivmTmNEazOjsZqfS2fALLQZb8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1NI9qDufEJ11l9Yz4fFVzKrj7hGwSV3t14RkikDk-ASo/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/15kbmLEqbZmCpr-GCYOje9QZXZcwzAFclwMvfdFKAz8E/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1g0zKGf-YQZ-o1snZbKHiqlIaKWw0X_ajYtEPWBF9n7E/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/13QrhfcmrYtmXWl9djTxnwj2aJillU3bPSSKpUlV2zFs/edit?tab=t.0"
+ },
+ "Solids of Rotation": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1VqeA1jH15xVOiBzdoYGcaIDuAZVMEZEK596CRe_Xj9A/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1oHjYunNaYvd5iUc_-kUmPD-fEScx6DVn/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/14pa9FO3P0qCY-EM3eZ-yQuAda-piLBh0HKhFuJH59eM/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1gGT8xtehlqz2XH7c7_m4PfXJXh9hHQy856x7Phl7Qvo/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1dEpEZ-7KtzVe8eUPzjFLLXajqkAPZCVxh0ZGczVI2-4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1VdARCBc9UEv3OZwrcGm0EMES8y2NGM8DWPjbcXOEwi4/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/15Vt7myqVTaeXVWrd7Gl2_xq_O5r1JwYI-kGHA12zWl8/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1m1r-SXnCo1c1U0ca86NbGPvbe3PfPTZxaWTfd5ntvvE/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1AIZB19Lmo1sU-QWvNY4B4vtMjh67l7hHT1PMftjAc-U/edit?tab=t.0"
+ },
+ "Triangle Congruence": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1jfvKjb2cx3EX97H3cvtKVGCH2AHpUQ_DbMQPWg4oAJE/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/15tLtjSESvxsYEPpvQuTD4gcpiOPvnVD5/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1Ig3yD068aa4MXzb5kbp_tdUJuy7bR53u6XnrZZU6WJQ/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1TyfQnQdAF33ssljOmT7ARQajsW2yNUmFsDkq7G1lcjY/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1cB6xa2LMF8u2-0EyG_wT6gCI4jNVUNVw46COMp9I0uU/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1GKDzxmWF-gmcHhtxKINaFiFdURBKXJU-nXS14RykjpI/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1O91g2b5Tw4vfiDXXTkzGQZuGHoW-mTl5pc9SRy7l3cE/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1QV_0UZhdG3r1XUjz6iCqGOhlE7VYyUe-23PKLS-hX_4/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1Lu7Y0hKC_ct8_qPVXgPm0zDZ45S8Bemcdd8uwXnhOGM/edit?tab=t.0"
+ },
+ "Distance Formula": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1nZy6HHW28yj4o1lDsoCJXDOODlAPx6E-MlaeYgfClRg/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1IB8v0FqBVt-xSaTk_c1i2tGkQyl0oSOu/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1hxl7f667TM3dhAc8iwCjCdnLG8Xrx-O08G8a7NoJLsk/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1aqBM1TDJAWSMnJem2-d-bfBMLKBFxZSRjOojWi4vqac/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1lnSVjhNkgAvaGoF59BGcDVUXACBEHJImYSImac_I6ec/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1PhdkCx6NBPxHr2qjzyNTBoAjLa27i98NLa-QyDDIuiY/edit?slide=id.g312a3b6825a_0_0#slide=id.g312a3b6825a_0_0",
+  "handout": "https://docs.google.com/document/d/1W4WeGhmghhuPtEno-1LbwyZG_fG9RQ3goNd5o33V6lg/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/12kvGnDrJ2hJBWbDQJRKwYLqMCuYpzJI1nviw-8nv2MI/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/13KtKDH_cDxa3-71yE4_raCXAyQhjhaAFC2-GOOABLuM/edit?tab=t.0"
+ },
+ "Transformations": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1osfiiJ1L_0vWuHK9NP_o9qlbMEByuPZI4dzYX0edtM4/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/1vLLioNTVZMMx_ruk6OxBBvzouvphFNIA/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1SnHJUyUo1KDCV11cWQzwC_uCe8p30INJ3mWegHQyKKY/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/103PBKfMDscx5jFM0b4WKFpIBNkLzTQQTMpwXNcM0BC0/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1WXjle0eNRL5jLlfawjH-5Qs_Wtlz2cRw3GHmjRCPaEI/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1bCyema9rTIINEQlx4QKg6VizVKq7nqLxMkv9BwDIZbI/edit?slide=id.g312a481ab31_0_0#slide=id.g312a481ab31_0_0",
+  "handout": "https://docs.google.com/document/d/1BCcqrUuWdQf_dK1yGmyoZNE4EaNTVIQRxdcR-Ekq45M/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/14bntsRqbCp5xKDQbTlKX90rksXCS47_by-dnsEJUvaI/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1V3dt0EwSvPcqXvJk5Oq5o_93XAmIPpU6iro6JS45s9w/edit?tab=t.0"
+ },
+ "Right-Triangle Trigonometry": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1ztBxpIyP7-b3yc-feBzSX-9QdQHi1Nut92U7AuM0f9o/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/13CEXdCTBjXRsEbY7jD-2WQI-BSvLMuSK/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1s6Wmv0M4QUy9JwEj3y6NoGo5fC-PDr6IWxEubZ78ZNg/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/17Q79U1Xpdr1EIMbresrpAVEiZqrjjEja84eMqR0q69E/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1BBR_vRdZcwORZEHNTag5_3hkpzCvjkwmGIiH3QNEAPQ/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1eSa3g916KcMDb5FMNArvPMd3pbpk13TSa6woBJ7e_Po/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1ANwIXQS5-aixheIfS-7-VHA1ZZNZrD-8Qnk3lTDAY3U/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1lwGTrhC9Ujgz-TEIVZgWuzF3OfzLJYuFmziW1_UeTi0/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1ozglyRVoCa9to3aQOoySNR4MZf6ZzYrQ-wZFyeUt8Xg/edit?usp=sharing"
+ },
+ "Transversals": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1AbUC3J5HS1m_6Aq9QILSwn0llLQgwsixea-BdglKYVI/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1ywGhYcdkcfc2n7Ee6T22LYaUv_JhElb5/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1DluLY8dwUsmboo25IvSES4O1ZSgliCezvWa_G-DsV58/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1tc7UigY5HzpEvCwBzX-e14c8ULaefA9KwPi_K1kc0Jo/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1B4BGA4SNmuwqrzd8vK9USm6fWxTivmbJBQpwOlkGDMQ/edit?slide=id.g312a3e26a96_0_0#slide=id.g312a3e26a96_0_0",
+  "handout": "https://docs.google.com/document/d/13nEe-Z5kFcj9JJhneS7D4bnBCS6gIIae8vPk16F8LLo/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1xB-8mMjdRdkNFbjEkusrnryTNqX7765g11xTFaarz7Q/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1tBNt4KLlUKfwU8jKKxgROhffk80j6VR2VAchU_JaklI/edit?tab=t.0"
+ },
+ "Complex Numbers": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1E13VcK0449Tzr8ty9qnYKXAvNjahZjC60K7NdsjGSLI/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/19_ZwZgcaiRLtYA-x2XsR37wUd4vrita9/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/14F3Gkx3TbAckVflZaoPS_T0KELVd4Ze5KQH15er_jtw/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1e85buQxhBngSmy-Ce98Olzui7b1wM4rqJxVcrAyPCa4/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1JXdcE7lKKD4yBlFEqpon2xBoa1nJWhdpM88bI0TEyzA/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1EBTAOQhDs2Z7X_NrY5U6OsEBKEfxgC6ub0rRMbjEBgU/edit?slide=id.g312a35e0e87_0_0#slide=id.g312a35e0e87_0_0",
+  "handout": "https://docs.google.com/document/d/1m6Ck0DMxV4YuOSna-d7OUYhO4WoXFC0LwcRyW7z7YhM/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/15Waf3Ni0Yv18m9LfFYg10N5tSb7dV461cl2vuoNAq0w/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1Fc62bCRlUMLYhFX-HyX0Zdo6Hc1bB-JYemnYIqqm6lE/edit?tab=t.0"
+ },
+ "Logarithms": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1Psx7gYBU9FFkPdg9fDXOfrtIEzMKTUrrlCYKmXY1j1w/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/196QnZ2o3sEzXAMfNb5HuPGIyYzf8RlS_/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1uM__Xy16tfrBR5ruYXFZO58dBXZlfHc0TaJmhtvu0MY/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1A-yc_1WCZ4tc1ns9e351gz9vR3ICYanXt9c4B6yfeM0/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1PJ6VpftMWySILAl8PcR3eaBnCk1Lu4_TM4CS09mB9cQ/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1aFuziGNlguxuIYUyYj88XJU8q8ugdFtc0GvsLbIPpOk/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1pjRRoWhe05KNOXuQFtexKIg-05CIR1Pb6nz6uDmVbZo/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1dW-fOrWt_2W7oBUTIUuffwZjrOsjec--TNRQZ-B24BU/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1xpMHoJfg6KO3V9nSiF7N9q1bpS_l0yNroQ9YapytdlM/edit?tab=t.0"
+ },
+ "Polar Coordinates": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1X1kl6-VK2KXkLz2lWTo0wob1hl4zfc_aJb36gfDJeiU/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1xR5ygL_fyTymWiz2_NPpm6HWCmMFxLwc/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1f5gUUVnQcRelplUbmr37QvtMo6sEmMIXpoSSGIuo5BM/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1oITIiMCRJO7WM_2dLnKR9RbNR_fYX0STZ9hPuCLfnsE/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1JLNwCNa51A2otJ2m4P7PACd-GN74eAtj6vPcLKluWSI/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1Cn0ijzIKi05OcWhX6rx56bsZWjQ26aefDI8Gx1TOPAE/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1ItJO360a-rP1L1RvgYfI2jRnE83VRvUcZeV-Dqt3kZo/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1Pi0OLOxrquJUFnsWQ1jbwlHFvx8VH3KUZyyt9Vt2ST8/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1SuvlGSZsCuFJ20HDnVJkNjgq3kx6p4IO3MXViOiqvsc/edit?tab=t.0"
+ },
+ "Conic Sections": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1mr0t32WQxP2onK-9KjpWfRlBEUpsWEguCLX5kCv4w9M/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1CmPyXh95iWp6l89D6vFc7I8r80PSSfrR/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1rhWXJMcpopy-qY3SHhohRs33IUnwYiGrMv7mfvXdXl8/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1iTCdDl_lrUqqDdhx1vgH2BzqmrvZYDnDNPUUw44HNsw/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1QAa-f7wZkVJkh_EZMvmc9cK9mjQK_8v2yjLW08PZPo8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1cPfJPZH4xfWHAkJmO6ETqWWK4amFmjkR7eeclKn1Dy8/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1s1vxeslApeW92jP_vTF1dP12VblOGNIX-jLbM8lr7P4/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1o7edwaZvW0kgN3_yEIwv-eMKsQNj6z3ypSBQlF-OVlw/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/16RiTHUy9adJCVONWb8-6ipqN5UG0WXoqhhJmkhXE-SY/edit?tab=t.0"
+ },
+ "Matrix Multiplication": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1rC8RIbeEchq8Bm8Q2bAsDHMjbOeKStyIoUxFaPAjZcY/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1jB71Uy2A4dOPVE7X2XePfQG-Ku1cb4gO/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1nHnBQTj5X3-MjSOj4_yjPLf-xGCbbmpXXFY2Xjmb1Bw/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1Pj5zjqa2m2TYffdoXDl1oziGIl4OW07CVE3dY7SGMkw/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1kcBzcLVZatvHTNG3q2uPzKH2atAX_q62EPgIPPJnk5s/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1gQAATezuFmcU2-KAELtgIZGjTArJW9f5It9BhMBYvmg/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1B4JKiJxKRgqFeQc-HdAJpLcrxXtcxee34_JJ40hmJX8/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1UQfamyPTm4uXOCqdVNjZDv8rs1bfAf02pZ9AkV7YuF0/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/11C213AXb_pv2HvW_LJjX5DeXz9saIhAw2qdU8rl5aCY/edit?tab=t.0"
+ },
+ "Vector Addition": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1AnPJ_e8FL-HZ0Evz3KanOBXsqo0AXXkwFVf7AFIizQc/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/1UCcf2OJrCRxgbM-VKH-OoK4RYtYkLy6w/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/15O58DTGgrIww7rGwVSnKUL6UdYqcOSURYrlYgaMF0Uw/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1BpWXd3rC4UbiZgvQiMOyOr82QnAFnowZNLfC6rLQC54/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1X5dUAAbKVIhTL3ZiN4y1LRfuBGPoHMb4JbHVjWPSIS8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1CsAk_JxwPx-q50lNwH1kXhXAQw0ztqnG5AzCQdpDWrc/edit?slide=id.g312a4bab094_0_0#slide=id.g312a4bab094_0_0",
+  "handout": "https://docs.google.com/document/d/1bVjT5nwRYg75Cbb01TBJuw7SZkTJRG569XZJpA7keKY/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1c3hi2dg8ZPDSPVSnj_0LJuKlhj1Zqb_xWtfCQpjuAtY/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1LRI4ntP_JBBxrtxsx_Mp0LTODhi-kzW7fGODC6OrEiQ/edit?tab=t.0"
+ },
+ "Function Transformations": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1Kc5070CD6gAzVFHYNm0KgQwakynUmJdRpfdAIC3qGSk/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1EnEaH-m_0FLuaayLqHYuTbFhnsogcn-G/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1LzpS9OR-R8oAthnO9KQjXy8FK0apcmMzJZt84GAQt0k/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1kCWur45mO3q-8tYN_5O0XZLaq6bls_IwKAcOfo20Qak/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1zfbhyGnT_owCd72h-qEPRYqkXWinKKy4D3rhG4vNN2w/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1RYEwNTAJgiBzBdJeNpxcRmoqJ5NGW05SHZFhuovDMQg/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1vy9QqYXHuOeQlT-4qZIXnQo_Mx5gxV3viJzUE1NdFS0/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1YPA9Wp7SrOrO_M795Ku53Y-X9xGnitEQnPmUH_VDp1M/edit?tab=t.0#bookmark=id.foyhvlh2yst6",
+  "overview": "https://docs.google.com/document/d/1zye05ji2q9xGJyOrdXQtBERyHgU-bLdPWX1Y1IsmnGE/edit?tab=t.0"
+ },
+ "Periodic Functions": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1ECMJjnWOqj_nC4Ltk2lv-jjZtBJNpPxvIvr87ThFvO0/edit?usp=share_link",
+  "takeaways": "https://drive.google.com/file/d/160axt8MMoqkzAUJIB5RbtmIad5sj8bKX/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1bZUv-NajIgG6NQskBEoPWNkE_RozoPwS3c_00_XKMoA/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1QNL7FBH6DjRCRnx9XiRRXVIfygTDHvIVjkCQCcG8v3g/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/12fwyKsSIl2E232F297KRAcNA2WZjPuglrkP7Cw2CqqY/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1Ozz7aGytvhMfKTo-0DL7v8MeF4CpiiuCz2NkoUKhSlE/edit?slide=id.g312a47ed792_0_0#slide=id.g312a47ed792_0_0",
+  "handout": "https://docs.google.com/document/d/1g9P1UIQGuDm-SXVcCtKhsZKTx20mzC-moWV5qBCpdvg/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1_UGv56E_b52eLecbyRxo6-aZpypeESUMtjqmGJODYpU/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1CeMr1MHOU-b81GUz6ay8AcabMJZaT6qcoUSxHvIzcoA/edit?tab=t.0"
+ },
+ "Instantaneous & Average Rates of Change": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1I2Ht7JZjP1Ph73LrLXA-tgnY7UXNlV9nzA0f1B71pXU/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1pOkA5LU85aZXTaFIJ0INL-Y_r1gajjTN/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1Wan5927BWC7PUrIOb46vpwDI1XA8EPD0kkAQh6m_4Ms/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1dwzU8KW5ZjMi9p85kJHme_Vxg7NILiiIM9MR_Vths9c/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1aT5MsllvPFqaQpjgJRKULmCqRL81N7UwmRPo3oDi5CI/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
+  "handout": "https://docs.google.com/document/d/1rM0Q9bSgFd-imwz659y_qNdrUk5qPGIiP8wHCcv8gHs/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1hC-ERNUj2TeDPE2MV0zu7cilOchB-xGwzgbcNT3wiL4/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1uWjULjEgmpLdSx05KcL_TIdbntaeASm2sSKXxQxo0AA/edit?tab=t.0"
+ },
+ "The Normal Distribution": {
+  "kind": "Math modules",
+  "toolkit": "https://docs.google.com/document/d/1gLMY59Aez4TawgsvjT7Wf1r8tuf0b1yq8b-N9yLZzUo/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1e51Ze1vHMtHDF4U0kkHav_NqUCSxGW5a/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/154AxG8gdK5yRBFTeKqhiVdhJjhx4fULPXI4GiG1-dPE/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1DD8oSV2GFrp3w7Nv2GTFu-Gcl9Cfo4jZ7wZTkn2Nuh8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1QEwOl8mMp8EHANbsPOy7Sbxr0RoFowHmnb2X2GtiggY/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/19iLdWhKRngRvzvJ-GLdjQtPf5YLhIz3NWcNtysTmN_M/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/14bpg5NrMynKlNyA9N1j1xoprw6du_yEiXqUw8irvXks/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1vC-NtKRhYeTU-DOD_lCsYA6ZGSJbSYUekp8m9kL8Hxc/edit?tab=t.0"
+ },
+ "DNA Structure & Function": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1VAx2p7I1QSAcuQRr05bkMlGVLGlvwPlkCoRQ-j1j_qk/edit",
+  "takeaways": "https://drive.google.com/file/d/1nHfwvrmTCc-44V9CNbSdhzLAviM_R2g-/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1u8h1zEG34VUeBy4jqwx76EJAhl0_89_ZBD78fjCKZ38/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1T2KqTg1ZSmV0Sdv5wrFo0yv4yi0T7Lkrd5Kg7QPlLaY/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1V8eKENsWFfcfjWVl_jir6_CHrsxHaPnqJWM-HWxUFfs/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1XEOSq5PGugmHE84lSog7G9F94HITh4hruRc-i12B9fk/edit?slide=id.g312aa97d690_0_0#slide=id.g312aa97d690_0_0",
+  "handout": "https://docs.google.com/document/d/16e0LjloCHte4TyPufLXQMLdnjd6BDIp8cvLVbshFPfM/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1g-j4RwAdWBAhoExrZTfAfN6tDMWWWZ8AGsd-zuKnZXs/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1CGB22JWyeufj2ZhzODA1v7MAzpFaC7_Ei15y_h_Njkk/edit?tab=t.0"
+ },
+ "Genetics": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1OSDHf_oAs3NPa2zKsZsCpgcRi0g1bqT8d88urouh8wc/edit",
+  "takeaways": "https://drive.google.com/file/d/1n7nXXNAJiBYUzOWjUxbxy1QEyMb6gV7J/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1GvJtG89fS-fcXHAgnBD2tetwHyRTDuxfyQ1lATiU0Ms/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1nUxZlzCKHnRdMRzAo6FiTaLTlxYPKjYmhpG_P4M4tb8/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1-94zUqKP5VtEX3GoS2RtB0bp5unsFyqYblrQwUuT0fM/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1WO3kxFHcaFo1zwiQUVvOlTwFh4xJu7PfYslIoLKiI2U/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/15Q7_kfy9oKwfJ2TgFVWZhkopn2JXpRBl-2PcMyiJeeE/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1Yj29piIPJL7_thaIggitCLPq5-H3WkS1cZP9u9W_IiE/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1uU3yQHEAIo4Crf2nYjgZ2GiNtrHsekiS_IzZg1WkK2k/edit?tab=t.0"
+ },
+ "Cell Structure & Function": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1UCMJOlyOO0dghrIML50R8CuhHDpwwQ9GMrTD1_uee_c/edit",
+  "takeaways": "https://drive.google.com/file/d/1iTL0um7yN-HsWt67BrZlOWDGJNvmDuJu/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1LRh1bsYoYF6Wkez4B-lecfbYyK2e1o5aDVDWQeGqJQY/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1imFFv3bBwFxJKy1gBOSky-bDy_sKiCjtYjMHYxBiiuM/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/110orGoiVV-fCaA9LcOlAw8ySgdnC3YdaCqThyS-vESQ/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1MjmVEidkjryJ0km3jtSyq_pf9ZriE_ZoTS3dLNtvWio/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1FjlVdDkGZTjWxTSPWk1-NEkBux_2qE4VsyiFx174zfY/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1vuslvpwmh93jcM9e4a8bE3UlqRB-udtdjGXzh_ZcLiA/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1fr-ZkgHutFd_H2yIuDnfQM6zpaCXSzsTFHYdfa1zXSA/edit?tab=t.0"
+ },
+ "Ecology": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1zl2AxLCLEpfPH3tBZtLgMLmw5TPmil2MiBTAdek3SrY/edit",
+  "takeaways": "https://drive.google.com/file/d/1mmc-qIVvepiZbH8-uhDnsGkODeMDUEwA/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1zEIgQaGDmbbxReRRwF3ieNbbioZXAFtTJKXmjkB6XZw/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1REP-Vyo1U6qKGz3vDiCZDFkK3YuII5dNoDpuGhxmns0/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1b-NJ_lH_niyod6jCmI5F3sm8cuXYfteHo7VRigp097s/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1li6d_xqgArzQHGhS_Qm8xYQZecuv6lMOIYiSAHyHiso/edit?slide=id.g312aaa5a9b7_0_0#slide=id.g312aaa5a9b7_0_0",
+  "handout": "https://docs.google.com/document/d/1_-Se9xabUwpW0WxYPyv3VtmVPJMmrXLESoj8YPOIIok/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1vOSCk0ii5wp4LoG1MaQRxtoW25YZIKdPMYSgOqwLJRc/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1u5x6sZapes98blqgflif3N2xvtGjIEsfni85plhqlt0/edit?tab=t.0"
+ },
+ "Mitosis": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1nxBn7yBOjqy8Jl8joJ1wtAD-9q9No8QcF7aDF_EudoA/edit",
+  "takeaways": "https://drive.google.com/file/d/1F4t9_jO9M8VBUELdi3jhYFksW5dD94O9/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1XN6K14He44DSz3z-2C6H188v89EDlC3EjvDWAqDL-P8/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1WvSRZcGMdCc2CG11Epciu8o9bQEOczId9eYgpwEc0M0/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1e0DdAP26QoCdGo4tsqLKxtyGgcovDJztvlWukp94nkw/edit?slide=id.g312a5a4ebf5_0_0#slide=id.g312a5a4ebf5_0_0",
+  "handout": "https://docs.google.com/document/d/1puOzB0V3ebdq8b93vM1D-eEcIh2bo1jtWMekhzshWQk/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1sQ6l9O5Nh-Y2l_Gn7d5gbDM-0-UUa_i_BR7CI7Ew71o/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/16XOdB5x4NYHcQq6D50pA35ORebFkXmjh3QrkgQNNSnM/edit?tab=t.0"
+ },
+ "Cellular Energy": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1iDUFhpLLv-YQBBw_XypdvEzuJjCuXwkvjFNP_KxH_pU/edit",
+  "takeaways": "https://drive.google.com/file/d/1QOnmdIzgWECxBZ6rQU7qcBFtMpfJaVhw/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1pW7cs_Ox_c8pfy9c2LBR42lBnJPcYaw8lWrlD8mSvhk/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1SQlEYOj_tb2y0lw00LCJlR2x_PJ3c6UI1Ty_bdWFgh8/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1r1k_NWEl-lSo5tGe-EIVQrWR7r3X2ceutu_fy5uSEMc/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1MjjAy9l-PNb-W9hOLTpOJW7byiwbLPBRRUrFywkb4KY/edit?slide=id.g312a3d5f04a_0_0#slide=id.g312a3d5f04a_0_0",
+  "handout": "https://docs.google.com/document/d/1lqaqyaNxsukuFK5wIIbDmo6hMfw7uhEdn_3DDwBxVUs/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1eH2rH908DZvzahhs0tETBoxd4FkcKckWKeh4YsxXjOQ/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1zDIJP3ENGtjCyEd_gDEohCM6ZXkHXvsQbmkMHd3AgWw/edit?tab=t.0"
+ },
+ "Evolution": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1Vq47xZ_jw-6Mf2CADQglXaekRj20UTuT9jzWa4KYzmY/edit",
+  "takeaways": "https://drive.google.com/file/d/1ubv0xFQA6_CqjBHBh3pCU-BTxjn_7oRJ/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1FHZsdT9hK9F8Cm6VM8arLgM3Sb1f4nwxpCH4uEqoU9g/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/14WXPktcWmEYpa-jx3m82UDqfz9JJAqWMZtKgrywWkYA/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1SmmHQRtzlPEoyorWsi9SxQAGOlt4YEjcGbMDMCjg_3E/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1UJVPEJX80mszLSaH9QFPf4lZ3_3JbQyMRy0Caff6Ltk/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1jEuESjXp04Ro0TvhJpEZ50giaQDk-Ivt-v1Qhmb_XUg/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1m3u0kM4YEu7g8UX52U10JJrCtNlHv0XVX0VZAs_CY6U/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1JO6d129pQilNAdkYfU8Z4TdozTKmY0yyYNIslDemZbI/edit?tab=t.0"
+ },
+ "Acids & Bases": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1P9kcCr291oACxhZONWxFMUOe1wMfWwbagP53LFuo3GY/edit",
+  "takeaways": "https://drive.google.com/file/d/1aL2OqK9vd4rShir1SxI0GMzXpAhq8lKJ/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1As4pDUKUgxGh6AFm7IA6oHUwh0DwEyFx_bBY9R0WC24/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1PzjqSKNsDt6BtIDykMtYzELRol11fOiQQ1XOO2JaVmI/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1GLf0diDe8CrcEDgMuXHIPMq6-Mo1dCRT2h0N9aZrB2U/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1dHgaqlGcrFQdvn3oaYemgoJtEPuA_wcBhEzFfyJ5Da0/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1mHA_bUkU4aLghGh_il3xnKeit_GpWBa1ku7DS-Gdryc/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/11fM_QTs4G7TJUCzOte_WKPnnedOvjNGMn3a5NMwoCrE/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1J71DkZfriAEsk2wfKjCl6mpGQ6Dqt_m54XTCiBXeNZw/edit?tab=t.0"
+ },
+ "Bonds & Intermolecular Forces": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1639skbeo-hwplE48WHEnXvidOqFEFBjk4nLgZhWILAg/edit",
+  "takeaways": "https://drive.google.com/file/d/13f5T4G_Zds1pddCUOGNFZEOM4wnk3Qic/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1yEPf1yOLbCg9yahIIKrMibGBkDLRVG2sXod378Juyt8/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1XrStVkAdisapQNiJ0Ay1VRk16JcCJ3nf9vv2gR23OF8/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1JqgQxzd5klqDcsiZ-60M2LUY6VbZBeIjBcoQQKEN6Ec/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1DTVJL26jHN21bGHCGHJd84VEk8gWxG10Vw1MdRcWaIY/edit?slide=id.g3129dbfa60d_0_0#slide=id.g3129dbfa60d_0_0",
+  "handout": "https://docs.google.com/document/d/1GztNdc9nmm2fTmFyMSO6FacHQWarfZDOzvQlu3xQ3Ls/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1Rn01tT5GhUFNte5gvuji4--NRfTlyPnK15oAM3MMl5w/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1QGKwS63o8Bfsn4SdyXwFyWJG61myrsAxqGl1J8LD-XM/edit?tab=t.0"
+ },
+ "Endothermic & Exothermic Reactions": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1zQyE5TxC1r8FIjlPS1ZGeLayTZ_39dO8wP2ntEWX040/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1hO0VcJYwZG3ESrmLjDlJY_-EOlcMjzXhLz81sfJk15A/edit",
+  "synth1": "https://docs.google.com/document/d/19q_wSBSjzY6MR7nHnQxKzwgShHDCnafe1I-flZv0PUM/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1vqBNX2kGzHaNFLZV-5bxD4dViJKh5RoDFelXrMp6Poc/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1LpeU13mMHNanSmGPzNZMalbTcG00wNxWVvzI-nvlg94/edit?slide=id.g312a57799f0_0_0#slide=id.g312a57799f0_0_0",
+  "handout": "https://docs.google.com/document/d/1Y7yc-KVbjc56gshuGBkGZBYuJgyI4MT60rJbmCkNXGg/edit?tab=t.0"
+ },
+ "Atomic Structure & Electron Configuration": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1yK2JOE2A5JFFLN2xdJ18v3-Vq93Gh3Dedy2Z8-N5eOY/edit",
+  "takeaways": "https://drive.google.com/file/d/1OTcj4T5olADjUCGUU6LKcpqBoS7Wr91H/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1zRZnCAlu2mZQklnlfn7h--fV2JLLIaFYh0F-MM_6uD0/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1s2oysPhT_NzOMEWVsSau8oXsxoAuQA9XosU3O-T0dnQ/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1_9Za6PW3QNqvC5o2G_v0TbgEnkVv8upsxQKPEARZXy0/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1lDKo2uKB1hemcOUPnGcCqebmsnFAEP3I0BIyjiB4nzA/edit?slide=id.g312a5bfdc58_0_0#slide=id.g312a5bfdc58_0_0",
+  "handout": "https://docs.google.com/document/d/1ZlJFehhQLNFFcfL8BaYoXXD4zb6DCmmi_-casMuFq0Q/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1VajfzJJFwtoO2TimRTTmMqAqLDe5CUwEt-DoX8SNwNE/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/10KXN_zGWYFrgSeFkjEGTzTP0mbqLa4rFoy3bZ7SOxBU/edit?tab=t.0"
+ },
+ "Chemical Reactions & Stoichiometry": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1wXeTlSEstTvzMd427zqplMDJDtaTF5ih3a4r4pG5AeA/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1zCnwEO17b6UnvTKkDiXwmIzZvCiifE_FtDitzBLpn9A/edit",
+  "synth1": "https://docs.google.com/document/d/1j-87Mv3KZ_mJirMsDQfFBmHGBLtrR8ZpuQZ2OOQaRbg/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1iXrWDcFIEwn0HIUz-gvXQYc2Sfsn7UNayWF9R-W_R2g/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1mojDjUrTKUKHy6RUMTqlM7rhjUg7FWEp8PQgF5-hekA/edit?slide=id.g312a4e953c6_0_0#slide=id.g312a4e953c6_0_0",
+  "handout": "https://docs.google.com/document/d/1LfaRwB-a79cUEtwuttcOiZv25n3SHzEBkfkKL3cjaGk/edit?tab=t.0"
+ },
+ "Water Polarity & Hydrogen Bonding": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1zYQAPaCRCORgHyX3D5Ibm4u8--sj3iHvIQhSPZHCqE0/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1srOOn6UriLXF5o1o18fVP1PXKxTEhI8i/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1mjZk_ak7NoNW9t1d1uEfn2CAGPoY20ikJNHE4zjklek/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1myB5IInsSiuOaTtB2KcGto8aeAXIxCMOo_M2tfDNoZs/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1iC41wFLaKSluas_u_hwbbOjPJbOzoIjRAorfrjofBa8/edit?slide=id.g312a57799f0_0_0#slide=id.g312a57799f0_0_0",
+  "handout": "https://docs.google.com/document/d/1vbDo7cqLDemKDKf2eT1FI3l4I3JSmGmCw2sGEXKiDT0/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1G0oGPNE2pC01gWhcBLCOkASNFNa-stR5B5UPaxgKZXM/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1xM5QgQyidjl009g81iPAYfd-Tt2ef16Og4bQrQyPW-E/edit?tab=t.0"
+ },
+ "1-D Kinematics": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1i7hosvhmA2JUf-OMqOobMkoJErHy1zTJJf6CHycJ5w8/edit",
+  "takeaways": "https://drive.google.com/file/d/1dqTd-76lZZDs8PXd7sKR5WlVlcH-f0Yw/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1rHrETR0i1SBX3wUuB2mgQLcsSB91VMfZgMdEc6kqAWs/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/12h7UYGkrpZAdRoFRU_vIZWkrhN2UYhgZ7HJes7BSBes/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1_zHBxydP3zdxVn6tV4N67G2vz6YFJUzMxlFnoDBtuy8/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1-f_PJqBOHel4o76PbyvC_edmb189niDlrFxOTdVlr-M/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1E1toI42OZDCxXNaZ2hVokldoKaLFIyJvv-Pu0OQfkgM/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1yTYQJeK-xd1fGob0P6uorC7fhQXzjiDf6dW50ZzSjOM/edit?tab=t.0"
+ },
+ "Newton's Second Law": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1JVDbFZ_ny2kvTvEqPRNmb2wgDLyk-k-YHjol5U1nJQ4/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/17t9OlMLf8AG0SdIPuxLDPK9ZiLDgXB2nfnclGRxI6Jg/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1Oe3T8j7ZOOFO_JQLP9aPaKZNhCTJWOdEMJkgqqssLGE/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1b6DJ1rVniFP8oMg0qyMJmfomnPrBbTf0aCMi3xbUuNA/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1lkleV_zivyoaMw37tw1-FeL5AjXiYL0oWQP-sLjd3LQ/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
+  "handout": "https://docs.google.com/document/d/1dTiHXPbivk6noGaFNS8UZ2PSRWdCRJ87PJWSwiei9Ok/edit?tab=t.0"
+ },
+ "Force & Motion": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1X7x64DXVqJtlNCu8RFz_DDDb-fhuZcyLHOrNNm6TO6g/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1MHI3nJWOvPC__3IfPQd5FRu2VrVWxD-rjLnECgT6o70/edit",
+  "synth1": "https://docs.google.com/document/d/1VGMttwwtL-VYRvk_9W-BKLGeKOqSSH0oaxyQIbkyrlY/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1ReNptuch1q433cet5eP8tlg8B8hfuLi57HeVW2purVQ/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/18OReGEbiVDuYXc9WAkhTizxwO3uvaYrFTWJGh99jmQc/edit?slide=id.g312aa695011_0_0#slide=id.g312aa695011_0_0",
+  "handout": "https://docs.google.com/document/d/1Ww0by68_487uAXDz5yngufYNtqQBS4cfhCbY_YbKp0w/edit?usp=sharing"
+ },
+ "Energy Transformations": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1HYtZZVbCwOCBl2f7qhO-WQChVOu4VyGtzcTqrzyEzwM/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/16-46X-KJBZwdgdXFZMZMqnrJUBvekBGt/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1O8ZvsEWD2jgaIy2C4UwztPQEKMmxFLmq6za-FAeAthQ/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1MCxB-Vt-9V7ds2OLoDTwgtrHmF6YvXIApL38wrjFdMI/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1GrZBEMiWN3cobhyOoao9tNvMi2d3AMhJBEQgFMD_F6A/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
+  "handout": "https://docs.google.com/document/d/1POy9khgZQ-FwwOtU4GaFuAsWiGasNLvu822d2v35UuA/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/15pBApvlTG0JrZ3qgVlZbzjL_th_ycm_A3Y6AmPQ9xQA/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1gIFsv3I-G-lmrFRbmV86Ku5leokfl_LXj15z4YhGnls/edit?tab=t.0"
+ },
+ "Phase Changes": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1yG0s8BHVRD_1gurZ9RanJVRbGqFeemn2-FMdxm115M4/edit",
+  "takeaways": "https://drive.google.com/file/d/1IY4j2tY6_5AY0Ea2-khSamD6KhleNYnB/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/16UGvvx_C6U7go7NwdkMUWNJv2N_XOJWjwW7oH_3sOrc/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1hiyE1a3bqrI05vPcoVxBOKXBucAwkLwZj2KLVlk5gW4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/15RFx1JW1LRklxFbp35zoHfrZkGuNMIekzZFA4ix1bak/edit?slide=id.g312ab2ce6ea_0_0#slide=id.g312ab2ce6ea_0_0",
+  "handout": "https://docs.google.com/document/d/1Sqwkkcb_VCWGGJFi4YYsVDiEzX1qhDxTygGzavS85Ak/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1XfbIWwdBErYqbiP6VfgwvOaUo3I2cN2vLHAs2Us58OQ/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1_pVP3iwv4nlzPfJ1YOhx45CMO_a-rzarOMqLz1IdujQ/edit?tab=t.0"
+ },
+ "Wave Energy": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1z0d_z7DdREK0SptKk8RtpXGkfjvuKFB76Mv3aj52lLs/edit",
+  "takeaways": "https://drive.google.com/file/d/1KzL7yTRnLLlAmRiYK4BrIFLWrTC1hmac/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1bwKsIdPn_CK5iYpYasXlOW4eLuTTFyyiQPF0qqoT6s4/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/10nROqJyjXq6XSy2sSkwkAqCiS_fp5-GDwaK5i1x3aFg/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1CcyT5ILH4K8v6c1V0jb3Ul4OEmHqNvjMMuiC3o9_FIM/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1--QOi-a5kPd2Em9JhT2jYSk9EErtqYXUVQmcMQ_Zp5c/edit?slide=id.g312aa2201be_0_0#slide=id.g312aa2201be_0_0",
+  "handout": "https://docs.google.com/document/d/14kbNJC8eZ9_KIaRvSW5HGaAmypwcWuV3XauyCVhNWOI/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/15ZSCq9nlJ6KaJGGI51m_BCNf6ffg9GRVCWv9MEHF_LQ/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1reerEX077AjozO7sXA7kOY87NK-2pyc9JDxmHaBDL2Y/edit?tab=t.0"
+ },
+ "Biological Levels of Organization": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1rBo0-I5n6sJ8IZfBQBZuePtskDm3derMOoTvnWdcCjo/edit",
+  "takeaways": "https://drive.google.com/file/d/1rs6zxwIWLICm5nwwaOBqIy9V3jqWvUiG/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1W5euhZpXolVurhqrXGUErv9TKvxcxZR9AyE3JqTjm78/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1mDs8m-ArfiBbF0AqUdDYOIcrR-gvU7N0f7N1aSRhOvM/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1QcBrVjTJkqJpzMxOp6ebgVr2OoczjPw2SPhp-8VtpVU/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1bHKpIszPu8iry9ercbo6mr0kzM3Pg0vWO3Jgyvs0K3k/edit?slide=id.g312aa7e1952_0_0#slide=id.g312aa7e1952_0_0",
+  "handout": "https://docs.google.com/document/d/1M1z2iL5VpvIHtWK9m6WOuv6jUlBNicydcPBt1NcTrOI/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1WZIMXyOW6eCUPlACODlJps17l1_tA2-VEXVSKKeJnHs/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1QA9Nq_JOWuRvMUeNNKG-mT2asiZqG4aqepoVFC7e8gc/edit?tab=t.0"
+ },
+ "Growth of an Organism": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1gZkdhObC2yaibdHFIbRC1l3-3ZhcLEeNetCFUx-_G9w/edit?usp=sharing",
+  "takeaways": "https://drive.google.com/file/d/187F1SK_elExDc7XxgC-r7pcNY_50BliK/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1yM-cgC-wffYabGtqvT4l_5rP2gbX_V_CeJ3uOglB_Oo/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1Cs7aDD_7UGvLaIip3_UAutVdmVxUuU5DMPS5w62ZN3Q/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/12Zk4_Sz1-lEAu2nJoCKTON28zVDWGi76ealeNvgU7IA/edit?slide=id.g312ab5eb5ff_0_0#slide=id.g312ab5eb5ff_0_0",
+  "handout": "https://docs.google.com/document/d/1hR3L5lGppUOu2j613WGH8htwDI8zrqd4HWCoeTqTu5g/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1P6iVifNpsI_GZDAdeY6T9NfOsrxkzv05yWwfSJ0CIf8/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1-jsLOQoeriD44ifEaagm0ZjMUVhX-_exaVKJTy0QQ3o/edit?tab=t.0"
+ },
+ "The Scientific Method": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1F3KPTf-_tdvQVrX8I-95aUF-SXdMPFr2S7_Hda-N_RY/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1R0LofqP-u3aYtq3JBQG4kXxWVLxmPDpO/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/15ovYPhE74-M8ye6SuaAfml5ZVw7GCeFZQFvVMy-H0JQ/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1vgT9bMa7bbnssaDVhB5OX4dQSiCX9yfH12U-466Q8DE/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1aj5a5p0i_GHQnoqDA37eIb8XHdWRlNhPdGxCxbDU-JE/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
+  "handout": "https://docs.google.com/document/d/1xBOPntgC08TXvv1r8JdVhNUfZqNBH6h_2DrzPJdY0ts/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1cCtZbuBOfSV7IvDk5rfoPO_7zqJ0PTsZFhvtAQJMxU4/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1YOIT49c8Hz2WDR1mlMqTs6QWU3GMx6BvrXERFGXcxAg/edit?tab=t.0"
+ },
+ "The Nitrogen Cycle": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1Vp9oylz9smXYU9bg-ZLxA2elKQeMuP31dUiLT_dlafg/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/13WiAEfNBcC6MGARuJYxzoLlLqjr_HdiB/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1p6VkMPpuKbTUHSNdHmejN_R-YTMEjJIzpNWqlMDlhlE/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1IPxAjxJM08v9R1TMKtOBEjIfrlcZP3A8GAYv6RRE9Zg/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/13T0s6nR-3WUkUmPkrXmAKFB_5fNY5cRR9vZRzyVH4l8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/14LI317fyWIi7Da-PZ1XYUS4bMbR74LnO23ZczpZUNnU/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/15Ez3ZZroFx__Yh6jkebkKhqm3RjV6MYs1kS8F4GJHrQ/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1fdTP6VQNgaE8lUIbnk9zCkPLXQc7VJyPpJA7OZeIgtU/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/17N9xZp_xXuNXh80U3YLr5sH4RRVNOxF0R8qdBUhRye4/edit?tab=t.0"
+ },
+ "Homeostasis": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1X_LoDihnS1vLLpTPyHWOke0OivqWJp4S-1G5HkLIn70/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1jR8h7JxOJymZCj8neCxb8F_eCu7IMeGp/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1LVligLTDOHZturWsRR1-H7fsnhjCjhO5W5c-MUhwecg/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/14WnZIO4GDUzv22bUToXHIDMn8UYfID0Js7VJUrNslSQ/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1OoP9Y1RRGqD0AUJxI0trGWwU8GKbHcY3XY4iIAP4Vvw/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/115YqtYkVgXcOctWsb1RRlbxk6tyigg4UCwqQmY5TSQk/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1AXXdU83OV84eaMbMHAsDAGbLl9cdysSxwgv5AiL5ALk/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/18ie14m4XVoEiKv4TbiTU_KMiOd1hpgr0IL_4rMkeqKk/edit?tab=t.0"
+ },
+ "Tectonic Plates": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1J-4e8rjtDABu5LmHePhootnkCa2OejdNotZNACYapm8/edit",
+  "takeaways": "https://drive.google.com/file/d/1vCi_QSBja-d0K643gOZIUwXy1gP6hHTR/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1ifl3PIJWlQpDkKvn9qUXYwgCNp5fLJAthzQ9FsKyZYw/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/14CAPZXBGV2zLJPr0IO-sGEP1sLOU9XjGeZxw0UA_0P0/edit?tab=t.0",
+  "synth2": "https://docs.google.com/document/d/1ALH_82YfcTnFSK16s-nDEE-5cUdFvi8pzbHY2iExCw0/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/12G7uK3TEw0HHCshP1EZXGsVc4gd_ujLMH17KgU6C-ZQ/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "handout": "https://docs.google.com/document/d/1Q5ixm_0zF3boYThQqUUIFUGcnci8X-DwSESON60WK8Q/edit?tab=t.0",
+  "transfer": "https://docs.google.com/document/d/1X0Nki2yH-7n4_lx1YG8VfcrEeYqGpNbzA1VLznNZqv8/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1KSbGVx2d-etmsf5E22kxCE-Nb7LSXfI5yTJrMXw80cQ/edit?tab=t.0"
+ },
+ "Earth & The Sun": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1jM8jO983C4EEC11Tfzj6VIKqS0IwuG4YU2Jp9hlwCuI/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1b19ObJCxGEd7TI-hD0XocjKdAAYhQUU_/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/11Mnc1FdV8xoMwftqEA65QN9WkE8djyjfhbDkt1XEeg4/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1CzSWbPa94k-wyuRT5nQ6HJ8a4NcafFgPJoXmzEkooMc/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1u4K7rpy3VruQPb9kDktrKz4y3-t9-3HQxsIy3dC_Xto/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1YIA8UxRSbW4TK0wJa0dOgLNGoUebH6pv_FcZRGfKXs8/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1GJTGYtBNvg2eDpI8fG_SeLDOtGuUUuN3o1hlIoo2HSE/edit?tab=t.0",
+  "overview": "https://docs.google.com/document/d/1c64A03ER6LvZiuYDlOG8yO7u5kWSKwSdNv08AcNcvlM/edit?tab=t.0"
+ },
+ "The Rock Cycle": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/d/1brNiOW5o3JPaj9YspWwkvvF-OpI1aPefFcWG3twcTTk/edit?tab=t.0",
+  "takeaways": "https://drive.google.com/file/d/1kMsv1a-Mws8mkb3P9pMAJpdmerh5HIS4/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/1ZEhCtjrEjrAjEhssoM-mz-Yyu_70W4M8Y-sG-IbQ89w/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1Wx6l3DPjZXAQBtwTjhLTrQsgtrN0u6NfxX5zfb8vLMw/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1G-Hz-yZQfpi9djH-O8KL-2WfHB8yNIHf5qeIGeNMrNY/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1tG67b2kt_8qKJAAIAit0G7DfW19qSWreyQFhHPnuXdo/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1uv_8TiLJ_tGQtnC5rlsSt8OBs_Znv1Gs6TWPRUl93oY/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1RAI_c-ih30uozinlU-nS59jaXrkFL_iq4_E8IhLnX-U/edit?tab=t.0"
+ },
+ "Algebraic Manipulation": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1BaIOoDSL8Sckiop9t_rlz_5VR2SFOyQbGrpB4hrVgVQ/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1lgCjaevNCYakzHwHmnA0FWJ_7Wyr4eneMhKCprG1lSk/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/157keiDTB-c2jcXihExAvWjHQvC0-f07T7AWpMkia61A/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1ASNGQcmFvFeDllmd1uJz0F-PEFQ06apIvLADNnS_j08/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1fu1WCIR_jWHOejs57FVKhGUj65oC54fzjU85XPQt3aQ/edit?tab=t.0"
+ },
+ "Factoring & Polynomial Division": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1dkqeEDDyg62VXfsaS5THOLtEN-LZpVRaOM_7nkWIgfY/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1IY4lpggBlVq69nx8XsPO7DHuYW-sgwG516KyrnRDhqU/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1g6YrHhJ_Mi_XKHt6A6925f0Xl7qwUD3XrHMGWwtrCcU/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1wri6XzvqJmDDklSlEkJLaxNkG-Gqt-GGCekLoiJyN9c/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1rwAQWVpzgK2Y5PX8kpoiuu87bivXT4ITrFUMcf22tFk/edit?tab=t.0"
+ },
+ "Rate of Change": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1Ca5su3sQu2xh7jImK89NXOKgI9myjywaD122R3GGzLA/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1yoDd0xAMk0CQ3Y30oXvmHt1ii542sJcGEBg2pJ8zCUk/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/103SzkzrNTcpykPQphuIL-DbJjIKOsk34M-ikDxGqXg4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1zY-d79PWBa-tfx6LJwdQLI7WLUgkRNhcjjKbGIMkBlM/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/112QesD8jcz8kblRrtSz9z1QCibMiz-rcNGhqdnh4oUM/edit?tab=t.0"
+ },
+ "Angles": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1KniKilLIAUG9MnXEYbZvulBBLSCANChFLNTx6D0k_Y0/edit",
+  "lessonGuide": "https://docs.google.com/document/d/10mpIDu9qd-BQJZkZmP1wKsajDfGxI6IPDJzB13LDmWk/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1hLeSa-r2w6sF2IE1M0_4_DLWKIhuj-Pbe5f78T-k10Y/edit?usp=drive_web&ouid=105079359945935734029",
+  "slides": "https://docs.google.com/presentation/d/1J1-WLIu2LecB5WXht_I2kSFYoJRBcI8Ue2_8Rbfsd8w/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1ZrPdPzwSza9WX62bDWZqScJAR_v3ycONDrePzq67yZA/edit?tab=t.0"
+ },
+ "Fraction Addition & Subtraction": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1k3JwfYg0uejn0zFM5MY-P-1KDUOmgwHNt3HuvfVCMXw/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/12s6V2Q-fSPuniWxl7Jc-6V3vScogRfWanT16rtsIEpU/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/10UHyPvGaAVIAzPgqC-fzqw5ih487Ee6VRJ0kuE6-s8g/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1n9k76ulmT-lFhvGmue9jXjRI1VtDI4P_EIY1f1yu7co/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1aBxIbpnp2WkZSOoiYGDRIn-cdV5cnEYerFfAJe4CGwc/edit?tab=t.0"
+ },
+ "Ratios & Unit Rates": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1oSCdSaChFEdPsxCevP1wd9lJ9TECfoeORcE-MTe2HIg/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1J8WxkIe93EQ7dKdyN3wNecRmvQISTkb8TgLSGP4E8GI/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1vHDWCTRFVIXKOAlnJfw47v-iPmdyER0Q12Yw116us0Q/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1GvcxSwvZM_uN1NKQrycSJBAYMM1laIP_I4Dt8ZogBa4/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1TMtWjo7Ro9_OPW3fKiOgFINpvWLe4LdfZtoElg6ljGo/edit?tab=t.0"
+ },
+ "Calculating Percents": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1cNVhbXq63MLbU9GyJ2kCjzUViS2sSx6aK6Lhoj9BffA/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1E-M6j--P9TujEacHjgsgfeYmhNnHHGt85JHO9Y66IoU/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1LEPMMTwZDL-N1s03ecHbzQlkwh6F749hHP_cIeiBMBw/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1icEHHzMYC9oMlq_bsxPA9rHT9jji1QrCLQs6sTjPoI8/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/17VXqYAUr1erYpkoTVrPCfDfqIR2uW85YZAlGz5K1D0E/edit?tab=t.0"
+ },
+ "Fractions, Decimals & Percents": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1fnoJKJ-OjjtKO9P-vn9DPGagLaE2MjutnvoG0wUOzzQ/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/13fFe10qybDbFaAxFjtmzSQCwXgGaFOljZNjkO5n14is/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1BpKZPy9RZD0jG2Y3uXTFyZ4mOGSsCrfd20er0IuOWS0/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1ysaexGSxcEQQHzF87vGdE6824aNefO8m2ex9tvbnjXE/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1pfPcNzJfX3esKpMKbKeYHqm7eO0zoX9V8suTni1ArcU/edit?tab=t.0"
+ },
+ "Scientific Notation": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1YKnYSVi-0bzwjZZydisLQKVKMjuOvTMdxKyoJ7wHJUg/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1iKCVOheOJpb6OUBwGNBLJV_mMciySZfqNhyPLCmiT4Q/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1yuyFZy7titJCbdExnh6Lwlye3uTknXHqO221Ekfqc10/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1Q-Soor2A8h7j3wLK7BJcvW6vm_JQ8RlHWj6vewKQre8/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1HshPcO6xHjqy6oA9FGFqpf5CKTUCduuRKePaz8-sOUM/edit?tab=t.0"
+ },
+ "Comparing Functions": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1LMz0p8yuWBS9ZHYVoLwpIlpTmuTqcjtPvokaKv5ziF8/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1eL8_EuNIdi3QtJltLWuUrCTJLkefMa4HwMLCj0DszQY/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1Kq77x21OdaJA25qx9OjYEp0DHLFrkmdj8cmGCSyDZpE/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1ice_2aCxb5-IxMBSHglyKt92kayBzu3OaANgu8PvTVI/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1hd-4GEmbdcUh4jbxDggKoBdUEDY9j1qOOrdLxL7G-SE/edit?tab=t.0"
+ },
+ "Identifying Functions": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1EZc-PbQKxUXfa20vtvh-CF9ErD03q-iIcznsWME-ifM/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1YsRDVvh_bKS-payI8IiVBuze1quYIrZ9eKZBlct3nI0/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1Oln_uBWv7X-S-q5Bx8wqZn1FAnWq-l-Bs-7v_EPTTUY/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1WIwX8p3z_v0KSjKvcwvenjLjEym349schqenhszlUsI/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1fzaYbjkKCt7c_qXZ3NpdGI76SoOjJEJBzLMH1Ra5ENA/edit?tab=t.0"
+ },
+ "Solving Linear Equations & Inequalities": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1EJZh3F-5JEdzUnMYIhByc1zoCs3wNqz51Ep6XiNW59Y/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1aYXDqE4MyaUcoXpa13Dt7Ikg0hA7a-I0X2pypkhPVvg/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1o_QrZR7Vy0HGpvsRmoW-DArRfJVXtTeKgtBWwxvm47s/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/10HYa4Biy5VVrzY5tgxBTDMQogLCs1YZVWzRCsCKizA4/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1vO6RWrvHpmlugTTaoRPdnOJyrjuUT-aOMuRRYUpUsi4/edit?tab=t.0"
+ },
+ "Completing the Square": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1XDdMZm4U3yKn9D9FoTH1sfqP9VBpagah0hS3MDTc94s/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1gzSfa4aah-D1yQkM9qq0R2TUPNFZSNFJwANhmvM9fEw/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1MhRx3dxPq1NovJBxc7bo_RdsHyOvRseE6KCVwNTMWL4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1OPmJa8DH-KdhIwszmUOI6mO1D_SP9QCGitKxqInEz6g/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1FulV-L0bdDwSOuWlw8ibzL3qR-XN419rr9MRlMKzFcs/edit?tab=t.0"
+ },
+ "Integer Addition & Subtraction": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/12Pd3HSQl61lZOX1XvJgIwTw00Nonws33cD1a0GuYRHU/edit",
+  "synth1": "https://docs.google.com/document/d/1tFHKpYDJXvXuZsXgYkXYP-9W8FRw7mR--q7gTM9Sk-k/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1sWHbdgfRnMJc4vHVTCd1IPESoFpHMNZJJmDS5JvXaoA/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0"
+ },
+ "Solving Systems of Linear Equations": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1ExFG8871FWU__2mp_Pu7wZ_t6gyNxmj6qKnBMfVMku0/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1rF7oRvxA-XX3ZWM9ZsnILHzUDMrzObcUQLnXnLxWwdE/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1juEhIKhKXiQuspQTkZ35YZ5OjzfPYSQ_SrT0RgDHoW4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1fIAXcZ0I71QJWYgkAJL3dDdChw82LZsR2dVFarh9wiw/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1HM0Lk0ry8SW7YOxPFnNzcz4zNZwY6F14RmsrUOl22_I/edit?tab=t.0"
+ },
+ "Creating Linear Equations": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1fJpYh9bLP1Z0dqt_4qGFRYf-pQ7Oy9tpQ6fHH9JBbLc/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1-kR4kJmrh6W7aolOV-9nLXAUcoApcXe15_hgjb9w0NM/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1fcSavxRwBI6IarPsk_GabNbvlitwZnYZGFrHjVlwV-Y/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1msYaomVamZ_P7NhjZKycSt9Xglwu-Pq5wtar7z01Pno/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1u1jFMiCCwhKzYIyY3J_TVBxAD-aGk5Jsu-nDRD4-JWU/edit?tab=t.0"
+ },
+ "Nets & Surface Area": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1zciLmKA6fTepVwx8bwZ9SnWx34GN-TuZCuiYUZWg4Eg/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1umP9P5IcbhH8HyKF7Phys87-udqlRzjuvyiCQK9ZFfY/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1dw91OJfXgiLBquDT30eu5TOIzbpbqeqLBMkXmHK6nu4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1ABcXCjQ_KeJ1E1RpLUw2hQlqgRWo9A1ITrqwBhdky8M/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1bo543997GsUBUlFOpFApsjzO3ioD0CTQCkL73NX4aVk/edit?tab=t.0"
+ },
+ "Unit Conversions": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1wX3QqD7PDkvIB4UT2SGckCTwzCYcqLz6seE48qd9Ves/edit",
+  "synth1": "https://docs.google.com/document/d/1v4Kcadx-SayiN6MJfixImaRT_ZRsyDIazFSbii29K_I/edit",
+  "slides": "https://docs.google.com/presentation/d/1kwdSKq0ZjcwfALuvzwJevKI93NvMVddMyNV3A6dqGcw/edit#slide=id.g20fbcb7475e_0_0"
+ },
+ "Coordinate Plane": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/19laUvhxR7Ent9AnxXR3TbCTImHGQ8o4ZF_XGbR3nu4c/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1EMhffhd74BxbFsWfJrnagumn02kOC5400o_NDmoMlUw/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1fB0b0Rl12yHbysVvtpnoWLGvqdCr5fpqB__Zjeo3i6o/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/17xhmoI1S8WXvX5o0b9R0GhrxqQN3lSYRXT2AzlxHTyc/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1hDk0DC6YFhMK5NXo0a9eX9s5xDiO4gWGXK_BOFFcozQ/edit?tab=t.0"
+ },
+ "Order of Operations": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/10E9OZBrrI3X2id8N9tWuY2nsfjvctPTm1q-sMLcL1yQ/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/1-4redRqov9O5Upc5yNCEofq609Ev0T-St20y0JF7q4M/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1WRaN4ZAleWIzn-Vxw7FJj18dN0xT3jDES7HfVv3u8JM/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1FqdDMPiJ_VQPz-PJ8zvOZVXLAkGpxTThcKm0f76AIgU/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1bNj8SQ7QbSZIHaf2W1os7VA_iUwi_bQ5CVRIfmk9kbA/edit?tab=t.0"
+ },
+ "Volume": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/12JIUsYadleXxXLLVmZKnIFn7h_rd_n-qe1nd-wKkTIM/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1j4_5hAvzf4DlaxuI2t4_AmnwDb2xv-FCGVlaKNfeU1c/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1LVnmiv3pVWSOZMgOhuke9vY-kW3ji_akYUOkli28FLA/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1iWZo5302xRZAPqxDTcsGBOX3LNFbty0gpyK3Rxb-pN0/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/14gq7traCz1OUoKuyKq_0dTDqW0z72P1_DsGXKsvgs_k/edit?tab=t.0"
+ },
+ "Decimal Addition & Subtraction": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/15Dt631EHoM_ze_7mGLa-stNSsnl9seHUH8fM9HrkwSs/edit",
+  "synth1": "https://docs.google.com/document/d/1tHQ8R6nmRutEME22LyQksdYbIlH0VRiiBzN_xU1Bc9o/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1w0LQNPjMKbLSVHu_JFf51uivjM7UqCSWKSw9W4we8-g/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0"
+ },
+ "Proportions": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1HiRLZWY1PijmJCwTprlweWZCF9qvtdemLyjsjjoQbsE/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1vno7wN5DKjNzLq9pG8msKjTsyPmyQWHGFUcGjOF2iek/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1XxnhTlr08V9J6eLZt_W9txKlKtUCWNsZL6ti6idZF74/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1aFHc-Er1NjSg601RM3ndgbur75u2mYQ5RP6KcduZd8w/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/1qo-eXlqRFYYi4rDpjvWy_KkShYzfSi4pDcmgkcDFtjs/edit?tab=t.0"
+ },
+ "Distributive Property": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1aF-vExapNj5xwHfIoy6ayBABVtVpza2kMekjE5W3Im0/edit",
+  "lessonGuide": "https://docs.google.com/document/d/135IS2L4d9bZ-u5ij_mHvgeaUabnfXEH4orbMQVxpjEI/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/13Eoz5hnKJZ8VVP2W8o3STh2jppas81I_Sssot0U11L4/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1FStrVNpno1gZjD3KPUd_prgYSEe1ezYNa5_s52jWyB0/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/19P-1ArvFMFMMUiG57lXq466rwH_OKr13uBVBGMlnszI/edit?tab=t.0"
+ },
+ "Quadratic Functions": {
+  "kind": "Math Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1pmy4issfZe7avdqiGUKTE5VtWDQriGcjDLv-9HF6Fto/edit",
+  "lessonGuide": "https://docs.google.com/document/d/1Y-Ete3FpdZLkWYAbrZFlZr6HN7R8kRRyodgImFNztMY/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1YN0M9m-zcf8dWM5dft0UOLSnsF3poXkjdSwrtiXYfa8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1Sl__zejJFMkn-l33kzLmBuTKUfXkLmwl_8_vh0_iSLg/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0",
+  "overview": "https://docs.google.com/document/d/16j1cgXaJOifmm_vR-7OzPLx9whDR3TLpdKEAdRVl5kE/edit?tab=t.0"
+ },
+ "Biomolecules": {
+  "kind": "Science modules",
+  "toolkit": "https://docs.google.com/document/u/0/d/1EFx65LCmKLZFS2AoEyBXbM8rwvgirJC15_2AK0F5l_Q/edit",
+  "takeaways": "https://drive.google.com/file/d/1nmCRG6CdEp7LG_nyycjcDwPgDTqC9IHo/view?usp=drive_link",
+  "lessonGuide": "https://docs.google.com/document/d/15zI2o8lCdfDDw1RFmKTu6TAbXTHBMFDlP7JCgQ4iJpA/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1RoM0OyfYDGibSbZ3U23-84joFabEvoDRErjeohkf-V0/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1X1HBcM1sed5gL0WAl6rcVG_bc6XdbqtOig50yuoFE0k/edit?usp=sharing",
+  "handout": "https://docs.google.com/document/d/1uv57kFq8nfJ71YdQ6U8_owEG5xan4AGswltK-I8YGkQ/edit?usp=sharing",
+  "transfer": "https://docs.google.com/document/d/1FLoCRjJeRX7CKp0hIJSZMtq-ikvs3pKXbmdzKGyp5b0/edit?usp=sharing",
+  "overview": "https://docs.google.com/document/d/1_9QYlfxdNRDPgnP1Bgwo6w8rZlpYdxN7VZr1JHhBk78/edit?tab=t.0"
+ },
+ "Atomic Bonds": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1ji64I00E01z3shLtsMUN6UQfu_CAF_P6__IJy0WtxHM/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1gkItl36DsDEUQw4jB0fbKEouYSejZHfi10rbh_lDRak/edit?tab=t.0"
+ },
+ "Food Webs": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1zX0bleb-ZN1k_be2_0NSLHX0PTi3B_QgMnaF1Ed8CAU/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1w0OuHZU_4-N3VYind7oIfJRugm6nuKFzs-nPBL-OzE8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/1qJ73tfYKY8ba-nBcLpahjVVgxeE-VgfdDLki4TBVs2A/edit#slide=id.g20fbcb7475e_0_0"
+ },
+ "Meiosis": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1IOT8MlPEyZ1BDye0sKeasiSWNSkYh9tLwZrfgLVmUNU/edit?tab=t.0",
+  "lessonGuide": "https://docs.google.com/document/d/19lHvOuq2Ujzmc0WvFqWpuBb0g0qApU-kGhrDS1DB9b8/edit?tab=t.0",
+  "synth1": "https://docs.google.com/document/d/1CdM_KXAPrbSsj3m4lnecAk99Xq2GkWLMI9lpOKbRe-8/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/13EcrGy7EAAcofgBCRK65K_9iL9Lia9TXaz0qNIgqXQs/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0"
+ },
+ "Atomic Models": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1xhsCITeVV7mZHI1qtzU_ahJTxcueTfmGz3hGypXWRXM/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/18GawhQ7q1rnMkbc-ppRbPQQtB4rFBEOTLBVYONTKcfo/edit?tab=t.0"
+ },
+ "Mitosis Skill Builder": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1XdXdePSphoujtKX5hWos5hj9GTWgLoMy-pYQmax46jg/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1ObMhNCyf8__oCi3bLOKDO6vqHSrxhZX78kLgzz53hD0/edit?tab=t.0"
+ },
+ "Balancing Chemical Equations": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1lyJGvw97cQCDemS-1wPy_wVU90P_57wYrR6rg9tRUbA/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1OreEkYu-zJ-yVLNUYKYKWRshu_G9sQT6wO4umRP20JU/edit?tab=t.0"
+ },
+ "Organelles": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1ddGpBf2XhBRYdwXgNKqt5kNPTNPjwi0YO084QjxPKYE/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1WCPC_ac9OAKF4OjjEnkWjxxlfyVj3CtYterFmCzXLkk/edit?tab=t.0",
+  "slides": "https://docs.google.com/presentation/d/13NDkGoWnlKJYUhpU424BX7_ARxV5y-rcg94nyY0wwT8/edit?slide=id.g20fbcb7475e_0_0#slide=id.g20fbcb7475e_0_0"
+ },
+ "DNA Replication": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1ZfsQwCNDp281oFsF_8TJ1DTLCeWxeP-GHGbHRcUOeC0/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1CxTZageIIPQ9f8N9lTfmrHa-h_7oRLFSklLDRplItm0/edit?tab=t.0"
+ },
+ "Transcription & Translation": {
+  "kind": "Science Skill Builders",
+  "toolkit": "https://docs.google.com/document/d/1YwnnyvELAjhxjOi0ULZDi6jRSfoMAxrWpcDj9LWVW2A/edit?usp=sharing",
+  "synth1": "https://docs.google.com/document/d/1RbyQslTkuD1wm1LaKk3m92wEtvS0rSVDvfeY-V-IoO4/edit?tab=t.0"
+ }
+};
