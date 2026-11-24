@@ -416,8 +416,14 @@
     if (/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(s)) return 'https://' + s;
     return null;
   }
-  const A_STYLE = 'color:#1155CC;';  // same link blue the approved Google Doc uses
+  // Links are never bold (even inside bold template text), in the same blue the approved Google Doc uses.
+  // The one exception: module names stay bold, linked or not.
+  const A_STYLE = 'color:#1155CC;font-weight:normal;';
   function a(label, url) { return url ? `<a href="${esc(url)}" style="${A_STYLE}">${esc(label)}</a>` : esc(label); }
+  function aModule(name, url, suffix = '') {
+    const inner = `<strong>${esc(name)}</strong>${esc(suffix)}`;
+    return url ? `<a href="${esc(url)}" style="${A_STYLE}">${inner}</a>` : inner;
+  }
   function b(html) { return `<strong>${html}</strong>`; }
   // Brand pink, used only where the approved template colors a phrase pink.
   function pk(html) { return `<span style="color:#DB1873;">${html}</span>`; }
@@ -520,7 +526,7 @@
     if (nextModule) {
       const m = moduleMaterials(nextModule, $('p-next-link').value);
       B.push({ t: 'h', text: 'Up Next' });
-      B.push({ t: 'p', html: 'Your next priority module is: ' + b(a(nextModule, m.toolkit)) + '<br>Before your next Prisms lesson:' });
+      B.push({ t: 'p', html: 'Your next priority module is: ' + aModule(nextModule, m.toolkit) + '<br>Before your next Prisms lesson:' });
       // Approved wording names Part I and Part II. The singular is used only when the Toolkit data
       // confirms a single Synthesis Activity; unknown modules keep the approved wording, unlinked.
       const synth = m.synthParts === 1
@@ -710,7 +716,7 @@
         B.push({ t: 'p', html: 'Hi ' + f.teacherTeam + ',' });
         B.push({ t: 'p', html: p1 });
         B.push({ t: 'p', html: 'I’d love to work alongside you as your students engage and help bring our Prisms routines to life to maximize student success. Sharing a few tips below!' });
-        B.push({ t: 'p', html: 'Open your ' + b(a((qv('module') || 'Module') + ' Toolkit', m.toolkit)) + ' for the module' });
+        B.push({ t: 'p', html: 'Open your ' + (qv('module') ? aModule(qv('module'), m.toolkit, ' Toolkit') : ph('Module Name') + ' Toolkit') + ' for the module' });
         B.push({ t: 'ul', items: [
           // Left unlinked on purpose: Toolkits' "Module Overview" is a doc, and the only video is the
           // Module Takeaways Video, so we don't guess which one the template means.
@@ -803,7 +809,7 @@
       // Module names are always bold in the email so they stand out.
       moduleName: b(qv('module') ? esc(qv('module')) : ph('Module Name')),
       mod: () => moduleMaterials(qv('module'), qv('moduleLink')),
-      moduleLink: url => qv('module') ? a(qv('module'), url) : ph('Module Name'),
+      moduleLink: url => qv('module') ? aModule(qv('module'), url) : ph('Module Name'),
       link: key => normalizeUrl(qv(key)) || '',
       survey: () => {
         const lang = qOpt('surveyLang');
