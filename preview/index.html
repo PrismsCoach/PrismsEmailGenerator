@@ -232,20 +232,9 @@
 
         <div class="card">
           <div class="card-header"><span class="card-number">3</span><div><div class="card-title">Area to Prioritize <span class="opt-tag">Optional</span></div>
-            <div class="card-desc">Your recommendation for the next lesson. Only the sentences you fill in are included.</div></div></div>
-          <div class="field">
-            <label for="p-focus">Routine to prioritize</label>
-            <select id="p-focus" data-save></select>
-          </div>
-          <div id="focus-fields">
-            <div class="field"><label for="p-observe" class="sr-only">Observation</label><div class="stem">During the lesson, I noticed…</div><textarea id="p-observe" data-save rows="2"></textarea></div>
-            <div class="field"><label for="p-why" class="sr-only">Why it matters</label><div class="stem">This matters because…</div><textarea id="p-why" data-save rows="2"></textarea></div>
-            <div class="field"><label for="p-try" class="sr-only">Recommendation</label><div class="stem">In the next lesson, let’s try…</div><textarea id="p-try" data-save rows="2"></textarea>
-              <div class="hint">A concrete move the teacher can lead independently.</div>
-              <button type="button" class="tip-toggle" data-tip="tip-focus">💡 Starters for this routine</button>
-              <div class="tip-panel" id="tip-focus"></div>
-            </div>
-          </div>
+            <div class="card-desc">Your recommendation for the next lesson. Add up to three areas. Only the sentences you fill in are included.</div></div></div>
+          <div id="focus-areas"></div>
+          <button type="button" class="btn btn-ghost btn-small" id="add-area-btn" style="margin-top:4px">+ Add another area to prioritize</button>
         </div>
 
         <div class="card">
@@ -324,7 +313,7 @@
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- Module → Toolkit material links, extracted from the Prisms VR Content Libraries doc. -->
-<script src="../assets/toolkit-links.js?v=3"></script>
+<script src="../assets/toolkit-links.js?v=4"></script>
 <script>
   // ─── Verified links (from the approved templates + Coach Hub) ─────────
   const LINKS = {
@@ -429,9 +418,11 @@
     if (/^[\w-]+(\.[\w-]+)+(\/\S*)?$/.test(s)) return 'https://' + s;
     return null;
   }
-  const A_STYLE = 'color:#353C78;';
+  const A_STYLE = 'color:#1155CC;';  // same link blue the approved Google Doc uses
   function a(label, url) { return url ? `<a href="${esc(url)}" style="${A_STYLE}">${esc(label)}</a>` : esc(label); }
   function b(html) { return `<strong>${html}</strong>`; }
+  // Brand pink, used only where the approved template colors a phrase pink.
+  function pk(html) { return `<span style="color:#DB1873;">${html}</span>`; }
   function ph(label) { return `<span class="ph">[${esc(label)}]</span>`; }
   function sentence(s) { s = s.trim().replace(/[\s.…]+$/, ''); return s ? s + '.' : ''; }
   function stripStem(s, stem) { const re = new RegExp('^\\s*' + stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '[\\s,:…]*', 'i'); return s.replace(re, ''); }
@@ -462,7 +453,7 @@
   function moduleMaterials(name, pastedLink) {
     const t = toolkitFor(name) || {};
     const pasted = normalizeUrl(pastedLink) || '';
-    return { known: !!toolkitFor(name), toolkit: t.toolkit || pasted, takeaways: t.takeaways || '', lessonGuide: t.lessonGuide || '', lessonGuide2: t.lessonGuide2 || '', synth1: t.synth1 || '', synth2: t.synth2 || '', synthParts: t.synthParts || 0, slides: t.slides || '', handout: t.handout || '', transfer: t.transfer || '', proximalCfu: t.proximalCfu || '', endCfu: t.endCfu || '' };
+    return { known: !!toolkitFor(name), toolkit: t.toolkit || pasted, takeaways: t.takeaways || '', lessonGuide: t.lessonGuide || '', lessonGuide2: t.lessonGuide2 || '', synth1: t.synth1 || '', synth2: t.synth2 || '', synthParts: t.synthParts || 0, slides: t.slides || '', handout: t.handout || '', transfer: t.transfer || '', proximalCfu: t.proximalCfu || '', endCfu: t.endCfu || '', prereq: t.prereq || '' };
   }
   // Keeps the approved phrase ("Synthesis Activities", "Lesson Guide") and links it to the right file(s).
   // Two-part modules get both parts linked after the phrase; a single activity links the phrase itself.
@@ -497,25 +488,29 @@
     else B.push({ t: 'p', html: intro + ' ' + ph('Add a specific impactful moment') });
 
     const snapshot = ROUTINES.filter(r => val('p-rt-' + r.key)).map(r => `${esc(r.label)}: ${richText(sentence(val('p-rt-' + r.key)))}`);
-    const focus = ROUTINES.find(r => r.key === val('p-focus'));
-    const obs = stripStem(val('p-observe'), 'During the lesson, I noticed');
-    const why = stripStem(val('p-why'), 'This matters because');
-    const tryIt = stripStem(val('p-try'), "In the next lesson, let(’|')s try");
+    const areas = AREA_SFX.map(sfx => ({
+      focus: ROUTINES.find(r => r.key === val('p-focus' + sfx)),
+      obs: stripStem(val('p-observe' + sfx), 'During the lesson, I noticed'),
+      why: stripStem(val('p-why' + sfx), 'This matters because'),
+      tryIt: stripStem(val('p-try' + sfx), "In the next lesson, let(’|')s try")
+    })).filter(x => x.focus);
     const adjust = stripStem(val('p-adjust'), 'One routine we adjusted to better fit your students was');
     const adjustWhy = stripStem(val('p-adjust-why'), 'This helped because');
-    if (snapshot.length || focus || adjust) {
+    if (snapshot.length || areas.length || adjust) {
       B.push({ t: 'h', text: 'Instructional Routines' });
       if (snapshot.length) {
         B.push({ t: 'p', html: 'Here is a brief snapshot of instructional routines from today’s lesson:' });
         B.push({ t: 'ul', items: snapshot });
       }
-      if (focus) {
+      // First area uses the approved sentence; any extra areas repeat the same pattern.
+      areas.forEach(({ focus, obs, why, tryIt }, i) => {
         const parts = [];
         if (obs) parts.push('During the lesson, I noticed ' + richText(sentence(obs)));
         if (why) parts.push('This matters because ' + richText(sentence(why)));
         if (tryIt) parts.push('In the next lesson, let’s try ' + richText(sentence(tryIt)));
-        B.push({ t: 'p', html: 'As you plan the next lesson, one area to prioritize is: ' + b(esc(focus.label.replace(/ Routines$/, ''))) + (parts.length ? '<br>' + parts.join(' ') : '') });
-      }
+        const lead = i === 0 ? 'As you plan the next lesson, one area to prioritize is: ' : 'Another area to prioritize is: ';
+        B.push({ t: 'p', html: lead + b(esc(focus.label.replace(/ Routines$/, ''))) + (parts.length ? '<br>' + parts.join(' ') : '') });
+      });
       if (adjust) {
         let s = 'One routine we adjusted to better fit your students was ' + richText(sentence(adjust));
         if (adjustWhy) s += ' This helped because ' + richText(adjustWhy.trim().replace(/[\s.…]+$/, '')) + ' and felt aligned to the needs of this class.';
@@ -580,7 +575,7 @@
     schedMode:    { label: 'How should they schedule?', type: 'choice', options: ['Reply by a date', 'Scheduling link'], def: 'Reply by a date', req: true, rerender: true },
     replyBy:      { label: 'Reply with availability by', type: 'date', req: true, show: () => qMode() === 'Reply by a date' },
     schedLink:    { label: 'Scheduling link', type: 'link', req: true, show: () => qMode() === 'Scheduling link' },
-    printedLink:  { label: 'Printed resources link', type: 'link', req: true },
+    prereq:       { label: 'Include the Prereq Check', type: 'check', sub: 'Adds the TI module’s Prereq Check to the printed resources.' },
     headset:      { label: 'Headset', type: 'choice', options: Object.keys(TUTORIAL_SLIDES), hint: 'Links the Tutorial Day Slides for this headset.' },
     surveyLang:   { label: 'Student Pre-Survey', type: 'choice', options: ['English', 'Spanish', 'Both'], def: 'English' },
     tutToolkit:   { label: 'Tutorial Toolkit link', type: 'link', hint: 'Leave blank to use the standard Tutorial Toolkit.' },
@@ -604,7 +599,7 @@
           'Have students complete the ' + f.survey() + ' before their first Prisms experience, ideally the day before.' ] });
         B.push({ t: 'h', text: 'For Tutorial Day' });
         B.push({ t: 'ul', items: ['Headsets fully charged', 'Student login cards printed', 'Synthesis Activity printed', 'Tutorial Day Slides ready', 'Teacher Dashboard open', 'Extra batteries and wipes available', 'Classroom space identified for students to safely use the headsets'] });
-        B.push({ t: 'p', html: 'During our visit, we’ll focus on establishing strong hardware and classroom routines while helping students become comfortable and independent using Prisms.' });
+        B.push({ t: 'p', html: 'During our visit, we’ll focus on ' + b('establishing strong hardware and classroom routines while helping students become comfortable and independent using Prisms.') });
         B.push({ t: 'p', html: 'If there’s anything I should know ahead of time about your class, schedule, or setup, please let me know.' });
         B.push({ t: 'p', html: 'Looking forward to a great first experience with your students!' });
         signoff(B, 'Warmly,');
@@ -628,7 +623,7 @@
           'Plan for a Prerequisite Check or Skill Builder.' ] });
         B.push({ t: 'h', text: 'For the Coaching Day' });
         B.push({ t: 'ul', items: ['Headsets fully charged', 'Student login cards printed', 'Synthesis Activities and Language Supports ' + b('printed'), a('Lesson Slides', m.slides) + ' ready', 'Extra batteries and wipes available', 'Teacher Dashboard open and ready'] });
-        B.push({ t: 'p', html: 'During the visit, I’ll work alongside you to support implementation through modeling, co-teaching, in-the-moment support, and reflection based on your needs.' });
+        B.push({ t: 'p', html: 'During the visit, I’ll work alongside you to support ' + b('implementation through modeling, co-teaching, in-the-moment support, and reflection based on your needs.') });
         B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
         B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
         signoff(B, 'Warmly,');
@@ -646,7 +641,7 @@
           'Review the ' + b(a('Proximal CFU', m.proximalCfu)) + ' and the ' + b(a('CFU Revision Protocols', LINKS.cfuProtocols.url)) + '.' ] });
         B.push({ t: 'h', text: 'For Transfer Day' });
         B.push({ t: 'ul', items: ['Transfer Day materials printed or accessible for students', 'Teacher Dashboard open and ready', 'Proximal CFU ready to assign'] });
-        B.push({ t: 'p', html: 'During our visit, I’ll work alongside you to support student thinking, discourse, formative assessment, and revision.' });
+        B.push({ t: 'p', html: 'During our visit, I’ll work alongside you to support ' + b('student thinking, discourse, formative assessment, and revision.') });
         B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
         B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
         signoff(B, 'Warmly,');
@@ -682,7 +677,7 @@
           'If time allows, complete the selected tasks in the headset.' ] });
         B.push({ t: 'h', text: 'For Skill Builder Day' });
         B.push({ t: 'ul', items: ['Teacher Dashboard open with the Skill Builder ready to assign', 'Student login cards printed', 'Headsets fully charged', 'Skill Builder Lesson Slides and any accompanying activities printed, if using'] });
-        B.push({ t: 'p', html: 'During our visit, we’ll work together to monitor student progress, provide just-in-time feedback, and use what we see to determine next instructional steps.' });
+        B.push({ t: 'p', html: 'During our visit, we’ll work together to ' + b('monitor student progress, provide just-in-time feedback, and use what we see to determine next instructional steps.') });
         B.push({ t: 'p', html: 'If there’s anything you’d like me to know or focus on ahead of time, please let me know.' });
         B.push({ t: 'p', html: 'Looking forward to working alongside you!' });
         signoff(B, 'Warmly,');
@@ -694,7 +689,7 @@
         const sched = f.link('schedLink');
         B.push({ t: 'p', html: 'Hi ' + f.teacher + ',' });
         B.push({ t: 'p', html: 'I’m looking forward to working with you during your upcoming Coaching Day on ' + f.date + '!' });
-        B.push({ t: 'p', html: 'Before then, we’ll meet virtually for a short, 20-30-minute Lesson Study to prepare for your ' + f.moduleName + ' lesson.' });
+        B.push({ t: 'p', html: 'Before then, we’ll meet virtually for a short, 20-30-minute ' + pk('Lesson Study') + ' to prepare for your ' + f.moduleName + ' lesson.' });
         // Approved: "Please [reply with your availability by DATE OR use this LINK to schedule]." Only the chosen option is generated.
         B.push({ t: 'p', html: qMode() === 'Scheduling link'
           ? 'Please use ' + (sched ? a('this link', sched) : 'this link ' + ph('Scheduling link')) + ' to schedule.'
@@ -742,7 +737,7 @@
         signoff(B, 'Warmly,');
       } },
     // ── Teacher Institute
-    { id: 'ti-poc', group: 'Teacher Institute', name: 'TI confirmation to POC', when: 'Send at least one week before TI', fields: ['poc', 'tiDate', 'printedLink'],
+    { id: 'ti-poc', group: 'Teacher Institute', name: 'TI confirmation to POC', when: 'Send at least one week before TI', fields: ['poc', 'tiDate', 'module', 'prereq'],
       subject: () => 'Prisms Teacher Institute: Confirming the Details',
       build: (B, f) => {
         B.push({ t: 'p', html: 'Hello ' + f.poc + ',' });
@@ -752,8 +747,20 @@
         B.push({ t: 'ul', items: ['Address:', 'Room:', 'Parking/building entry information:', 'Start time:', 'End time:', 'Lunch timing:', 'Number of attendees and roles (teachers/admin):', 'Day-of point of contact:<ul style="margin:2px 0 0;padding-left:22px;"><li>Name:</li><li>Phone:</li></ul>'] });
         B.push({ t: 'h', text: 'Materials & Setup' });
         B.push({ t: 'p', html: 'Please ensure we have:' });
-        const printed = f.link('printedLink');
-        B.push({ t: 'ul', items: ['Charged and updated headsets for all participants, plus a few extras', 'Enough space for participants to stand and move comfortably', 'Wi-Fi access and the ability to connect my laptop to the presentation screen', (printed ? b(a('Printed resources', printed)) : ph('Printed resources link')) + ' printed and ready for participants'] });
+        // Approved bullet: "[Linked printed resources] printed and ready for participants", expanded into the
+        // actual links: Core Routines (all routines) + each routine's page, then the TI module's materials.
+        const m = f.mod();
+        const routinePages = [['Hardware & Technology', 'hardware1p'], ['Just-in-Time Feedback', 'jitf1p'], ['Writing & Discourse', 'writing1p'], ['Assessment & Revision', 'cfu1p'], ['Spaced Repetition', 'spaced1p']]
+          .map(([label, k]) => a(label, LINKS[k].url)).join(', ');
+        const printed = [
+          a('Core Routines', LINKS.core.url) + ' (all routines on one page)',
+          'Routine pages: ' + routinePages,
+          f.moduleName + ' ' + synthPhrase(m, 'Synthesis Activities'),
+          f.moduleName + ' ' + lessonGuidePhrase(m)
+        ];
+        if (state.q.prereq) printed.push(f.moduleName + ' ' + b(a('Prereq Check', m.prereq)));
+        const printedList = `<ul style="margin:2px 0 0;padding-left:22px;">${printed.map(x => `<li style="margin-bottom:3px;">${x}</li>`).join('')}</ul>`;
+        B.push({ t: 'ul', items: ['Charged and updated headsets for all participants, plus a few extras', 'Enough space for participants to stand and move comfortably', 'Wi-Fi access and the ability to connect my laptop to the presentation screen', b('Linked printed resources') + ' printed and ready for participants:' + printedList] });
         B.push({ t: 'p', html: 'Teachers should also ' + b('bring their laptops.') });
         B.push({ t: 'p', html: 'Looking forward to working with you and your team!' });
         signoff(B, 'Warmly,');
@@ -768,9 +775,9 @@
         B.push({ t: 'h', text: 'Next Steps' });
         const pacing = f.link('pacingLink');
         B.push({ t: 'ul', items: [
-          'Complete Tutorial Day with your students using the ' + a('Prisms Tutorial Toolkit', f.link('tutToolkit') || LINKS.tutorialToolkit.url) + '.',
-          'Review your ' + a('Unit Plan', f.link('unitPlan')) + ' and the implementation schedule you created during Teacher Institute.',
-          'Meet with your coach for your Teacher Pacing Meeting to finalize your plan and prepare for launch.' + (pacing ? ' ' + a('Schedule your meeting', pacing) : '') ] });
+          pk('Complete Tutorial Day') + ' with your students using the ' + a('Prisms Tutorial Toolkit', f.link('tutToolkit') || LINKS.tutorialToolkit.url) + '.',
+          'Review your ' + pk('Unit Plan') + (f.link('unitPlan') ? ' (' + a('link', f.link('unitPlan')) + ')' : '') + ' and the implementation schedule you created during Teacher Institute.',
+          pk('Meet with your coach') + ' for your Teacher Pacing Meeting to finalize your plan and prepare for launch.' + (pacing ? ' ' + a('Schedule your meeting', pacing) : '') ] });
         B.push({ t: 'p', html: 'As you begin implementing, continue to use the ' + a('Core Routines', LINKS.core.url) + ' and ' + a('Teacher Handbook', LINKS.handbook.url) + ' for ongoing support.' });
         B.push({ t: 'p', html: 'We’re excited to continue partnering with you as you bring Prisms to life in your classroom!' });
         signoff(B, 'Warmly,');
@@ -875,7 +882,11 @@
       h.textContent = bad ? 'That doesn’t look like a link, so it won’t be added. Paste the full address.' : '';
       h.classList.toggle('warn', !!bad);
     });
-    $('focus-fields').style.display = val('p-focus') ? '' : 'none';
+    AREA_SFX.forEach((sfx, i) => {
+      $('focus-fields' + sfx).style.display = val('p-focus' + sfx) ? '' : 'none';
+      if (i > 0 && val('p-focus' + sfx)) $('focus-area' + sfx).hidden = false;
+    });
+    $('add-area-btn').hidden = !val('p-focus') || AREA_SFX.every(sfx => !$('focus-area' + sfx).hidden);
     moduleStatus(val('p-next-module'), $('p-next-status'), $('p-next-link-field'));
     if (!post) moduleStatus(qv('module'), $('q-module-status'), $('q-module-link-field'));
     document.querySelectorAll('[data-qwrap]').forEach(w => { w.hidden = !qShown(w.dataset.qwrap); });
@@ -921,19 +932,39 @@
     document.querySelectorAll('[data-count]').forEach(btn => btn.setAttribute('aria-pressed', btn.dataset.count === c));
     $('p-celebration-stem').textContent = c === 'few' ? 'I wanted to share a few moments that stood out…' : 'I wanted to share one moment that stood out…';
   }
+  // Areas to prioritize: the first is always shown; up to two more can be added.
+  const AREA_SFX = ['', '-2', '-3'];
+  function areaBlockHtml(sfx, i) {
+    return `<div class="focus-area" id="focus-area${sfx}"${i ? ' hidden' : ''}>
+      ${i ? '<hr class="divider" />' : ''}
+      <div class="field"><label for="p-focus${sfx}">${i ? 'Another routine to prioritize' : 'Routine to prioritize'}</label>
+        <select id="p-focus${sfx}" data-save data-focus-select><option value="">None this time</option>${ROUTINES.map(r => `<option value="${r.key}">${esc(r.label.replace(/ Routines$/, ''))}</option>`).join('')}</select></div>
+      <div id="focus-fields${sfx}">
+        <div class="field"><label for="p-observe${sfx}" class="sr-only">Observation</label><div class="stem">During the lesson, I noticed…</div><textarea id="p-observe${sfx}" data-save rows="2"></textarea></div>
+        <div class="field"><label for="p-why${sfx}" class="sr-only">Why it matters</label><div class="stem">This matters because…</div><textarea id="p-why${sfx}" data-save rows="2"></textarea></div>
+        <div class="field"><label for="p-try${sfx}" class="sr-only">Recommendation</label><div class="stem">In the next lesson, let’s try…</div><textarea id="p-try${sfx}" data-save rows="2"></textarea>
+          <div class="hint">A concrete move the teacher can lead independently.</div>
+          <button type="button" class="tip-toggle" data-tip="tip-focus${sfx}">💡 Starters for this routine</button>
+          <div class="tip-panel" id="tip-focus${sfx}"></div>
+        </div>
+      </div>
+      ${i ? `<button type="button" class="tip-toggle" data-remove-area="${sfx}" style="color:var(--gray-500)">Remove this area</button>` : ''}
+    </div>`;
+  }
+
   function renderResourceList() {
     $('resource-list').innerHTML = RESOURCE_KEYS.map(k =>
       `<label class="check${state.resources.has(k) ? ' on' : ''}"><input type="checkbox" data-res="${k}"${state.resources.has(k) ? ' checked' : ''} /><span>${esc(LINKS[k].label)}</span></label>`).join('');
   }
-  function updateFocusTips() {
-    const s = FOCUS_STARTERS[val('p-focus')];
-    $('tip-focus').innerHTML = s ? `<div class="tip-head">During the lesson, I noticed…</div><ul><li>${esc(s.obs)}</li></ul><div class="tip-head">This matters because…</div><ul><li>${esc(s.why)}</li></ul><div class="tip-head">In the next lesson, let’s try…</div><ul><li>${esc(s.try)}</li></ul>` : '';
+  function updateFocusTips() { AREA_SFX.forEach(sfx => updateFocusTip(sfx)); }
+  function updateFocusTip(sfx) {
+    const s = FOCUS_STARTERS[val('p-focus' + sfx)];
+    $('tip-focus' + sfx).innerHTML = s ? `<div class="tip-head">During the lesson, I noticed…</div><ul><li>${esc(s.obs)}</li></ul><div class="tip-head">This matters because…</div><ul><li>${esc(s.why)}</li></ul><div class="tip-head">In the next lesson, let’s try…</div><ul><li>${esc(s.try)}</li></ul>` : '';
   }
   function syncFocusResource() {
     if (state.resourcesTouched) return;
     state.resources.clear();
-    const r = ROUTINES.find(x => x.key === val('p-focus'));
-    if (r) state.resources.add(r.resource);
+    AREA_SFX.forEach(sfx => { const r = ROUTINES.find(x => x.key === val('p-focus' + sfx)); if (r) state.resources.add(r.resource); });
     renderResourceList();
   }
 
@@ -1044,6 +1075,7 @@
       });
       state.resources.clear(); state.resourcesTouched = false; renderResourceList();
       state.liveNotes = {};
+      AREA_SFX.slice(1).forEach(sfx => { $('focus-area' + sfx).hidden = true; });
       setMomentCount('one');
       updateFocusTips();
       $('more-detail').open = false;
@@ -1127,7 +1159,7 @@
     $('visit-chips').innerHTML = VISIT_TYPES.map(v => `<button type="button" class="chip" data-visit="${v.id}" aria-pressed="false">${esc(v.label)}</button>`).join('');
     $('routine-fields').innerHTML = ROUTINES.map(r =>
       `<div class="field"><label for="p-rt-${r.key}">${esc(r.label)}${r.whenApplicable ? ' <span class="opt-tag">When applicable</span>' : ''}</label><input type="text" id="p-rt-${r.key}" data-save placeholder="One sentence on what you observed" /><div class="hint" id="live-${r.key}" style="display:none"></div></div>`).join('');
-    $('p-focus').innerHTML = '<option value="">None this time</option>' + ROUTINES.map(r => `<option value="${r.key}">${esc(r.label.replace(/ Routines$/, ''))}</option>`).join('');
+    $('focus-areas').innerHTML = AREA_SFX.map(areaBlockHtml).join('');
     document.querySelectorAll('#form-pane [data-show=post] [data-ac]').forEach(setupAutocomplete);
 
     try { $('coach-name').value = localStorage.getItem(COACH_KEY) || ''; } catch (e) {}
@@ -1170,7 +1202,18 @@
       e.target.closest('.check').classList.toggle('on', e.target.checked);
       render();
     });
-    $('p-focus').addEventListener('change', () => { updateFocusTips(); syncFocusResource(); render(); });
+    $('focus-areas').addEventListener('change', e => { if (e.target.matches('[data-focus-select]')) { updateFocusTips(); syncFocusResource(); render(); } });
+    $('add-area-btn').addEventListener('click', () => {
+      const next = AREA_SFX.find(sfx => $('focus-area' + sfx).hidden);
+      if (next) { $('focus-area' + next).hidden = false; $('p-focus' + next).focus(); render(); }
+    });
+    $('focus-areas').addEventListener('click', e => {
+      const btn = e.target.closest('[data-remove-area]'); if (!btn) return;
+      const sfx = btn.dataset.removeArea;
+      ['p-focus', 'p-observe', 'p-why', 'p-try'].forEach(id => { $(id + sfx).value = ''; });
+      $('focus-area' + sfx).hidden = true;
+      updateFocusTips(); syncFocusResource(); render();
+    });
     $('p-next-link').addEventListener('input', () => { state.nextLinkFor = normName(val('p-next-module')); });
     document.querySelector('[data-show=post]').addEventListener('input', e => { if (!e.target.dataset.res) render(); });
     document.querySelector('[data-show=post]').addEventListener('change', e => { if (e.target.type === 'checkbox' && !e.target.dataset.res) { e.target.closest('.check')?.classList.toggle('on', e.target.checked); render(); } });

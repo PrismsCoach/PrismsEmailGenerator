@@ -13,7 +13,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1L2fs4B0SVJf3aU9S7Fe3HjYEZAxh-ivt6NvTj4EWLV0/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1GJg36q3ry4aytTs-vKmzrPoqhL4uOkIMfTzUc0Sdwf4/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/11xx1PzSfI4iLgy01DiW3hUtvkBuPMEnNhtDk00mDtwo/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1PFM849wJ-DBd_jHNAE0pLFOjpXuc2OLIWH7u-S4_F3M/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1PFM849wJ-DBd_jHNAE0pLFOjpXuc2OLIWH7u-S4_F3M/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1jxvBc1vlcmdJG-Ke2GoS983Kmo3U_8M4rBH_iNo27B8/edit?usp=sharing"
  },
  "Percent Markup": {
   "kind": "Math modules",
@@ -27,7 +28,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1On87p6KTMmFlnZv7g59J7llsDuynpYTqxnn2jWObR30/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1KgNaL6DAtqpJsSbiDrAmDQr1SMioYO9hhxvmkYZqsj4/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/12j4o3ZYFHWgzEtQak7iQxooKa_mhhxUlMFhB82NhR-0/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/170mFGr3qF4B3Ij2DNJ91cQPUYBfw543jJ_MglpMOfA4/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/170mFGr3qF4B3Ij2DNJ91cQPUYBfw543jJ_MglpMOfA4/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1-yAc2Go-qT2zCZqUoo001-_LxE71KeuT-ajbGy8Vm9Q/edit?tab=t.0"
  },
  "Representing Data": {
   "kind": "Math modules",
@@ -41,7 +43,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/10QFfg6I1tbtdcdX4hcrXFRSq8wrG6ZQwM7i26nm9gXs/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1NxHI75Dp2m-n5djs2f7Jf_LScKDrqzxupxLFp_2UxJM/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1ZhJ5yY-D7eXi7Vb11yJQ71WCPz-x2pCvox8kdPDPHlM/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1OFRWwk0lf61zcmQAR2YOPUX0egYZe0F-y3iFaJGSi9Q/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1OFRWwk0lf61zcmQAR2YOPUX0egYZe0F-y3iFaJGSi9Q/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1rI5IUWluYyDKvgga8dP0_b6isMM0qQ10uf693_ea0KA/edit?tab=t.0"
  },
  "Constant of Proportionality": {
   "kind": "Math modules",
@@ -55,7 +58,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1O_vHd8jPLBKeOXVtJvspbbhC2lmihYJgjRhINx3ZvE0/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1mcDqrK9bsUYGzaxpRS-Gm8u8woHdsBVyXinnG0tCuKk/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1uX1PK-vTDuWhx0FXiTZ8j6bRdbblwUDEbibAruyLdWo/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1NwCzYd60zLPwZz6d9RWLZfgXKgd3L5IOnuAg_Q-noIs/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1NwCzYd60zLPwZz6d9RWLZfgXKgd3L5IOnuAg_Q-noIs/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/13pVQCc_j9yIvFOoX2Wd5KJzcZ8IglSCWCp2tDCZK_ds/edit?tab=t.0"
  },
  "Probability": {
   "kind": "Math modules",
@@ -69,7 +73,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1uZEWyhHjnYYByyJZbQKzaLTidovBKtNEb33Rz_cQVVE/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1rK0vCQJwTIC9Ki3gi9yweqB256UoM4ULg96xsT7drZU/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1pScHQ-vPICVEj5OUFKeUsa1aW6mejJ55feJqC1lpH2Y/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1tdHmEjwWTzlZpMq4n2haEGt8IEpzNmzteCQuPvTymL0/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1tdHmEjwWTzlZpMq4n2haEGt8IEpzNmzteCQuPvTymL0/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1VjZCCEEom2LENisJBpBJtOsFLtolREI-jcwQOCJzlR0/edit?usp=sharing"
  },
  "Rigid Transformations": {
   "kind": "Math modules",
@@ -83,7 +88,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1K89avphH7CejLDTv4zOEwNWoBSoUvf_M2oS--BPxzfs/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1Tw5IZUcm4UNksEQEyTXA3sBjE7Jbb8TSn1nBawubbu4/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/16osS3w4XZ6tFINKC4jTD4dPSAby7VX4IYRlo565KYWI/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/199-WOMKYZV3K1yXBwP7qpgxx3ZmGjRZ3gXhY_9X24bk/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/199-WOMKYZV3K1yXBwP7qpgxx3ZmGjRZ3gXhY_9X24bk/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1b55N_ofsMCxrNLRf8VsVR5IIJVo1JClb_IOGK8bkmtc/edit?tab=t.0"
  },
  "Dividing Fractions": {
   "kind": "Math modules",
@@ -97,7 +103,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1wn2xwcPp1l6JTDHvHptHpfaRZR1i3VI5VbfblfJ4rz0/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/17FH59ydLsKVLAyAxj7Tg5L87PKsrHPu5PZ3aHPovkrY/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1Jd7fIb1C6Pmf4HDFVkFNY3w1x2P_ndCKoa3TBltr50I/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1p4zlWW1XIGswBFLoWLTkhugpiGeB_hbU1EfmaWNJpLI/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1p4zlWW1XIGswBFLoWLTkhugpiGeB_hbU1EfmaWNJpLI/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1U-P7h6snC9jApmwvsvvLV-BpNid_FbUs87qHo0QcA3k/edit?usp=sharing"
  },
  "Properties of Exponents & Scientific Notation": {
   "kind": "Math modules",
@@ -111,7 +118,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1dk4dyXclC8DRH2tdu0t8-voGEv0rKJRedym54TuvxJc/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1UlASm4YM3Ya47pT_BLk2ANpLkmpl5FnNG-siuzeZkKE/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1MIdqIbcG4lz7mYHvUyQCjS6FZHIWDBAt6wFItKSjeq8/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1AbJHEBvdooysO-miJtS7shW-o5ZVImzXK09ngj1Hb1A/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1AbJHEBvdooysO-miJtS7shW-o5ZVImzXK09ngj1Hb1A/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1Sek8B3gGit1wM8M-2RH8qcXVe3WqS7OpASktc37IbaA/edit?tab=t.0"
  },
  "Surface Area": {
   "kind": "Math modules",
@@ -125,7 +133,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1DpksyIjD0wF0fKJX4AkjTvNihokE8X9tm_e0tU0Ys3I/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/10qzyXk-3lkCUnnmxdaMI-kBtzRa7bZCUOvA-4ECSCs8/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1jq208mYJgohUdV6-M7UuHKxbyBpicXzL08tPohVJpMw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1Slgfsz57Kp3f6uH82nP3KGWvSqrt33gda2mBvQREC5g/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1Slgfsz57Kp3f6uH82nP3KGWvSqrt33gda2mBvQREC5g/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1I9JMSQJRKUKblIgEkjT3T4U0FYQin_vOOr0txKFiXSo/edit?usp=sharing"
  },
  "Equations - Developing": {
   "kind": "Math modules",
@@ -139,7 +148,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/174bVwNmgF2nMv9h4H6APCO-MI890-M3rUPg9D3vDIGA/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1yMkuqEsQzycwrBvk_dIEgaJOhRIgCj64gEOFFlQ4Rek/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1vrcx9MoFQhVBJhGgzkMNMSlNAu3qzLK6iJj5vjFoJxw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1KbCqlj_Rp_2-6IaRemX6GKdzysTogOXRA5FhrHBVH2U/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1KbCqlj_Rp_2-6IaRemX6GKdzysTogOXRA5FhrHBVH2U/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1_GVJMaGv_FXFFgTUBMANnqSs-lBjji8yA-cGZrjLSx4/edit?tab=t.0"
  },
  "Pythagorean Theorem": {
   "kind": "Math modules",
@@ -152,7 +162,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1YvutV8QSicDJmzR_tO1X7YolYZDi4c2HYxOwZA1OINE/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1VjkNyfJBYTITmN3LF7AnoLuU6_eUpsos5GsaJ2fgqQk/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1nF4aK4YgJ_JjKfW7_1YZ0rJJq40WOgSdKdfTmZNUY0o/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1FKX4TqM3i3-dYfmnY_ldly8ube8j9cyAtrgWOWN6SxE/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1FKX4TqM3i3-dYfmnY_ldly8ube8j9cyAtrgWOWN6SxE/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1UwZlgnSQCha_IzgqBRAXnusYmCJPifDj6hnv1WEWYDU/edit?usp=sharing"
  },
  "Transforming Triangles": {
   "kind": "Math modules",
@@ -165,7 +176,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1IW1cGPti_Nwl9RF0vqMlOlxi1nzf_hDKHNx1SSAcuYI/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1vw6WTbBzglo3gzhfDvw20rTYCcHZLSJiaUeBaAlkuWM/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1sna9exCKN43zMsGsqaT9-SQrZqo5yPIic3IP_d5FgWs/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1SfrjSLdRZJJgge14_ijrH5dGZr7kJANxrSP8xBVitQk/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1SfrjSLdRZJJgge14_ijrH5dGZr7kJANxrSP8xBVitQk/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1JEug2aROiJ-0GV6lkJZV5DKFxbtJQMrp5ZQXMLO2f98/edit?usp=sharing"
  },
  "Equations - Solidifying": {
   "kind": "Math modules",
@@ -179,7 +191,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1Xwj9D2PlEnbwh4crM15u81qd9zDY15OSE3UvwTyvfSA/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1bCQihbTjOo7f6-rCcEI1ac8eXtlo4EWDOpFPGEDo8T8/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1lOOFTqbSCUsXmwbnF5-tY33K95DRaxTrutKYWmOTE-4/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1jnWo3E2lYj0VNBv76N5M32mFhr4C9Wd-uF7_yLGBjXU/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1jnWo3E2lYj0VNBv76N5M32mFhr4C9Wd-uF7_yLGBjXU/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1Is9doPi0EGXcohp-XucgYVozFrKjFtGMbpOxDgApBcc/edit?usp=sharing"
  },
  "Rates of Change - Developing": {
   "kind": "Math modules",
@@ -193,7 +206,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/11W6Bi3I_L_dPPEvUd9wWC_t1Cih0XmyTbc5k7M6OX1c/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1fY_r-RpVSyGm0KJDTbxokXkyOT8t1zkeOd2P2Ef-aoA/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1jC4kJNBaFRXd0sCgVQwm6UBUQJp8MM1GFRYKE8PH04c/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/15T1txcQ2C45QeDsNdGXSp0_TSP3v85zn6Bf1MECqcSs/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/15T1txcQ2C45QeDsNdGXSp0_TSP3v85zn6Bf1MECqcSs/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/13faO9pC4QTQji_O7Edd90na0gNx3IXJSEdTG00GsgzI/edit?tab=t.0"
  },
  "Inequalities - Developing": {
   "kind": "Math modules",
@@ -206,7 +220,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1pT8kCsd8s-HM0T19SeAmthWtmcu3OcG4EnaE1iQr9b8/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1_LZbztLfe6ikrRId_en7BXT-5aJqbe8g96dZX7Wy4UA/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1QCG6N96T72Ruz44WlsWt9iE5g8O76wKxbDSl-rxbWIw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/119i0uGLgQWkFy-pxE2W_p9vhZP-5mA3DHEpAmsgxsjE/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/119i0uGLgQWkFy-pxE2W_p9vhZP-5mA3DHEpAmsgxsjE/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1mCE7fxPwwJcKN8Z6fFtgF6be3HSJuh7_gAPNEbM8RIw/edit?tab=t.0"
  },
  "Rates of Change - Solidifying": {
   "kind": "Math modules",
@@ -220,7 +235,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/11F2gG8_xY8-Yg407YWCaMzOBhmAYnfMkjdnu_Pf_Als/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1RzoCHcBX1rPFlQ2G-DMLrSYsd06p4IjtCf851Ca6qmQ/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/11Nfld53Ttjehz-HYVjqg6ZG8hrWdsVewR95AMlRPScI/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1qdAnsmK0NRFl6RAU0X-RbbFPQfKREynBPyrhm90md40/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1qdAnsmK0NRFl6RAU0X-RbbFPQfKREynBPyrhm90md40/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1aClauAe9jeD78Iel5Dq0wPx_0wF_OUB6T5nCW-RQgEI/edit?tab=t.0"
  },
  "Inequalities - Solidifying": {
   "kind": "Math modules",
@@ -234,7 +250,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1lbz5ZrxQMNxoARWMyLTsLwJSKefZrI_wMvCXVt-Pl6M/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1sjrnN-Lh134HEnSdaO195mVP8ANLBs2aqpg5sf-uZBE/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/19a45OlNERmd_zvjYoDnZ-fJPlxIa1CcqjWJKtYmufLg/edit?usp=sharing",
-  "endCfu": "https://docs.google.com/document/d/1n9C21XYaJzx7ku8s9QCyRTPx61hMS6N6kk3joEy1w-U/edit?usp=sharing"
+  "endCfu": "https://docs.google.com/document/d/1n9C21XYaJzx7ku8s9QCyRTPx61hMS6N6kk3joEy1w-U/edit?usp=sharing",
+  "prereq": "https://docs.google.com/document/d/1u9hHQSLXP4G2xy0NCHBkcWBGFRRO76kd9mRvGsSx7zE/edit?tab=t.0"
  },
  "Rational Operations": {
   "kind": "Math modules",
@@ -248,7 +265,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/12U3cajXdESXx0WH_o1adWXydt9FC4Qg87hYFzJtVwi8/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1P-JrmXOsqAQxMcP1NYvlTAkfTQ4R9rJMElkrU5xFRlg/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1kFqVWyUT8FJrrtyDlHxRJunddvuYFU0aId9EEUcIGc4/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1YQVhiVvPMGGn-LNf0RKAb_bIHAjyvQ6gYLufwBxl73E/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1YQVhiVvPMGGn-LNf0RKAb_bIHAjyvQ6gYLufwBxl73E/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1mDp2hMvM0RNQg3dbf9i176HvUJg0jXJZg7Oxhrqj3A4/edit?usp=sharing"
  },
  "Absolute Value Functions": {
   "kind": "Math modules",
@@ -262,7 +280,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1bag-hRKsxq8u6-fjUVjtRt1bJl1C6C_Di4d49xJ_dyA/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1N2okvqogXUT6TaR5FgMS2fit6etGPAX6ONGkEYLandU/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1OWZqLtyeBv7Hw8QDwxp6_7PYL8bUqPjQqlcTU6eZ3fE/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1-BJJDHpagVpaMPZ6fEowKr22IEDiRoU6hH-ubJ-3CXU/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1-BJJDHpagVpaMPZ6fEowKr22IEDiRoU6hH-ubJ-3CXU/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/12M9gKpmplyf16biR30WCER5CR71_R62CRARzygKbbVw/edit?tab=t.0"
  },
  "Linear Equations": {
   "kind": "Math modules",
@@ -275,7 +294,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1mMLsBJKgZgtPwyfCDChIHGIkhhTDqw5RbhlkbP8X34Y/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1EO_kucyvL26tCxb7hp-zSVbR5-cd-qwncFwUMT7KloI/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1hKnJvKMTWUvfsWNvpUWhjRpNEh2PrFdsgnHmF85-T6s/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1ciuDcTSaVyQGRxwE4PtIzS_j3-twm5uR2zJ8BVzp2VM/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1ciuDcTSaVyQGRxwE4PtIzS_j3-twm5uR2zJ8BVzp2VM/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1XkvwhHltObhTpNT_ZO8UXSEcVyABRA-vNKhhsG7Zpbs/edit?tab=t.0"
  },
  "Systems of Linear Inequalities": {
   "kind": "Math modules",
@@ -289,7 +309,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/18vEYAmf8hl5OFwRz17sbclxeFI_uP1GefV0caPTZUfs/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1jG3XZlvxrS80frXwOli6sRKDmxBjrQ-qVAYmUYq1R9o/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1jGsWp_vM7j-JRzfarp9AjBXr-kg_auw7iCoHPWICiGw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1naqt-L32aPWuUZAtnJLX3ZyjMplLCnhMOQN-ANw3eU0/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1naqt-L32aPWuUZAtnJLX3ZyjMplLCnhMOQN-ANw3eU0/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1ctJn6pHI8llcrcPWVeCDZWSF1f9cm70svg-Ak-13m04/edit?tab=t.0"
  },
  "Exponential Functions": {
   "kind": "Math modules",
@@ -303,7 +324,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1wFnuuazD-g6mQvlws3uSsjiNuQcmDbHtx3qkK9-NtzA/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1AYFgNbw6t7qAohQqZs1OYJq_LtPnNNoZJM7VaYp8bfk/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1RNGeR5TIQiUEMdAwU_xwZbPNim17upO99MD_D8E5yLg/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1qF8RM7naHi4Zrn13E-XKnn7FVvcoaX4TogPAvYAxRU8/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1qF8RM7naHi4Zrn13E-XKnn7FVvcoaX4TogPAvYAxRU8/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1gN47rEcSHtvHyCSnAPq_lAD0IMJESH1t2butpREwy_U/edit?tab=t.0"
  },
  "Linear Functions": {
   "kind": "Math modules",
@@ -317,7 +339,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1RkppqfpG2fMMhpLZ-lqn2G6bZGpdFjl-ybAhD5RYQzo/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1LbK24gmAGKE_aIjj2BgNVQc0p9i9KfV8U3f7R5aNCzo/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1Npqwj0q1c8l0q00_DUbNDnGibtFIYbDGsT2UV-KOMRw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1B-vY5ozIYE8VRZmoRWFQTdUPk-69uH3Q1HK1gFB4XA0/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1B-vY5ozIYE8VRZmoRWFQTdUPk-69uH3Q1HK1gFB4XA0/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1T_Vw8RP2ql9gcf_0tbrzbvBX7Y-Dhdu5mmzoVqeyrEo/edit?tab=t.0"
  },
  "Two-Way Frequency Tables": {
   "kind": "Math modules",
@@ -331,7 +354,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1T_OWDVREQZbUMmsrNC7ge6SD9NlGELm56l2CJtaUJs4/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1_wnJjSPOMbnwn8zWW3kDc3cjNG2jB6toPGLJz2m45Ek/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1C8UaHlKmFZVeKSqmToH6xLMsZkz2VoJKcEof6eKdGt4/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1byanJo8JLO6rIz6r5zD_m_9NU6607DxpXoL-d8Krx-I/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1byanJo8JLO6rIz6r5zD_m_9NU6607DxpXoL-d8Krx-I/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1SwFuOAq0hBf0YJgyLmHrFinJgh_R9XyfbA3EtD_571g/edit?usp=sharing"
  },
  "Factoring Quadratics": {
   "kind": "Math modules",
@@ -345,7 +369,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/11pZvz0JVJXxqjhF27yotOrFeLpMA8JzYd0vm3TTIQXg/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1yODd8XdKttxUvL5B3IpPy_uZncyxl0dy_FRNsYW-MwE/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1A1f4uK1DToNiCg6Efsl4XZguUDfp-EuVEtvuU9SEm5Q/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1rkMAT3BFCN4GNrQBXORtiFPMEy0p8V4c0h6c_-cg7Jk/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1rkMAT3BFCN4GNrQBXORtiFPMEy0p8V4c0h6c_-cg7Jk/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1YoEMxLtx7Hyi3nsSqnSI-iDxW0UMUbXxpFlRNCfGz6U/edit?tab=t.0"
  },
  "Linear Regression": {
   "kind": "Math modules",
@@ -359,7 +384,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/141NKzQdb3cwoWi-QPkl0tDVtrqP0I_cqcEZMNoXzozU/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1hKtrloNV_7AJ35DqGTivmfSKmtM-Utjw1dIIKgDk8yI/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/16-z0e7QdR_ExtWppmoSpy3Hce1LhBKD35zFZ8GzWYd0/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1_SI2jiMSrViK_YenzODiQjKvhqyn7HumCzwNDQC0oXo/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1_SI2jiMSrViK_YenzODiQjKvhqyn7HumCzwNDQC0oXo/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1x3HyjBrJJf1nxS-utZDCDHdnKaPR537DtgXXm6SXJIQ/edit?usp=sharing"
  },
  "Functions": {
   "kind": "Math modules",
@@ -373,7 +399,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1nTXN7eJFXGuLxShDpLI5yRRQyowpT3hpL-GOyQ13J8w/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1AgAnXWl8e_rVy6Cg0b2R3G4uDDRAcfLCVI_w6CSjwFM/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1hSr-c2oXGvTnWhnpSG68pwaPVNtMSRfBUAG16C2sOm0/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1zMn0Iv5TrbeydLc6ut0fIWs4doTKapP7URIUryvdB5s/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1zMn0Iv5TrbeydLc6ut0fIWs4doTKapP7URIUryvdB5s/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1E_JyZNIzM92I9x78EoQiWQJsRyENUgtP9VOudj0jXe0/edit?usp=sharing"
  },
  "Roots & Rational Exponents": {
   "kind": "Math modules",
@@ -386,7 +413,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1yoDqyhsdFjzTP85sSTS-FAqeYojjnY3I-VN2WPfu9_k/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1qBqmgAsCz_YciKmxgQWQ6ckzQxzFpQNReGFB3OZ4fKg/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1M4TugGfH5-XyTC0cZG32k1aKoMLuJk_5aqUe7mFZlzU/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1qaxYm6HJvoL5olx9sYy_ZXKqf9eoJ7qs3kqXRLjk49Y/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1qaxYm6HJvoL5olx9sYy_ZXKqf9eoJ7qs3kqXRLjk49Y/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1s7xMHxsWOWsO-33aJnufLnWqSsoLEUReb9ye3GVETPs/edit?usp=sharing"
  },
  "Key Features of Quadratics": {
   "kind": "Math modules",
@@ -400,7 +428,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1I8VJ72O6-VyUbwp0xcDjCb7hrBicHEJQC9EeEvd-P2c/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1JuuIWZoiogST2N2aE9Yq_i7cVm__Uh7iXmvIQO0yaNo/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1bj7I6ZH5Eq6fwRAzAoZD6z8mosAf1XQh-5vh4Cc_Vvw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1F3wjjYcwAALZXAc0-GjUQNyXvjZbqK9ax-tIHqeNbMY/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1F3wjjYcwAALZXAc0-GjUQNyXvjZbqK9ax-tIHqeNbMY/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1DhFGzZ0DQ8aXD4DL4D8kX1uBl78U6T4q-jRGrbLPD34/edit?tab=t.0"
  },
  "Systems of Linear Equations": {
   "kind": "Math modules",
@@ -414,7 +443,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1vwMYbQoyWCsSvYCyh5U3nqqIRaLbJN41rQuE8WRUaMQ/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/17Ob6nohSI3qXQvseDetRR22v7nFvj8NYzL3ekAcndmo/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1UEzfON2gjSftSAjGP5nymjwrIgCZ3HHFlGDcPKuDTNA/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1Znl5FkT2SOPIfdJWZNOrt5AFnemD8RO1eO6Qo1ljGvM/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1Znl5FkT2SOPIfdJWZNOrt5AFnemD8RO1eO6Qo1ljGvM/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1AIEQQJMYh5UONgsZRm8_gXx8dNxAyEdMEkFmA2eHxCg/edit?tab=t.0"
  },
  "Circle Equations": {
   "kind": "Math modules",
@@ -428,7 +458,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/15kbmLEqbZmCpr-GCYOje9QZXZcwzAFclwMvfdFKAz8E/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1g0zKGf-YQZ-o1snZbKHiqlIaKWw0X_ajYtEPWBF9n7E/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/13D29s5m767twj3JpQ_NRmlvBgcPpJ7DafnLgdJ2DM14/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1g2gPsEc1ZHtlP_NKGRTEw2gUXcS416t36O-NXXSLnMQ/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1g2gPsEc1ZHtlP_NKGRTEw2gUXcS416t36O-NXXSLnMQ/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1rU2ho7_x1IWfOQZ50r3VGxAoUAvfmbHHJQ2TtogdT5Q/edit?usp=sharing"
  },
  "Solids of Rotation": {
   "kind": "Math modules",
@@ -442,7 +473,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/15Vt7myqVTaeXVWrd7Gl2_xq_O5r1JwYI-kGHA12zWl8/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1m1r-SXnCo1c1U0ca86NbGPvbe3PfPTZxaWTfd5ntvvE/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1Bx3ta24nLdFdNF2s82wTzk87oS5rvyFQ14SrSFxevz0/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1_KAiMFkxjeiE7CqrfWdYPdEecclWnStkADBsWMyKDpM/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1_KAiMFkxjeiE7CqrfWdYPdEecclWnStkADBsWMyKDpM/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1f1OhxaTEe_lheIcMsjOYoJj2f67UTcGgUtfyC8qk_ew/edit?usp=sharing"
  },
  "Triangle Congruence": {
   "kind": "Math modules",
@@ -456,7 +488,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1O91g2b5Tw4vfiDXXTkzGQZuGHoW-mTl5pc9SRy7l3cE/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1QV_0UZhdG3r1XUjz6iCqGOhlE7VYyUe-23PKLS-hX_4/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1xpSoafkNo_g8H2KniQFMdYlJ1av_ZoAOl0Hc3g18ze8/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1wag9BjRANG7Od2K54-hUkKsHn-RlShme4P9c_BIazik/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1wag9BjRANG7Od2K54-hUkKsHn-RlShme4P9c_BIazik/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1dL2nA2xuj8TEfnplEmOjHUqh6gFQewxUYmhQdT4f5KI/edit?tab=t.0"
  },
  "Distance Formula": {
   "kind": "Math modules",
@@ -470,7 +503,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1W4WeGhmghhuPtEno-1LbwyZG_fG9RQ3goNd5o33V6lg/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/12kvGnDrJ2hJBWbDQJRKwYLqMCuYpzJI1nviw-8nv2MI/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1_QewwDGXjnGuASVk1ZcRoppgjFEfF7eDGHzYuaZc4Tc/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1vXoIkePlMy3M_TnQaRQiPR9N5JVZdQhTuN6eVSEUkVw/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1vXoIkePlMy3M_TnQaRQiPR9N5JVZdQhTuN6eVSEUkVw/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1-BR3SohhjAOohSICL-BLPedq7EAxesJAoEzfuOuV62k/edit?tab=t.0"
  },
  "Transformations": {
   "kind": "Math modules",
@@ -484,7 +518,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1BCcqrUuWdQf_dK1yGmyoZNE4EaNTVIQRxdcR-Ekq45M/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/14bntsRqbCp5xKDQbTlKX90rksXCS47_by-dnsEJUvaI/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1lzTRg_x-LxTye6S58rVGKcHlxlKGnCYifbMn59HIGZQ/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1OSFV9x-2XRGoHfK0L8vudgbCFuKZkyLzF-Q7UhA4dHk/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1OSFV9x-2XRGoHfK0L8vudgbCFuKZkyLzF-Q7UhA4dHk/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1VpYBjPxgpdYQ-_maP_HpTjWcqlPPpbY1FewZBxRmHw8/edit?usp=sharing"
  },
  "Right-Triangle Trigonometry": {
   "kind": "Math modules",
@@ -498,7 +533,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1ANwIXQS5-aixheIfS-7-VHA1ZZNZrD-8Qnk3lTDAY3U/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1lwGTrhC9Ujgz-TEIVZgWuzF3OfzLJYuFmziW1_UeTi0/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1ChzGKQ2urAKhx1Hx_8oyAF0JTJeO1urv__r8ZoqjdrY/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/103AmwYQu4SCaHT04EKmPjPmofgT68M8FZJKT91rcL88/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/103AmwYQu4SCaHT04EKmPjPmofgT68M8FZJKT91rcL88/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1YLx90Z4G8qSXLyGtjxNtZc-MGE42U_rZtZjG0XyaB68/edit?usp=sharing"
  },
  "Transversals": {
   "kind": "Math modules",
@@ -511,7 +547,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/13nEe-Z5kFcj9JJhneS7D4bnBCS6gIIae8vPk16F8LLo/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1xB-8mMjdRdkNFbjEkusrnryTNqX7765g11xTFaarz7Q/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1PZUy1980u0V8-Crz_a7NHfrns2ubTyKi0ofva4Th3yI/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1cxv2igwxXhiNAqnwOClarGIR-Ih8DMpWOrUxGJFAPvM/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1cxv2igwxXhiNAqnwOClarGIR-Ih8DMpWOrUxGJFAPvM/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1RmNBoW-WvTS-hIH0Nn5ZZ7C7dFHEYmP3y_FKLXMs280/edit?tab=t.0"
  },
  "Complex Numbers": {
   "kind": "Math modules",
@@ -525,7 +562,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1m6Ck0DMxV4YuOSna-d7OUYhO4WoXFC0LwcRyW7z7YhM/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/15Waf3Ni0Yv18m9LfFYg10N5tSb7dV461cl2vuoNAq0w/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1sFFC12vxqNvdHYw9-eVjXUjluZYru7dQFqS-NmFLsLE/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1vDnBQZt_xRVjOmpy-i9AOYjNGkJr1ubltEfwisdhrJ0/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1vDnBQZt_xRVjOmpy-i9AOYjNGkJr1ubltEfwisdhrJ0/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1lgB62CcLugRm9RxDAn_udX905cFHqCGRvgJoqFGj_ew/edit?tab=t.0"
  },
  "Logarithms": {
   "kind": "Math modules",
@@ -539,7 +577,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1pjRRoWhe05KNOXuQFtexKIg-05CIR1Pb6nz6uDmVbZo/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1dW-fOrWt_2W7oBUTIUuffwZjrOsjec--TNRQZ-B24BU/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/12SZM22_CfgeikfzZdUuERoy_56Pn3gSrP_UhAksShVU/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1_RuSOydzebFv0f_17J9nze1xh8V0Th6azzRTvPrq_Xk/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1_RuSOydzebFv0f_17J9nze1xh8V0Th6azzRTvPrq_Xk/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1Hs_UWm6LCyEc_qBnWeBn2v6d6Ayef37Hy1LGZAYKTLs/edit?tab=t.0"
  },
  "Polar Coordinates": {
   "kind": "Math modules",
@@ -553,7 +592,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1ItJO360a-rP1L1RvgYfI2jRnE83VRvUcZeV-Dqt3kZo/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1Pi0OLOxrquJUFnsWQ1jbwlHFvx8VH3KUZyyt9Vt2ST8/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/10gthwLtOIFRQ1axl8xqgsh2vdbQNn1ZJ3somuTe1y0Q/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1SUn2ayJS5otgjBV2jGtIvyJ5kN4-p4qtrQqFqqa23xg/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1SUn2ayJS5otgjBV2jGtIvyJ5kN4-p4qtrQqFqqa23xg/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1a7Zgo3LZumTAZrOnCt3Nji3Z5s8Ruh6l_EfFTzAh9OA/edit?usp=sharing"
  },
  "Conic Sections": {
   "kind": "Math modules",
@@ -567,7 +607,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1s1vxeslApeW92jP_vTF1dP12VblOGNIX-jLbM8lr7P4/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1o7edwaZvW0kgN3_yEIwv-eMKsQNj6z3ypSBQlF-OVlw/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1oAM0f6BMqfRSjrAhIMFsZUnc8G-xhtXJPbaVper4G1c/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1FJl-UZpsuOX2LHbehkUo-2tM83-FwNlGZ4f0dEaDwaM/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1FJl-UZpsuOX2LHbehkUo-2tM83-FwNlGZ4f0dEaDwaM/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/14JU3Mf6gYuPmqNeOC8-puQhxZTLuVpblRRxLxyyiYAM/edit?usp=sharing"
  },
  "Matrix Multiplication": {
   "kind": "Math modules",
@@ -581,7 +622,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1B4JKiJxKRgqFeQc-HdAJpLcrxXtcxee34_JJ40hmJX8/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1UQfamyPTm4uXOCqdVNjZDv8rs1bfAf02pZ9AkV7YuF0/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1xvJG0x-xtCjhDZ4t_9PsgdYpRciXo3oi9_74XnrcvFQ/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1ZpoNgFkcFNun9S2I9Jt9KC2lvORZYJe2dQySsF1cgxI/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1ZpoNgFkcFNun9S2I9Jt9KC2lvORZYJe2dQySsF1cgxI/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1-SuxhBKhuYALLh1lyzo24We_It0Teq0ehUoj3BbjHCs/edit?usp=sharing"
  },
  "Vector Addition": {
   "kind": "Math modules",
@@ -595,7 +637,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1bVjT5nwRYg75Cbb01TBJuw7SZkTJRG569XZJpA7keKY/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1c3hi2dg8ZPDSPVSnj_0LJuKlhj1Zqb_xWtfCQpjuAtY/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1CQypx4Xy4fAdxl6wRXWTUF5_kwNj-d-N--cQsFDzxHY/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1S1FMFYyzWpAx9Cf2veRjjQNKKvm45zaIjzbKpo56ygc/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1S1FMFYyzWpAx9Cf2veRjjQNKKvm45zaIjzbKpo56ygc/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/13StzzccjzpkVFhEc3__W5B67uw18aA25NcZryKn8CFw/edit?tab=t.0"
  },
  "Function Transformations": {
   "kind": "Math modules",
@@ -609,7 +652,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1vy9QqYXHuOeQlT-4qZIXnQo_Mx5gxV3viJzUE1NdFS0/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1YPA9Wp7SrOrO_M795Ku53Y-X9xGnitEQnPmUH_VDp1M/edit?tab=t.0#bookmark=id.foyhvlh2yst6",
   "proximalCfu": "https://docs.google.com/document/d/1mJUG8KJ7HtXqoWhvZjT_y18RQAoP-6gAuXtS9Jbntvw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1WtoL_L1XzS_RXf3gJ5d3T0m591Gys0h1V2O6vVpKpeA/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1WtoL_L1XzS_RXf3gJ5d3T0m591Gys0h1V2O6vVpKpeA/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1Dk498XXfwLTLL_OmGept4-8rTrBzkpQdkvTm0rH2XwI/edit?tab=t.0"
  },
  "Periodic Functions": {
   "kind": "Math modules",
@@ -623,7 +667,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1g9P1UIQGuDm-SXVcCtKhsZKTx20mzC-moWV5qBCpdvg/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1_UGv56E_b52eLecbyRxo6-aZpypeESUMtjqmGJODYpU/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/15H8gh_oH21NDCVPa9gLCPBuTYcBffjwHlHc5nCwNIak/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/18qOz8t1dycLHtGezhyfUB4b1qgU5nuQIwkK0JFL6M3k/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/18qOz8t1dycLHtGezhyfUB4b1qgU5nuQIwkK0JFL6M3k/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1NXBZYkSczKoqoYjU3CQtOnBO34bFlG6vcSSLCEye2P8/edit?tab=t.0"
  },
  "Instantaneous & Average Rates of Change": {
   "kind": "Math modules",
@@ -636,7 +681,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1rM0Q9bSgFd-imwz659y_qNdrUk5qPGIiP8wHCcv8gHs/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1hC-ERNUj2TeDPE2MV0zu7cilOchB-xGwzgbcNT3wiL4/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1S2j9kQ9DMaUsUgGbkcGMYk8UW1AsszIwReYCyi-2sXk/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1JE4xhFE7zi0gDxXk8o3M5b7S3IBjHzSfifMFGyAWwHc/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1JE4xhFE7zi0gDxXk8o3M5b7S3IBjHzSfifMFGyAWwHc/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1282tPDHsPTxxpMpgbP2-i5ZUqm-G1D4OwokSLS_454c/edit?tab=t.0"
  },
  "The Normal Distribution": {
   "kind": "Math modules",
@@ -649,7 +695,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/19iLdWhKRngRvzvJ-GLdjQtPf5YLhIz3NWcNtysTmN_M/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/14bpg5NrMynKlNyA9N1j1xoprw6du_yEiXqUw8irvXks/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/11XjnAAhXS14sNYaMzC2eLiGUJXsae7w7zP5Tbqc6ZTA/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1MRzt4tPdsw3n6xu1Uc3mWEbBHqv0lz1KKjSRfbglnoI/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1MRzt4tPdsw3n6xu1Uc3mWEbBHqv0lz1KKjSRfbglnoI/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1Vzv7xTVWh4wqGM8fFJ919TzJMcgjL-cSvNgOVgUDgTg/edit?usp=sharing"
  },
  "DNA Structure & Function": {
   "kind": "Science modules",
@@ -663,7 +710,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/16e0LjloCHte4TyPufLXQMLdnjd6BDIp8cvLVbshFPfM/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1g-j4RwAdWBAhoExrZTfAfN6tDMWWWZ8AGsd-zuKnZXs/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1oKF-WAQeENd2vaW1YeI87oZuUpR2VCd4xy0ngHpDIDk/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1zBhxpyhtO54yVpSbNF94CtvwoKh0jjniQUCBmIuzzF8/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1zBhxpyhtO54yVpSbNF94CtvwoKh0jjniQUCBmIuzzF8/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1-BJIceHrhtGOzjV4gOZAKUyJESIIt4BCRGV9MajrsHw/edit?usp=sharing"
  },
  "Genetics": {
   "kind": "Science modules",
@@ -677,7 +725,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/15Q7_kfy9oKwfJ2TgFVWZhkopn2JXpRBl-2PcMyiJeeE/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1Yj29piIPJL7_thaIggitCLPq5-H3WkS1cZP9u9W_IiE/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/15ImY3bV8ve46d06-t6AyvJwdussoTnJWc-4ittGckzk/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1Bo8E0-y2MKfq2p8Dt2Dkm9tHLptJmvVObkVQRySi1cY/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1Bo8E0-y2MKfq2p8Dt2Dkm9tHLptJmvVObkVQRySi1cY/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1b6OVDmrcVfrc4JZ80ZmsxlcyYUZZf6mc07vtws1Z_Vw/edit?usp=sharing"
  },
  "Cell Structure & Function": {
   "kind": "Science modules",
@@ -691,7 +740,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1FjlVdDkGZTjWxTSPWk1-NEkBux_2qE4VsyiFx174zfY/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1vuslvpwmh93jcM9e4a8bE3UlqRB-udtdjGXzh_ZcLiA/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1P9Yx7Uwj5kAMnZJMOnZDcV379f1WynVYidT5WxtNEco/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1E7yXFSsjRcsSz9m0McHkvJHHu-FwcNd3aMSwKABHmWI/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1E7yXFSsjRcsSz9m0McHkvJHHu-FwcNd3aMSwKABHmWI/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1eq3YogUMBOmbBUZpwWD-yQy_uw_qvOydVdrlWi-2sAc/edit?tab=t.0"
  },
  "Ecology": {
   "kind": "Science modules",
@@ -705,7 +755,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1_-Se9xabUwpW0WxYPyv3VtmVPJMmrXLESoj8YPOIIok/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1vOSCk0ii5wp4LoG1MaQRxtoW25YZIKdPMYSgOqwLJRc/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1n_CxqK-AOK91VrutU11PLBZE6R22xz4Yp5vOC08H-to/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1MENdyKK5NFHnvzP6wg9Td77CTKEqQjiQDPH6bD604z0/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1MENdyKK5NFHnvzP6wg9Td77CTKEqQjiQDPH6bD604z0/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1jib-x87orhOH_XxfF9hOsjqg2puAryb9P40aOneqkNI/edit?tab=t.0"
  },
  "Mitosis": {
   "kind": "Science modules",
@@ -718,7 +769,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1puOzB0V3ebdq8b93vM1D-eEcIh2bo1jtWMekhzshWQk/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1sQ6l9O5Nh-Y2l_Gn7d5gbDM-0-UUa_i_BR7CI7Ew71o/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1vqA1DtqnJmdSyOc7C53UaUPQMpYGuXGX_Q7oSlA9Rq8/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1RAw6psDZRolHJIAbPeDHWkg9WqBgkcnLnJM59lFZqm0/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1RAw6psDZRolHJIAbPeDHWkg9WqBgkcnLnJM59lFZqm0/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1rDnGX1upTJ45t-AlFLGrl5QaYQ_q17A8LV2swAitwFA/edit?tab=t.0"
  },
  "Cellular Energy": {
   "kind": "Science modules",
@@ -732,7 +784,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1lqaqyaNxsukuFK5wIIbDmo6hMfw7uhEdn_3DDwBxVUs/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1eH2rH908DZvzahhs0tETBoxd4FkcKckWKeh4YsxXjOQ/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1PgIzZVfGm9L_AbaT17OVwCpZI_tnGBFNUNNeMI-pEK4/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1XYGgkHAWQOXWPI3140Q5tsiLr9jUMqZZrhf54WK9qP4/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1XYGgkHAWQOXWPI3140Q5tsiLr9jUMqZZrhf54WK9qP4/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1VGzxHlFpeze1jHWH0pxqpAZnZ9bBCs-PAMZFEKejQWU/edit?usp=sharing"
  },
  "Evolution": {
   "kind": "Science modules",
@@ -746,7 +799,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1jEuESjXp04Ro0TvhJpEZ50giaQDk-Ivt-v1Qhmb_XUg/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1m3u0kM4YEu7g8UX52U10JJrCtNlHv0XVX0VZAs_CY6U/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1Y6jwb_FP7U0KFAqSWu7lcwnMbsltYupfRUbbj857f_Q/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1PhyZyQ8Amfd3t9lO2fWoN77G9ViM-K0OyAXWNzSY0kQ/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1PhyZyQ8Amfd3t9lO2fWoN77G9ViM-K0OyAXWNzSY0kQ/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1vTB3D3z4FNr-2PIsoxyOvZKNXclAlobvRi-XU_7wuK4/edit?tab=t.0"
  },
  "Acids & Bases": {
   "kind": "Science modules",
@@ -760,7 +814,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1mHA_bUkU4aLghGh_il3xnKeit_GpWBa1ku7DS-Gdryc/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/11fM_QTs4G7TJUCzOte_WKPnnedOvjNGMn3a5NMwoCrE/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1aM9T5tHe_O1bq0MNjPqNqXyqE6zJ0kp2QIigqIji3PY/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1-EtYynSQugNTG6FBQ4Q77N9CaeMzbaCLgNwCoWaayd4/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1-EtYynSQugNTG6FBQ4Q77N9CaeMzbaCLgNwCoWaayd4/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1S2RT2h2xaQDBWWCNGkuyowl7bIccmSRpWmMK4sNJzqg/edit?usp=sharing"
  },
  "Bonds & Intermolecular Forces": {
   "kind": "Science modules",
@@ -774,7 +829,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1GztNdc9nmm2fTmFyMSO6FacHQWarfZDOzvQlu3xQ3Ls/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1Rn01tT5GhUFNte5gvuji4--NRfTlyPnK15oAM3MMl5w/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/15lytnuTdlLFNvK7fTWn4kdzaSnHWpgv-jyA-3VWpnMQ/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1oy-c7sYjGc47OUXKbq-JaqgwGmwRM7XblqX7Jxql-i8/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1oy-c7sYjGc47OUXKbq-JaqgwGmwRM7XblqX7Jxql-i8/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1Z0uwgn5UCHxLATBfF43ip5VuFD62DO8dq2Vq_tsLjgo/edit?tab=t.0"
  },
  "Endothermic & Exothermic Reactions": {
   "kind": "Science modules",
@@ -785,7 +841,8 @@ window.PRISMS_TOOLKITS = {
   "lessonGuide": "https://docs.google.com/document/d/1hO0VcJYwZG3ESrmLjDlJY_-EOlcMjzXhLz81sfJk15A/edit",
   "lessonGuide2": "https://docs.google.com/document/d/18LCdyr0YOLDLVkXzuM7lUAI3BGSIvqv1rYQ46vP7pcE/edit",
   "slides": "https://docs.google.com/presentation/d/1LpeU13mMHNanSmGPzNZMalbTcG00wNxWVvzI-nvlg94/edit?slide=id.g312a57799f0_0_0#slide=id.g312a57799f0_0_0",
-  "handout": "https://docs.google.com/document/d/1Y7yc-KVbjc56gshuGBkGZBYuJgyI4MT60rJbmCkNXGg/edit?tab=t.0"
+  "handout": "https://docs.google.com/document/d/1Y7yc-KVbjc56gshuGBkGZBYuJgyI4MT60rJbmCkNXGg/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1QVzMNFoTqyc1Oi_F-R5uw8ajLVd6Kag7oaKXSqTXAv8/edit?tab=t.0"
  },
  "Atomic Structure & Electron Configuration": {
   "kind": "Science modules",
@@ -799,7 +856,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1ZlJFehhQLNFFcfL8BaYoXXD4zb6DCmmi_-casMuFq0Q/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1VajfzJJFwtoO2TimRTTmMqAqLDe5CUwEt-DoX8SNwNE/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1Svd2NbaOzi3YCozDJtnc9oAAwy_ocJtct5yDFv6lkc4/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1CeqgTvvOrJd9JDgRt3P-CIl7Rvmt7CIpHLS2TySiV8g/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1CeqgTvvOrJd9JDgRt3P-CIl7Rvmt7CIpHLS2TySiV8g/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1xHep2AVdN_AbYwkYB78RH4h0aCUSAnS4_Wd4-yliIcQ/edit?tab=t.0"
  },
  "Chemical Reactions & Stoichiometry": {
   "kind": "Science modules",
@@ -810,7 +868,8 @@ window.PRISMS_TOOLKITS = {
   "lessonGuide": "https://docs.google.com/document/d/1zCnwEO17b6UnvTKkDiXwmIzZvCiifE_FtDitzBLpn9A/edit",
   "lessonGuide2": "https://docs.google.com/document/d/15sbXuudG9bDM_jxLvRu-a18ta-zALP0z2qXVQIJfHyU/edit",
   "slides": "https://docs.google.com/presentation/d/1mojDjUrTKUKHy6RUMTqlM7rhjUg7FWEp8PQgF5-hekA/edit?slide=id.g312a4e953c6_0_0#slide=id.g312a4e953c6_0_0",
-  "handout": "https://docs.google.com/document/d/1LfaRwB-a79cUEtwuttcOiZv25n3SHzEBkfkKL3cjaGk/edit?tab=t.0"
+  "handout": "https://docs.google.com/document/d/1LfaRwB-a79cUEtwuttcOiZv25n3SHzEBkfkKL3cjaGk/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/u/0/d/14Kl83hCr75tWN5A57Nj6qM2OfSFDYrfjNVKDu-ibwsw/edit"
  },
  "Water Polarity & Hydrogen Bonding": {
   "kind": "Science modules",
@@ -823,7 +882,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1vbDo7cqLDemKDKf2eT1FI3l4I3JSmGmCw2sGEXKiDT0/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1G0oGPNE2pC01gWhcBLCOkASNFNa-stR5B5UPaxgKZXM/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1oypSIV25-pdhNZ3_wRrMcK7sGUuK-1vtpt-nk_zwfeM/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1GE4lQHDyoOmh6t_V8AkXLSdTnMoBrUpMH0VD-gWMlVM/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1GE4lQHDyoOmh6t_V8AkXLSdTnMoBrUpMH0VD-gWMlVM/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1Mxq-AKh4Ks7ys_CwZS1vAJKQNU77JzlNz0WnaaVJKZU/edit?tab=t.0"
  },
  "1-D Kinematics": {
   "kind": "Science modules",
@@ -836,7 +896,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1-f_PJqBOHel4o76PbyvC_edmb189niDlrFxOTdVlr-M/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1E1toI42OZDCxXNaZ2hVokldoKaLFIyJvv-Pu0OQfkgM/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1YRBOsLdjbqSYlHn5SnIhee5YDnrQEHftqTH4TU2sJt4/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1SPs8eabCa-c--xpaO2PIYNS1IMkI5bDQ7Cimm6_iDok/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1SPs8eabCa-c--xpaO2PIYNS1IMkI5bDQ7Cimm6_iDok/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1bCbn43lRpM0KF-nVTRX95gukdvTs-b1Yr6RXUPiaXJM/edit?usp=sharing"
  },
  "Newton's Second Law": {
   "kind": "Science modules",
@@ -847,7 +908,8 @@ window.PRISMS_TOOLKITS = {
   "lessonGuide": "https://docs.google.com/document/d/17t9OlMLf8AG0SdIPuxLDPK9ZiLDgXB2nfnclGRxI6Jg/edit?tab=t.0",
   "lessonGuide2": "https://docs.google.com/document/d/1drUQe5Zk03J-cRfOSUKzdFwisqZ_VCjz_4s0V0vr-Lg/edit?tab=t.0",
   "slides": "https://docs.google.com/presentation/d/1lkleV_zivyoaMw37tw1-FeL5AjXiYL0oWQP-sLjd3LQ/edit?slide=id.g312a3e19555_0_0#slide=id.g312a3e19555_0_0",
-  "handout": "https://docs.google.com/document/d/1dTiHXPbivk6noGaFNS8UZ2PSRWdCRJ87PJWSwiei9Ok/edit?tab=t.0"
+  "handout": "https://docs.google.com/document/d/1dTiHXPbivk6noGaFNS8UZ2PSRWdCRJ87PJWSwiei9Ok/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1NCQybfTjYcfwWocMEWABDZwA3b5GqUIiimml_QpyC_I/edit?tab=t.0"
  },
  "Force & Motion": {
   "kind": "Science modules",
@@ -858,7 +920,8 @@ window.PRISMS_TOOLKITS = {
   "lessonGuide": "https://docs.google.com/document/d/1MHI3nJWOvPC__3IfPQd5FRu2VrVWxD-rjLnECgT6o70/edit",
   "lessonGuide2": "https://docs.google.com/document/d/1MzsMBQApYI0-LzfBHYlXBZ3gjzL2lk6pyhjrBA738WI/edit",
   "slides": "https://docs.google.com/presentation/d/18OReGEbiVDuYXc9WAkhTizxwO3uvaYrFTWJGh99jmQc/edit?slide=id.g312aa695011_0_0#slide=id.g312aa695011_0_0",
-  "handout": "https://docs.google.com/document/d/1Ww0by68_487uAXDz5yngufYNtqQBS4cfhCbY_YbKp0w/edit?usp=sharing"
+  "handout": "https://docs.google.com/document/d/1Ww0by68_487uAXDz5yngufYNtqQBS4cfhCbY_YbKp0w/edit?usp=sharing",
+  "prereq": "https://docs.google.com/document/d/16wTEUCtFksTRvLualpeASNZ56LbBd1JFE57vbO9dZpo/edit?usp=sharing"
  },
  "Energy Transformations": {
   "kind": "Science modules",
@@ -871,7 +934,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1POy9khgZQ-FwwOtU4GaFuAsWiGasNLvu822d2v35UuA/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/15pBApvlTG0JrZ3qgVlZbzjL_th_ycm_A3Y6AmPQ9xQA/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1jJ81R4nQ6RQqIVF1a608KSkL01dwC7xeolHDtarq_js/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1Bxz1TCuQMf66a7t5fW8epA_P9KghITPZZVSWukuw9D0/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1Bxz1TCuQMf66a7t5fW8epA_P9KghITPZZVSWukuw9D0/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1e1SQfSuqpY5JC-4A8ARf0H90SOwmw5IY7HpOGi-y-8E/edit?tab=t.0"
  },
  "Phase Changes": {
   "kind": "Science modules",
@@ -884,7 +948,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1Sqwkkcb_VCWGGJFi4YYsVDiEzX1qhDxTygGzavS85Ak/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1XfbIWwdBErYqbiP6VfgwvOaUo3I2cN2vLHAs2Us58OQ/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/11xsQN8dA5jQcXHxpqdRyX8nikeviPBNgIjpORTArYUI/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1MpkQEfoMujTuHZ68SLweT4y-wPT98MZTdF46L8DDZCs/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1MpkQEfoMujTuHZ68SLweT4y-wPT98MZTdF46L8DDZCs/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1jwAghkAgupnfnomKWKmTc11gUI3CBW6Gn9ZmHyRlLHM/edit?tab=t.0"
  },
  "Wave Energy": {
   "kind": "Science modules",
@@ -898,7 +963,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/14kbNJC8eZ9_KIaRvSW5HGaAmypwcWuV3XauyCVhNWOI/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/15ZSCq9nlJ6KaJGGI51m_BCNf6ffg9GRVCWv9MEHF_LQ/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1Fj0PrOudLFLaEN0ORIo6e6sxUuH4CXqloGTsWGtrNlU/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1YQxsNit5IZs0RcXZI1IKODY7p-vpmwDhLRe6hRZRGIQ/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1YQxsNit5IZs0RcXZI1IKODY7p-vpmwDhLRe6hRZRGIQ/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1EmCzjPVWmHLcb7tPKqEaCNTD9LEJ7Bv7qp9ktCf3AJk/edit?tab=t.0"
  },
  "Biological Levels of Organization": {
   "kind": "Science modules",
@@ -912,7 +978,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1M1z2iL5VpvIHtWK9m6WOuv6jUlBNicydcPBt1NcTrOI/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1WZIMXyOW6eCUPlACODlJps17l1_tA2-VEXVSKKeJnHs/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1eODPgS73acNEGZbr-LsGVZZpauAU7SrLuMRJYDzgoK0/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1jNfFl-sMJVCjJ2YiAgLHunaFlM3U29fYAiGFkrA6iYE/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1jNfFl-sMJVCjJ2YiAgLHunaFlM3U29fYAiGFkrA6iYE/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1lROW4XO4x4tcTPA_6SE0i-y_h7Mq1gSQZxSu7PHoJqg/edit?tab=t.0"
  },
  "Growth of an Organism": {
   "kind": "Science modules",
@@ -925,7 +992,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1hR3L5lGppUOu2j613WGH8htwDI8zrqd4HWCoeTqTu5g/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1P6iVifNpsI_GZDAdeY6T9NfOsrxkzv05yWwfSJ0CIf8/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1isl9yw9Epm_wmhiIAUNpqbjBrXwjdoW-TfniIqj5u6Y/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1yJZ5ZM9_ZeloPSL-0yZqyTRRZnxUCdA3tV8g6udPALw/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1yJZ5ZM9_ZeloPSL-0yZqyTRRZnxUCdA3tV8g6udPALw/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1mUVm7P_CthqrHrN7y9wtjGFLiLC9oPYuusF1fWy16Ic/edit?tab=t.0"
  },
  "The Scientific Method": {
   "kind": "Science modules",
@@ -938,7 +1006,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1xBOPntgC08TXvv1r8JdVhNUfZqNBH6h_2DrzPJdY0ts/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1cCtZbuBOfSV7IvDk5rfoPO_7zqJ0PTsZFhvtAQJMxU4/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1ZfACveb7H_O9LySO2Yh7wRQ-Wn6B95CEcqKp8g8z_Ig/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/165OXgQwO9Zw0Pbgi7H4giipy59G2EX-FIGaDxYctIC4/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/165OXgQwO9Zw0Pbgi7H4giipy59G2EX-FIGaDxYctIC4/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1D_jugV-oS_L-6k1X6ZiIpRvzmttR23-l-3rhLlHo5co/edit?tab=t.0"
  },
  "The Nitrogen Cycle": {
   "kind": "Science modules",
@@ -952,7 +1021,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/15Ez3ZZroFx__Yh6jkebkKhqm3RjV6MYs1kS8F4GJHrQ/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1fdTP6VQNgaE8lUIbnk9zCkPLXQc7VJyPpJA7OZeIgtU/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1jZrwps1HQ0u9MwCvRCqg0_9yoUhc-p1ql5e8vDKbRJw/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1C9nR33gz7qfolgwWIp9EuMmU50S6O1QUJBkruGTBXkU/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1C9nR33gz7qfolgwWIp9EuMmU50S6O1QUJBkruGTBXkU/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1vRfFKRoPylXDqFZvtWWB85NN1CU8KEkZ5Pp8lVDnkIo/edit?tab=t.0"
  },
  "Homeostasis": {
   "kind": "Science modules",
@@ -965,7 +1035,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/115YqtYkVgXcOctWsb1RRlbxk6tyigg4UCwqQmY5TSQk/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1AXXdU83OV84eaMbMHAsDAGbLl9cdysSxwgv5AiL5ALk/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/17McerGCWv22e_iu1XjpwWN0CzxySLsRpiDhoJfNPKjs/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1REcf1_UakzhKLuPabIlsEwt6r50sdvImjvIj6QHy9Og/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1REcf1_UakzhKLuPabIlsEwt6r50sdvImjvIj6QHy9Og/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1tme9hmrvx6zKPZoxN_TozuKlQAuaq0PYQhrwZDEFYKc/edit?tab=t.0"
  },
  "Tectonic Plates": {
   "kind": "Science modules",
@@ -979,7 +1050,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1Q5ixm_0zF3boYThQqUUIFUGcnci8X-DwSESON60WK8Q/edit?tab=t.0",
   "transfer": "https://docs.google.com/document/d/1X0Nki2yH-7n4_lx1YG8VfcrEeYqGpNbzA1VLznNZqv8/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1ucgXEINL1jpDq_nZJcAonObpCrTsWlhek552YMq320U/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1n4JdbCvAYO2Dep_lomNnwqth_zWHd3mJ72CrtS2wxdk/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1n4JdbCvAYO2Dep_lomNnwqth_zWHd3mJ72CrtS2wxdk/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1AfiHyW2DsNqw37z9-DbCMpmEpu_yV8WoQtDg_CzhS_A/edit?tab=t.0"
  },
  "Earth & The Sun": {
   "kind": "Science modules",
@@ -992,7 +1064,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1YIA8UxRSbW4TK0wJa0dOgLNGoUebH6pv_FcZRGfKXs8/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1GJTGYtBNvg2eDpI8fG_SeLDOtGuUUuN3o1hlIoo2HSE/edit?tab=t.0",
   "proximalCfu": "https://docs.google.com/document/d/1JWO20mHGQtvHMZXHoqJb-ea_ZiGaDWNPa-wpHAE3D1k/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1jsgXySykiyEbVqaRf373Hj3-Fwxv21ZTRNVQ_wH2Pws/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1jsgXySykiyEbVqaRf373Hj3-Fwxv21ZTRNVQ_wH2Pws/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1VVplA29oQ2nwGrGX-OT-DKG7V9_xnXBFnq1Ly7KQd80/edit?tab=t.0"
  },
  "The Rock Cycle": {
   "kind": "Science modules",
@@ -1005,7 +1078,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1tG67b2kt_8qKJAAIAit0G7DfW19qSWreyQFhHPnuXdo/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1uv_8TiLJ_tGQtnC5rlsSt8OBs_Znv1Gs6TWPRUl93oY/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1XVSLFy_nYL-Dy7tjiNslZwPTVA4UozuvARKYZ_F6MGE/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/12z1YBTxNekewAPuBJlYImZ4RcyVTd7BHZsguwAclWiI/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/12z1YBTxNekewAPuBJlYImZ4RcyVTd7BHZsguwAclWiI/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/17aBAhGyYT13KjrgEOhvKacZbaMrjY1AXBQD5TaojP0Y/edit?usp=sharing"
  },
  "Algebraic Manipulation": {
   "kind": "Math Skill Builders",
@@ -1215,7 +1289,8 @@ window.PRISMS_TOOLKITS = {
   "handout": "https://docs.google.com/document/d/1uv57kFq8nfJ71YdQ6U8_owEG5xan4AGswltK-I8YGkQ/edit?usp=sharing",
   "transfer": "https://docs.google.com/document/d/1FLoCRjJeRX7CKp0hIJSZMtq-ikvs3pKXbmdzKGyp5b0/edit?usp=sharing",
   "proximalCfu": "https://docs.google.com/document/d/1-H5OlvZn-iJ8tKwl5BFoVfSellwonb7mPDzU4NGfJWQ/edit?tab=t.0",
-  "endCfu": "https://docs.google.com/document/d/1yx-7chBzplfCQxwn1F-HIfIhsaxX3jFRZt4Xe44dsnI/edit?tab=t.0"
+  "endCfu": "https://docs.google.com/document/d/1yx-7chBzplfCQxwn1F-HIfIhsaxX3jFRZt4Xe44dsnI/edit?tab=t.0",
+  "prereq": "https://docs.google.com/document/d/1NV43EWd7T8Dicly5kzYprgiM4Kntmp82mU-qlG4xwRM/edit?usp=sharing"
  },
  "Atomic Bonds": {
   "kind": "Science Skill Builders",
