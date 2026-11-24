@@ -4,7 +4,7 @@
 // cache is deleted on activate; localStorage (active draft + visit history)
 // is a completely separate storage area the service worker never touches,
 // so bumping this version can never delete a coach's saved visits.
-const CACHE_NAME = 'prisms-live-coach-v1';
+const CACHE_NAME = 'prisms-live-coach-v2';
 
 // Everything the Live Coach Tool needs to run with zero network access.
 // Deliberately does NOT include index.html (the email generator) or any
