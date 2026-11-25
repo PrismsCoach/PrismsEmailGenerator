@@ -87,9 +87,14 @@
     .tutorial-sub { font-size: 12.5px; color: rgba(255,255,255,0.78); margin-top: 2px; line-height: 1.35; }
     .tutorial-banner.pending { background: #F2F2F2; color: var(--navy); }
     .tutorial-banner.pending .tutorial-sub { color: var(--gray-600); }
-    .champion { margin-top: 14px; background: var(--pink-light); border-left: 4px solid var(--pink); border-radius: 6px; padding: 10px 14px; }
-    .champion-title { font-weight: 700; color: var(--pink); font-size: 14px; }
-    .champion-text { font-size: 12.5px; color: var(--gray-700); margin-top: 2px; }
+    .champion { margin-top: 14px; display: flex; align-items: center; gap: 14px; border-radius: 10px; padding: 12px 16px; color: white;
+      background: linear-gradient(90deg, #DB1873, #D94A5D, #E65B57, #E3673B); }
+    .champion > svg { width: 38px; height: 38px; flex-shrink: 0; }
+    .champion-copy { flex: 1; min-width: 0; }
+    .champion-title { font-weight: 700; font-size: 16px; }
+    .champion-text { font-size: 12.5px; margin-top: 2px; color: rgba(255,255,255,0.92); }
+    .champion-sparkles { position: relative; width: 48px; height: 34px; flex-shrink: 0; }
+    .champion-sparkles svg { position: absolute; }
     .grid-wrap { margin-top: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--gray-200); border-radius: 8px; }
     table.grid { border-collapse: collapse; width: 100%; table-layout: fixed; }
     table.grid th, table.grid td { border: 1px solid var(--gray-200); padding: 8px 8px; vertical-align: middle; }
@@ -310,6 +315,8 @@
   const SB_SUGGESTIONS = ['Algebraic Manipulation','Fraction Operations','Quadratic Functions','Angles','Fractions, Decimals & Percents','Rate of Change','Calculating Percents','Identifying Functions','Ratios & Unit Rates','Completing the Square','Identifying & Creating Functions','Solving Linear Equations & Inequalities','Creating Linear Equations','Integer Operations','Solving Systems of Linear Equations','Coordinate Plane','Nets & Surface Area','Unit Conversions','Decimal Operations','Order of Operations','Volume','Distributive Property','Properties of Exponents','Factoring & Polynomial Division','Proportions','Atomic Bonds','Food Webs','Meiosis','Atomic Models','Balancing Chemical Equations','Organelles','DNA Replication','Transcription & Translation'];
 
   const CHAMPION_TEXT = 'Thank you for leading the way with Prisms at your school.';
+  // Small celebration stars on the right of the Champion banner: [x, y, radius] in mm (PDF) / scaled for the preview.
+  const CHAMPION_SPARKLES = [[10, 1, 3.2], [2, 7, 2.1], [16, 9, 1.7]];
   const TUTORIAL_TEXT = {
     done:    { title: 'Tutorial Complete', sub: 'Your students have had their first Prisms VR experience.' },
     pending: { title: 'Tutorial not yet complete', sub: 'The Tutorial is students’ first Prisms VR experience, before the first Content Module.' }
@@ -574,7 +581,8 @@
           return `<div class="tutorial-banner ${r.tutorialComplete ? '' : 'pending'}">${markSvg('prism', r.tutorialComplete ? hexToRgb('#DB1873') : [190, 194, 204], '')}<div><div class="tutorial-title">${esc(t.title)}</div><div class="tutorial-sub">${esc(t.sub)}</div></div></div>`; })()}
         ${r.style === 'celebrate' ? cards : grid}
         ${!r.columns.length ? '<div class="no-modules" data-coach-only>Coach view only: no module qualifies yet, so the PDF will skip the modules section.</div>' : ''}
-        ${r.champion ? `<div class="champion"><div class="champion-title">Prisms Teacher Champion</div><div class="champion-text">${esc(CHAMPION_TEXT)}</div></div>` : ''}
+        ${r.champion ? `<div class="champion">${markSvg('star', WHITE, '')}<div class="champion-copy"><div class="champion-title">Prisms Teacher Champion</div><div class="champion-text">${esc(CHAMPION_TEXT)}</div></div>
+          <div class="champion-sparkles" aria-hidden="true">${CHAMPION_SPARKLES.map(([x, y, r]) => markSvg('star', WHITE, '').replace('<svg ', `<svg style="left:${x * 2.4}px;top:${y * 2.4}px;width:${r * 4.8}px;height:${r * 4.8}px" `)).join('')}</div></div>` : ''}
         ${r.note ? `<div class="report-note"><div class="report-note-title">From your coach</div><div class="report-note-text">${esc(r.note)}</div></div>` : ''}
       </div>
       <div class="report-foot">Prisms Progress</div>`;
@@ -758,10 +766,21 @@
     if (report.champion) {
       if (report.columns.length) y += 6;
       if (y + 14 > H - 18) { doc.addPage(); y = 20; }
-      fill(doc, C.pinkLight); doc.rect(L, y, CW, 14, 'F'); fill(doc, C.pink); doc.rect(L, y, 1.4, 14, 'F');
-      doc.setFont('helvetica', 'bold'); doc.setFontSize(11); ink(doc, C.pink); doc.text('Prisms Teacher Champion', L + 5, y + 6);
-      doc.setFont('helvetica', 'normal'); doc.setFontSize(9); ink(doc, C.text); doc.text(CHAMPION_TEXT, L + 5, y + 11);
-      y += 14;
+      const champH = 16;
+      // Brand gradient clipped to a rounded banner
+      doc.saveGraphicsState();
+      doc.roundedRect(L, y, CW, champH, 2.5, 2.5, null); doc.clip(); doc.discardPath();
+      const stops = [C.pink, C.rose, C.brandRed, C.coral], steps = 70, sw = CW / steps;
+      for (let i = 0; i < steps; i++) {
+        const f = Math.min(i / (steps - 1), 0.999999) * 3, k = Math.floor(f), t = f - k;
+        fill(doc, mix(stops[k], stops[k + 1], t)); doc.rect(L + i * sw, y, sw + 0.4, champH, 'F');
+      }
+      doc.restoreGraphicsState();
+      drawMark(doc, 'star', L + 9.5, y + champH / 2 + 0.3, 5.4, WHITE);
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(13); ink(doc, WHITE); doc.text('Prisms Teacher Champion', L + 19, y + 7);
+      doc.setFont('helvetica', 'normal'); doc.setFontSize(9.5); doc.text(CHAMPION_TEXT, L + 19, y + 12.2);
+      CHAMPION_SPARKLES.forEach(([sx, sy, sr]) => drawMark(doc, 'star', R - 24 + sx, y + 3.6 + sy, sr, WHITE));
+      y += champH;
     }
 
     // Coach note
